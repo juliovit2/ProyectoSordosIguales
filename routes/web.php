@@ -27,6 +27,7 @@ Route::get('/', function () {
 // ----------- MODULO CONTACTO -----------
 
 
-// ----------- MODULO (EL OTRO)-----------
+// ----------- MODULO (MEMORIAS)-----------
+Route::resource('memorias', 'MemoriasController');
 
 
