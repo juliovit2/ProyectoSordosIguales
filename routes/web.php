@@ -27,6 +27,9 @@ Route::get('/Plataforma', function () {
     return view('Plataforma/IniciarSesion');
 });
 
+Route::get('/PortalAlumnos', function () {
+    return view('Plataforma/PortalAlumnos');
+});
 
 // ----------- MODULO CONTACTO -----------
 
