@@ -34,3 +34,7 @@ Route::get('/Plataforma', function () {
 // ----------- MODULO (EL OTRO)-----------
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
