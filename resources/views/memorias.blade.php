@@ -21,7 +21,10 @@
 </head>
 
 <style>
-
+    body {
+        margin: 0;
+        padding: 0;
+    }
     /* navbar */
     .navbar-default {
         background-color: #3460C7;
@@ -93,10 +96,27 @@
     }
 </style>
 
+<header>
+    <div class="container-fluid">
+        <div class="row border">
+            <div class="col-sm-2 border ">
+                <img class = "img" src="{{"/storage/UL7hTO9G.jpg"}}" style ="width:150px;height: 150px;float: right;">
+            </div>
+            <div class="col-sm-8 border align-self-center" style="color:#3460C7;font-size: 14px;font-family: 'Oswald', sans-serif !important; font-style: italic;">
+                <h1 align="center"  style="font-size: 70px">Fundacion Sordos iguales</h1>
+            </div>
+            <div class="col-sm-2 border align-self-center" style="font-size: 45px">
+                <a href = "monkey.png"><i class="fab fa-twitter-square"></i></a>
+                <a href = "monkey.png"><i class="fab fa-facebook"></i></a>
+                <a href = "monkey.png"><i class="fab fa-instagram"></i></a>
+                <a href = "monkey.png"><i class="fab fa-whatsapp"></i></a>
+
+            </div>
+        </div>
+    </div>
+</header>
 <body>
-
-
-<nav class="navbar-default navbar navbar-expand-md ">
+<nav class="navbar-default navbar navbar-expand-md">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -126,25 +146,54 @@
     </div>
 </nav>
 
+
 <main role="main" class="container">
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    <div class="container">
+        <h1>WENA</h1>
+    </div>
+    <div class="container">
+        <h1>WENA</h1>
+    </div>
+    <div class="container">
+        <h1>WENA</h1>
+    </div>
+    <div class="container">
+        <h1>WENA</h1>
+    </div>
+    <div class="container">
+        <h1>WENA</h1>
+    </div>
+    <div class="container">
+        <h1>WENA</h1>
+    </div>
 
 
 </main><!-- /.container -->
+
+<section id="sec-footer">
+    <div class="container-fluid pt-5" style="background-color:#3460C7">
+        <div class="row">
+            <div class = "container border col-sm" style="text-align: center">
+                <img class = "img" src="{{"/storage/UL7hTO9G.jpg"}}" style ="width:100px;height: 100px">
+            </div>
+            <div class = "container border col-sm" style="text-align: center">
+                <img class = "img" src="{{"/storage/UL7hTO9G.jpg"}}" style ="width:100px;height: 100px">
+            </div>
+            <div class = "container border col-sm" style="text-align: center">
+                <img class = "img" src="{{"/storage/UL7hTO9G.jpg"}}" style ="width:100px;height: 100px">
+            </div>
+            <div class = "container border col-sm" style="text-align: center">
+                <img class = "img" src="{{"/storage/UL7hTO9G.jpg"}}" style ="width:100px;height: 100px">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="ftr-below-names2"> Copyright &copy;2015 </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
