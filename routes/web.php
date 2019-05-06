@@ -14,6 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/contacto', function () {
+    return view('contacto');
+});
 
 //escribir todas las rutas requeridas aqui siguiendo el mismo formato
 
