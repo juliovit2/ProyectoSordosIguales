@@ -13,7 +13,7 @@ class MemoriasController extends Controller
      */
     public function index()
     {
-        //
+        return view('memorias');//
     }
 
     /**
@@ -23,6 +23,7 @@ class MemoriasController extends Controller
      */
     public function create()
     {
+
         //
     }
 
