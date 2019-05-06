@@ -23,6 +23,10 @@ Route::get('/', function () {
 
 // ----------- MODULO CURSOS -----------
 
+Route::get('/Plataforma', function () {
+    return view('Plataforma/IniciarSesion');
+});
+
 
 // ----------- MODULO CONTACTO -----------
 
