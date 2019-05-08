@@ -24,8 +24,8 @@ class CreateTablaUsuariosTable extends Migration
             $table->string('clave');
             $table->enum('rol',['Alumno', 'Administrador'])->default('Alumno');
             $table->boolean('cursando')->nullable();
-
             $table->timestamps();
+            $table->rememberToken();
         });
     }
 
