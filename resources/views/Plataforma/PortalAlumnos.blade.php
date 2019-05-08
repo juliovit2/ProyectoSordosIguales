@@ -290,6 +290,7 @@
         <th scope="col">Estado</th>
         <th scope="col">Asistencia</th>
         <th scope="col">Detalles</th>
+
     </tr>
     </thead>
     <tbody>
