@@ -5,15 +5,15 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="wrapper fadeInDown">
-                <div class="card">
-                    <div class="card-header">{{ __('Login') }}</div>
+                <div class="card" >
+                    <div class="card-header">{{ __('Portal Alumnos FSI') }}</div>
 
                     <div class="card-body">
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
 
                             <div class="form-group row">
-                                <label for="correo" class="col-md-4 col-form-label text-md-right">{{ __('Correo Electrónico') }}</label>
+                                <label for="correo" class="col-md-4 col-form-label text-md-right">{{ __('Correo Electrónico:') }}</label>
                                 <div class="col-md-6">
                                     <input id="correo" type="email" class="form-control @error('correo') is-invalid @enderror" name="correo" value="{{ old('correo') }}" required autocomplete="correo" autofocus placeholder="Correo">
 
@@ -26,7 +26,7 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="clave" class="col-md-4 col-form-label text-md-right">{{ __('Contraseña') }}</label>
+                                <label for="clave" class="col-md-4 col-form-label text-md-right">{{ __('Contraseña:') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="clave" type="password" class="form-control @error('clave') is-invalid @enderror" name="clave" required autocomplete="clave_actual" placeholder="Contraseña">
