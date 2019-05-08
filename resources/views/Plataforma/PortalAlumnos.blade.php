@@ -161,8 +161,6 @@
             color: #cccccc;
         }
 
-
-
         /* ANIMATIONS */
 
         /* Simple CSS3 Fade-in-down Animation */
