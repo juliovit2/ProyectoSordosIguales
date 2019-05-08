@@ -93,6 +93,7 @@
                     <a href="https://forge.laravel.com">Forge</a>
                     <a href="/PortalAlumnos">Portal</a>
                     <a href="/Plataforma">Login</a>
+                    <a href="/PortalAlumnos">Portal</a>
                 </div>
             </div>
         </div>
