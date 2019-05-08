@@ -282,41 +282,11 @@
 <body>
 <table class="table">
     <thead>
-    <tr>
-        <th scope="col"> </th>
-        <th scope="col">Nivel</th>
-        <th scope="col">Nombre Profesor</th>
-        <th scope="col">Promedio</th>
-        <th scope="col">Estado</th>
-        <th scope="col">Asistencia</th>
-        <th scope="col">Detalles</th>
-    </tr>
+
+
     </thead>
     <tbody>
-    <tr>
-        <th scope="row">1</th>
-        <td>Básico</td>
-        <td>Nombre Profesor</td>
-        <td>6.8</td>
-        <td>Aprobado</td>
-        <td>100%</td>
-    </tr>
-    <tr>
-        <th scope="row">2</th>
-        <td>Intermedio</td>
-        <td>Nombre Profesor</td>
-        <td>6.4</td>
-        <td>Aprobado</td>
-        <td>90%</td>
-    </tr>
-    <tr>
-        <th scope="row">3</th>
-        <td>Avanzado</td>
-        <td>Nombre Profesor</td>
-        <td>-</td>
-        <td>Cursando</td>
-        <td>60%</td>
-    </tr>
+
     </tbody>
 </table>
 </body>
