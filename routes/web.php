@@ -14,9 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/contacto', function () {
-    return view('contacto');
-});
+
+Route::resource('/contacto','InformacionController');
+Route::get('/informacion','InformacionController@info');
 
 //escribir todas las rutas requeridas aqui siguiendo el mismo formato
 
