@@ -27,6 +27,8 @@ Route::get('/Plataforma', function () {
     return view('Plataforma/IniciarSesion');
 });
 
+Route::post('login', 'Auth\LoginController@login')->name('login');
+
 Route::get('/PortalAlumnos', function () {
     return view('Plataforma/PortalAlumnos');
 });
