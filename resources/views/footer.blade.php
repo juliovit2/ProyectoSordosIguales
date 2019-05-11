@@ -11,7 +11,7 @@
             </span>
         </div>
         <!-- Grid row-->
-        <hr class="rgba-white-light" style="margin: 0 20%;background-color: #596070">
+        <hr class="rgba-white-light" style="margin: 0 20%;background-color: #95a5a6">
 
         <!-- Grid row-->
         <div class="row d-flex text-center justify-content-center mb-md-0 mb-4">
