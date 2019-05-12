@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Request\TickerFormRequest;
 class NoticiaController extends Controller
 {
     /**
@@ -23,7 +24,7 @@ class NoticiaController extends Controller
      */
     public function create()
     {
-        //
+        return view('noticia/create');
     }
 
     /**
@@ -34,7 +35,7 @@ class NoticiaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $request->all();
     }
 
     /**

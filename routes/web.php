@@ -19,8 +19,8 @@ Route::get('/', function () {
 
 
 // ----------- MODULO NOTICIAS -----------
-
-
+Route::get('/crear-noticia', 'NoticiaController@create')->name('Crear Noticia xd');
+Route::post('/crear-noticia', 'NoticiaController@store');
 // ----------- MODULO CURSOS -----------
 
 

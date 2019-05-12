@@ -2,29 +2,31 @@
 <html lang="es_ES">
 <head>
     <title>Agregar Noticia</title>
-    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+    <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
+    <script type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/bootstrap.js') }}"></script>
 
-    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.css" rel="stylesheet">
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.js"></script>
+    <link href="{{ asset('summernote/summernote.css') }}" rel="stylesheet">
+    <script type="text/javascript" src="{{ asset('summernote/lang/summernote-es-ES.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('summernote/summernote.js') }}"></script>
 </head>
 <body>
     <div class="container">
         <div class="row">
             <div class="col-md">
                 <form action="" method="POST">
+                    <input type="hidden" name="_token" value="{!! csrf_token() !!}">
                     <div class="form-group">
                         <label for="Titulo">Título</label>
                         <input type="text" id="titulo" name="titulo" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="summernote">Contenido</label>
-                        <textarea id="summernote" name="editordata"></textarea>
+                        <textarea id="summernote" name="contenido"></textarea>
                     </div>
                     <div class=form-group">
-                        <!--<input type="submit" value="Agregar Noticia" class="btn btn-primary" onclick="actualizarContenido()">-->
-                        <input value="Agregar Noticia" class="btn btn-primary" onclick="actualizarContenido()">
+                        <input type="submit" value="Agregar Noticia" class="btn btn-primary">
+                        <!-- <input value="Agregar Noticia" class="btn btn-primary" onclick="actualizarContenido()"> -->
                     </div>
                     <div id="contenido">
 
@@ -47,10 +49,6 @@
                 ]
             });
         });
-
-        function actualizarContenido(){
-            $("#contenido").html($('#summernote').summernote('code'));
-        }
     </script>
 </body>
 </html>
