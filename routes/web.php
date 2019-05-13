@@ -19,6 +19,8 @@ Route::get('/', function () {
 
 
 // ----------- MODULO NOTICIAS -----------
+//crea las 7 rutas necesarias
+Route::resource('noticia', 'NoticiaController');
 
 
 // ----------- MODULO CURSOS -----------
