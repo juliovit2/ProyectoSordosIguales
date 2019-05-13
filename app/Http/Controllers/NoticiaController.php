@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\tabla_noticia;
 use App\tabla_imagenes_noticia;
 
+use App\Request\TickerFormRequest;
+
 class NoticiaController extends Controller
 {
     /**
@@ -26,8 +28,10 @@ class NoticiaController extends Controller
      */
     public function create()
     {
+
         //
         return view('noticia.create');
+
     }
 
     /**
@@ -38,7 +42,14 @@ class NoticiaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $noticia = new tabla_noticia(array(
+            'titulo' => $request->get('titulo'),
+            'contenido' => $request->get('contenido'),
+            'video' => $request->get('video')));
+
+        $noticia->save();
+
+        return redirect('/crear-noticia');
     }
 
     /**

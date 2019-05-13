@@ -2,21 +2,41 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6005092e-9582-48b0-ba7e-04b67e3f1e76" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/layout.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/noticia/create.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/noticia/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/noticia/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/noticia/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Vagrantfile" beforeDir="false" afterPath="$PROJECT_DIR$/../../Vagrantfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/NoticiaRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/bootstrap.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bootstrap.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/jquery.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/summernote/font/summernote.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/summernote/font/summernote.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/summernote/font/summernote.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/summernote/lang/summernote-es-ES.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/summernote/summernote.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/summernote/summernote.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/summernote/summernote.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/SordosIguales.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e0c81ab4-d189-4eeb-9de8-6ebd8f9d8961.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/e0c81ab4-d189-4eeb-9de8-6ebd8f9d8961.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e0c81ab4-d189-4eeb-9de8-6ebd8f9d8961.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/NoticiaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/NoticiaController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/TablaImagenesNoticiaFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/TablaImagenesNoticiaFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/agregar-noticia.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/tabla_noticia.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/tabla_noticia.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/summernote/summernote.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/summernote.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/summernote/summernote.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/summernote.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/jquery-3.4.1.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/noticia/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/noticia/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/noticia/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/noticia/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/noticia/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/noticia/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/noticia/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/noticia/show.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server.php" beforeDir="false" afterPath="$PROJECT_DIR$/server.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -38,117 +58,8 @@
     <option name="HIDDEN_KINDS">
       <set />
     </option>
-    <expand>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="homestead@192.168.10.10" type="feb32156:DbDataSourceImpl" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="homestead@192.168.10.10" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="homestead@192.168.10.10" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="homestead: schema" type="76f4a085:MysqlImplModel$Schema" />
-      </path>
-    </expand>
+    <expand />
     <select />
-  </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="das://e0c81ab4-d189-4eeb-9de8-6ebd8f9d8961/schema/homestead/table/tabla_noticias">
-          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-            <state>
-              <filtering enabled="true" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/layout.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="19" selection-start-line="19" selection-end-line="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="das://e0c81ab4-d189-4eeb-9de8-6ebd8f9d8961/schema/homestead/table/tabla_imagenes_noticias">
-          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-            <state>
-              <filtering enabled="true" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/noticia/index.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="21" lean-forward="true" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/web.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="22" column="38" selection-start-line="22" selection-start-column="38" selection-end-line="22" selection-end-column="38" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Controller.php">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/NoticiaController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="277">
-              <caret line="54" column="75" lean-forward="true" selection-start-line="54" selection-start-column="75" selection-end-line="54" selection-end-column="75" />
-              <folding>
-                <element signature="e#40#68#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/welcome.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="23" column="30" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/noticia/show.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="37" column="37" lean-forward="true" selection-start-line="37" selection-start-column="37" selection-end-line="37" selection-end-column="37" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -195,9 +106,9 @@
         <option value="$PROJECT_DIR$/resources/views/welcome.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layout.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/noticia/index.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/NoticiaController.php" />
         <option value="$PROJECT_DIR$/resources/views/noticia/show.blade.php" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/NoticiaController.php" />
       </list>
     </option>
   </component>
@@ -294,70 +205,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="ProyectoSordosIguales" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ProyectoSordosIguales" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ProyectoSordosIguales" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ProyectoSordosIguales" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ProyectoSordosIguales" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ProyectoSordosIguales" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Console" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ProyectoSordosIguales" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ProyectoSordosIguales" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ProyectoSordosIguales" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ProyectoSordosIguales" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ProyectoSordosIguales" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ProyectoSordosIguales" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Providers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ProyectoSordosIguales" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ProyectoSordosIguales" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ProyectoSordosIguales" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ProyectoSordosIguales" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ProyectoSordosIguales" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ProyectoSordosIguales" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="noticia" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ProyectoSordosIguales" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ProyectoSordosIguales" type="462c0819:PsiDirectoryNode" />
-              <item name="routes" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
+      <pane id="ProjectPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -415,12 +263,12 @@
       <workItem from="1557673022350" duration="1418000" />
       <workItem from="1557676644871" duration="4318000" />
       <workItem from="1557700703081" duration="10705000" />
-      <workItem from="1557717972635" duration="8412000" />
+      <workItem from="1557717972635" duration="10043000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="49506000" />
+    <option name="totallyTimeSpent" value="51137000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -446,7 +294,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info active="true" anchor="bottom" id="TODO" order="6" visible="true" weight="0.27659574" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" order="8" weight="0.32815534" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" weight="0.32815534" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.3262136" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
