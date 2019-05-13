@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Auth;
+use DB;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -35,5 +38,27 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    public function login(Request $request){
+
+        $mail = request()->correo;
+        $correo =  DB::table('tabla_usuarios')->where('correo', $mail)->value('correo');
+
+
+        $contraseña = request()->clave;
+        $clave = DB::table('tabla_usuarios')->where('clave', $contraseña)->value('clave');
+
+        if($correo == null){
+            return 'CORREO NO EXISTENTE';
+        }else{
+            if($clave == null){
+                return 'CONTRASEÑA INCORRECTA';
+            }else{
+                return 'CORRECTO';
+            }
+
+        }
+
     }
 }
