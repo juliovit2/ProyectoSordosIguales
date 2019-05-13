@@ -23,6 +23,11 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                         @enderror
+                                        @if($errors->any())
+                                            <div class="alert alert-danger" >
+                                                <strong>{{ $errors->first() }}</strong>
+                                            </div>
+                                        @endif
                                     </div>
                                 </div>
 

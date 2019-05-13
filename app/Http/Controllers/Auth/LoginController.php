@@ -40,25 +40,22 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function login(Request $request){
+    public function login(Request $request)
+    {
 
         $mail = request()->correo;
-        $correo =  DB::table('tabla_usuarios')->where('correo', $mail)->value('correo');
+        $correo = DB::table('tabla_usuarios')->where('correo', $mail)->value('correo');
 
 
         $contraseña = request()->clave;
         $clave = DB::table('tabla_usuarios')->where('clave', $contraseña)->value('clave');
 
-        if($correo == null){
-            return 'CORREO NO EXISTENTE';
-        }else{
-            if($clave == null){
-                return 'CONTRASEÑA INCORRECTA';
-            }else{
-                return 'CORRECTO';
+        if ($correo == $mail && $contraseña == $clave) {
+            return view('Plataforma/PortalAlumnos');
+        } else {
+            if ($correo != $mail || $contraseña != $clave) {
+                return view('auth/login')->withErrors('Usuario o contraseña incorrectos');
             }
-
         }
-
     }
 }
