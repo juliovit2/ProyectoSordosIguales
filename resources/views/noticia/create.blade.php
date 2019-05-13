@@ -24,13 +24,15 @@
                         <label for="summernote">Contenido</label>
                         <textarea id="summernote" name="contenido"></textarea>
                     </div>
+                    <div class="form-group">
+                        <label for="video">Video</label>
+                        <input type="text" class="form-control" id="video" name="video" placeholder="https://www.youtube.com/watch?v=gsqY8vAdN1ww">
+                    </div>
                     <div class=form-group">
                         <input type="submit" value="Agregar Noticia" class="btn btn-primary">
                         <!-- <input value="Agregar Noticia" class="btn btn-primary" onclick="actualizarContenido()"> -->
                     </div>
-                    <div id="contenido">
 
-                    </div>
                 </form>
             </div>
         </div>

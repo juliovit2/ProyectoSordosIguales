@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Request\TickerFormRequest;
+use App\tabla_noticia;
 class NoticiaController extends Controller
 {
     /**
@@ -35,7 +36,14 @@ class NoticiaController extends Controller
      */
     public function store(Request $request)
     {
-        return $request->all();
+        $noticia = new tabla_noticia(array(
+            'titulo' => $request->get('titulo'),
+            'contenido' => $request->get('contenido'),
+            'video' => $request->get('video')));
+
+        $noticia->save();
+
+        return redirect('/crear-noticia');
     }
 
     /**
