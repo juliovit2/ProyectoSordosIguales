@@ -2,41 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6005092e-9582-48b0-ba7e-04b67e3f1e76" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Requests/NoticiaRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/bootstrap.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/js/bootstrap.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/js/jquery.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/summernote/font/summernote.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/summernote/font/summernote.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/summernote/font/summernote.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/summernote/lang/summernote-es-ES.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/summernote/summernote.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/summernote/summernote.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/summernote/summernote.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/SordosIguales.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e0c81ab4-d189-4eeb-9de8-6ebd8f9d8961.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/NoticiaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/NoticiaController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/tabla_noticia.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/tabla_noticia.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/summernote/summernote.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/summernote.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/summernote/summernote.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/summernote.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/jquery-3.4.1.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/noticia/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/noticia/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/noticia/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/noticia/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/noticia/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/noticia/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/noticia/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/noticia/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.php" beforeDir="false" afterPath="$PROJECT_DIR$/server.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -107,8 +74,8 @@
         <option value="$PROJECT_DIR$/resources/views/layout.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/noticia/index.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/noticia/show.blade.php" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/NoticiaController.php" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -263,12 +230,12 @@
       <workItem from="1557673022350" duration="1418000" />
       <workItem from="1557676644871" duration="4318000" />
       <workItem from="1557700703081" duration="10705000" />
-      <workItem from="1557717972635" duration="10043000" />
+      <workItem from="1557717972635" duration="10487000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="51137000" />
+    <option name="totallyTimeSpent" value="51581000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -281,9 +248,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18759455" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18759455" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -292,7 +258,7 @@
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info active="true" anchor="bottom" id="TODO" order="6" visible="true" weight="0.27659574" />
+      <window_info anchor="bottom" id="TODO" order="6" visible="true" weight="0.27659574" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" weight="0.32815534" />
       <window_info anchor="bottom" id="Version Control" order="9" />
