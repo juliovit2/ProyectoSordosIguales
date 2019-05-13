@@ -12,7 +12,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->truncateTables(['tabla_usuario'
+        $this->truncateTables(['tabla_usuarios'
             //,'tabla_colaborador_alianzas'
             //,'tabla_cursos'
             //,'tabla_directorios'
