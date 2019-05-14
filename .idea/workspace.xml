@@ -2,147 +2,148 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6005092e-9582-48b0-ba7e-04b67e3f1e76" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.editorconfig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gitattributes" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/SordosIguales.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/e0c81ab4-d189-4eeb-9de8-6ebd8f9d8961.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.styleci.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Console/Kernel.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Exceptions/Handler.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/ForgotPasswordController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/ResetPasswordController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/VerificationController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Middleware/Authenticate.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Middleware/CheckForMaintenanceMode.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Middleware/EncryptCookies.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Middleware/TrimStrings.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Middleware/TrustProxies.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Providers/BroadcastServiceProvider.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/gif.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/tabla_colaborador_alianza.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/tabla_curso.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/tabla_directorio.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/tabla_evaluaciones_curso.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/tabla_fundacione.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/tabla_imagenes_noticia.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/tabla_memoria.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/tabla_noticia.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/tabla_persona.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/tabla_preguntas_frecuente.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/tabla_suscriptore.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/tabla_usuario.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/tabla_usuario_curso.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/tabla_usuario_nota.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/artisan" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bootstrap/app.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bootstrap/cache/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/auth.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/broadcasting.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/cache.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/database.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/filesystems.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/hashing.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/logging.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/mail.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/queue.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/services.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/session.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/view.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/factories/GifFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/factories/TablaColaboradorAlianzaFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/factories/TablaCursoFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/factories/TablaDirectorioFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/factories/TablaEvaluacionesCursoFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/factories/TablaFundacioneFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/factories/TablaImagenesNoticiaFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/factories/TablaMemoriaFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/factories/TablaNoticiaFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/factories/TablaPersonaFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/factories/TablaPreguntasFrecuenteFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/factories/TablaSuscriptoreFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/factories/TablaUsuarioCursoFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/factories/TablaUsuarioFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/factories/TablaUsuarioNotaFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/factories/UserFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2019_04_23_040443_create_tabla_personas_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2019_04_23_055127_create_tabla_usuarios_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2019_04_23_060031_create_tabla_cursos_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2019_04_23_060131_create_tabla_usuario_cursos_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2019_04_23_060319_create_tabla_evaluaciones_cursos_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2019_04_23_060359_create_tabla_usuario_notas_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2019_04_23_060740_create_tabla_noticias_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2019_04_23_060824_create_tabla_imagenes_noticias_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2019_04_23_060902_create_tabla_memorias_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2019_04_23_060949_create_tabla_suscriptores_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2019_04_23_061040_create_tabla_colaborador_alianzas_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2019_04_23_061131_create_tabla_preguntas_frecuentes_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2019_04_23_061208_create_tabla_fundaciones_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2019_04_23_191642_create_tabla_directorios_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2019_04_24_160210_create_gifs_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/.htaccess" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/index.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/robots.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/bootstrap.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/ExampleComponent.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/en/auth.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/en/pagination.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/en/passwords.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/en/validation.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/sass/_variables.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/sass/app.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/channels.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/console.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/app/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/app/public/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/cache/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/cache/data/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/sessions/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/testing/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/framework/views/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/logs/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/CreatesApplication.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/Feature/ExampleTest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/TestCase.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/Unit/ExampleTest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webpack.mix.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Vagrantfile" beforeDir="false" afterPath="$PROJECT_DIR$/../../Vagrantfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.vagrant/machines/homestead-7/virtualbox/action_set_name" beforeDir="false" afterPath="$PROJECT_DIR$/../../.vagrant/machines/homestead-7/virtualbox/action_set_name" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Homestead.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Homestead.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/.editorconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/.env.example" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/.idea/SordosIguales.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/.idea/dataSources.local.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/.idea/dataSources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/.idea/dataSources/e0c81ab4-d189-4eeb-9de8-6ebd8f9d8961.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/.idea/php.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/.styleci.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/app/Console/Kernel.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/app/Exceptions/Handler.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/app/Http/Controllers/Auth/ForgotPasswordController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/app/Http/Controllers/Auth/ResetPasswordController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/app/Http/Controllers/Auth/VerificationController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/app/Http/Controllers/Controller.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/app/Http/Kernel.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/app/Http/Middleware/Authenticate.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/app/Http/Middleware/CheckForMaintenanceMode.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/app/Http/Middleware/EncryptCookies.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/app/Http/Middleware/RedirectIfAuthenticated.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/app/Http/Middleware/TrimStrings.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/app/Http/Middleware/TrustProxies.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/app/Http/Middleware/VerifyCsrfToken.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/app/Providers/AppServiceProvider.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/app/Providers/AuthServiceProvider.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/app/Providers/BroadcastServiceProvider.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/app/Providers/EventServiceProvider.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/app/Providers/RouteServiceProvider.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/app/User.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/app/gif.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/app/tabla_colaborador_alianza.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/app/tabla_curso.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/app/tabla_directorio.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/app/tabla_evaluaciones_curso.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/app/tabla_fundacione.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/app/tabla_imagenes_noticia.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/app/tabla_memoria.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/app/tabla_noticia.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/app/tabla_persona.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/app/tabla_preguntas_frecuente.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/app/tabla_suscriptore.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/app/tabla_usuario.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/app/tabla_usuario_curso.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/app/tabla_usuario_nota.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/artisan" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/bootstrap/app.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/bootstrap/cache/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/composer.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/composer.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/config/app.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/config/auth.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/config/broadcasting.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/config/cache.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/config/database.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/config/filesystems.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/config/hashing.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/config/logging.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/config/mail.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/config/queue.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/config/services.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/config/session.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/config/view.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/database/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/database/factories/GifFactory.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/database/factories/TablaColaboradorAlianzaFactory.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/database/factories/TablaCursoFactory.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/database/factories/TablaDirectorioFactory.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/database/factories/TablaEvaluacionesCursoFactory.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/database/factories/TablaFundacioneFactory.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/database/factories/TablaImagenesNoticiaFactory.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/database/factories/TablaMemoriaFactory.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/database/factories/TablaNoticiaFactory.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/database/factories/TablaPersonaFactory.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/database/factories/TablaPreguntasFrecuenteFactory.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/database/factories/TablaSuscriptoreFactory.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/database/factories/TablaUsuarioCursoFactory.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/database/factories/TablaUsuarioFactory.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/database/factories/TablaUsuarioNotaFactory.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/database/factories/UserFactory.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/database/migrations/2019_04_23_040443_create_tabla_personas_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/database/migrations/2019_04_23_055127_create_tabla_usuarios_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/database/migrations/2019_04_23_060031_create_tabla_cursos_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/database/migrations/2019_04_23_060131_create_tabla_usuario_cursos_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/database/migrations/2019_04_23_060319_create_tabla_evaluaciones_cursos_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/database/migrations/2019_04_23_060359_create_tabla_usuario_notas_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/database/migrations/2019_04_23_060740_create_tabla_noticias_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/database/migrations/2019_04_23_060824_create_tabla_imagenes_noticias_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/database/migrations/2019_04_23_060902_create_tabla_memorias_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/database/migrations/2019_04_23_060949_create_tabla_suscriptores_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/database/migrations/2019_04_23_061040_create_tabla_colaborador_alianzas_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/database/migrations/2019_04_23_061131_create_tabla_preguntas_frecuentes_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/database/migrations/2019_04_23_061208_create_tabla_fundaciones_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/database/migrations/2019_04_23_191642_create_tabla_directorios_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/database/migrations/2019_04_24_160210_create_gifs_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/database/seeds/DatabaseSeeder.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/public/.htaccess" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/public/css/app.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/public/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/public/index.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/public/js/app.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/public/robots.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/resources/js/app.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/resources/js/bootstrap.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/resources/js/components/ExampleComponent.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/resources/lang/en/auth.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/resources/lang/en/pagination.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/resources/lang/en/passwords.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/resources/lang/en/validation.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/resources/sass/_variables.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/resources/sass/app.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/resources/views/welcome.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/routes/api.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/routes/channels.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/routes/console.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/routes/web.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/server.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/storage/app/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/storage/app/public/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/storage/framework/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/storage/framework/cache/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/storage/framework/cache/data/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/storage/framework/sessions/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/storage/framework/testing/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/storage/framework/views/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/storage/logs/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/tests/CreatesApplication.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/tests/Feature/ExampleTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/tests/TestCase.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/tests/Unit/ExampleTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/webpack.mix.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SordosIguales/yarn.lock" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -186,33 +187,36 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database/migrations/2019_04_23_040443_create_tabla_personas_table.php">
+        <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="15" column="25" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database/migrations/2019_04_23_055127_create_tabla_usuarios_table.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="24" column="79" selection-start-line="24" selection-start-column="79" selection-end-line="24" selection-end-column="79" />
+            <state relative-caret-position="289">
+              <caret line="26" column="40" lean-forward="true" selection-start-line="26" selection-start-column="40" selection-end-line="26" selection-end-column="40" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/database/migrations/2019_04_23_060031_create_tabla_cursos_table.php">
+        <entry file="file://$PROJECT_DIR$/resources/views/contacto.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="26" column="30" lean-forward="true" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="30" />
+            <state relative-caret-position="-731">
+              <caret line="155" column="34" lean-forward="true" selection-start-line="155" selection-start-column="34" selection-end-line="155" selection-end-column="34" />
+              <folding>
+                <element signature="e#614#636#0#HTML" expanded="true" />
+                <element signature="e#678#704#0#HTML" expanded="true" />
+                <element signature="e#1851#1873#0#HTML" expanded="true" />
+                <element signature="e#4533#4555#0#HTML" expanded="true" />
+                <element signature="e#14252#14271#0#HTML" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>content4</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
@@ -254,6 +258,7 @@
         <option value="$PROJECT_DIR$/app/tabla_colaborador_alianza.php" />
         <option value="$PROJECT_DIR$/app/gif.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/resources/views/contacto.blade.php" />
       </list>
     </option>
   </component>
@@ -339,8 +344,9 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="width" value="980" />
-    <option name="height" value="1030" />
+    <option name="x" value="952" />
+    <option name="width" value="975" />
+    <option name="height" value="1038" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -352,35 +358,19 @@
         <subPane>
           <expand>
             <path>
-              <item name="SordosIguales" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SordosIguales" type="462c0819:PsiDirectoryNode" />
+              <item name="ProyectoSordosIguales" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ProyectoSordosIguales" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="SordosIguales" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SordosIguales" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="ProyectoSordosIguales" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ProyectoSordosIguales" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="SordosIguales" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SordosIguales" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SordosIguales" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SordosIguales" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-              <item name="migrations" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SordosIguales" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SordosIguales" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-              <item name="seeds" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SordosIguales" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SordosIguales" type="462c0819:PsiDirectoryNode" />
-              <item name="routes" type="462c0819:PsiDirectoryNode" />
+              <item name="ProyectoSordosIguales" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ProyectoSordosIguales" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -436,12 +426,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13311000" />
+    <option name="totallyTimeSpent" value="24034000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2442953" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16308725" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -454,13 +445,13 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.3286119" />
+      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.194051" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="Database Console" order="12" weight="0.1713881" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Database" order="3" visible="true" weight="0.16577181" />
+      <window_info anchor="right" id="Database" order="3" visible="true" weight="0.1704698" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -693,13 +684,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/seeds/DatabaseSeeder.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -732,6 +716,41 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
           <caret line="26" column="30" lean-forward="true" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="26" column="40" lean-forward="true" selection-start-line="26" selection-start-column="40" selection-end-line="26" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/Contacto.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="52" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/welcome.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="12" column="15" lean-forward="true" selection-start-line="12" selection-start-column="15" selection-end-line="12" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/contacto.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-731">
+          <caret line="155" column="34" lean-forward="true" selection-start-line="155" selection-start-column="34" selection-end-line="155" selection-end-column="34" />
+          <folding>
+            <element signature="e#614#636#0#HTML" expanded="true" />
+            <element signature="e#678#704#0#HTML" expanded="true" />
+            <element signature="e#1851#1873#0#HTML" expanded="true" />
+            <element signature="e#4533#4555#0#HTML" expanded="true" />
+            <element signature="e#14252#14271#0#HTML" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

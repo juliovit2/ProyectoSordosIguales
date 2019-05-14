@@ -9,6 +9,12 @@
 {{--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>--}}
 {{--<!------ Include the above in your HEAD tag ---------->--}}
 
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Custom toolbar</title>
+    <script src="{{asset('\ckeditor\ckeditor.js')}}"></script>
+</head>
 
 
 <div class="mx-auto" style="width: 1000px;">
@@ -50,49 +56,8 @@
                 </div>
                 <!-- Formularios -->
                 <div id="content" style="display: none;">
-                    <!-- Lo que se muestra del formulario de consulta-->
+                    <!-- Envía al usuario al FAQ para no repetir su pregunta-->
                     <p>Verifique que su consulta no se encuentre en <a href="enlacepagina.html">Preguntas Frecuentes</a></p>
-                    <div class="container">
-
-                        <div class="col-md-6 col-md-offset-3" >
-                            <div class="well well-sm">
-                                <form class="form-horizontal" action="" method="post">
-                                    <fieldset>
-                                        <!-- Name input-->
-                                        <div class="form-group">
-                                            <p align="left">Nombre</p>
-                                            {{--<label for="name">Nombre</label>--}}
-                                            <div>
-                                                <input id="name" name="name" type="text" placeholder="Ingrese nombre" class="form-control">
-                                            </div>
-                                        </div>
-
-                                        <!-- Email input-->
-                                        <div class="form-group">
-                                            <p align="left " for="email">Correo</p>
-                                                <input id="email" name="email" type="text" placeholder="Ingrese email" class="form-control">
-                                            </div>
-                                        </div>
-
-                                        <!-- Message body -->
-                                        <div class="form-group">
-                                            <p align="left " for="message">Consulta</p>
-
-                                                <textarea class="form-control" id="message" name="message" placeholder="Ingrese consulta aqui..." rows="5"></textarea>
-                                            </div>
-                                        </div>
-
-                                        <!-- Form actions -->
-                                        <div class="form-group">
-                                            <div class="col-md-12 text-center">
-                                                <button type="submit" class="btn btn-primary btn-lg">Enviar</button>
-                                            </div>
-                                        </div>
-                                    </fieldset>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
                 <div id="content2" style="display: none;">
@@ -100,12 +65,11 @@
                         <div class="col-md-6 col-md-offset-3">
                             <div class="well well-sm">
                                 <div class="form-horizontal" action="" method="post">
-
+                                    <form class="form-horizontal" action="" method="post">
                                     <fieldset>
                                         <!-- Name input-->
                                         <div class="form-group">
                                             <p align="left">Nombre</p>
-                                            {{--<label for="name">Nombre</label>--}}
                                             <div>
                                                 <input id="name" name="name" type="text" placeholder="Ingrese nombre" class="form-control">
                                             </div>
@@ -135,7 +99,7 @@
 
                                         <!-- phone input-->
                                         <div class="form-group">
-                                            <p align="left">Telefono (+56912345678)</p>
+                                            <p align="left">Telefono (Ej. +56912345678)</p>
                                             <div>
                                                 <input id="phone" name="phone" type="tel" placeholder="Ingrese Telefono" pattern="+569[0-9]{8}" required class="form-control">
                                             </div>
@@ -171,101 +135,46 @@
                     </div>
                 </div>
 
-                <!-- form denuncia -->
-                <div id="content3" style="display: none;">
-                    <div class="container" align="center">
-
-                        <div class="col-md-6 col-md-offset-3" >
-                            <div class="well well-sm">
-                                <form class="form-horizontal" action="" method="post">
-
-                                    <fieldset>
-                                        <!-- Name input-->
-                                        <div class="form-group">
-                                            <p align="left">Nombre</p>
-                                            <div>
-                                                <input id="name" name="name" type="text" placeholder="Ingrese nombre" class="form-control">
-                                            </div>
-                                        </div>
-
-                                        <!-- Email input-->
-                                        <div class="form-group">
-                                            <p align="left">Correo</p>
-                                            <div>
-                                                <input id="email" name="email" type="text" placeholder="Ingrese email" class="form-control">
-                                            </div>
-                                        </div>
-
-                                        <!-- Message body -->
-                                        <div class="form-group">
-                                            <p align="left">Denuncia</p>
-                                            <div>
-                                                <textarea class="form-control" id="message" name="message" placeholder="Ingrese su denuncia..." rows="5"></textarea>
-                                            </div>
-                                        </div>
-
-                                        <!-- Form actions -->
-                                        <div class="form-group">
-                                            <div class="col-md-12 text-center">
-                                                <button type="submit" class="btn btn-primary btn-lg">Enviar</button>
-                                            </div>
-                                        </div>
-                                    </fieldset>
-                                </form>
+                <!-- Campos obligatorios-->
+                <div align="center" style="width: 50%;" id="obligatorio">
+                    <form class="form-horizontal" action="" method="post">
+                        <fieldset>
+                            <!-- Name input-->
+                            <div class="form-group">
+                                <p align="left">Nombre</p>
+                                <div>
+                                    <input id="name" name="name" type="text" placeholder="Ingrese nombre" class="form-control">
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- form otros -->
-                <div id="content4" style="display: none;">
-                    <div class="container" align="center">
 
-                        <div class="col-md-6 col-md-offset-3" >
-                            <div class="well well-sm">
-                                <form class="form-horizontal" action="" method="post">
-
-                                    <fieldset>
-                                        <!-- Name input-->
-                                        <div class="form-group">
-                                            <p align="left">Nombre</p>
-                                            <div>
-                                                <input id="name" name="name" type="text" placeholder="Ingrese nombre" class="form-control">
-                                            </div>
-                                        </div>
-
-                                        <!-- Email input-->
-                                        <div class="form-group">
-                                            <p align="left">Correo</p>
-                                            <div>
-                                                <input id="email" name="email" type="text" placeholder="Ingrese email" class="form-control">
-                                            </div>
-                                        </div>
-
-                                        <!-- Message body -->
-                                        <div class="form-group">
-                                            <p align="left">Escriba su mensaje</p>
-                                            <div>
-                                                <textarea class="form-control" id="message" name="message" placeholder="Ingrese mensaje" rows="5"></textarea>
-                                            </div>
-                                        </div>
-
-                                        <!-- Form actions -->
-                                        <div class="form-group">
-                                            <div class="col-md-12 text-center">
-                                                <button type="submit" class="btn btn-primary btn-lg">Enviar</button>
-                                            </div>
-                                        </div>
-                                    </fieldset>
-                                </form>
+                            <!-- Email input-->
+                            <div class="form-group">
+                                <p align="left">Correo</p>
+                                <div>
+                                    <input id="email" name="email" type="text" placeholder="Ingrese email" class="form-control">
+                                </div>
                             </div>
-                        </div>
-                    </div>
+
+                            <!-- Message input-->
+                            <div>
+                                <p align="left">Mensaje</p>
+                                <textarea cols="80" id="editor1" name="editor1" rows="100"></textarea>
+                            </div>
+
+                            <!-- Form actions -->
+                            <div class="form-group">
+                                <div class="col-md-12 text-center">
+                                    <button type="submit" class="btn btn-primary btn-lg">Enviar</button>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
                 </div>
             </div>
-
         </div>
     </div>
 </div>
+
 
 
     <!-- Script que hace la funcion de show and hide -->
@@ -273,31 +182,42 @@
         $(document).ready(function () {
             $(".consulta").click(function (evento) {
                 var valor = $(this).val();
-
-                if (valor == '1'){
+                if(valor == 1){
                     $("#content").css("display","block");
                     $("#content2").css("display","none");
-                    $("#content3").css("display","none");
-                    $("#content4").css("display","none");
+                    $("#obligatorio").css("display","block");
                 }else if(valor == '2') {
                     $("#content").css("display","none");
                     $("#content2").css("display","block");
-                    $("#content3").css("display","none");
-                    $("#content4").css("display","none");
-                }else if(valor == '3'){
+                    $("#obligatorio").css("display","none");
+                }else{
                     $("#content").css("display","none");
                     $("#content2").css("display","none");
-                    $("#content3").css("display","block");
-                    $("#content4").css("display","none");
-                }else if(valor == '4'){
-                    $("#content").css("display","none");
-                    $("#content2").css("display","none");
-                    $("#content3").css("display","none");
-                    $("#content4").css("display","block");
+                    $("#obligatorio").css("display","block");
                 }
             })
 
         })
+
+
+        CKEDITOR.replace('editor1', {
+            // Define the toolbar groups as it is a more accessible solution.
+            toolbarGroups: [{
+                "name": "basicstyles",
+                "groups": ["basicstyles"]
+            },
+                {
+                    "name": "links",
+                    "groups": ["links"]
+                },
+                {
+                    "name": "paragraph",
+                    "groups": ["list", "blocks"]
+                },
+            ],
+            // Remove the redundant buttons from toolbar groups defined above.
+            removeButtons: 'Underline,Strike,Subscript,Superscript,Anchor,Styles,Specialchar,About,Styles,Insert,Document'
+        });
 
     </script>
 @endsection
