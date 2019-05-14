@@ -11,9 +11,9 @@
 
 
 
-    <div class="col-md-8" >
-        <div class="col-md-12">
-
+<div class="mx-auto" style="width: 1000px;">
+    <div>
+        <div>
             <h4>Contacto</h4>
             <!-- MENU con checkbox-->
 
@@ -112,7 +112,12 @@
                                         </div>
 
                                         <!-- Rut input-->
-
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label" for="rut">Rut</label>
+                                            <div class="col-md-9">
+                                                <input id="rut" name="rut" type="text" placeholder="Ingrese Rut" class="form-control">
+                                            </div>
+                                        </div>
                                         <!-- Email input-->
                                         <div class="form-group">
                                             <label class="col-md-3 control-label" for="email">Correo</label>
@@ -166,16 +171,101 @@
                         </div>
                     </div>
                 </div>
+                <!-- form denuncia -->
                 <div id="content3" style="display: none;">
-                    denuncias
+                    <div class="container">
+
+                        <div class="col-md-6 col-md-offset-3" >
+                            <div class="well well-sm">
+                                <form class="form-horizontal" action="" method="post">
+
+                                    <fieldset>
+                                        <!-- Name input-->
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label" for="name">Nombre</label>
+                                            <div class="col-md-9">
+                                                <input id="name" name="name" type="text" placeholder="Ingrese nombre" class="form-control">
+                                            </div>
+                                        </div>
+
+                                        <!-- Email input-->
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label " for="email">Correo</label>
+                                            <div class="col-md-9">
+                                                <input id="email" name="email" type="text" placeholder="Ingrese email" class="form-control">
+                                            </div>
+                                        </div>
+
+                                        <!-- Message body -->
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label" for="message">Consulta</label>
+                                            <div class="col-md-9">
+                                                <textarea class="form-control" id="message" name="message" placeholder="Ingrese consulta aqui..." rows="5"></textarea>
+                                            </div>
+                                        </div>
+
+                                        <!-- Form actions -->
+                                        <div class="form-group">
+                                            <div class="col-md-12 text-center">
+                                                <button type="submit" class="btn btn-primary btn-lg">Enviar</button>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                <!-- form otros -->
                 <div id="content4" style="display: none;">
-                    otrooooos
+                    <div class="container">
+
+                        <div class="col-md-6 col-md-offset-3" >
+                            <div class="well well-sm">
+                                <form class="form-horizontal" action="" method="post">
+
+                                    <fieldset>
+                                        <!-- Name input-->
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label" for="name">Nombre</label>
+                                            <div class="col-md-9">
+                                                <input id="name" name="name" type="text" placeholder="Ingrese nombre" class="form-control">
+                                            </div>
+                                        </div>
+
+                                        <!-- Email input-->
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label " for="email">Correo</label>
+                                            <div class="col-md-9">
+                                                <input id="email" name="email" type="text" placeholder="Ingrese email" class="form-control">
+                                            </div>
+                                        </div>
+
+                                        <!-- Message body -->
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label" for="message">Consulta</label>
+                                            <div class="col-md-9">
+                                                <textarea class="form-control" id="message" name="message" placeholder="Ingrese consulta aqui..." rows="5"></textarea>
+                                            </div>
+                                        </div>
+
+                                        <!-- Form actions -->
+                                        <div class="form-group">
+                                            <div class="col-md-12 text-center">
+                                                <button type="submit" class="btn btn-primary btn-lg">Enviar</button>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+
         </div>
     </div>
-
+</div>
 
 
     <!-- Script que hace la funcion de show and hide -->
