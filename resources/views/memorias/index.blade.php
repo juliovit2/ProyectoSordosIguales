@@ -23,9 +23,6 @@
                         <div class="row align-items-center d-flex justify-content-center " style="height: 50%">
                             <a class = "redlink" href = "monkey.png" style="font-size: 50px"><i class="fas fa-download"></i></a>
                         </div>
-                        <div class="row align-items-center d-flex justify-content-center " style="height: 50%">
-                            <a class = "redlink" href = "monkey.png" style="font-size: 50px"><i class="fas fa-play-circle"></i></a>
-                        </div>
                 </div>
             </div>
         </div>
@@ -42,9 +39,6 @@
                     <div class="row align-items-center d-flex justify-content-center " style="height: 50%">
                         <a class = "redlink" href = "monkey.png" style="font-size: 50px"><i class="fas fa-download"></i></a>
                     </div>
-                    <div class="row align-items-center d-flex justify-content-center " style="height: 50%">
-                        <a class = "redlink" href = "monkey.png" style="font-size: 50px"><i class="fas fa-play-circle"></i></a>
-                    </div>
                 </div>
             </div>
         </div>
@@ -60,9 +54,6 @@
                 <div class = "col-sm-2 ">
                     <div class="row align-items-center d-flex justify-content-center " style="height: 50%">
                         <a class = "redlink" href = "monkey.png" style="font-size: 50px"><i class="fas fa-download"></i></a>
-                    </div>
-                    <div class="row align-items-center d-flex justify-content-center " style="height: 50%">
-                        <a class = "redlink" href = "monkey.png" style="font-size: 50px"><i class="fas fa-play-circle"></i></a>
                     </div>
                 </div>
             </div>

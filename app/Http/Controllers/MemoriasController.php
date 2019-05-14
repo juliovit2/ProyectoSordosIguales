@@ -6,6 +6,20 @@ use Illuminate\Http\Request;
 
 class MemoriasController extends Controller
 {
+
+
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function listing()
+    {
+        $memorias = [];
+        return view('memorias/listing',['memorias'=>$memorias]);//
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +27,7 @@ class MemoriasController extends Controller
      */
     public function index()
     {
-        return view('memorias');//
+        return view('memorias/index');//
     }
 
     /**
@@ -25,6 +39,7 @@ class MemoriasController extends Controller
     {
 
         //
+        return view('memorias/create');
     }
 
     /**
