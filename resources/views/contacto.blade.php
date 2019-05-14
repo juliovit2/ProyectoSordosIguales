@@ -11,10 +11,12 @@
 
 
 
-    <div class="col-md-8">
+    <div class="col-md-8" >
         <div class="col-md-12">
+
             <h4>Contacto</h4>
             <!-- MENU con checkbox-->
+
             <div class="funkyradio">
 
                 <div class="funkyradio-default">
@@ -25,9 +27,11 @@
                         <!-- Lo que se muestra del formulario de consulta-->
                         <p>Verifique que su consulta no se encuentre en <a href="enlacepagina.html">Preguntas Frecuentes</a></p>
                         <div class="container">
-                            <div class="col-md-6 col-md-offset-3">
+
+                            <div class="col-md-6 col-md-offset-3" >
                                 <div class="well well-sm">
                                     <form class="form-horizontal" action="" method="post">
+
                                         <fieldset>
                                             <!-- Name input-->
                                             <div class="form-group">
@@ -39,7 +43,7 @@
 
                                             <!-- Email input-->
                                             <div class="form-group">
-                                                <label class="col-md-3 control-label" for="email">Correo</label>
+                                                <label class="col-md-3 control-label " for="email">Correo</label>
                                                 <div class="col-md-9">
                                                     <input id="email" name="email" type="text" placeholder="Ingrese email" class="form-control">
                                                 </div>
@@ -55,7 +59,7 @@
 
                                             <!-- Form actions -->
                                             <div class="form-group">
-                                                <div class="col-md-12 text-right">
+                                                <div class="col-md-12 text-center">
                                                     <button type="submit" class="btn btn-primary btn-lg">Enviar</button>
                                                 </div>
                                             </div>
@@ -73,7 +77,74 @@
                     <label for="radio2">Voluntario</label>
                     <!-- Form -->
                     <div id="content2" style="display: none;">
-                        <p>voluntariosss</p>
+                        <div class="container">
+                            <div class="col-md-6 col-md-offset-3">
+                                <div class="well well-sm">
+                                    <div class="form-horizontal" action="" method="post">
+
+                                        <fieldset>
+                                            <!-- Name input-->
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label" for="name">Nombre</label>
+                                                <div class="col-md-9">
+                                                    <input id="name" name="name" type="text" placeholder="Ingrese nombre" class="form-control">
+                                                </div>
+                                            </div>
+
+                                            <!-- Rut input-->
+
+                                            <!-- Email input-->
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label" for="email">Correo</label>
+                                                <div class="col-md-9">
+                                                    <input id="email" name="email" type="text" placeholder="Ingrese email" class="form-control">
+                                                </div>
+                                            </div>
+
+                                            <!-- Ciudad input-->
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label" for="name">Ciudad</label>
+                                                <div class="col-md-9">
+                                                    <input id="ciudad" name="ciudad" type="text" placeholder="Ingrese ciudad" class="form-control">
+                                                </div>
+                                            </div>
+
+                                            <!-- phone input-->
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label" for="email">Telefono (+56912345678)</label>
+                                                <div class="col-md-9">
+                                                     <input id="phone" name="phone" type="tel" placeholder="Ingrese Telefono" pattern="+569[0-9]{8}" required class="form-control">
+                                                </div>
+                                            </div>
+
+                                            <!-- Direccion input-->
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label" for="name">Direccion</label>
+                                                <div class="col-md-9">
+                                                    <input id="name" name="name" type="text" placeholder="Ingrese nombre" class="form-control">
+                                                </div>
+                                            </div>
+
+                                            <!-- Profesion input-->
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label" for="name">Profesion</label>
+                                                <div class="col-md-9">
+                                                    <input id="profesion" name="profesion" type="text" placeholder="Ingrese profesion" class="form-control">
+                                                </div>
+                                            </div>
+
+                                            <!-- Form actions -->
+                                            <div class="form-group">
+                                                <div class="col-md-12 text-right">
+                                                    <button type="submit" class="btn btn-primary btn-lg">Enviar</button>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     </div>
                 </div>
 
