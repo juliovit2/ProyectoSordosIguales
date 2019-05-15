@@ -20,125 +20,122 @@
 <div class="mx-auto" style="width: 1000px;">
     <div>
         <div>
+            @if(!empty($successMsg))
+                <div class="alert alert-success"> {{ $successMsg }}</div>
+            @endif
             <h4 style="text-align: center">Contacto</h4>
             <!-- MENU con checkbox-->
+            <form action="/enviarCorreo" method="post">
+                {{csrf_field()}}
+                <div class="funkyradio" align="center">
+                    <div class="funkyradio-default">
+                        <input type="radio" name="opcion" class="consulta" id="radio1" value="1"  />
+                        <label for="radio1">Consulta</label>
+                        <!-- Form -->
 
-            <div class="funkyradio" align="center">
+                        <!--Formulario de Voluntario -->
 
-                <div class="funkyradio-default">
-                    <input type="radio" name="radio" class="consulta" id="radio1" value="1"  />
-                    <label for="radio1">Consulta</label>
-                    <!-- Form -->
-
-
-
-                <!--Formulario de Voluntario -->
-
-                    <input type="radio" name="radio" class="consulta" id="radio2" value="2" />
-                    <label for="radio2">Voluntario</label>
-                    <!-- Form -->
+                        <input type="radio" name="opcion" class="consulta" id="radio2" value="2" />
+                        <label for="radio2">Voluntario</label>
+                        <!-- Form -->
 
 
 
-                <!-- Formulario de Denuncias-->
+                        <!-- Formulario de Denuncias-->
 
-                    <input type="radio" name="radio" class="consulta" id="radio3" value="3" />
-                    <label for="radio3">Denuncias</label>
-                    <!-- FORM -->
+                        <input type="radio" name="opcion" class="consulta" id="radio3" value="3" />
+                        <label for="radio3">Denuncias</label>
+                        <!-- FORM -->
 
 
-                <!-- Formulario de Otros-->
+                        <!-- Formulario de Otros-->
 
-                    <input type="radio" name="radio" class="consulta" id="Otros" value="4" />
-                    <label for="radio4">Otros</label>
-                    <!-- FORM -->
+                        <input type="radio" name="opcion" class="consulta" id="Otros" value="4" />
+                        <label for="radio4">Otros</label>
+                        <!-- FORM -->
 
-                </div>
-                <!-- Formularios -->
-                <div id="content" style="display: none;">
-                    <!-- Envía al usuario al FAQ para no repetir su pregunta-->
-                    <p>Verifique que su consulta no se encuentre en <a href="enlacepagina.html">Preguntas Frecuentes</a></p>
-                </div>
+                    </div>
+                    <!-- Formularios -->
+                    <div id="content" style="display: none;">
+                        <!-- Envía al usuario al FAQ para no repetir su pregunta-->
+                        <p>Verifique que su consulta no se encuentre en <a href="enlacepagina.html">Preguntas Frecuentes</a></p>
+                    </div>
 
-                <div id="content2" style="display: none;">
-                    <div class="container" align="center">
-                        <div class="col-md-6 col-md-offset-3">
-                            <div class="well well-sm">
-                                <div class="form-horizontal" action="" method="post">
-                                    <form class="form-horizontal" action="" method="post">
-                                    <fieldset>
-                                        <!-- Name input-->
-                                        <div class="form-group">
-                                            <p align="left">Nombre</p>
-                                            <div>
-                                                <input id="name" name="name" type="text" placeholder="Ingrese nombre" class="form-control">
+
+                    <div id="content2" style="display: none;">
+                        <div class="container" align="center">
+                            <div class="col-md-6 col-md-offset-3">
+                                <div class="well well-sm">
+                                            <!-- Name input-->
+                                            <div class="form-group">
+                                                <p align="left">Nombre</p>
+                                                <div>
+                                                    <input id="name" name="name" type="text" placeholder="Ingrese nombre" class="form-control">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <!-- Rut input-->
-                                        <div class="form-group">
-                                            <p align="left">Rut</p>
-                                            <div>
-                                                <input id="rut" name="rut" type="text" placeholder="Ingrese Rut" class="form-control">
+                                            <!-- Rut input-->
+                                            <div class="form-group">
+                                                <p align="left">Rut</p>
+                                                <div>
+                                                    <input id="rut" name="rut" type="text" placeholder="Ingrese Rut" class="form-control">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <!-- Email input-->
-                                        <div class="form-group">
-                                            <p align="left">Correo</p>
-                                            <div>
-                                                <input id="email" name="email" type="text" placeholder="Ingrese email" class="form-control">
+                                            <!-- Email input-->
+                                            <div class="form-group">
+                                                <p align="left">Correo</p>
+                                                <div>
+                                                    <input id="email" name="email" type="text" placeholder="Ingrese email" class="form-control">
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        <!-- Ciudad input-->
-                                        <div class="form-group">
-                                            <p align="left">Ciudad</p>
-                                            <div>
-                                                <input id="ciudad" name="ciudad" type="text" placeholder="Ingrese ciudad" class="form-control">
+                                            <!-- Ciudad input-->
+                                            <div class="form-group">
+                                                <p align="left">Ciudad</p>
+                                                <div>
+                                                    <input id="ciudad" name="ciudad" type="text" placeholder="Ingrese ciudad" class="form-control">
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        <!-- phone input-->
-                                        <div class="form-group">
-                                            <p align="left">Telefono (Ej. +56912345678)</p>
-                                            <div>
-                                                <input id="phone" name="phone" type="tel" placeholder="Ingrese Telefono" pattern="+569[0-9]{8}" required class="form-control">
+                                            <!-- phone input-->
+                                            <div class="form-group">
+                                                <p align="left">Telefono (Ej. +56912345678)</p>
+                                                <div>
+{{--                                                    <input id="phone" name="phone" type="tel" placeholder="Ingrese Telefono" pattern="+569[0-9]{8}" required class="form-control">--}}
+                                                    <input id="phone" name="phone" type="tel" placeholder="Ingrese Telefono" required class="form-control">
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        <!-- Direccion input-->
-                                        <div class="form-group">
-                                            <p align="left">Direccion</p>
-                                            <div>
-                                                <input id="name" name="name" type="text" placeholder="Ingrese nombre" class="form-control">
+                                            <!-- Direccion input-->
+                                            <div class="form-group">
+                                                <p align="left">Direccion</p>
+                                                <div>
+                                                    <input id="name" name="name" type="text" placeholder="Ingrese nombre" class="form-control">
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        <!-- Profesion input-->
-                                        <div class="form-group">
-                                            <p align="left">Profesion</p>
-                                            <div>
-                                                <input id="profesion" name="profesion" type="text" placeholder="Ingrese profesion" class="form-control">
+                                            <!-- Profesion input-->
+                                            <div class="form-group">
+                                                <p align="left">Profesion</p>
+                                                <div>
+                                                    <input id="profesion" name="profesion" type="text" placeholder="Ingrese profesion" class="form-control">
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        <!-- Form actions -->
-                                        <div class="form-group">
-                                            <div class="col-md-12 text-right">
-                                                <button type="submit" class="btn btn-primary btn-lg">Enviar</button>
+                                            <!-- Form actions -->
+                                            <div class="form-group">
+                                                <div class="col-md-12 text-right">
+                                                    <button type="submit" class="btn btn-primary btn-lg">Enviar</button>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </fieldset>
-                                    </form>
+
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Campos obligatorios-->
-                <div align="center" style="width: 50%;" id="obligatorio">
-                    <form class="form-horizontal" action="" method="post">
-                        <fieldset>
+
+                    <!-- Campos obligatorios-->
+                    <div align="center" style="width: 50%;" id="obligatorio">
                             <!-- Name input-->
                             <div class="form-group">
                                 <p align="left">Nombre</p>
@@ -158,19 +155,19 @@
                             <!-- Message input-->
                             <div>
                                 <p align="left">Mensaje</p>
-                                <textarea cols="80" id="editor1" name="editor1" rows="100"></textarea>
+                                <textarea cols="53" id="editor1" name="mensaje" rows="10"></textarea>
                             </div>
 
                             <!-- Form actions -->
-                            <div class="form-group">
-                                <div class="col-md-12 text-center">
-                                    <button type="submit" class="btn btn-primary btn-lg">Enviar</button>
-                                </div>
+                            <br>
+                            <div class="col-md-12 text-center">
+                                <button type="submit" class="btn btn-primary btn-lg">Enviar</button>
                             </div>
-                        </fieldset>
-                    </form>
+                    </div>
                 </div>
-            </div>
+            </form>
+
+
         </div>
     </div>
 </div>

@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Informacion;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SendMailable;
+use App\tabla_persona;
 
 class InformacionController extends Controller
 {
@@ -19,6 +22,38 @@ class InformacionController extends Controller
 
     public function info(){
         return view('informacion');
+    }
+
+    public function enviarCorreo(Request $request){
+
+        if($request->opcion!=2){
+            $nombre=$request->name;
+            $mensaje=$request->mensaje;
+            $tipo="";
+            switch ($request->opcion){
+                case 1://consulta
+                    $tipo='consulta';
+                    break;
+                case 3://denuncias
+                    $tipo='denuncia';
+                    break;
+                case 4://otros
+                    $tipo='otros';
+                    break;
+            }
+            Mail::to($request->email)->send(new SendMailable([$tipo,$nombre,$mensaje]));
+            return view('contacto')->with('successMsg','Su mensaje fue enviado con exito');
+        }else{//voluntario
+            //pendiente
+            dd($request->all());//no se hace nada
+            $persona=new tabla_persona();
+            $persona->nombre=$request->name;
+            $persona->rut=$request->rut;
+            $persona->correo=$request->email;
+            $persona->telefono=$request->phone;
+            $persona->save();
+            return view('contacto')->with('successMsg','Sus datos fueron enviados exitosamente');
+        }
     }
 
     /**

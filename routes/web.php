@@ -17,6 +17,8 @@ Route::get('/', function () {
 
 Route::resource('/contacto','InformacionController');
 Route::get('/informacion','InformacionController@info');
+Route::post('/enviarCorreo','InformacionController@enviarCorreo');
+
 
 //escribir todas las rutas requeridas aqui siguiendo el mismo formato
 
