@@ -21,6 +21,7 @@
             <tbody>
                 @foreach($noticias as $tabla_noticia)
                     <tr>
+
                         <td>{{$tabla_noticia->id}}</td>
                         <td>{{$tabla_noticia->video}}</td>
                         <td>{{$tabla_noticia->titulo}}</td>

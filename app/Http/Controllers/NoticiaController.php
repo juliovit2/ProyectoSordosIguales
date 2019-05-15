@@ -42,6 +42,7 @@ class NoticiaController extends Controller
      */
     public function store(Request $request)
     {
+
         $noticia = new tabla_noticia(array(
             'titulo' => $request->get('titulo'),
             'contenido' => $request->get('contenido'),
@@ -62,8 +63,8 @@ class NoticiaController extends Controller
     {
         //
         $tabla_noticia = tabla_noticia::find($id);
-        $tabla_imagenes_noticia = tabla_imagene_noticia::find($id);
-        return view('noticia.show',compact('tabla_noticia'),compact('tabla_imagenes_noticia'));
+        $tabla_imagenes_noticia = tabla_imagenes_noticia::all();
+        return view('noticia.show',compact('tabla_noticia','tabla_imagenes_noticia'));
     }
 
     /**
