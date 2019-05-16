@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layoutGeneral')
 @section('content')
     <div class="col-sm-8">
 
@@ -26,12 +26,12 @@
                         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                    <img width="400px" height="400px" src="/IMG_7185.jpg" class="d-block w-100" alt="...">
+                                    <img width="100px" height="100px" src="{{ asset('storage/logo_fundacion.png')}}" class="d-block w-100" alt="...">
                                 </div>
                                 @foreach($imagenes_noticia as $tabla_imagenes_noticia)
                                     @if($tabla_imagenes_noticia->noticiaid == $tabla_noticia->id)
                                         <div class="carousel-item">
-                                            <img width="400px" height="400px" src="{{$tabla_imagenes_noticia->imagen}}" class="d-block w-100" alt="...">
+                                            <img width="100px" height="100px" src="{{ asset('storage/'.$tabla_imagenes_noticia->imagen)}}" class="d-block w-100" alt="...">
                                         </div>
                                     @endif
                                 @endforeach

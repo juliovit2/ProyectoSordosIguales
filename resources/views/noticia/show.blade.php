@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layoutGeneral')
 @section('content')
     <div class="col">
         <h2>
