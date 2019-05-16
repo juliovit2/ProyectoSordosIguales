@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Foundation\Auth\User as Authenticatable;
 class tabla_usuario extends Model
 {
     //ES IMPORTANTE ingresar los datos en el mismo orden
@@ -17,10 +17,10 @@ class tabla_usuario extends Model
 }
 
 
-use Illuminate\Notifications\Notifiable;
+/*use Illuminate\Notifications\Notifiable;
 use App\Notifications\ResetPassword;
 
-class User extends Authenticatable implements JWTSubject
+class User extends Authenticatable
 {
     use Notifiable;
 
@@ -31,9 +31,9 @@ class User extends Authenticatable implements JWTSubject
      *
      * @param  string  $token
      * @return void
-     */
+
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new ResetPassword($token));
     }
-}
+}*/

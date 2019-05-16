@@ -25,14 +25,14 @@ class ForgotPasswordController extends Controller
      * Create a new controller instance.
      *
      * @return void
-
+    */
     public function __construct()
     {
         $this->middleware('guest');
     }
-     */
 
-    public function sendResetLinkEmail(Request $request)
+
+    /*public function sendsResetLinkEmail(Request $request)
     {
         $this->validate($request, ['email' => 'required|email']);
 
@@ -55,5 +55,5 @@ class ForgotPasswordController extends Controller
             default:
                 return response()->success($response, 200);
         }
-    }
+    }*/
 }

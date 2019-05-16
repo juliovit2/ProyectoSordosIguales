@@ -13,6 +13,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->truncateTables(['tabla_usuarios'
+            ,'users'
             //,'tabla_colaborador_alianzas'
             //,'tabla_cursos'
             //,'tabla_directorios'
@@ -29,6 +30,7 @@ class DatabaseSeeder extends Seeder
         ]);// añadir el resto de las tablas a ejecutarles su seeder correspondiente
 
         $this->call(UsuarioSeeder::class);// llamar a los seeders correspondientes faltantes
+        $this->call(UserSeeder::class);
     }
 
     protected function truncateTables($tables): void
