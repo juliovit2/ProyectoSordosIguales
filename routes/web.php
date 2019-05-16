@@ -28,8 +28,8 @@ Route::get('/', function () {
 
 
 // ----------- MODULO (MEMORIAS)-----------
-Route::get('memorias/listing', 'MemoriasController@listing')->name('memorias.listing');
-Route::resource('memorias', 'MemoriasController');
+Route::get('memorias/listing', 'MemoriaController@listing')->name('memorias.listing');
+Route::resource('memorias', 'MemoriaController');
 
 
 

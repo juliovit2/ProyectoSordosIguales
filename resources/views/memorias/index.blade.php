@@ -10,29 +10,34 @@
             <hr class = "bluered">
         </div>
 
-
-        <div class ="container p-5">
-            <div class="container memoriaContainer row p-3" style="margin: auto;">
-                <div class = "col-sm-3">
-                    <div class = "container" style="background: #1c7430;height: 100%"></div>
-                </div>
-                <div class = "col-sm-7 align-self-center d-flex justify-content-center" >
-                    <h1 style="color: #2980b9">Memoria 2019</h1>
-                </div>
-                <div class = "col-sm-2 ">
-                        <div class="row align-items-center d-flex justify-content-center " style="height: 50%">
-                            <a class = "redlink" href = "monkey.png" style="font-size: 50px"><i class="fas fa-download"></i></a>
+        @if($memorias)
+                @foreach($memorias as $memoria)
+                    <div class ="container p-5">
+                        <div class="container memoriaContainer row p-3" style="margin: auto;">
+                            <div class = "col-sm-3">
+                                <img class = "img-thumbnail" src="{{$memoria['portada']}}">
+                            </div>
+                            <div class = "col-sm-7 align-self-center d-flex justify-content-center" >
+                                <h1 style="color: #2980b9">Memoria {{$memoria['year']}}</h1>
+                            </div>
+                            <div class = "col-sm-2 ">
+                                <div class="row align-items-center d-flex justify-content-center" style="height: 100%">
+                                    <a class = "redlink" href = "{{$memoria['pdf']}}" target="_blank" style="font-size: 50px"><i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
                         </div>
-                </div>
-            </div>
-        </div>
+                    </div>
+                @endforeach
+        @else
+            <p> No hay Memorias registradas </p>
+        @endif
 
         <div class ="container p-5">
             <div class="container memoriaContainer row p-3" style="margin: auto;">
                 <div class = "col-sm-3">
                     <div class = "container" style="background: #1c7430;height: 100%"></div>
                 </div>
-                <div class = "col-sm-7 align-self-center d-flex justify-content-center" >
+                <div class = "col-sm-7 align-self-center d-flex justify-content-center border" >
                     <h1 style="color: #2980b9">Memoria 2018</h1>
                 </div>
                 <div class = "col-sm-2 ">

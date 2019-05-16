@@ -13,13 +13,6 @@
             </ul>
         </div>
     @endif
-
-    <style>
-        .column{
-            widh: 30%;
-            float:left;
-        }
-    </style>
 @endsection
 @section('content')
     <H1 style="text-align: center">Administrar Memorias</H1>
@@ -37,6 +30,57 @@
             </tr>
             </thead>
             <tbody>
+            @if($memorias)
+                <ul>
+                    @foreach($memorias as  $key=>$item)
+                        <tr>
+                            <td class="text-center" id="{{ $item->id }}">{{ $item->id }}</td>
+                            <td class="text-center">Memoria {{ $memorias[$key]['year'] }}</td>
+                            <td class="text-center" width="20%">
+                                <div class = "btn-group">
+                                    <form action="{{route('memorias.destroy',$item->id)}}" method="POST">
+                                        {{csrf_field()}}
+                                        <a class="btn btn-secondary" role="button"href="{{route('memorias.edit',$item->id)}}" >
+                                            Editar
+                                        </a>
+
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal{{ $item->id }}" >Eliminar</button>
+
+
+
+                                        <!-- Modals --->
+
+                                        <div class="modal fade" id="modal{{ $item->id }}" tabindex="-1" role="dialog" aria-labelledby="modal{{ $item->id }}" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="confirmSubmitModal">Confirmar Eliminación</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        ¿Esta seguro que desea eliminar la actividad?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Volver</button>
+                                                        <button type="submit" class="btn btn-primary">Confirmar</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
+                </ul>
+            @else
+                <p> No hay Memorias registradas </p>
+            @endif
+            </tbody>
         </table>
     </div>
 

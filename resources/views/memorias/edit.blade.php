@@ -17,33 +17,33 @@
 @endsection
 @section('content')
     <div class="container">
-        <form autocomplete="off" method="POST" action="{{route('memorias.store')}} " enctype="multipart/form-data">
+        <form autocomplete="off" method="POST" action="{{route('memorias.update',$memoria['id'])}} " enctype="multipart/form-data">
             {{ csrf_field() }}
+            {{ method_field('PUT') }}
             <div class="form-group row">
-                <label for="exampleFormControlSelect1" class="col-sm-2 col-form-label">Año de Memoria</label>
+                <label for="anio_memoria_select" class="col-sm-2 col-form-label">Año de Memoria</label>
                 <div class="col-sm-3">
-                    <select class="form-control" name = "tipo_convenio" id="tipoSelect">
-                        <option value="" disabled selected>Seleccione año</option>
-                        <option>2016</option>
-                        <option>2017</option>
-                        <option>2018</option>
-                        <option>2019</option>
-                        <option>2020</option>
-                        <option>2021</option>
+                    <select class="form-control" name = "anio_memoria" id="anio_memoria_select">
+                        <option value="" disavbled selected>Seleccione año</option>
                     </select>
                 </div>
             </div>
 
+
             <div class="form-group row">
-                <label for="inputEvidencia" class="col-sm-2 col-form-label">Foto de Portada</label>
+                <label for="inputPortada" class="col-sm-2 col-form-label">Foto de Portada (Opcional) </label>
                 <div class="col-sm-3">
-                    <input type="file" class="form-control file" name="inputEvidencia" id="inputEvidencia">
+                    ​<figure>
+                        <img class = "img-thumbnail" src="{{$memoria['portada']}}">
+                        <figcaption class="figure-caption">Foto de portada actual.</figcaption>
+                    </figure>
+                    <input type="file" class="form-control file" name="inputPortada" id="inputPortada">
                 </div>
             </div>
             <div class="form-group row">
-                <label for="inputEvidencia" class="col-sm-2 col-form-label">Documento de Memoria</label>
+                <label for="inputMemoria" class="col-sm-2 col-form-label">Documento de Memoria</label>
                 <div class="col-sm-3">
-                    <input type="file" class="form-control file" name="inputEvidencia" id="inputEvidencia">
+                    <input type="file" class="form-control file" name="inputMemoria" id="inputMemoria">
                 </div>
             </div>
             <div class="form-group row">
@@ -107,23 +107,22 @@
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
                     crossorigin="anonymous"></script>
 
+
             <script>
+
+
                 $(document).ready(function () {
+                    var memoria = JSON.parse("{{ json_encode($memoria['year'],JSON_HEX_TAG) }}");
+                    curYear = new Date().getFullYear();
+                    var x = document.getElementById("anio_memoria_select");
+                    for (i = 0; i < 5; i++){
+                        var option = document.createElement("option");
+                        var anio = curYear - i;
+                        option.text = anio.toString();
+                        x.add(option);
+                    }
+                   x.value= memoria;
 
-
-                    $('#datepicker').datepicker({
-                        forceparse: true,
-                        autoclose: true,
-                        format: 'yyyy-mm-dd',
-                        uiLibrary: 'bootstrap4'
-                    });
-
-                    $('#datepicker2').datepicker({
-                        forceparse: true,
-                        autoclose: true,
-                        format: 'yyyy-mm-dd',
-                        uiLibrary: 'bootstrap4'
-                    });
                 });
             </script>
 
