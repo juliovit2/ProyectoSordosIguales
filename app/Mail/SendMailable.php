@@ -29,6 +29,6 @@ class SendMailable extends Mailable
      */
     public function build()
     {
-        return $this->subject('Contacto')->view('emails.correo');
+        return $this->subject('Contacto')->attach($datos[6])->view('emails.correo');
     }
 }

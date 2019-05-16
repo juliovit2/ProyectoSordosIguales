@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SendMailable;
 use App\tabla_persona;
+use File;
 
 class InformacionController extends Controller
 {
@@ -25,7 +26,6 @@ class InformacionController extends Controller
     }
 
     public function enviarCorreo(Request $request){
-
         if($request->opcion!=2){
             $nombre=$request->name;
             $mensaje=$request->mensaje;
@@ -44,15 +44,13 @@ class InformacionController extends Controller
             Mail::to($request->email)->send(new SendMailable([$tipo,$nombre,$mensaje]));
             return view('contacto')->with('successMsg','Su mensaje fue enviado con exito');
         }else{//voluntario
-            //pendiente
-            dd($request->all());//no se hace nada
-            $persona=new tabla_persona();
-            $persona->nombre=$request->name;
-            $persona->rut=$request->rut;
-            $persona->correo=$request->email;
-            $persona->telefono=$request->phone;
-            $persona->save();
-            return view('contacto')->with('successMsg','Sus datos fueron enviados exitosamente');
+            $filename = time() . '.' . $request->file->getClientOriginalExtension();
+            $path=public_path('/temp');
+            $request->file->move($path,$filename);
+
+            $datos=[$request->name2,$request->rut,$request->email2,$request->ciudad,$request->phone,$request->profesion,$path];
+            Mail::to($request->email)->send(new SendMailable($datos));
+            return view('contacto')->with('successMsg','Su mensaje fue enviado con exito');
         }
     }
 

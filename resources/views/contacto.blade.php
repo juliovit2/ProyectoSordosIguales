@@ -25,7 +25,7 @@
             @endif
             <h4 style="text-align: center">Contacto</h4>
             <!-- MENU con checkbox-->
-            <form action="/enviarCorreo" method="post">
+            <form action="/enviarCorreo" method="post" enctype="multipart/form-data">
                 {{csrf_field()}}
                 <div class="funkyradio" align="center">
                     <div class="funkyradio-default">
@@ -70,7 +70,7 @@
                                             <div class="form-group">
                                                 <p align="left">Nombre</p>
                                                 <div>
-                                                    <input id="name" name="name" type="text" placeholder="Ingrese nombre" class="form-control">
+                                                    <input id="name" name="name2" type="text" placeholder="Ingrese nombre" class="form-control">
                                                 </div>
                                             </div>
                                             <!-- Rut input-->
@@ -84,7 +84,7 @@
                                             <div class="form-group">
                                                 <p align="left">Correo</p>
                                                 <div>
-                                                    <input id="email" name="email" type="text" placeholder="Ingrese email" class="form-control">
+                                                    <input id="email" name="email2" type="text" placeholder="Ingrese email" class="form-control">
                                                 </div>
                                             </div>
 
@@ -116,7 +116,7 @@
                                             <!-- upload file -->
                                             <div class="form-group" align="left">
                                                 <p align="left">Certificados o Curriculum</p>
-                                                <input  name="uploadedfile" type="file" />
+                                                <input  name="file" type="file" />
 
                                             </div>|
 
