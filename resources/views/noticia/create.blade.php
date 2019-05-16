@@ -14,7 +14,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md">
-                <form action="" method="POST">
+                <form action="" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="_token" value="{!! csrf_token() !!}">
                     <div class="form-group">
                         <label for="Titulo">Título</label>
@@ -27,6 +27,12 @@
                     <div class="form-group">
                         <label for="video">Video</label>
                         <input type="text" class="form-control" id="video" name="video" placeholder="https://www.youtube.com/watch?v=gsqY8vAdN1ww">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="imagenes">Imágenes</label>
+                        <!-- <input multiple="multiple" type="file" name="imagen" id="imagen"> -->
+                        <input multiple="multiple" type="file" name="imagenes[]" id="imagen">
                     </div>
                     <div class=form-group">
                         <input type="submit" value="Agregar Noticia" class="btn btn-primary">

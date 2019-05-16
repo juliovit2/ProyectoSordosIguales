@@ -42,7 +42,6 @@ class NoticiaController extends Controller
      */
     public function store(Request $request)
     {
-
         $noticia = new tabla_noticia(array(
             'titulo' => $request->get('titulo'),
             'contenido' => $request->get('contenido'),
@@ -50,7 +49,23 @@ class NoticiaController extends Controller
 
         $noticia->save();
 
-        return redirect('/crear-noticia');
+        /*$filename = $request->file('imagen')->store('imagenes/noticias');
+        $imagen_noticia = new tabla_imagenes_noticia(array(
+            'imagen' => $filename,
+            'noticiaid' => $noticia->id,
+
+        ));*/
+        foreach ($request->imagenes as $imagen) {
+            $filename = $imagen->store('imagenes/noticias');
+            $imagen_noticia = new tabla_imagenes_noticia(array(
+               'imagen' => $filename,
+               'noticiaid' => $noticia->id
+            ));
+            $imagen_noticia->save();
+        }
+
+
+        return view('noticia.index');
     }
 
     /**
