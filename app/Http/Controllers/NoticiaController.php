@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\tabla_noticia;
 use App\tabla_imagenes_noticia;
+use App\Http\Requests\NoticiaStoreRequest;
 
 use App\Request\TickerFormRequest;
 
@@ -41,8 +42,9 @@ class NoticiaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(NoticiaStoreRequest $request)
     {
+        //validar
         if($request->has('video')) {
             $video_path = $request->file('video')->store('public/videos/noticias');
         }
