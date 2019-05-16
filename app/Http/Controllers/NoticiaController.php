@@ -43,15 +43,16 @@ class NoticiaController extends Controller
      */
     public function store(Request $request)
     {
-        $video_path = null;
-        if($request->has('video')) {
-            $video_path = $request->file('video')->store('public/videos/noticias');
-        }
+
         $noticia = new tabla_noticia(array(
             'titulo' => $request->get('titulo'),
-            'contenido' => $request->get('contenido'),
-            'video' => substr ( $video_path , 7, strlen($video_path) -7)));
+            'contenido' => $request->get('contenido')));
 
+
+        if($request->has('video')) {
+            $video_path = $request->file('video')->store('public/videos/noticias');
+            $noticia->video = substr ( $video_path , 7, strlen($video_path) -7);
+        }
         $noticia->save();
 
         if($request->has('imagenes')) {
