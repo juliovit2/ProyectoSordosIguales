@@ -8,7 +8,7 @@ class tabla_usuario extends Model
 {
     //ES IMPORTANTE ingresar los datos en el mismo orden
     protected $fillable = [
-        'rut', 'correo', 'nombre','direccion', 'telefono', 'ciudad', 'clave', 'rol', 'cursando',
+        'rut', 'correo', 'nombre','direccion', 'telefono', 'ciudad', 'clave', 'rol', 'cursando'
     ];
 
     protected $hidden = [

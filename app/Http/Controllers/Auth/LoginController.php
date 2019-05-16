@@ -7,6 +7,7 @@ use DB;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
@@ -43,18 +44,19 @@ class LoginController extends Controller
     public function login(Request $request)
     {
 
-        $mail = request()->email;
-        $email = DB::table('users')->where('email', $mail)->value('email');
+        $rut_value = request()->rut;
+        $rut = DB::table('users')->where('rut', $rut_value)->value('rut');
 
         $password = request()->password;
-        $clave = DB::table('users')->where('email', $mail)->value('password');
+        $clave = DB::table('users')->where('rut', $rut_value)->value('password');
+        //dd($rut_value, $rut,$password,$clave);
 
-        if ($email == $mail && password_verify($password, $clave)) {
+        if ($rut == $rut_value && Hash::check($password, $clave)) {
             return view('Plataforma/PortalAlumnos');
-        } else {
-            if ($email != $mail || $password != $clave) {
-                return redirect()->back()->withInput()->withErrors('Usuario o contraseña incorrectos');
-            }
+        }
+
+        if ($rut != $rut_value || $password != $clave) {
+            return redirect()->back()->withInput()->withErrors('Rut o contraseña incorrectos');
         }
     }
 }
