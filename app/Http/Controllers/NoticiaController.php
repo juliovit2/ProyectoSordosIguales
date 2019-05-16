@@ -43,6 +43,7 @@ class NoticiaController extends Controller
      */
     public function store(Request $request)
     {
+        $video_path = null;
         if($request->has('video')) {
             $video_path = $request->file('video')->store('public/videos/noticias');
         }
