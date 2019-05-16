@@ -13,7 +13,7 @@
             @foreach($tabla_imagenes_noticia as $tabla_imagenes_noticia)
                 @if($tabla_imagenes_noticia->noticiaid == $tabla_noticia->id)
                     <div class="carousel-item">
-                        <img width="400px" height="400px" src="{{$tabla_imagenes_noticia->imagen}}" class="d-block w-100" alt="...">
+                        <img width="400px" height="400px" src="{{ asset('storage/'.$tabla_imagenes_noticia->imagen)}}" class="d-block w-100" alt="...">
                     </div>
                 @endif
             @endforeach
@@ -42,7 +42,7 @@
 
         <div class="container">
             <video id="sampleMovie" width="640" height="360" preload controls>
-                <source src="{{$tabla_noticia->video}}"  />
+                <source src="{{ asset('storage/'.$tabla_noticia->video)}}"  />
             </video>
         </div>
 
