@@ -56,17 +56,18 @@ class NoticiaController extends Controller
             'noticiaid' => $noticia->id,
 
         ));*/
-        foreach ($request->imagenes as $imagen) {
-            $filename = $imagen->store('imagenes/noticias');
-            $imagen_noticia = new tabla_imagenes_noticia(array(
-               'imagen' => $filename,
-               'noticiaid' => $noticia->id
-            ));
-            $imagen_noticia->save();
+        if($request->has('imagenes')) {
+            foreach ($request->imagenes as $imagen) {
+                $filename = $imagen->store('imagenes/noticias');
+                $imagen_noticia = new tabla_imagenes_noticia(array(
+                    'imagen' => $filename,
+                    'noticiaid' => $noticia->id
+                ));
+                $imagen_noticia->save();
+            }
         }
 
-
-        return view('noticia.index');
+        return redirect()->route('noticia.index');
     }
 
     /**
