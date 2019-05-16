@@ -43,11 +43,11 @@ class LoginController extends Controller
     public function login(Request $request)
     {
 
-        $mail = request()->correo;
+        $mail = request()->email;
         $correo = DB::table('tabla_usuarios')->where('correo', $mail)->value('correo');
 
 
-        $contraseña = request()->clave;
+        $contraseña = request()->password;
         $clave = DB::table('tabla_usuarios')->where('clave', $contraseña)->value('clave');
 
         if ($correo == $mail && $contraseña == $clave) {

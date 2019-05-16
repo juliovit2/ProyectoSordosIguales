@@ -47,5 +47,17 @@ class UsuarioSeeder extends Seeder
             'rol' => 'Administrador',
             'cursando' => false
         ]);
+
+        DB::table('tabla_usuarios')->Insert([
+            'rut' => '189188366',
+            'correo' => 'manuelzuletab@gmail.com',
+            'nombre' => 'Jota Se',
+            'direccion' => 'UCN',
+            'telefono' => '666666',
+            'ciudad' => 'Antofagasta',
+            'clave' => 'jc',
+            'rol' => 'Alumno',
+            'cursando' => true
+        ]);
     }
 }
