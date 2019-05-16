@@ -1,36 +1,40 @@
 @extends('layout')
 @section('content')
-    <div class="col-sm-8">
+    <div class="col">
         <h2>
             {{$tabla_noticia->titulo}}
         </h2 >
-        <h2>
+        <h5>
             {{$tabla_noticia->created_at}}
-        </h2>
+        </h5>
     </div>
-    <div class="col-sm-8">
+    <div class="col">
         <div class="row">
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img width="400px" height="400px" src="/IMG_7185.jpg" class="d-block w-100" alt="...">
-                    </div>
-                    @foreach($tabla_imagenes_noticia as $tabla_imagenes_noticia)
-                        @if($tabla_imagenes_noticia->noticiaid == $tabla_noticia->id)
-                            <div class="carousel-item">
-                                <img width="400px" height="400px" src="{{ asset('storage/'.$tabla_imagenes_noticia->imagen)}}" class="d-block w-100" alt="...">
+            <div class="col-md-10">
+                <div class="container m-3 bg-dark mx-auto">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img style=" width:400px; height: 400px !important;" src="{{ asset('storage/logo_fundacion.png')}}" class="d-block w-100" alt="...">
                             </div>
-                        @endif
-                    @endforeach
+                            @foreach($tabla_imagenes_noticia as $tabla_imagenes_noticia)
+                                @if($tabla_imagenes_noticia->noticiaid == $tabla_noticia->id)
+                                    <div class="carousel-item">
+                                        <img width="400px" height="400px" src="{{ asset('storage/'.$tabla_imagenes_noticia->imagen)}}" class="d-block w-100" alt="...">
+                                    </div>
+                                @endif
+                            @endforeach
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
                 </div>
-                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
             </div>
         </div>
         @if($tabla_noticia->video != null)
@@ -43,9 +47,9 @@
                 </div>
                 @endif
         <div class="row">
-            <h3>
+            <h4>
                 {{$tabla_noticia->contenido}}
-            </h3>
+            </h4>
         </div>
     </div>
 
