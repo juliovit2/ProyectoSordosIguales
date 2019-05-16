@@ -47,9 +47,8 @@ class InformacionController extends Controller
             $filename = time() . '.' . $request->file->getClientOriginalExtension();
             $path=public_path('/temp');
             $request->file->move($path,$filename);
-
-            $datos=[$request->name2,$request->rut,$request->email2,$request->ciudad,$request->phone,$request->profesion,$path];
-            Mail::to($request->email)->send(new SendMailable($datos));
+            $datos=[$request->name2,$request->rut,$request->email2,$request->ciudad,$request->phone,$request->profesion,$filename];
+            Mail::to('naitsircnunez@gmail.com')->send(new SendMailable($datos));
             return view('contacto')->with('successMsg','Su mensaje fue enviado con exito');
         }
     }

@@ -29,6 +29,11 @@ class SendMailable extends Mailable
      */
     public function build()
     {
-        return $this->subject('Contacto')->attach($datos[6])->view('emails.correo');
+        if(count($this->datos)==3){
+            return $this->subject('Contacto')->view('emails.correo');
+        }else{
+            return $this->subject('Contacto')->attach(public_path('/temp/'.$this->datos[6]))->view('emails.voluntario');
+        }
+
     }
 }
