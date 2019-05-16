@@ -105,14 +105,6 @@
                                                 </div>
                                             </div>
 
-                                            <!-- Direccion input-->
-                                            <div class="form-group">
-                                                <p align="left">Direccion</p>
-                                                <div>
-                                                    <input id="name" name="name" type="text" placeholder="Ingrese nombre" class="form-control">
-                                                </div>
-                                            </div>
-
                                             <!-- Profesion input-->
                                             <div class="form-group">
                                                 <p align="left">Profesion</p>
@@ -120,6 +112,15 @@
                                                     <input id="profesion" name="profesion" type="text" placeholder="Ingrese profesion" class="form-control">
                                                 </div>
                                             </div>
+
+                                            <!-- upload file -->
+                                            <div class="form-group" align="left">
+                                                <p align="left">Certificados o Curriculum</p>
+                                                <input  name="uploadedfile" type="file" />
+
+                                            </div>|
+
+
 
                                             <!-- Form actions -->
                                             <div class="form-group">
