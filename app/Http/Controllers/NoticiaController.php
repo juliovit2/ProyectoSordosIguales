@@ -44,7 +44,7 @@ class NoticiaController extends Controller
     public function store(Request $request)
     {
         if($request->has('video')) {
-            $video_path = $request->file('video')->store('videos/noticias');
+            $video_path = $request->file('video')->store('public/videos');
         }
         $noticia = new tabla_noticia(array(
             'titulo' => $request->get('titulo'),
@@ -55,7 +55,7 @@ class NoticiaController extends Controller
 
         if($request->has('imagenes')) {
             foreach ($request->imagenes as $imagen) {
-                $filename = $imagen->store('imagenes/noticias');
+                $filename = $imagen->store('public/imagenes');
                 $imagen_noticia = new tabla_imagenes_noticia(array(
                     'imagen' => $filename,
                     'noticiaid' => $noticia->id
