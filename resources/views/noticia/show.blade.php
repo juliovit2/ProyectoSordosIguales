@@ -4,12 +4,15 @@
         <h2>
             {{$tabla_noticia->titulo}}
         </h2 >
+<<<<<<< HEAD
     </div>
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <img width="400px" height="400px" src="/IMG_7185.jpg" class="d-block w-100" alt="...">
 
+=======
+>>>>>>> parent of 8a4c774... UPDATED: - Apariencia ver noticia
         <h2>
             {{$tabla_noticia->created_at}}
         </h2>
@@ -49,6 +52,7 @@
             <h3>
                 {{$tabla_noticia->contenido}}
             </h3>
+<<<<<<< HEAD
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -76,6 +80,8 @@
             <video id="sampleMovie" width="640" height="360" preload controls>
                 <source src="{{ asset('storage/'.$tabla_noticia->video)}}"  />
             </video>
+=======
+>>>>>>> parent of 8a4c774... UPDATED: - Apariencia ver noticia
         </div>
 
     </div>
