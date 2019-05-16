@@ -1,27 +1,22 @@
 @extends('layout')
 @section('content')
-
-
+    <div class="col-sm-8">
+        <h2>
+            {{$tabla_noticia->titulo}}
+        </h2 >
+    </div>
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-        </ol>
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <img width="400px" height="400px" src="/IMG_7185.jpg" class="d-block w-100" alt="...">
             </div>
-
-                @foreach($tabla_imagenes_noticia as $tabla_imagenes_noticia)
-                    @if($tabla_imagenes_noticia->noticiaid == $tabla_noticia->id)
+            @foreach($tabla_imagenes_noticia as $tabla_imagenes_noticia)
+                @if($tabla_imagenes_noticia->noticiaid == $tabla_noticia->id)
                     <div class="carousel-item">
                         <img width="400px" height="400px" src="{{$tabla_imagenes_noticia->imagen}}" class="d-block w-100" alt="...">
                     </div>
-                    @endif
-                @endforeach
-
-
+                @endif
+            @endforeach
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -31,26 +26,30 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
         </a>
-     </div>
-
-         <h2>
-        {{$tabla_noticia->created_at}}
-        </h2>
-        <h2>
-            {{$tabla_noticia->titulo}}
-        </h2 >
-
-        <h2>
-            {{$tabla_noticia->contenido}}
-        </h2>
-
-    <yt-formatted-string id="text" class="style-scope ytd-button-renderer style-default size-default">Compartir</yt-formatted-string>
-
-
     </div>
+
     <div class="col-sm-4">
+        <h2>
+            {{$tabla_noticia->created_at}}
+        </h2>
+    </div>
+    <h2>
+        {{$tabla_noticia->contenido}}
+    </h2>
 
     </div>
+    <div class="container">
+
+        <div class="container">
+            <video id="sampleMovie" width="640" height="360" preload controls>
+                <source src="{{$tabla_noticia->video}}"  />
+            </video>
+        </div>
+
+    </div>
+
+
+
 
 @endsection
 
