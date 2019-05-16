@@ -26,9 +26,8 @@
                     </div>
                     <div class="form-group">
                         <label for="video">Video</label>
-                        <input type="text" class="form-control" id="video" name="video" placeholder="https://www.youtube.com/watch?v=gsqY8vAdN1ww">
+                        <input type="file" id="video" name="video">
                     </div>
-
                     <div class="form-group">
                         <label for="imagenes">Imágenes</label>
                         <!-- <input multiple="multiple" type="file" name="imagen" id="imagen"> -->
@@ -38,7 +37,6 @@
                         <input type="submit" value="Agregar Noticia" class="btn btn-primary">
                         <!-- <input value="Agregar Noticia" class="btn btn-primary" onclick="actualizarContenido()"> -->
                     </div>
-
                 </form>
             </div>
         </div>

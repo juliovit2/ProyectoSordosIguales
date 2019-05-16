@@ -43,19 +43,16 @@ class NoticiaController extends Controller
      */
     public function store(Request $request)
     {
+        if($request->has('video')) {
+            $video_path = $request->file('video')->store('videos/noticias');
+        }
         $noticia = new tabla_noticia(array(
             'titulo' => $request->get('titulo'),
             'contenido' => $request->get('contenido'),
-            'video' => $request->get('video')));
+            'video' => $video_path));
 
         $noticia->save();
 
-        /*$filename = $request->file('imagen')->store('imagenes/noticias');
-        $imagen_noticia = new tabla_imagenes_noticia(array(
-            'imagen' => $filename,
-            'noticiaid' => $noticia->id,
-
-        ));*/
         if($request->has('imagenes')) {
             foreach ($request->imagenes as $imagen) {
                 $filename = $imagen->store('imagenes/noticias');
