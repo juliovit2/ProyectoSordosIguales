@@ -35,5 +35,12 @@ class UserSeeder extends Seeder
             'name' => 'Jota Se',
             'password' => 'jc'
         ]);
+
+        DB::table('users')->Insert([
+            'email' => 'jdm006@alumnos.ucn.cl',
+            'name' => 'Julio Diaz',
+            'password' => '123'
+        ]);
+
     }
 }

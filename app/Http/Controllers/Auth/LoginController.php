@@ -44,17 +44,16 @@ class LoginController extends Controller
     {
 
         $mail = request()->email;
-        $correo = DB::table('tabla_usuarios')->where('correo', $mail)->value('correo');
+        $email = DB::table('users')->where('email', $mail)->value('email');
 
+        $password = request()->password;
+        $clave = DB::table('users')->where('email', $mail)->value('password');
 
-        $contraseña = request()->password;
-        $clave = DB::table('tabla_usuarios')->where('clave', $contraseña)->value('clave');
-
-        if ($correo == $mail && $contraseña == $clave) {
+        if ($email == $mail && password_verify($password, $clave)) {
             return view('Plataforma/PortalAlumnos');
         } else {
-            if ($correo != $mail || $contraseña != $clave) {
-                return view('auth/login')->withErrors('Usuario o contraseña incorrectos');
+            if ($email != $mail || $password != $clave) {
+                return redirect()->back()->withInput()->withErrors('Usuario o contraseña incorrectos');
             }
         }
     }

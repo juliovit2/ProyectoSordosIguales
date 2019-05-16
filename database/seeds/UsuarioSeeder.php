@@ -59,5 +59,17 @@ class UsuarioSeeder extends Seeder
             'rol' => 'Alumno',
             'cursando' => true
         ]);
+
+        DB::table('tabla_usuarios')->Insert([
+            'rut' => '18502184k',
+            'correo' => 'jdm006@alumnos.ucn.cl',
+            'nombre' => 'Julio Díaz',
+            'direccion' => 'UCN',
+            'telefono' => '88886981',
+            'ciudad' => 'Antofagasta',
+            'clave' => '123',
+            'rol' => 'Alumno',
+            'cursando' => true
+        ]);
     }
 }
