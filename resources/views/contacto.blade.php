@@ -29,7 +29,7 @@
                 {{csrf_field()}}
                 <div class="funkyradio" align="center">
                     <div class="funkyradio-default">
-                        <input type="radio" name="opcion" class="consulta" id="radio1" value="1"  />
+                        <input type="radio" name="opcion" class="consulta" id="radio1" value="1" checked />
                         <label for="radio1">Consulta</label>
                         <!-- Form -->
 
@@ -101,7 +101,7 @@
                                                 <p align="left">Telefono (Ej. +56912345678)</p>
                                                 <div>
 {{--                                                    <input id="phone" name="phone" type="tel" placeholder="Ingrese Telefono" pattern="+569[0-9]{8}" required class="form-control">--}}
-                                                    <input id="phone" name="phone" type="tel" placeholder="Ingrese Telefono" required class="form-control">
+                                                    <input id="phone" name="phone" type="tel" placeholder="Ingrese Telefono" class="form-control">
                                                 </div>
                                             </div>
 
@@ -118,10 +118,7 @@
                                                 <p align="left">Certificados o Curriculum</p>
                                                 <input  name="file" type="file" />
 
-                                            </div>|
-
-
-
+                                            </div>
                                             <!-- Form actions -->
                                             <div class="form-group">
                                                 <div class="col-md-12 text-right">
@@ -159,11 +156,17 @@
                                 <textarea cols="53" id="editor1" name="mensaje" rows="10"></textarea>
                             </div>
 
+                            <div class="form-group" align="left">
+                                <p align="left">Sube tu video (opcional)</p>
+                                <input  name="file" type="file" />
+                            </div>
+
                             <!-- Form actions -->
                             <br>
                             <div class="col-md-12 text-center">
-                                <button type="submit" class="btn btn-primary btn-lg">Enviar</button>
+                                <button type="submit" class="btn btn-primary btn-lg text-reset">Enviar</button>
                             </div>
+
                     </div>
                 </div>
             </form>

@@ -33,22 +33,63 @@ class InformacionController extends Controller
             switch ($request->opcion){
                 case 1://consulta
                     $tipo='consulta';
+
+                    //puede enviar mensajes vacios
+                    $this->validate($request, [
+                        'name'=>'required',
+                        'email'=>'required',
+                        'mensaje'=> 'required',
+                        'file'=>'required'
+                ]);
                     break;
                 case 3://denuncias
                     $tipo='denuncia';
+                    $this->validate($request, [
+                        'name'=>'required',
+                        'email'=>'required',
+                        'mensaje'=> 'required',
+                        'file'=>'required'
+                    ]);
                     break;
                 case 4://otros
                     $tipo='otros';
+                    $this->validate($request, [
+                        'name'=>'required',
+                        'email'=>'required',
+                        'mensaje'=> 'required',
+                        'file'=>'required'
+                    ]);
                     break;
             }
-            Mail::to($request->email)->send(new SendMailable([$tipo,$nombre,$mensaje]));
+
+                $filename = time() . '.' . $request->file->getClientOriginalExtension();
+                $path=public_path('/temp');
+                $request->file->move($path,$filename);
+                $datos=[$request->name,$request->email2,$mensaje,$filename];
+                Mail::to($request->email)->send(new SendMailable($datos));
+
+
+
             return view('contacto')->with('successMsg','Su mensaje fue enviado con exito');
         }else{//voluntario
+
+            $this->validate($request, [
+                'name2'=>'required',
+                'rut'=>'required',
+                'email2'=> 'required',
+                'ciudad'=>'required',
+                'phone'=>'required',
+                'profesion'=>'required',
+                'file'=>'required'
+            ]);
+
+
             $filename = time() . '.' . $request->file->getClientOriginalExtension();
             $path=public_path('/temp');
             $request->file->move($path,$filename);
             $datos=[$request->name2,$request->rut,$request->email2,$request->ciudad,$request->phone,$request->profesion,$filename];
-            Mail::to('naitsircnunez@gmail.com')->send(new SendMailable($datos));
+            //Mail::to('naitsircnunez@gmail.com')->send(new SendMailable($datos));
+            Mail::to($request->email2)->send(new SendMailable($datos));
             return view('contacto')->with('successMsg','Su mensaje fue enviado con exito');
         }
     }
