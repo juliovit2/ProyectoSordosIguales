@@ -24,6 +24,15 @@
                 <div class="alert alert-success"> {{ $successMsg }}</div>
             @endif
             <h4 style="text-align: center">Contacto</h4>
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+            @endif
             <!-- MENU con checkbox-->
             <form action="/contacto" method="post" enctype="multipart/form-data">
                 {{csrf_field()}}
