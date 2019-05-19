@@ -25,7 +25,7 @@
             @endif
             <h4 style="text-align: center">Contacto</h4>
             <!-- MENU con checkbox-->
-            <form action="/enviarCorreo" method="post" enctype="multipart/form-data">
+            <form action="/contacto" method="post" enctype="multipart/form-data">
                 {{csrf_field()}}
                 <div class="funkyradio" align="center">
                     <div class="funkyradio-default">

@@ -30,49 +30,32 @@ class InformacionController extends Controller
             $nombre=$request->name;
             $mensaje=$request->mensaje;
             $tipo="";
+            $this->validate($request, [
+                'name'=>'required',
+                'email'=>'required',
+                'mensaje'=> 'required',
+            ]);
             switch ($request->opcion){
                 case 1://consulta
                     $tipo='consulta';
-
-                    //puede enviar mensajes vacios
-                    $this->validate($request, [
-                        'name'=>'required',
-                        'email'=>'required',
-                        'mensaje'=> 'required',
-                        'file'=>'required'
-                ]);
                     break;
                 case 3://denuncias
                     $tipo='denuncia';
-                    $this->validate($request, [
-                        'name'=>'required',
-                        'email'=>'required',
-                        'mensaje'=> 'required',
-                        'file'=>'required'
-                    ]);
                     break;
                 case 4://otros
                     $tipo='otros';
-                    $this->validate($request, [
-                        'name'=>'required',
-                        'email'=>'required',
-                        'mensaje'=> 'required',
-                        'file'=>'required'
-                    ]);
                     break;
             }
-
+            $filename="";
+            if($request->file!=null){
                 $filename = time() . '.' . $request->file->getClientOriginalExtension();
                 $path=public_path('/temp');
                 $request->file->move($path,$filename);
-                $datos=[$request->name,$request->email2,$mensaje,$filename];
-                Mail::to($request->email)->send(new SendMailable($datos));
-
-
-
+            }
+            $datos=[$tipo,$nombre,$request->email,$mensaje,$filename];
+            Mail::to($request->email)->send(new SendMailable($datos));
             return view('contacto')->with('successMsg','Su mensaje fue enviado con exito');
         }else{//voluntario
-
             $this->validate($request, [
                 'name2'=>'required',
                 'rut'=>'required',
@@ -82,8 +65,6 @@ class InformacionController extends Controller
                 'profesion'=>'required',
                 'file'=>'required'
             ]);
-
-
             $filename = time() . '.' . $request->file->getClientOriginalExtension();
             $path=public_path('/temp');
             $request->file->move($path,$filename);
