@@ -57,9 +57,9 @@ class InformacionController extends Controller
             return view('contacto')->with('successMsg','Su mensaje fue enviado con exito');
         }else{//voluntario
             $this->validate($request, [
-                'name2'=>'required',
+                'name'=>'required',
                 'rut'=>'required',
-                'email2'=> 'required',
+                'email'=> 'required',
                 'ciudad'=>'required',
                 'phone'=>'required',
                 'profesion'=>'required',
@@ -68,9 +68,9 @@ class InformacionController extends Controller
             $filename = time() . '.' . $request->file->getClientOriginalExtension();
             $path=public_path('/temp');
             $request->file->move($path,$filename);
-            $datos=[$request->name2,$request->rut,$request->email2,$request->ciudad,$request->phone,$request->profesion,$filename];
+            $datos=[$request->name,$request->rut,$request->email,$request->ciudad,$request->phone,$request->profesion,$filename];
             //Mail::to('naitsircnunez@gmail.com')->send(new SendMailable($datos));
-            Mail::to($request->email2)->send(new SendMailable($datos));
+            Mail::to($request->email)->send(new SendMailable($datos));
             return view('contacto')->with('successMsg','Su mensaje fue enviado con exito');
         }
     }
