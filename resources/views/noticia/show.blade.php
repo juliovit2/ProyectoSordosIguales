@@ -4,7 +4,7 @@
     <div class="container">
     <h1 align="center">{{$tabla_noticia->titulo}}</h1 >
 
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" width="100%" max-height="460px">
+    <div class="carousel slide" data-ride="carousel" data-interval="3000" width="100%" max-height="460px">
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <div class="item banner-height-400">
@@ -15,7 +15,7 @@
                 @if($tabla_imagenes_noticia->noticiaid == $tabla_noticia->id)
                     <div class="carousel-item">
                         <div class="item banner-height-400">
-                        <img width="400px" height="400px"  src="{{ asset('storage/'.$tabla_imagenes_noticia->imagen)}}" class="d-block w-100" alt="...">
+                                <img width="400px" height="400px"  src="{{ asset('storage/'.$tabla_imagenes_noticia->imagen)}}" class="d-block w-100" alt="...">
                         </div>
                         </div>
                 @endif
