@@ -22,7 +22,10 @@ Route::get('/', function () {
 
 //crea las 7 rutas necesarias
 Route::resource('noticia', 'NoticiaController');
+Route::get('noticia/edit/{id}', 'NoticiaController@edit');
+
 Route::post('/noticia/create', 'NoticiaController@store');
+Route::post('/noticia/edit/{id}', 'NoticiaController@update');
 
 // ----------- MODULO CURSOS -----------
 

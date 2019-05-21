@@ -56,7 +56,7 @@
                     </td>
 
                     <td>
-                        <a href="{{route('noticia.show',$tabla_noticia->id)}}"
+                        <a href="{{route('noticia.destroy',$tabla_noticia->id)}}"
                            class="btn btn-sm btn-danger active">
                             <i class="glyphicon glyphicon-trash" ></i>
 

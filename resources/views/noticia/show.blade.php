@@ -39,7 +39,7 @@
 
     <div align="justify" class="form-group">
         <h3>
-            {{$tabla_noticia->contenido}}
+            {!! $tabla_noticia->contenido !!}
         </h3>
     </div>
         @if($tabla_noticia->video != null)
