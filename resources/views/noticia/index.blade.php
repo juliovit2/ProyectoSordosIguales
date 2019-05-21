@@ -48,7 +48,7 @@
                         </a>
                     </td>
                     <td>
-                        <a href="{{route('noticia.show',$tabla_noticia->id)}}"
+                        <a href="/noticia/edit/{{$tabla_noticia->id}}"
                            class="btn btn-sm btn-primary active" title="Editar Noticia">
                             <i class="fas fa-pencil-alt"></i>
 

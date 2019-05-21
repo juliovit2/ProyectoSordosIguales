@@ -52,12 +52,14 @@
     <script>
     $(document).ready(function() {
         $('#summernote').summernote();
-        @if ($data['is_edit'])
-            $('#summernote').summernote('code', {!! json_encode($data['noticia_a_editar']['contenido']) !!});
-            window.onload = function(){
-                document.getElementById("titulo").value = "{!! $data['noticia_a_editar']['titulo'] !!}";
-            }
-        @endif
+        @isset($data)
+            @if ($data['is_edit'])
+                $('#summernote').summernote('code', {!! json_encode($data['noticia_a_editar']['contenido']) !!});
+                window.onload = function(){
+                    document.getElementById("titulo").value = "{!! $data['noticia_a_editar']['titulo'] !!}";
+                }
+            @endif
+        @endisset
     });
 
 

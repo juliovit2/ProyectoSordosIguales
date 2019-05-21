@@ -31,10 +31,7 @@ class NoticiaController extends Controller
      */
     public function create()
     {
-
-        //
         return view('noticia.create');
-
     }
 
 
@@ -153,7 +150,8 @@ class NoticiaController extends Controller
             ->where('id', $id)
             ->update($noticiaEditada);
 
-        return redirect()->route('noticia.index');    }
+        return redirect()->route('noticia.index');
+    }
 
     /**
      * Remove the specified resource from storage.
