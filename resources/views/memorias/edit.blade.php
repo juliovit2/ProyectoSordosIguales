@@ -16,33 +16,62 @@
     @endif
 @endsection
 @section('content')
+    <h1 class = "text-center">Editar Memoria</h1>
+    <br />
+    <br />
+    <h3 class = "text-center">Memoria Actual:</h3>
+    <div class ="container">
+        <div class="container memoriaContainer row p-3" style="margin: auto;">
+            <div class = "col-sm-3 align-items-center d-flex justify-content-center  ">
+                @if($memoria['portada'])
+                    <img class = "img-thumbnail" src="{{$memoria['portada']}}" onerror="this.onerror=null;this.src='{{"/storage/Test logo UCN.png"}}';" />
+                @else
+                    <i class="fas fa-file-pdf" style="font-size: 1000%;color: #972329"></i>
+                @endif
+            </div>
+            <div class = "col-sm-7 align-self-center d-flex justify-content-center" >
+                <h1 style="color: #2980b9">Memoria {{$memoria['year']}}</h1>
+            </div>
+            <div class = "col-sm-2 ">
+                <div class="row align-items-center d-flex justify-content-center" style="height: 100%">
+                    <a class = "redlink" href = "{{$memoria['pdf']}}" target="_blank" style="font-size: 50px"><i class="fas fa-download"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <br />
+        <br />
+        <br />
+
     <div class="container">
+        <h2> Eliga uno o mas atributos a modificar</h2>
+        <br />
         <form autocomplete="off" method="POST" action="{{route('memorias.update',$memoria['id'])}} " enctype="multipart/form-data">
             {{ csrf_field() }}
             {{ method_field('PUT') }}
-            <div class="form-group row">
+            <div class="form-group row d-flex align-items-center">
                 <label for="anio_memoria_select" class="col-sm-2 col-form-label">Año de Memoria</label>
                 <div class="col-sm-3">
                     <select class="form-control" name = "anio_memoria" id="anio_memoria_select">
-                        <option value="" disavbled selected>Seleccione año</option>
+                        <option value="" disabled selected>Seleccione año</option>
+                        @foreach($yearList as $year)
+                                <option value= {{$year}}>{{$year}}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
 
 
-            <div class="form-group row">
-                <label for="inputPortada" class="col-sm-2 col-form-label">Foto de Portada (Opcional) </label>
+            <div class="form-group row d-flex align-items-center">
+                <label for="inputPortada" class="col-sm-2 col-form-label">Foto de Portada</label>
                 <div class="col-sm-3">
-                    ​<figure>
-                        <img class = "img-thumbnail" src="{{$memoria['portada']}}">
-                        <figcaption class="figure-caption">Foto de portada actual.</figcaption>
-                    </figure>
                     <input type="file" class="form-control file" name="inputPortada" id="inputPortada">
                 </div>
             </div>
-            <div class="form-group row">
+            <div class="form-group row border">
                 <label for="inputMemoria" class="col-sm-2 col-form-label">Documento de Memoria</label>
-                <div class="col-sm-3">
+                <div class="col-sm-3 d-flex align-items-center">
                     <input type="file" class="form-control file" name="inputMemoria" id="inputMemoria">
                 </div>
             </div>
@@ -74,7 +103,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Volver al formulario</button>
-                            <a type="button" class="btn btn-primary" href="{{route('memorias.listing')}}" role="button">Cancelar registro</a>
+                            <a type="button" class="btn btn-primary" href="{{route('memorias.index')}}" role="button">Cancelar registro</a>
                         </div>
                     </div>
                 </div>
@@ -108,23 +137,6 @@
                     crossorigin="anonymous"></script>
 
 
-            <script>
-
-
-                $(document).ready(function () {
-                    var memoria = JSON.parse("{{ json_encode($memoria['year'],JSON_HEX_TAG) }}");
-                    curYear = new Date().getFullYear();
-                    var x = document.getElementById("anio_memoria_select");
-                    for (i = 0; i < 5; i++){
-                        var option = document.createElement("option");
-                        var anio = curYear - i;
-                        option.text = anio.toString();
-                        x.add(option);
-                    }
-                   x.value= memoria;
-
-                });
-            </script>
 
         </form>
     </div>

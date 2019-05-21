@@ -17,7 +17,7 @@ class CreateTablaMemoriasTable extends Migration
             $table->Increments('id');
             $table->integer('year');
             $table->string('pdf');
-            $table->string('portada');
+            $table->string('portada')->nullable();
             $table->timestamps();
         });
     }

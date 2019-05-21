@@ -28,8 +28,9 @@ Route::get('/', function () {
 
 
 // ----------- MODULO (MEMORIAS)-----------
-Route::get('memorias/listing', 'MemoriaController@listing')->name('memorias.listing');
-Route::resource('memorias', 'MemoriaController');
+Route::resource('admin/memorias', 'MemoriaController');
+
+Route::get('memorias', 'MemoriaController@interface')->name('memorias.interface');
 
 
 
