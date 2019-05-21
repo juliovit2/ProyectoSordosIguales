@@ -45,6 +45,9 @@ class NoticiaController extends Controller
         //Extraemos el contenido del editor
         $contenidoHTML = $request->get("contenidoHTML");
         $dom = new \DomDocument();
+        if (strlen( $contenidoHTML) == 0) {
+            $contenidoHTML = "<p><br></p>";
+        }
         $dom->loadHtml($contenidoHTML, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
         $images = $dom->getElementsByTagName("img");
 
