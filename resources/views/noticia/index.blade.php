@@ -56,7 +56,7 @@
                     </td>
 
                     <td>
-                        <a href="{{route('noticia.show',$tabla_noticia->id)}}"
+                        <a href="/noticia/delete/{{$tabla_noticia->id}}"
                            class="btn btn-sm btn-danger active"  title="Eliminar Noticia">
                             <i class="fas fa-trash-alt"></i>
 
