@@ -7,6 +7,7 @@ use App\tabla_noticia;
 use App\tabla_imagenes_noticia;
 use App\Http\Requests\NoticiaStoreRequest;
 
+use Illuminate\Support\Facades\DB;
 use App\Request\TickerFormRequest;
 
 class NoticiaController extends Controller
@@ -32,6 +33,33 @@ class NoticiaController extends Controller
     {
         return view('noticia.create');
     }
+    public function saveEditorImages(NoticiaStoreRequest $request)
+    {
+        //Extraemos el contenido del editor
+        $contenidoHTML = $request->get("contenidoHTML");
+        $dom = new \DomDocument();
+        if (strlen( $contenidoHTML) == 0) {
+            $contenidoHTML = "<p><br></p>";
+        }
+        $dom->loadHtml($contenidoHTML, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+        $images = $dom->getElementsByTagName("img");
+
+        //Guardamos cada imagen insertada en el editor en la BD
+        foreach($images as $k => $img){
+            $data = $img->getAttribute("src");
+            list($type, $data) = explode(";", $data);
+            list(, $data)      = explode(",", $data);
+            $data = base64_decode($data);
+            $image_name= "/upload/".time().$k.".png";
+            $path = public_path() . $image_name;
+            file_put_contents($path, $data);
+            $img->removeAttribute("src");
+            $img->setAttribute("src", $image_name);
+        }
+
+        $contenidoHTML = $dom->saveHTML();
+        return $contenidoHTML;
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -41,6 +69,8 @@ class NoticiaController extends Controller
      */
     public function store(NoticiaStoreRequest $request)
     {
+        $contenidoHTML = $this->saveEditorImages($request);
+
         $video_path = null;
         //validar
         if($request->has('video')) {
@@ -51,7 +81,7 @@ class NoticiaController extends Controller
         }
         $noticia = new tabla_noticia(array(
             'titulo' => $request->get('titulo'),
-            'contenido' => $request->get('contenido'),
+            'contenido' => $contenidoHTML,
             'video' => substr ( $video_path , 7, strlen($video_path) -7)));
 
         $noticia->save();
@@ -96,7 +126,12 @@ class NoticiaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $noticia_a_editar = tabla_noticia::find($id);
+        $data = array(
+            'noticia_a_editar' => $noticia_a_editar,
+            "is_edit" => true);
+
+        return view('noticia.create')->with('data', $data);
     }
 
     /**
@@ -108,7 +143,17 @@ class NoticiaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $video_path = null;
+        $noticiaEditada = array(
+            'titulo' => $request->get('titulo'),
+            'contenido' => $request->get("contenidoHTML"),
+            'video' => substr ( $video_path , 7, strlen($video_path) -7));
+
+        DB::table('tabla_noticias')
+            ->where('id', $id)
+            ->update($noticiaEditada);
+
+        return redirect()->route('noticia.index');
     }
 
     /**
@@ -119,6 +164,9 @@ class NoticiaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $noticia_a_eliminar = tabla_noticia::find($id);
+        $noticia_a_eliminar->delete();
+     
+        return redirect()->route('noticia.index');
     }
 }
