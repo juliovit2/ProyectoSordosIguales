@@ -30,10 +30,7 @@ class NoticiaController extends Controller
      */
     public function create()
     {
-
-        //
         return view('noticia.create');
-
     }
 
     /**
@@ -47,6 +44,9 @@ class NoticiaController extends Controller
         $video_path = null;
         //validar
         if($request->has('video')) {
+            $this->validate($request, [
+                'video' => 'mimes:mp4,avi,mpeg,flv'
+            ]);
             $video_path = $request->file('video')->store('public/videos/noticias');
         }
         $noticia = new tabla_noticia(array(
@@ -57,6 +57,10 @@ class NoticiaController extends Controller
         $noticia->save();
 
         if($request->has('imagenes')) {
+
+            $this->validate($request, [
+                'imagenes.*' => '|mimes:jpeg,png,jpg,gif,svg'
+            ]);
             foreach ($request->imagenes as $imagen) {
                 $image_path = $imagen->store('public/imagenes/noticias');
                 $imagen_noticia = new tabla_imagenes_noticia(array(

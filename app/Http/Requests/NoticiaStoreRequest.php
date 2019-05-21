@@ -25,6 +25,9 @@ class NoticiaStoreRequest extends FormRequest
     {
         return [
             'titulo' => 'required',
+            'video' => 'required_without_all:contenido,imagenes',
+            'imagenes' => 'required_without_all:contenido,video',
+            'contenido' => 'required_without_all:video,imagenes'
         ];
     }
 }
