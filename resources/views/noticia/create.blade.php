@@ -40,7 +40,7 @@
                         <input multiple="multiple" type="file" name="imagenes[]" id="imagen">
                     </div>
                     <div class=form-group">
-                        <input type="submit" value="Agregar Noticia" class="btn btn-primary">
+                        <input id="but" type="submit" value="Agregar Noticia" class="btn btn-primary">
                         <!-- <input value="Agregar Noticia" class="btn btn-primary" onclick="actualizarContenido()"> -->
                     </div>
                 </form>
@@ -51,15 +51,9 @@
     <!-- La script tag es necesaria para iniciar summernote-->
     <script>
     $(document).ready(function() {
-        $('#summernote').summernote();
-        @isset($data)
-            @if ($data['is_edit'])
-                $('#summernote').summernote('code', {!! json_encode($data['noticia_a_editar']['contenido']) !!});
-                window.onload = function(){
-                    document.getElementById("titulo").value = "{!! $data['noticia_a_editar']['titulo'] !!}";
-                }
-            @endif
-        @endisset
+        $('#but').click(function () {
+            $('#titulo').val();
+        });
     });
 
 
