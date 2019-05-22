@@ -30,20 +30,30 @@ class InformacionController extends Controller
             $nombre=$request->name;
             $mensaje=$request->mensaje;
             $tipo="";
-            $this->validate($request, [
-                'name'=>'required',
-                'email'=>'required',
-                'mensaje'=> 'required',
-            ]);
+
             switch ($request->opcion){
                 case 1://consulta
                     $tipo='consulta';
+                    $this->validate($request, [
+                        'name'=>'required',
+                        'email'=>'required',
+                        'mensaje'=> 'required',
+                    ]);
                     break;
                 case 3://denuncias
                     $tipo='denuncia';
+                    $this->validate($request, [
+                        'email'=>'required',
+                        'mensaje'=> 'required',
+                    ]);
                     break;
                 case 4://otros
                     $tipo='otros';
+                    $this->validate($request, [
+                        'name'=>'required',
+                        'email'=>'required',
+                        'mensaje'=> 'required',
+                    ]);
                     break;
             }
             $filename="";
