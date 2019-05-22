@@ -77,7 +77,7 @@
                             <div class="form-group">
                                 <p align="left">Nombre</p>
                                 <div>
-                                    <input id="name" name="name" type="text" placeholder="Ingrese nombre" class="form-control">
+                                    <input id="name" name="name" type="text" placeholder="Ingrese nombre" class="form-control" pattern="([A-z]|ñ)*">
                                 </div>
                             </div>
 
@@ -85,7 +85,7 @@
                             <div class="form-group">
                                 <p align="left">Correo</p>
                                 <div>
-                                    <input id="email" name="email" type="text" placeholder="Ingrese email" class="form-control">
+                                    <input id="email" name="email" type="text" placeholder="Ingrese email" class="form-control" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}">
                                 </div>
                             </div>
 
@@ -121,7 +121,7 @@
                                         <div class="form-group">
                                             <p align="left">Nombre</p>
                                             <div>
-                                                <input id="name" name="name" type="text" placeholder="Ingrese nombre" class="form-control">
+                                                <input id="name" name="name" type="text" placeholder="Ingrese nombre" class="form-control" pattern="([A-z]|ñ)*">
                                             </div>
                                         </div>
                                         <!-- Rut input-->
@@ -135,7 +135,7 @@
                                         <div class="form-group">
                                             <p align="left">Correo</p>
                                             <div>
-                                                <input id="email" name="email" type="text" placeholder="Ingrese email" class="form-control">
+                                                <input id="email" name="email" type="text" placeholder="Ingrese email" class="form-control" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}">
                                             </div>
                                         </div>
 
@@ -143,16 +143,16 @@
                                         <div class="form-group">
                                             <p align="left">Ciudad</p>
                                             <div>
-                                                <input id="ciudad" name="ciudad" type="text" placeholder="Ingrese ciudad" class="form-control">
+                                                <input id="ciudad" name="ciudad" type="text" placeholder="Ingrese ciudad" class="form-control" pattern="([A-z]|ñ)*">
                                             </div>
                                         </div>
 
                                         <!-- phone input-->
                                         <div class="form-group">
-                                            <p align="left">Telefono (Ej. +56912345678)</p>
+                                            <p align="left">Telefono (Ej. 12345678)</p>
                                             <div>
                                                 {{--                                                    <input id="phone" name="phone" type="tel" placeholder="Ingrese Telefono" pattern="+569[0-9]{8}" required class="form-control">--}}
-                                                <input id="phone" name="phone" type="tel" placeholder="Ingrese Telefono" class="form-control">
+                                                <input id="phone" name="phone" type="tel" placeholder="Ingrese Telefono" class="form-control" pattern="[0-9]{8}">
                                             </div>
                                         </div>
 
@@ -160,7 +160,7 @@
                                         <div class="form-group">
                                             <p align="left">Profesion</p>
                                             <div>
-                                                <input id="profesion" name="profesion" type="text" placeholder="Ingrese profesion" class="form-control">
+                                                <input id="profesion" name="profesion" type="text" placeholder="Ingrese profesion" class="form-control" pattern="([A-z]|ñ)*">
                                             </div>
                                         </div>
 
