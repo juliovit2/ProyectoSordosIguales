@@ -24,17 +24,37 @@
                     <tr>
                         <th scope="col">ID</th>
                         <th scope="col">Nombre</th>
+                        <th scope="col">RUT</th>
                         <th scope="col">Correo</th>
-                        <th scope="col">Twitter</th>
+                        <th scope="col">Teléfono</th>
+                        <th scope="col">Curso</th>
+                        <th scope="col">Asistencia</th>
+                        <th scope="col">Dirección</th>
+                        <th scope="col">Ciudad</th>
+
+
                     </tr>
                </thead>
+
+               @php
+               $idcurso = DB::table('tabla_usuario_cursos')->select('cursoid')->where('usuarioid', '=', $user->id)->first()->cursoid;
+               $nomCurso = DB::table('tabla_cursos')->select('nombre')->where('id','=',$idcurso)->first()->nombre;
+               $asistencia = DB::table('tabla_usuario_cursos')->select('asistencia')->where('usuarioid', '=', $user->id)->first()->asistencia;
+               @endphp
+
 
                <tbody>
                     <tr>
                         <th>{{ $user->id }}</th>
                         <td>{{ $user->name }}</td>
+                        <td>{{ $user->rut }}</td>
                         <td>{{ $user->email }}</td>
-                        <td>{{ $user->twitter }}</td>
+                        <td>{{ $user->telefono }}</td>
+                        <td>{{ $nomCurso }}</td>
+                        <td>{{ $asistencia }}</td>
+                        <td>{{ $user->direccion }}</td>
+                        <td>{{ $user->ciudad }}</td>
+
                     </tr>
                </tbody>
            </table>
