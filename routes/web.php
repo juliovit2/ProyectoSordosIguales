@@ -27,7 +27,13 @@ Route::get('/Plataforma', function () {
     return view('Plataforma/IniciarSesion');
 });
 
+Route::get('/IngresarNotas', function () {
+    return view('Plataforma/IngresarNotas');
+});
+
 Route::post('login', 'Auth\LoginController@login')->name('login');
+Route::post('ingresarNotas', 'NotasController@ingresar')->name('ingresarNotas');
+
 
 Route::get('/PortalAlumnos', function () {
     return view('Plataforma/PortalAlumnos');
