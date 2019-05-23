@@ -63,7 +63,8 @@ class InformacionController extends Controller
                 $request->file->move($path,$filename);
             }
             $datos=[$tipo,$nombre,$request->email,$mensaje,$filename];
-            Mail::to($request->email)->send(new SendMailable($datos));
+            //Mail::to($request->email)->send(new SendMailable($datos));
+            Mail::to('naitsircnunez@gmail.com')->send(new SendMailable($datos));
             return view('contacto')->with('successMsg','Su mensaje fue enviado con exito');
         }else{//voluntario
             $this->validate($request, [
@@ -80,7 +81,7 @@ class InformacionController extends Controller
             $request->file->move($path,$filename);
             $datos=[$request->name,$request->rut,$request->email,$request->ciudad,$request->phone,$request->profesion,$filename];
             //Mail::to('naitsircnunez@gmail.com')->send(new SendMailable($datos));
-            Mail::to($request->email)->send(new SendMailable($datos));
+            Mail::to('naitsircnunez@gmail.com')->send(new SendMailable($datos));
             return view('contacto')->with('successMsg','Su mensaje fue enviado con exito');
         }
     }
