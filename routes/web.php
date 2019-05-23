@@ -15,6 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::resource('/contacto','InformacionController');
+Route::get('/informacion','InformacionController@info');
+Route::post('/contacto','InformacionController@enviarCorreo');
+
+
 //escribir todas las rutas requeridas aqui siguiendo el mismo formato
 
 
