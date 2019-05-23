@@ -5,8 +5,8 @@
                 <img class = "img" src="{{"/storage/UL7hTO9G.jpg"}}" style ="width:150px;height: 150px;float: right;" alt="SordosIguales">
             </a>
         </div>
-        <div class="col-sm-8 align-self-center" style="color:#2980b9;font-size: 14px;font-family: 'Arial', sans-serif !important; font-style: italic;">
-            <h1 align="center"  style="font-size: 70px">Fundación <span style="color: #972329">SORDOS IGUALES</span></h1>
+        <div class="col-sm-8 align-self-center" style="color:#3460C7;font-size: 14px;font-family: 'Arial', sans-serif !important; font-style: italic;">
+            <h1 align="center"  style="font-size: 70px">Fundacion Sordos iguales</h1>
         </div>
         <div class="col-sm-2  align-self-center" style="font-size: 45px">
             <a class = "headerLink" href = "monkey.png"><i class="fab fa-twitter-square"></i></a>
@@ -37,6 +37,9 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#"><h4><i class="fas fa-phone"></i>  Contacto</h4></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('login')}}"><h4><i class="fas fa-book-open"></i>    Portal Alumnos</h4></a>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
