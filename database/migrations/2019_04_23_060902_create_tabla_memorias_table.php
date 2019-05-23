@@ -15,8 +15,9 @@ class CreateTablaMemoriasTable extends Migration
     {
         Schema::create('tabla_memorias', function (Blueprint $table) {
             $table->Increments('id');
-            $table->date('year');
+            $table->integer('year');
             $table->string('pdf');
+            $table->string('portada');
             $table->timestamps();
         });
     }

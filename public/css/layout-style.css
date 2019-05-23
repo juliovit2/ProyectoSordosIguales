@@ -22,6 +22,9 @@ a.footerLink:hover {
 a.redlink:link{
     color: #972329;
 }
+a.redlink:visited{
+    color: #972329;
+}
 a.redlink:hover{
     color: #E47B80;
 }
