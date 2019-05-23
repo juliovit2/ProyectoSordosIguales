@@ -23,7 +23,10 @@
                 <label for="anio_memoria_select" class="col-sm-2 col-form-label">Año de Memoria</label>
                 <div class="col-sm-3">
                     <select class="form-control" name = "anio_memoria" id="anio_memoria_select">
-                        <option value="" disavbled selected>Seleccione año</option>
+                        <option value="" disabled selected>Seleccione año</option>
+                        @foreach($yearList as $year)
+                            <option value= {{$year}}>{{$year}}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -58,17 +61,17 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="confirmCancelModal">Confirmar cancelacion</h5>
+                            <h5 class="modal-title" id="confirmCancelModal">Confirmar cancelación</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            ¿Desea cancelar el registro y volver al menu de registros?
+                            ¿Desea cancelar el registro y volver al menú de registros?
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Volver al formulario</button>
-                            <a type="button" class="btn btn-primary" href="{{route('memorias.listing')}}" role="button">Cancelar registro</a>
+                            <a type="button" class="btn btn-primary" href="{{route('memorias.index')}}" role="button">Cancelar registro</a>
                         </div>
                     </div>
                 </div>
@@ -85,7 +88,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            ¿Esta seguro que desea confirmar el registro?
+                            ¿Está seguro que desea confirmar el registro?
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Volver al formulario</button>
@@ -103,15 +106,6 @@
 
             <script>
                 $(document).ready(function () {
-
-                    curYear = new Date().getFullYear();
-                    var x = document.getElementById("anio_memoria_select");
-                    for (i = 0; i < 5; i++){
-                        var option = document.createElement("option");
-                        var anio = curYear - i;
-                        option.text = anio.toString();
-                        x.add(option);
-                    }
 
                 });
             </script>

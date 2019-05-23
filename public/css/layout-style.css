@@ -115,8 +115,8 @@ footer{
 hr.bluered{
     height: 1px;
     background-image: linear-gradient(to right,
-    blue    20%,
-    red  20%,
-    red  100%
+    #972329    20%,
+    #E47B80  20%,
+    #E47B80  100%
     );
 }

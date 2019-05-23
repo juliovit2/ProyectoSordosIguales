@@ -16,10 +16,10 @@ class MemoriaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function listing()
+    public function interface()
     {
         $memorias = tabla_memoria::OrderBy('id')->get();
-        return view('memorias/listing',['memorias'=>$memorias]);//
+        return view('memorias/interface',['memorias'=>$memorias]);//
     }
 
     /**
@@ -40,9 +40,17 @@ class MemoriaController extends Controller
      */
     public function create()
     {
+        $yearList = [];
+        $yearsMemoria = tabla_memoria::get()->pluck('year')->toArray();
+        $curYear = date("Y");
+        for ($i = 0; $i < 5 ;$i++) {
+            if (!in_array( $curYear - $i, $yearsMemoria)){
+                array_push($yearList,$curYear - $i);
+            }
+        }
 
         //
-        return view('memorias/create');
+        return view('memorias/create', compact('yearList'));
     }
 
     /**
@@ -57,23 +65,30 @@ class MemoriaController extends Controller
         $this->validate(request(),[
             'anio_memoria' => 'required',
             'inputPortada' => 'file|image|mimes:jpeg,png,gif,webp,pdf|max:2048',
-            'inputMemoria' => 'required|file|mimes:jpeg,png,gif,webp,pdf',
+            'inputMemoria' => 'required|file|mimes:pdf',
         ]);
         $filenameMemoria = 'Memoria-' . $data['anio_memoria']  . '.' . $data['inputMemoria']->getClientOriginalExtension();
         $fileMemoria = $request->file('inputMemoria')->storeAs('public/Memorias/'.$data['anio_memoria'],$filenameMemoria);
         $memoriaURL = \Storage::url($fileMemoria);
 
-        $filenamePortada = 'Portada-' . $data['anio_memoria']  . '.' . $data['inputPortada']->getClientOriginalExtension();
-        $filePortada = $request->file('inputPortada')->storeAs('public/Memorias/'.$data['anio_memoria'],$filenamePortada);
-        $portadaUrl = \Storage::url($filePortada);
+        if(Arr::exists($data, 'inputPortada')){
+            $filenamePortada = 'Portada-' . $data['anio_memoria']  . '.' . $data['inputPortada']->getClientOriginalExtension();
+            $filePortada = $request->file('inputPortada')->storeAs('public/Memorias/'.$data['anio_memoria'],$filenamePortada);
+            $portadaUrl = \Storage::url($filePortada);
 
-        tabla_memoria::create([
-            'year' => $data['anio_memoria'],
-            'pdf' => $memoriaURL,
-            'portada' => $portadaUrl
-        ]);
+            tabla_memoria::create([
+                'year' => $data['anio_memoria'],
+                'pdf' => $memoriaURL,
+                'portada' => $portadaUrl
+            ]);
+        }else{
+            tabla_memoria::create([
+                'year' => $data['anio_memoria'],
+                'pdf' => $memoriaURL,
+            ]);
+        }
 
-        return $this->listing();
+        return $this->index();
         //
     }
 
@@ -87,7 +102,7 @@ class MemoriaController extends Controller
     {
         //
     }
-    
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -96,8 +111,21 @@ class MemoriaController extends Controller
      */
     public function edit($id)
     {
+        $yearList = [];
+        $actualYear = tabla_memoria::where('id',$id)->pluck('year')->first();
+        $yearsMemoria = tabla_memoria::get()->pluck('year')->toArray();
+        $curYear = date("Y");
+        for ($i = 0; $i < 5 ;$i++) {
+            if (!in_array( $curYear - $i, $yearsMemoria)){
+                array_push($yearList,$curYear - $i);
+            }else{
+                if($curYear - $i == $actualYear){
+                    array_push($yearList,$curYear - $i);
+                }
+            }
+        }
         $memoria = tabla_memoria::get()->find($id);
-        return view('memorias/edit',compact("memoria"));//
+        return view('memorias/edit',compact("memoria","yearList"));//
     }
 
     /**
@@ -112,12 +140,38 @@ class MemoriaController extends Controller
 
         $data = request()->all();
         $this->validate(request(),[
-            'anio_memoria' => 'required',
             'inputPortada' => 'file|image|mimes:jpeg,png,gif,webp,pdf|max:2048',
-            'inputMemoria' => 'required|file|mimes:jpeg,png,gif,webp,pdf',
+            'inputMemoria' => 'file|mimes:pdf',
         ]);
 
         $memoria = tabla_memoria::findOrfail($id);
+        $yearActual = $memoria->year;
+        $newYear = Arr::exists($data, 'anio_memoria') ?$data['anio_memoria'] : $memoria->year;
+        $newPortada = $memoria->portada;
+        $newMemoria = $memoria->pdf;
+
+
+        //Cambiar Año
+        if(Arr::exists($data, 'anio_memoria')){
+            if(!Arr::exists($data, 'inputMemoria')){
+                $url = $memoria->pdf;
+                $location = str_replace("/storage","public",$url);
+                $newLocation = str_replace($yearActual,$data['anio_memoria'],$location);
+                \Storage::move($location, $newLocation);
+                $newMemoria = \Storage::url($newLocation);
+            }
+
+            if(!Arr::exists($data, 'inputPortada')){
+                $url = $memoria->portada;
+                $location = str_replace("/storage","public",$url);
+                $newLocation = str_replace($yearActual,$data['anio_memoria'],$location);
+                \Storage::move($location, $newLocation);
+                $newPortada = \Storage::url($newLocation);
+            }
+
+        }
+
+        //Reemplazar Memoria
         if(Arr::exists($data, 'inputMemoria')){
             //Encontrar la direcion url guardada
             $url = $memoria->pdf;
@@ -127,10 +181,12 @@ class MemoriaController extends Controller
 
             // Crear nuevo archivo
 
-            $filenameMemoria = 'Memoria-' . $data['anio_memoria']  . '.' . $data['inputMemoria']->getClientOriginalExtension();
-            $fileMemoria = $request->file('inputMemoria')->storeAs('public/Memorias/'.$data['anio_memoria'],$filenameMemoria);
-            $memoriaURL = \Storage::url($fileMemoria);
+            $filenameMemoria = 'Memoria-' . $newYear  . '.' . $data['inputMemoria']->getClientOriginalExtension();
+            $fileMemoria = $request->file('inputMemoria')->storeAs('public/Memorias/'.$newYear,$filenameMemoria);
+            $newMemoria = \Storage::url($fileMemoria);
         }
+
+        //Reemplazar POrtada
         if(Arr::exists($data, 'inputPortada')){
             //Encontrar la direcion url guardada
             $url = $memoria->portada;
@@ -140,26 +196,18 @@ class MemoriaController extends Controller
 
             // Crear nuevo archivo
 
-            $filenamePortada = 'Portada-' . $data['anio_memoria']  . '.' . $data['inputPortada']->getClientOriginalExtension();
-            $filePortada = $request->file('inputPortada')->storeAs('public/Memorias/'.$data['anio_memoria'],$filenamePortada);
-            $portadaUrl = \Storage::url($filePortada);
+            $filenamePortada = 'Portada-' . $newYear  . '.' . $data['inputPortada']->getClientOriginalExtension();
+            $filePortada = $request->file('inputPortada')->storeAs('public/Memorias/'.$newYear,$filenamePortada);
+            $newPortada = \Storage::url($filePortada);
         }
 
-        if(Arr::exists($data, 'inputPortada')){
-            $memoria->update([
-                'year' => $data['anio_memoria'],
-                'pdf' => $memoriaURL,
-                'portada' => $portadaUrl
-            ]);
-        }else{
-            $memoria->update([
-                'year' => $data['anio_memoria'],
-                'pdf' => $memoriaURL,
-            ]);
-        }
+        $memoria->update([
+            'year' => $newYear,
+            'pdf' => $newMemoria,
+            'portada' => $newPortada
+        ]);
 
-
-        return $this->index();
+        return redirect()->route('memorias.index');
     }
 
     /**
@@ -174,6 +222,6 @@ class MemoriaController extends Controller
         $directory = '/public/Memorias/'.$memoria['year'];
         \Storage::deleteDirectory($directory);
         $memoria->delete();
-        return back();
+        return redirect()->route('memorias.index');
     }
 }

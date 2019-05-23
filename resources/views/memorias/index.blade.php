@@ -1,81 +1,106 @@
 @extends('layoutGeneral')
-@section('content')
-<main role="main" class="container">
-
-    <div class ="container p-5 border">
+@section('title')Administrar Memorias
+@endsection
 
 
-        <div class = "container pl-5 pr-5" style = "text-align: left">
-            <h1 style="font-weight: lighter;font-size: 60px">Memorias Anuales</h1>
-            <hr class = "bluered">
-        </div>
-
-        @if($memorias)
-                @foreach($memorias as $memoria)
-                    <div class ="container p-5">
-                        <div class="container memoriaContainer row p-3" style="margin: auto;">
-                            <div class = "col-sm-3">
-                                <img class = "img-thumbnail" src="{{$memoria['portada']}}">
-                            </div>
-                            <div class = "col-sm-7 align-self-center d-flex justify-content-center" >
-                                <h1 style="color: #2980b9">Memoria {{$memoria['year']}}</h1>
-                            </div>
-                            <div class = "col-sm-2 ">
-                                <div class="row align-items-center d-flex justify-content-center" style="height: 100%">
-                                    <a class = "redlink" href = "{{$memoria['pdf']}}" target="_blank" style="font-size: 50px"><i class="fas fa-download"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+@section('pre-body')
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
                 @endforeach
-        @else
-            <p> No hay Memorias registradas </p>
-        @endif
-
-        <div class ="container p-5">
-            <div class="container memoriaContainer row p-3" style="margin: auto;">
-                <div class = "col-sm-3">
-                    <div class = "container" style="background: #1c7430;height: 100%"></div>
-                </div>
-                <div class = "col-sm-7 align-self-center d-flex justify-content-center border" >
-                    <h1 style="color: #2980b9">Memoria 2018</h1>
-                </div>
-                <div class = "col-sm-2 ">
-                    <div class="row align-items-center d-flex justify-content-center " style="height: 50%">
-                        <a class = "redlink" href = "monkey.png" style="font-size: 50px"><i class="fas fa-download"></i></a>
-                    </div>
-                </div>
-            </div>
+            </ul>
         </div>
+    @endif
+@endsection
+@section('content')
+    </div>
+    <div class = "container">
+        <table class="table table-bordered  table-striped table-hover" id="MyTable">
+            <h2>
+                Listado de Memorias
+                <a class="btn btn-secondary" href="{{route('memorias.create')}}" role="button"><i class="fas fa-plus"></i></a>
+            </h2>
+            <thead>
+            <tr>
+                <th class="text-center">ID</th>
+                <th class="text-center">Portada</th>
+                <th class="text-center">Memoria</th>
+                <th class="text-center">Fecha de publicación</th>
+                <th class="text-center">Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            @if($memorias)
+                <ul>
+                    @foreach($memorias as  $key=>$item)
+                        <tr>
+                            <td class="text-center" id="{{ $item->id }}">{{ $item->id }}</td>
+                            <td class="text-center"><img class = "img-thumbnail" src="{{$memorias[$key]['portada']}}" width="250px" height="250px"></td>
+                            <td class="text-center">Memoria {{ $memorias[$key]['year'] }}</td>
+                            <td class="text-center">{{$memorias[$key]->created_at}}</td>
+                            <td class="text-center" width="20%">
+                                <div class = "btn-group">
+                                    <form action="{{route('memorias.destroy',$item->id)}}" method="POST">
+                                        {{csrf_field()}}
+                                        <a class="btn btn-secondary" href = "{{$memorias[$key]['pdf']}}" target="_blank">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                        <a class="btn btn-secondary" role="button"href="{{route('memorias.edit',$item->id)}}" >
+                                            <i class="fas fa-pencil-alt"></i>
+                                        </a>
 
-        <div class ="container p-5">
-            <div class="container memoriaContainer row p-3" style="margin: auto;">
-                <div class = "col-sm-3">
-                    <div class = "container" style="background: #1c7430;height: 100%"></div>
-                </div>
-                <div class = "col-sm-7 align-self-center d-flex justify-content-center" >
-                    <h1 style="color: #2980b9">Memoria 2017</h1>
-                </div>
-                <div class = "col-sm-2 ">
-                    <div class="row align-items-center d-flex justify-content-center " style="height: 50%">
-                        <a class = "redlink" href = "monkey.png" style="font-size: 50px"><i class="fas fa-download"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal{{ $item->id }}" ><i class="fas fa-trash-alt"></i></button>
 
 
+
+                                        <!-- Modals --->
+
+                                        <div class="modal fade" id="modal{{ $item->id }}" tabindex="-1" role="dialog" aria-labelledby="modal{{ $item->id }}" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="confirmSubmitModal">Confirmar Eliminación</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        ¿Está seguro que desea eliminar esta memoria?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Volver</button>
+                                                        <button type="submit" class="btn btn-primary">Confirmar</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
+                </ul>
+            @else
+                <p> No hay Memorias registradas </p>
+            @endif
+            </tbody>
+        </table>
     </div>
 
 
+    </body>
 
-</main><!-- /.container -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
 
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-<script src="../../../../assets/js/vendor/popper.min.js"></script>
-<script src="../../../../dist/js/bootstrap.min.js"></script>
+
+    </form>
+    </div>
+
 @endsection
