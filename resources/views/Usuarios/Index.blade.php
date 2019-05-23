@@ -18,6 +18,7 @@
             <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Nombre</th>
+                <th scope="col">RUT</th>
                 <th scope="col">Correo</th>
                 <th scope="col">Acciones</th>
             </tr>
@@ -29,6 +30,7 @@
                     <tr>
                         <th scope="row">{{ $user->id }}</th>
                         <td>{{ $user->name }}</td>
+                        <td>{{ $user->rut }}</td>
                         <td>{{ $user->email }}</td>
                         <td>
                             <form action="{{ route('users.destroy', $user) }}" method="POST">
