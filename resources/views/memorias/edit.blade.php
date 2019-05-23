@@ -45,7 +45,7 @@
         <br />
 
     <div class="container">
-        <h2> Eliga uno o mas atributos a modificar</h2>
+        <h2> Elija uno o más atributos a modificar</h2>
         <br />
         <form autocomplete="off" method="POST" action="{{route('memorias.update',$memoria['id'])}} " enctype="multipart/form-data">
             {{ csrf_field() }}
@@ -93,13 +93,13 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="confirmCancelModal">Confirmar cancelacion</h5>
+                            <h5 class="modal-title" id="confirmCancelModal">Confirmar cancelación</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            ¿Desea cancelar el registro y volver al menu de registros?
+                            ¿Desea cancelar el registro y volver al menú de registros?
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Volver al formulario</button>
@@ -120,7 +120,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            ¿Esta seguro que desea confirmar el registro?
+                            ¿Está seguro que desea confirmar el registro?
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Volver al formulario</button>

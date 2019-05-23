@@ -27,7 +27,7 @@
                 <th class="text-center">ID</th>
                 <th class="text-center">Portada</th>
                 <th class="text-center">Memoria</th>
-                <th class="text-center">Fecha de publicacion</th>
+                <th class="text-center">Fecha de publicación</th>
                 <th class="text-center">Acciones</th>
             </tr>
             </thead>
@@ -68,7 +68,7 @@
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        ¿Esta seguro que desea eliminar la actividad?
+                                                        ¿Está seguro que desea eliminar esta memoria?
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Volver</button>
