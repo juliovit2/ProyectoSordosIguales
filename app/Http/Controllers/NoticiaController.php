@@ -33,6 +33,7 @@ class NoticiaController extends Controller
     {
         return view('noticia.create');
     }
+
     public function saveEditorImages(NoticiaStoreRequest $request)
     {
         //Extraemos el contenido del editor
@@ -50,11 +51,14 @@ class NoticiaController extends Controller
             list($type, $data) = explode(";", $data);
             list(, $data)      = explode(",", $data);
             $data = base64_decode($data);
-            $image_name= "/upload/".time().$k.".png";
-            $path = public_path() . $image_name;
-            file_put_contents($path, $data);
+            $image_name = time().$k.".png";
+            $store_path = "public/imagenes/noticias/editor/";
+            $resource_path = "imagenes/noticias/editor/";
+            $image_full_path = $store_path.$image_name;
+            $resource_name = asset('storage/'.$resource_path.$image_name);
+            Storage::disk('local')->put($image_full_path, $data);
             $img->removeAttribute("src");
-            $img->setAttribute("src", $image_name);
+            $img->setAttribute("src", $resource_name);
         }
 
         $contenidoHTML = $dom->saveHTML();
