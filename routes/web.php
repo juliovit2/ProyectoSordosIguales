@@ -25,6 +25,14 @@ Route::post('/contacto','InformacionController@enviarCorreo');
 
 // ----------- MODULO NOTICIAS -----------
 
+//crea las 7 rutas necesarias
+Route::resource('noticia', 'NoticiaController');
+Route::get('noticia/edit/{id}', 'NoticiaController@edit');
+Route::get('noticia/delete/{id}', "NoticiaController@destroy");
+
+Route::post('/noticia/create', 'NoticiaController@store');
+Route::post('/noticia/edit/{id}', 'NoticiaController@update');
+Route::post('noticia/previsualizar', 'NoticiaController@show_preview');
 
 // ----------- MODULO CURSOS -----------
 

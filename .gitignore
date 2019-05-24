@@ -26,3 +26,5 @@ composer\.lock
 
 \.idea/
 \.idea
+.idea
+.idea/workspace.xml

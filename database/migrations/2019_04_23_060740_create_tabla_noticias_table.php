@@ -17,8 +17,7 @@ class CreateTablaNoticiasTable extends Migration
             $table->increments('id');
             $table->string('video')->nullable();
             $table->string('titulo');
-            $table->string('contenido');
-            $table->date('fecha');
+            $table->text('contenido')->nullable();
             $table->timestamps();
         });
     }
