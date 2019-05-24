@@ -87,10 +87,10 @@ class NoticiaController extends Controller
         $noticia->save();
 
         if($request->has('imagenes')) {
-
             $this->validate($request, [
-                'imagenes.*' => '|mimes:jpeg,png,jpg,gif,svg'
+                'imagenes.*' => '|mimes:jpeg,png,jpg,gif,svg,raw'
             ]);
+
             foreach ($request->imagenes as $imagen) {
                 $image_path = $imagen->store('public/imagenes/noticias');
                 $imagen_noticia = new tabla_imagenes_noticia(array(
