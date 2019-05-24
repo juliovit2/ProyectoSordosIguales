@@ -10,6 +10,7 @@
     <!-- include summernote css/js -->
     <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.css" rel="stylesheet">
     <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.js"></script>
+    <script type="text/javascript" src="{{ URL::asset('js/summernote-es-ES.js') }}"></script>
 
     <div class="container mt-5 mb-5">
         <div class="row">
@@ -52,25 +53,19 @@
     <!-- La script tag es necesaria para iniciar summernote-->
     <script>
     $(document).ready(function() {
-        $('#contenido').summernote();
+        $('#contenido').summernote({ lang: 'es-ES' });
         @isset($data)
-        @if ($data['is_edit'])
-        $('#contenido').summernote('code', {!! json_encode($data['noticia_a_editar']['contenido']) !!});
-        window.onload = function(){
-            document.getElementById("titulo").value = "{!! $data['noticia_a_editar']['titulo'] !!}";
-        }
-        @endif
+            @if ($data['is_edit'])
+                $('#contenido').summernote('code', {!! json_encode($data['noticia_a_editar']['contenido']) !!});
+                window.onload = function(){
+                    document.getElementById("titulo").value = "{!! $data['noticia_a_editar']['titulo'] !!}";
+                }
+            @endif
         @endisset
         $('#but').click(function () {
             $('#titulo').val();
         });
 
-        $('#summernote').summernote();
-        @isset($data)
-            @if ($data["is_edit"])
-                $('#summernote').summernote('code', {!! json_encode($data["noticia_a_editar"]["contenido"]) !!});
-            @endif
-        @endisset
 
     });
 
