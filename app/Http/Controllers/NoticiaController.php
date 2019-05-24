@@ -9,6 +9,7 @@ use App\Http\Requests\NoticiaStoreRequest;
 
 use Illuminate\Support\Facades\DB;
 use App\Request\TickerFormRequest;
+use Illuminate\Support\Facades\Storage;
 
 class NoticiaController extends Controller
 {
@@ -50,11 +51,14 @@ class NoticiaController extends Controller
             list($type, $data) = explode(";", $data);
             list(, $data)      = explode(",", $data);
             $data = base64_decode($data);
-            $image_name= "/upload/".time().$k.".png";
-            $path = public_path() . $image_name;
-            file_put_contents($path, $data);
+            $image_name = time().$k.".png";
+            $store_path = "public/imagenes/noticias/editor/";
+            $resource_path = "imagenes/noticias/editor/";
+            $image_full_path = $store_path.$image_name;
+            $resource_name = asset('storage/'.$resource_path.$image_name);
+            Storage::disk('local')->put($image_full_path, $data);
             $img->removeAttribute("src");
-            $img->setAttribute("src", $image_name);
+            $img->setAttribute("src", $resource_name);
         }
 
         $contenidoHTML = $dom->saveHTML();
@@ -64,8 +68,9 @@ class NoticiaController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function store(NoticiaStoreRequest $request)
     {

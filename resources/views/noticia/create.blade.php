@@ -54,6 +54,14 @@
         $('#but').click(function () {
             $('#titulo').val();
         });
+
+        $('#summernote').summernote();
+        @isset($data)
+            @if ($data["is_edit"])
+                $('#summernote').summernote('code', {!! json_encode($data["noticia_a_editar"]["contenido"]) !!});
+            @endif
+        @endisset
+
     });
 
 
