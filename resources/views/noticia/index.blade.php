@@ -18,7 +18,7 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($noticias->reverse() as $tabla_noticia)
+            @foreach($noticias as $tabla_noticia)
                 <tr>
 
                     <td>{{$tabla_noticia->id}}</td>

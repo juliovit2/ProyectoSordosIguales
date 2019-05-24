@@ -42,7 +42,7 @@
             {!! $tabla_noticia->contenido !!}
         </h3>
     </div>
-        @if($tabla_noticia->video != null)
+        @if($tabla_noticia->video != 0)
         <div align="center">
         <video  id="sampleMovie" width="640" height="360" preload controls>
             <source src="{{ asset('storage/'.$tabla_noticia->video)}}"  />
