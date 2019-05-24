@@ -10,12 +10,7 @@
     <!-- include summernote css/js -->
     <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.css" rel="stylesheet">
     <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.js"></script>
-
-    <style>
-        .border-red{
-            border: 1px solid red !important;
-        }
-    </style>
+    <script type="text/javascript" src="{{ URL::asset('js/summernote-es-ES.js') }}"></script>
     <div class="container mt-5 mb-5">
         <div class="row">
             <div class="col-md">
@@ -46,6 +41,7 @@
                     </div>
                     <div class=form-group">
                         <input id="but" type="button" value="Agregar Noticia" class="btn btn-primary">
+                        <input id="but2" type="submit" formaction="/noticia/previsualizar" value="Previsualizar" class="btn btn-primary">
                         <!-- <input value="Agregar Noticia" class="btn btn-primary" onclick="actualizarContenido()"> -->
                     </div>
                 </form>
@@ -67,7 +63,8 @@
             case 'gif':
             case 'bmp':
             case 'png':
-                //etc
+            case 'jpeg':
+            case 'svg':
                 return true;
         }
         return false;
@@ -80,23 +77,26 @@
             case 'avi':
             case 'mpg':
             case 'mp4':
-                // etc
+            case 'flv':
+            case 'mpeg':
                 return true;
         }
         return false;
     }
     $(document).ready(function() {
-        $('#contenido').summernote();
+        $('#contenido').summernote({ lang: 'es-ES' });
         @isset($data)
-        @if ($data['is_edit'])
-        $('#contenido').summernote('code', {!! json_encode($data['noticia_a_editar']['contenido']) !!});
-        window.onload = function(){
-            document.getElementById("titulo").value = "{!! $data['noticia_a_editar']['titulo'] !!}";
-        }
-        @endif
+            @if ($data['is_edit'])
+                $('#contenido').summernote('code', {!! json_encode($data['noticia_a_editar']['contenido']) !!});
+                window.onload = function(){
+                    document.getElementById("titulo").value = "{!! $data['noticia_a_editar']['titulo'] !!}";
+                }
+            @endif
         @endisset
+
         $('#but').click(function () {
            if($('#titulo').val().replace(" ","").length <= 0) {
+               alert("Debe contener un título.");
                return;
            }
            let hayVideo = $('#video').val() != "";
@@ -116,14 +116,13 @@
             }
 
             for (var i=0; i<imagenes.files.length; i++) {
-                var ext = imagenes.files[i].name.substr(-3)
-                if(ext != "jpg" && imagenes.files[i].name.substr(-4) != "jpeg" && ext != "png" && ext != "gif" && ext != "raw" && ext != "svg")  {
+                if(!isImage(imagenes.files[i].name.substr)) {
                     alert("El archivo " + imagenes.files[i].name + " no es una imagen.");
                     return;
                 }
             }
-            let videoExt = $('#video').val().substr(-3);
-            if( hayVideo && videoExt != "avi" && videoExt != "mp4" && $('#video').val().substr(-4) != "mpeg" && videoExt != "flv"){
+
+            if(hayVideo && !isVideo($('#video').val())){
                 alert("El archivo " + $('#video').val() + " no es un video.");
                 return;
             }

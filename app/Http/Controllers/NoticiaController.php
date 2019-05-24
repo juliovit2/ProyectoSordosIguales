@@ -9,6 +9,7 @@ use App\Http\Requests\NoticiaStoreRequest;
 
 use Illuminate\Support\Facades\DB;
 use App\Request\TickerFormRequest;
+use Illuminate\Support\Facades\Storage;
 
 class NoticiaController extends Controller
 {
@@ -33,7 +34,8 @@ class NoticiaController extends Controller
     {
         return view('noticia.create');
     }
-    public function saveEditorImages(NoticiaStoreRequest $request)
+
+    public function saveEditorImages(NoticiaStoreRequest $request, bool $store = true)
     {
         //Extraemos el contenido del editor
         $contenidoHTML = $request->get("contenidoHTML");
@@ -42,6 +44,7 @@ class NoticiaController extends Controller
             $contenidoHTML = "<p><br></p>";
         }
         $dom->loadHtml($contenidoHTML, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+
         $images = $dom->getElementsByTagName("img");
 
         //Guardamos cada imagen insertada en el editor en la BD
@@ -50,11 +53,16 @@ class NoticiaController extends Controller
             list($type, $data) = explode(";", $data);
             list(, $data)      = explode(",", $data);
             $data = base64_decode($data);
-            $image_name= "/upload/".time().$k.".png";
-            $path = public_path() . $image_name;
-            file_put_contents($path, $data);
+            $image_name = time().$k.".png";
+            $store_path = "public/imagenes/noticias/editor/";
+            $resource_path = "imagenes/noticias/editor/";
+            $image_full_path = $store_path.$image_name;
+            $resource_name = asset('storage/'.$resource_path.$image_name);
+            if ($store) {
+                Storage::disk('local')->put($image_full_path, $data);
+            }
             $img->removeAttribute("src");
-            $img->setAttribute("src", $image_name);
+            $img->setAttribute("src", $resource_name);
         }
 
         $contenidoHTML = $dom->saveHTML();
@@ -62,10 +70,20 @@ class NoticiaController extends Controller
     }
 
     /**
+     * Revisa si el contenido de la noticia debe guardarse en la base de datos
+     * o solo previsualizarse
+     *
+     */
+    public function checkPostOrPreview(NoticiaStoreRequest $request) {
+        ;
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function store(NoticiaStoreRequest $request)
     {
@@ -112,10 +130,32 @@ class NoticiaController extends Controller
      */
     public function show($id)
     {
-        //
         $tabla_noticia = tabla_noticia::find($id);
         $tabla_imagenes_noticia = tabla_imagenes_noticia::all();
         return view('noticia.show',compact('tabla_noticia','tabla_imagenes_noticia'));
+    }
+
+    public function  show_preview(NoticiaStoreRequest $request) {
+        $video_path = null;
+        $noticia = array(
+            'titulo' => $request->get('titulo'),
+            'contenido' => $request->get("contenidoHTML"),
+            'video' => substr ( $video_path , 7, strlen($video_path) -7));
+
+        $imagenes = [];
+        if($request->has('imagenes')) {
+            $this->validate($request, [
+                'imagenes.*' => '|mimes:jpeg,png,jpg,gif,svg'
+            ]);
+            foreach ($request->imagenes as $imagen) {
+                $base64src = base64_encode(file_get_contents($imagen));
+                $base64src = "data:".$imagen->getMimeType().";base64, ".$base64src;
+                array_push($imagenes, $base64src);
+            }
+        }
+
+        return view('noticia.show_preview',compact('noticia','imagenes'));
+
     }
 
     /**
