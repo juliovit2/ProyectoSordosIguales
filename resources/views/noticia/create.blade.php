@@ -24,12 +24,12 @@
                     </div>
 
                     <!-- Iniciamos el editor WYSIWYG aka. summernote-->
-                    <textarea id="summernote" name="contenidoHTML"></textarea>
+                    <textarea id="contenido" name="contenidoHTML"></textarea>
 
-                    <div class="form-group">
+                   <!-- <div class="form-group">
                         <label for="contenido"><h4>Contenido</h4></label>
                         <textarea class="form-control" id="contenido" name="contenido"></textarea>
-                    </div>
+                    </div>-->
                     <div class="form-group">
                         <label for="video"><h4>Video</h4></label>
                         <input type="file" id="video" name="video">
@@ -51,6 +51,15 @@
     <!-- La script tag es necesaria para iniciar summernote-->
     <script>
     $(document).ready(function() {
+        $('#contenido').summernote();
+        @isset($data)
+        @if ($data['is_edit'])
+        $('#contenido').summernote('code', {!! json_encode($data['noticia_a_editar']['contenido']) !!});
+        window.onload = function(){
+            document.getElementById("titulo").value = "{!! $data['noticia_a_editar']['titulo'] !!}";
+        }
+        @endif
+        @endisset
         $('#but').click(function () {
             $('#titulo').val();
         });
