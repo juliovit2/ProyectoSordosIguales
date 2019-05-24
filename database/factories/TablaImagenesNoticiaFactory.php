@@ -7,7 +7,6 @@ use Faker\Generator as Faker;
 
 $factory->define(App\tabla_imagenes_noticia::class, function (Faker $faker) {
     return [
-        'imagen' => $faker->text('100'),
-        'noticiaid' => $faker->numberBetween(1,10)
+
     ];
 });
