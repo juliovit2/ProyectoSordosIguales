@@ -41,6 +41,7 @@
                     </div>
                     <div class=form-group">
                         <input id="but" type="submit" value="Agregar Noticia" class="btn btn-primary">
+                        <input id="but2" type="submit" formaction="/noticia/previsualizar" value="Previsualizar" class="btn btn-primary">
                         <!-- <input value="Agregar Noticia" class="btn btn-primary" onclick="actualizarContenido()"> -->
                     </div>
                 </form>

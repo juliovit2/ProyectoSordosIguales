@@ -27,6 +27,7 @@ Route::get('noticia/delete/{id}', "NoticiaController@destroy");
 
 Route::post('/noticia/create', 'NoticiaController@store');
 Route::post('/noticia/edit/{id}', 'NoticiaController@update');
+Route::post('noticia/previsualizar', 'NoticiaController@show_preview');
 
 // ----------- MODULO CURSOS -----------
 
