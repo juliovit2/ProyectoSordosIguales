@@ -2,13 +2,13 @@
     <div class="row border">
         <div class="col-sm-2  ">
             <a href="http://sordosiguales.net/" rel="home">
-                <img class = "img" src="{{"/storage/UL7hTO9G.jpg"}}" style ="width:150px;height: 150px;float: right;" alt="SordosIguales">
+                <img class = "img" src="{{"/storage/logo_fundacion.png"}}" style ="width:150px;height: 150px;float: right;" alt="SordosIguales">
             </a>
         </div>
         <div class="col-sm-8 align-self-center" style="color:#2980b9;font-size: 14px;font-family: 'Arial', sans-serif !important; font-style: italic;">
-            <h1 align="center"  style="font-size: 70px">Fundación <span style="color: #972329">SORDOS IGUALES</span></h1>
+            <h1 align="center"  style="font-size: 300%">Fundación <span style="color: #972329">SORDOS IGUALES</span></h1>
         </div>
-        <div class="col-sm-2  align-self-center" style="font-size: 45px">
+        <div class="col-sm-2  align-self-center" style="font-size:200%">
             <a class = "headerLink" href = "monkey.png"><i class="fab fa-twitter-square"></i></a>
             <a class = "headerLink" href = "monkey.png"><i class="fab fa-facebook"></i></a>
             <a class = "headerLink" href = "monkey.png"><i class="fab fa-instagram"></i></a>
@@ -22,7 +22,7 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        <ul class="navbar-nav mr-auto" style="color: #3460C7">
+        <ul class="navbar-nav mr-auto" >
             <li class="nav-item">
                 <a class="nav-link" href="#"><h4><i class="fas fa-home"></i>  Inicio</h4></a>
             </li>
