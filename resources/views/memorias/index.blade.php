@@ -37,12 +37,7 @@
                     @foreach($memorias as  $key=>$item)
                         <tr>
                             <td class="text-center" id="{{ $item->id }}">{{ $item->id }}</td>
-                            <td class="text-center">
-                                @if($memorias[$key]['portada'])
-                                    <img class = "img-thumbnail" src="{{$memorias[$key]['portada']}}" width="250px" height="250px">
-                                @else
-                                    <i class="fas fa-file-pdf" style="font-size: 1000%;color: #972329"></i>
-                                @endif
+                            <td class="text-center"><img class = "img-thumbnail" src="{{$memorias[$key]['portada']}}" width="250px" height="250px"></td>
                             <td class="text-center">Memoria {{ $memorias[$key]['year'] }}</td>
                             <td class="text-center">{{$memorias[$key]->created_at}}</td>
                             <td class="text-center" width="20%">

@@ -4,11 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-<<<<<<< Updated upstream
     "content-hash": "a99122b52b2364a76fb7863a1979bcd7",
-=======
-    "content-hash": "def4f8fdbe4cb303d7736e0244684397",
->>>>>>> Stashed changes
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -465,7 +461,6 @@
         },
         {
             "name": "laravel/framework",
-<<<<<<< Updated upstream
             "version": "v5.8.16",
             "source": {
                 "type": "git",
@@ -476,18 +471,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/laravel/framework/zipball/83d57f9f9162ab476c43b9ec00d463ff12c578fd",
                 "reference": "83d57f9f9162ab476c43b9ec00d463ff12c578fd",
-=======
-            "version": "v5.8.15",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/laravel/framework.git",
-                "reference": "8a34004aed6ff0aa4072360e3e5bd875edebc223"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/8a34004aed6ff0aa4072360e3e5bd875edebc223",
-                "reference": "8a34004aed6ff0aa4072360e3e5bd875edebc223",
->>>>>>> Stashed changes
                 "shasum": ""
             },
             "require": {
@@ -621,11 +604,7 @@
                 "framework",
                 "laravel"
             ],
-<<<<<<< Updated upstream
             "time": "2019-05-07T14:37:11+00:00"
-=======
-            "time": "2019-04-30T14:05:03+00:00"
->>>>>>> Stashed changes
         },
         {
             "name": "laravel/tinker",
@@ -691,7 +670,6 @@
             "time": "2018-10-12T19:39:35+00:00"
         },
         {
-<<<<<<< Updated upstream
             "name": "laravelcollective/html",
             "version": "v5.8.0",
             "source": {
@@ -731,50 +709,15 @@
                         "Form": "Collective\\Html\\FormFacade",
                         "Html": "Collective\\Html\\HtmlFacade"
                     }
-=======
-            "name": "laraveles/spanish",
-            "version": "1.2.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Laraveles/spanish.git",
-                "reference": "8835b6713473f5c383f684e3ca38e5b8a56e3a82"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Laraveles/spanish/zipball/8835b6713473f5c383f684e3ca38e5b8a56e3a82",
-                "reference": "8835b6713473f5c383f684e3ca38e5b8a56e3a82",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/console": "~5.4.0|~5.5.0|~5.6.0|~5.7.0|~5.8.0",
-                "illuminate/support": "~5.4.0|~5.5.0|~5.6.0|~5.7.0|~5.8.0",
-                "php": ">=5.6"
-            },
-            "require-dev": {
-                "orchestra/testbench": "^3.4",
-                "phpunit/phpunit": "^5.6|^6.3|^7.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Laraveles\\Spanish\\SpanishServiceProvider"
-                    ]
->>>>>>> Stashed changes
                 }
             },
             "autoload": {
                 "psr-4": {
-<<<<<<< Updated upstream
                     "Collective\\Html\\": "src/"
                 },
                 "files": [
                     "src/helpers.php"
                 ]
-=======
-                    "Laraveles\\Spanish\\": "src"
-                }
->>>>>>> Stashed changes
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -782,7 +725,6 @@
             ],
             "authors": [
                 {
-<<<<<<< Updated upstream
                     "name": "Taylor Otwell",
                     "email": "taylorotwell@gmail.com"
                 },
@@ -794,27 +736,6 @@
             "description": "HTML and Form Builders for the Laravel Framework",
             "homepage": "https://laravelcollective.com",
             "time": "2019-03-01T22:53:41+00:00"
-=======
-                    "name": "Israel Ortuño",
-                    "email": "ai.ortuno@gmail.com"
-                },
-                {
-                    "name": "Cesar Garcia",
-                    "email": "cesargb@gmail.com",
-                    "homepage": "https://github.com/cesargb",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Conjunto de traducciones en español para Laravel",
-            "homepage": "https://github.com/Laraveles/spanish",
-            "keywords": [
-                "laravel",
-                "laraveles",
-                "spanish",
-                "traduccion"
-            ],
-            "time": "2019-04-09T11:06:59+00:00"
->>>>>>> Stashed changes
         },
         {
             "name": "league/flysystem",
