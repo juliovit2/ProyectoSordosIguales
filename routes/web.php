@@ -26,13 +26,13 @@ Route::post('/contacto','InformacionController@enviarCorreo');
 // ----------- MODULO NOTICIAS -----------
 
 //crea las 7 rutas necesarias
-Route::resource('noticia', 'NoticiaController');
-Route::get('noticia/edit/{id}', 'NoticiaController@edit');
-Route::get('noticia/delete/{id}', "NoticiaController@destroy");
+Route::resource('admin/noticias', 'NoticiaController');
+Route::get('admin/noticias/edit/{id}', 'NoticiaController@edit');
+Route::get('admin/noticias/delete/{id}', "NoticiaController@destroy");
 
-Route::post('/noticia/create', 'NoticiaController@store');
-Route::post('/noticia/edit/{id}', 'NoticiaController@update');
-Route::post('noticia/previsualizar', 'NoticiaController@show_preview');
+Route::post('admin/noticias/create', 'NoticiaController@store');
+Route::post('admin/noticias/edit/{id}', 'NoticiaController@update');
+Route::post('admin/noticias/previsualizar', 'NoticiaController@show_preview');
 
 // ----------- MODULO CURSOS -----------
 

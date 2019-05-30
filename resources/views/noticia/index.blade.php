@@ -5,7 +5,7 @@
         <h2>
             Listado de noticias
         </h2>
-        <a href="{{route('noticia.create')}}" class="btn btn-primary pull-right active" >Agregar Noticia &nbsp;<i class="fas fa-plus"></i></a>
+        <a href="{{route('noticias.create')}}" class="btn btn-primary pull-right active" >Agregar Noticia &nbsp;<i class="fas fa-plus"></i></a>
         <table class = "table table-hover table-striped">
             <thead>
 
@@ -41,7 +41,7 @@
                     <td>{{$tabla_noticia->titulo}}</td>
                     <td>{{$tabla_noticia->created_at}}</td>
                     <td>
-                        <a href="{{route('noticia.show',$tabla_noticia->id)}}"
+                        <a href="{{route('noticias.show',$tabla_noticia->id)}}"
                            class="btn btn-sm btn-primary active" title="Ver Noticia">
                             <i class="fas fa-eye"></i>
 
