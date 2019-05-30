@@ -18,6 +18,7 @@
 
     <!-- Custom styles for this template -->
     <link type="text/css" href="{{ asset('css/layout-style.css') }}" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
     @yield('head_content')
 
 </head>

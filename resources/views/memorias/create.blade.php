@@ -16,13 +16,13 @@
     @endif
 @endsection
 @section('content')
-    <div class="container">
+    <div class="container containerForm">
         <form autocomplete="off" method="POST" action="{{route('memorias.store')}} " enctype="multipart/form-data">
             {{ csrf_field() }}
             <div class="form-group row">
                 <label for="anio_memoria_select" class="col-sm-2 col-form-label">Año de Memoria</label>
                 <div class="col-sm-3">
-                    <select class="form-control" name = "anio_memoria" id="anio_memoria_select">
+                    <select class="form-control" name = "anio_memoria" id="anio_memoria_select" style="background: #EEF2FC;">
                         <option value="" disabled selected>Seleccione año</option>
                         @foreach($yearList as $year)
                             <option value= {{$year}}>{{$year}}</option>
@@ -34,24 +34,24 @@
             <div class="form-group row">
                 <label for="inputPortada" class="col-sm-2 col-form-label">Foto de Portada (Opcional) </label>
                 <div class="col-sm-3">
-                    <input type="file" class="form-control file" name="inputPortada" id="inputPortada">
+                    <input type="file" class="form-control file" style="background: #EEF2FC;" name="inputPortada" id="inputPortada">
                 </div>
             </div>
             <div class="form-group row">
                 <label for="inputMemoria" class="col-sm-2 col-form-label">Documento de Memoria</label>
                 <div class="col-sm-3">
-                    <input type="file" class="form-control file" name="inputMemoria" id="inputMemoria">
+                    <input type="file" class="form-control file" style="background: #EEF2FC;" name="inputMemoria" id="inputMemoria">
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-sm-3">
                     <span class="border">
-                        <button type="button" class="btn btn-secondary"  data-toggle="modal" data-target="#confirmCancelModal"  role="button">Cancelar</button>
+                        <button type="button" class="btn btn-secondary formButton"  data-toggle="modal" data-target="#confirmCancelModal"  role="button">Cancelar</button>
                     </span>
                 </div>
                 <div class="col-sm-2">
                     <span class="border">
-                      <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#confirmSubmitModal" >Confirmar</button>
+                      <button type="button" class="btn btn-secondary formButton" data-toggle="modal" data-target="#confirmSubmitModal" >Confirmar</button>
                     </span>
                 </div>
             </div>
@@ -79,7 +79,7 @@
 
             <!-- Confirmar Modal -->
             <div class="modal fade" id="confirmSubmitModal" tabindex="-1" role="dialog" aria-labelledby="confirmSubmitModal" aria-hidden="true">
-                <div class="modal-dialog" role="document">
+                <div class="modal-dialog" role="document" >
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="confirmSubmitModal">Confirmar envio</h5>
@@ -92,7 +92,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Volver al formulario</button>
-                            <button type="submit" class="btn btn-primary">Confirmar</button>
+                            <button type="submit" class="btn btn-primary formButton">Confirmar</button>
                         </div>
                     </div>
                 </div>
