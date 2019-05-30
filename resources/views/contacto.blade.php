@@ -97,7 +97,7 @@
 
                             <div class="form-group" align="left">
                                 <p align="left">Sube tu video (opcional)</p>
-                                <input  name="file" type="file" />
+                                <input  name="file" type="file" accept="video/mp4" />
                             </div>
 
                             <!-- Form actions -->
@@ -167,7 +167,7 @@
                                         <!-- upload file -->
                                         <div class="form-group" align="left">
                                             <p align="left">Certificados o Curriculum</p>
-                                            <input  name="file" type="file" />
+                                            <input  name="file" type="file" accept="application/pdf"/>
 
                                         </div>
                                         <!-- Form actions -->

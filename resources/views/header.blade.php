@@ -1,3 +1,4 @@
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
 <div class="container-fluid">
     <div class="row border">
         <div class="col-sm-2  ">
@@ -6,7 +7,7 @@
             </a>
         </div>
         <div class="col-sm-8 align-self-center" style="color:#2980b9;font-size: 14px;font-family: 'Arial', sans-serif !important; font-style: italic;">
-            <h1 align="center"  style="font-size: 300%">Fundación <span style="color: #972329">SORDOS IGUALES</span></h1>
+            <h1 align="center"  style="font-size: 400%">Fundación <span style="color: #972329">SORDOS IGUALES</span></h1>
         </div>
         <div class="col-sm-2  align-self-center" style="font-size:200%">
             <a class = "headerLink" href = "monkey.png"><i class="fab fa-twitter-square"></i></a>
@@ -24,19 +25,22 @@
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto" >
             <li class="nav-item">
-                <a class="nav-link" href="#"><h4><i class="fas fa-home"></i>  Inicio</h4></a>
+                <a class="nav-link" href={{'/'}}><h4><span class="textoHeader"><i class="fas fa-home"></i>  Inicio</span></h4></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#"><h4><i class="fas fa-info-circle"></i>  ¿Quienes Somos?</h4></a>
+                <a class="nav-link" href={{'/informacion'}}><h4><span class="textoHeader"><i class="fas fa-info-circle"></i> ¿Quienes Somos?</span></h4></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#"><h4><i class="far fa-newspaper"></i>  Noticias y Articulos</h4></a>
+                <a class="nav-link" href="#"><h4><span class="textoHeader"><i class="far fa-newspaper"></i>  Noticias y Articulos</span></h4></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#"><h4><i class="far fa-question-circle"></i>  Preguntas Frecuentes</h4></a>
+                <a class="nav-link" href="#"><h4><span class="textoHeader"><i class="far fa-question-circle"></i>  Preguntas Frecuentes</span></h4></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#"><h4><i class="fas fa-phone"></i>  Contacto</h4></a>
+                <a class="nav-link" href="{{'/contacto'}}"><h4><span class="textoHeader"><i class="fas fa-phone"></i>  Contacto</span></h4></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{'/login'}}"><h4><span class="textoHeader"><i class="fas fa-th"></i>  Plataforma</span></h4></a>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">

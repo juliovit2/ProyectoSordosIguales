@@ -90,11 +90,5 @@
     </div>
     <!-- Footer Links -->
 
-    <!-- Copyright -->
-    <div class="footer-copyright text-center py-3" style="background-color: #131B2A;color: #BABDC2">© 2019 Copyright:
-        <a href="https://mdbootstrap.com/education/bootstrap/"> MDBootstrap.com</a>
-    </div>
-    <!-- Copyright -->
-
 </footer>
 <!-- Footer -->
