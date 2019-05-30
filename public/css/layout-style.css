@@ -34,6 +34,24 @@ header{
 footer{
     background-image: linear-gradient(#353A46, #1E2431);
 }
+.textoHeader{
+    font-size: 87%;
+    font-family: "Source Sans Pro",Sans-Serif;
+}
+.containerForm{
+    padding: 2%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    background: #D5DFF8;
+    border: 2px solid #972329;;
+    border-radius: 20px;
+}
+.formButton{
+    background-color: #2980b9;
+}
+.formButton:hover{
+    background-color: #4995C7;
+}
 /* navbar */
 .navbar-default {
     /*background-image: linear-gradient(#3460C7, #547AD3);*/
@@ -120,16 +138,10 @@ hr.bluered{
     red  100%
     );
 }
-
 .cardHeader{
      padding:.75rem 1.25rem;
      margin-bottom:0;
      background-color:#227dc7;
      border-bottom:1px solid rgba(0,0,0,.125);
      color:#f5f5f5
-}
-
-.textoHeader{
-    font-size: 90%;
-    font-family: "Source Sans Pro", sans-serif;
 }
