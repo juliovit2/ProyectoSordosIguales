@@ -14,226 +14,326 @@
     <meta name="robots" content="noindex, nofollow">
     <title>Custom toolbar</title>
     <script src="{{asset('\ckeditor\ckeditor.js')}}"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- style -->
+    <style>
+        /*body {font-family: Arial;}*/
+
+        /* Style the tab */
+        .tab {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #2980b9;
+            width: 100%;
+        }
+
+        /* Style the buttons inside the tab */
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-size: 17px;
+            width: 25%;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Change background color of buttons on hover */
+        .tab button:hover {
+            background-color: #296da6;
+        }
+
+        /* Create an active/current tablink class */
+        .tab button.active {
+            background-color: #2a4d87;
+        }
+
+        /* Style the tab content */
+        .tabcontent {
+            display: none;
+            padding: 6px 12px;
+            border: 1px solid #ccc;
+            border-top: none;
+        }
+
+    </style>
 </head>
 
+<body>
 
-<div class="mx-auto" style="width: 1000px;">
-    <div>
-        <div>
-            @if(!empty($successMsg))
-                <div class="alert alert-success"> {{ $successMsg }}</div>
-            @endif
-            <h4 style="text-align: center">Contacto</h4>
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-            @endif
-            <!-- MENU con checkbox-->
-                <div class="funkyradio" align="center">
-                    <form action="/contacto" method="post" enctype="multipart/form-data">
-                        {{csrf_field()}}
-                        <div class="funkyradio-default">
+<!--p>Click on the buttons inside the tabbed menu:</p-->
+<!-- los botones del tab-->
+<div class="tab">
+    <button class="tablinks" onclick="openCity(event, 'Consulta')" id="defaultOpen">Consulta</button>
+    <button class="tablinks" onclick="openCity(event, 'Voluntario')">Voluntario</button>
+    <button class="tablinks" onclick="openCity(event, 'Denuncia')">Denuncia</button>
+    <button class="tablinks" onclick="openCity(event, 'Otro')">Otro</button>
+</div>
+<!-- FORMS -->
 
-                            <input type="radio" name="opcion" class="consulta" id="radio1" value="1" checked />
-                            <label for="radio1">Consulta</label>
-                            <!-- Form -->
-
-                            <!--Formulario de Voluntario -->
-
-                            <input type="radio" name="opcion" class="consulta" id="radio2" value="2" />
-                            <label for="radio2">Voluntario</label>
-                            <!-- Form -->
-
-
-
-                            <!-- Formulario de Denuncias-->
-
-                            <input type="radio" name="opcion" class="consulta" id="radio3" value="3" />
-                            <label for="radio3">Denuncias</label>
-                            <!-- FORM -->
-
-
-                            <!-- Formulario de Otros-->
-
-                            <input type="radio" name="opcion" class="consulta" id="Otros" value="4" />
-                            <label for="radio4">Otros</label>
-                            <!-- FORM -->
-
-                        </div>
-                        <!-- Formularios -->
-                        <div id="content" style="display: none;">
-                            <!-- Envía al usuario al FAQ para no repetir su pregunta-->
-                            <p>Verifique que su consulta no se encuentre en <a href="enlacepagina.html">Preguntas Frecuentes</a></p>
-                        </div>
-
-                        <!-- Campos obligatorios-->
-                        <div align="center" style="width: 50%;" id="obligatorio">
-                            <!-- Name input-->
-                            <div class="form-group">
-                                <p align="left">Nombre</p>
-                                <div>
-                                    <input id="name" name="name" type="text" placeholder="Ingrese nombre" class="form-control" pattern="([A-z]|ñ)*">
-                                </div>
-                            </div>
-
-                            <!-- Email input-->
-                            <div class="form-group">
-                                <p align="left">Correo</p>
-                                <div>
-                                    <input id="email" name="email" type="text" placeholder="Ingrese email" class="form-control" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}">
-                                </div>
-                            </div>
-
-                            <!-- Message input-->
-                            <div>
-                                <p align="left">Mensaje</p>
-                                <textarea cols="53" id="editor1" name="mensaje" rows="10"></textarea>
-                            </div>
-
-                            <div class="form-group" align="left">
-                                <p align="left">Sube tu video (opcional)</p>
-                                <input  name="file" type="file" />
-                            </div>
-
-                            <!-- Form actions -->
-                            <br>
-                            <div class="col-md-12 text-center">
-                                <button type="submit" class="btn btn-primary btn-lg text-reset">Enviar</button>
-                            </div>
-                        </div>
-                    </form>
-
-
-                    <!--Voluntario-->
-                    <form action="/contacto" method="post" enctype="multipart/form-data">
-                        {{csrf_field()}}
-                        <input type="hidden" name="opcion" class="consulta" id="radio2" value="2" />
-                        <div id="content2" style="display: none;">
-                            <div class="container" align="center">
-                                <div class="col-md-6 col-md-offset-3">
-                                    <div class="well well-sm">
-                                        <!-- Name input-->
-                                        <div class="form-group">
-                                            <p align="left">Nombre</p>
-                                            <div>
-                                                <input id="name" name="name" type="text" placeholder="Ingrese nombre" class="form-control" pattern="([A-z]|ñ)*">
-                                            </div>
-                                        </div>
-                                        <!-- Rut input-->
-                                        <div class="form-group">
-                                            <p align="left">Rut</p>
-                                            <div>
-                                                <input required oninput="checkRut(this)" id="rut" name="rut" type="text" placeholder="Ingrese Rut" class="form-control">
-                                            </div>
-                                        </div>
-                                        <!-- Email input-->
-                                        <div class="form-group">
-                                            <p align="left">Correo</p>
-                                            <div>
-                                                <input id="email" name="email" type="text" placeholder="Ingrese email" class="form-control" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}">
-                                            </div>
-                                        </div>
-
-                                        <!-- Ciudad input-->
-                                        <div class="form-group">
-                                            <p align="left">Ciudad</p>
-                                            <div>
-                                                <input id="ciudad" name="ciudad" type="text" placeholder="Ingrese ciudad" class="form-control" pattern="([A-z]|ñ)*">
-                                            </div>
-                                        </div>
-
-                                        <!-- phone input-->
-                                        <div class="form-group">
-                                            <p align="left">Telefono (Ej. 12345678)</p>
-                                            <div>
-                                                {{--                                                    <input id="phone" name="phone" type="tel" placeholder="Ingrese Telefono" pattern="+569[0-9]{8}" required class="form-control">--}}
-                                                <input id="phone" name="phone" type="tel" placeholder="Ingrese Telefono" class="form-control" pattern="[0-9]{8}">
-                                            </div>
-                                        </div>
-
-                                        <!-- Profesion input-->
-                                        <div class="form-group">
-                                            <p align="left">Profesion</p>
-                                            <div>
-                                                <input id="profesion" name="profesion" type="text" placeholder="Ingrese profesion" class="form-control" pattern="([A-z]|ñ)*">
-                                            </div>
-                                        </div>
-
-                                        <!-- upload file -->
-                                        <div class="form-group" align="left">
-                                            <p align="left">Certificados o Curriculum</p>
-                                            <input  name="file" type="file" />
-
-                                        </div>
-                                        <!-- Form actions -->
-                                        <div class="form-group">
-                                            <div class="text-center">
-                                                <button type="submit" class="btn btn-primary btn-lg">Enviar</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
+<div id="Consulta" class="tabcontent">
+    <div class="container" align="center">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="well well-sm">
+                <div class="card-header">
+                    <h3>Consulta</h3>
                 </div>
+                <div class="card" >
+                    <div class="card-body">
 
+                    <!-- Envía al usuario al FAQ para no repetir su pregunta-->
+                    <p>Verifique que su consulta no se encuentre en <a href="enlacepagina.html">Preguntas Frecuentes</a></p>
 
+                    <!-- Campos obligatorios-->
+                    <div id="obligatorio">
+                        <!-- Name input-->
+                        <div class="form-group">
+                            <p align="left">Nombre</p>
+                            <div>
+                                <input id="name" name="name" type="text" placeholder="Ingrese nombre" class="form-control" pattern="([A-z]|ñ)*">
+                            </div>
+                        </div>
 
+                        <!-- Email input-->
+                        <div class="form-group">
+                            <p align="left">Correo</p>
+                            <div>
+                                <input id="email" name="email" type="text" placeholder="Ingrese email" class="form-control" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}">
+                            </div>
+                        </div>
+
+                        <!-- Message input-->
+                        <div>
+                            <p align="left">Mensaje</p>
+                            <textarea cols="53" id="editor1" name="mensaje" rows="10"></textarea>
+                        </div>
+
+                        <div class="form-group" align="left">
+                            <p align="left">Sube tu video (opcional)</p>
+                            <input  name="file" type="file" />
+                        </div>
+
+                        <!-- Form actions -->
+                        <br>
+                        <div class="col-md-12 text-center">
+                            <button type="submit" class="btn btn-primary btn-lg text-reset">Enviar</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
+<div id="Voluntario" class="tabcontent">
+
+            <div class="container" align="center">
+                <div class="col-md-6 col-md-offset-3">
+                    <div class="well well-sm">
+                        <div class="card-header">
+                            <h3>Voluntario</h3>
+                        </div>
+                        <!-- Name input-->
+                        <div class="card" >
+                            <div class="card-body">
+                        <div class="form-group">
+                            <p align="left">Nombre</p>
+                            <div>
+                                <input id="name" name="name" type="text" placeholder="Ingrese nombre" class="form-control" pattern="([A-z]|ñ)*">
+                            </div>
+                        </div>
+                        <!-- Rut input-->
+                        <div class="form-group">
+                            <p align="left">Rut</p>
+                            <div>
+                                <input required oninput="checkRut(this)" id="rut" name="rut" type="text" placeholder="Ingrese Rut" class="form-control">
+                            </div>
+                        </div>
+                        <!-- Email input-->
+                        <div class="form-group">
+                            <p align="left">Correo</p>
+                            <div>
+                                <input id="email" name="email" type="text" placeholder="Ingrese email" class="form-control" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}">
+                            </div>
+                        </div>
+
+                        <!-- Ciudad input-->
+                        <div class="form-group">
+                            <p align="left">Ciudad</p>
+                            <div>
+                                <input id="ciudad" name="ciudad" type="text" placeholder="Ingrese ciudad" class="form-control" pattern="([A-z]|ñ)*">
+                            </div>
+                        </div>
+
+                        <!-- phone input-->
+                        <div class="form-group">
+                            <p align="left">Telefono (Ej. 12345678)</p>
+                            <div>
+                                {{--                                                    <input id="phone" name="phone" type="tel" placeholder="Ingrese Telefono" pattern="+569[0-9]{8}" required class="form-control">--}}
+                                <input id="phone" name="phone" type="tel" placeholder="Ingrese Telefono" class="form-control" pattern="[0-9]{8}">
+                            </div>
+                        </div>
+
+                        <!-- Profesion input-->
+                        <div class="form-group">
+                            <p align="left">Profesion</p>
+                            <div>
+                                <input id="profesion" name="profesion" type="text" placeholder="Ingrese profesion" class="form-control" pattern="([A-z]|ñ)*">
+                            </div>
+                        </div>
+
+                        <!-- upload file -->
+                        <div class="form-group" align="left">
+                            <p align="left">Certificados o Curriculum</p>
+                            <input  name="file" type="file" />
+
+                        </div>
+                        <!-- Form actions -->
+                        <div class="form-group">
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary btn-lg">Enviar</button>
+                            </div>
+                        </div>
+                            </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+</div>
+
+<div id="Denuncia" class="tabcontent">
+
+    <div class="container" align="center">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="well well-sm">
+                <div class="card-header">
+                    <h3>Denuncia</h3>
+                </div>
+                <!-- Campos obligatorios-->
+                <div class="card" >
+                    <div class="card-body">
+                <div id="obligatorio">
+                    <!-- Name input-->
+                    <div class="form-group">
+                        <p align="left">Nombre (opcional)</p>
+                        <div>
+                            <input id="name" name="name" type="text" placeholder="Ingrese nombre" class="form-control" pattern="([A-z]|ñ)*">
+                        </div>
+                    </div>
+
+                    <!-- Email input-->
+                    <div class="form-group">
+                        <p align="left">Correo</p>
+                        <div>
+                            <input id="email" name="email" type="text" placeholder="Ingrese email" class="form-control" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}">
+                        </div>
+                    </div>
+
+                    <!-- Message input-->
+                    <div>
+                        <p align="left">Mensaje</p>
+                        <textarea cols="53" id="editor1" name="mensaje" rows="10"></textarea>
+                    </div>
+
+                    <div class="form-group" align="left">
+                        <p align="left">Sube tu video (opcional)</p>
+                        <input  name="file" type="file" />
+                    </div>
+
+                    <!-- Form actions -->
+                    <br>
+                    <div class="col-md-12 text-center">
+                        <button type="submit" class="btn btn-primary btn-lg text-reset">Enviar</button>
+                    </div>
+                </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </fieldset>
+</div>
+
+<div id="Otro" class="tabcontent">
+
+    <div class="container" align="center">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="well well-sm">
+                <div class="card-header">
+                    <h3>Otro</h3>
+                </div>
+                <!-- Campos obligatorios-->
+                <div class="card" >
+                    <div class="card-body">
+                <div id="obligatorio">
+                    <!-- Name input-->
+                    <div class="form-group">
+                        <p align="left">Nombre</p>
+                        <div>
+                            <input id="name" name="name" type="text" placeholder="Ingrese nombre" class="form-control" pattern="([A-z]|ñ)*">
+                        </div>
+                    </div>
+
+                    <!-- Email input-->
+                    <div class="form-group">
+                        <p align="left">Correo</p>
+                        <div>
+                            <input id="email" name="email" type="text" placeholder="Ingrese email" class="form-control" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}">
+                        </div>
+                    </div>
+
+                    <!-- Message input-->
+                    <div>
+                        <p align="left">Mensaje</p>
+                        <textarea cols="53" id="editor1" name="mensaje" rows="10"></textarea>
+                    </div>
+
+                    <div class="form-group" align="left">
+                        <p align="left">Sube tu video (opcional)</p>
+                        <input  name="file" type="file" />
+                    </div>
+
+                    <!-- Form actions -->
+                    <br>
+                    <div class="col-md-12 text-center">
+                        <button type="submit" class="btn btn-primary btn-lg text-reset">Enviar</button>
+                    </div>
+                </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function openCity(evt, cityName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+    document.getElementById("defaultOpen").click();
+</script>
+
+</body>
 
 
-    <!-- Script que hace la funcion de show and hide -->
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $(".consulta").click(function (evento) {
-                var valor = $(this).val();
-                if(valor == 1){
-                    $("#content").css("display","block");
-                    $("#content2").css("display","none");
-                    $("#obligatorio").css("display","block");
-                }else if(valor == '2') {
-                    $("#content").css("display","none");
-                    $("#content2").css("display","block");
-                    $("#obligatorio").css("display","none");
-                }else{
-                    $("#content").css("display","none");
-                    $("#content2").css("display","none");
-                    $("#obligatorio").css("display","block");
-                }
-            })
-
-        })
-
-
-        CKEDITOR.replace('editor1', {
-            // Define the toolbar groups as it is a more accessible solution.
-            toolbarGroups: [{
-                "name": "basicstyles",
-                "groups": ["basicstyles"]
-            },
-                {
-                    "name": "links",
-                    "groups": ["links"]
-                },
-                {
-                    "name": "paragraph",
-                    "groups": ["list", "blocks"]
-                },
-            ],
-            // Remove the redundant buttons from toolbar groups defined above.
-            removeButtons: 'Underline,Strike,Subscript,Superscript,Anchor,Styles,Specialchar,About,Styles,Insert,Document'
-        });
-
-    </script>
 
 <script>
     function checkRut(rut) {
