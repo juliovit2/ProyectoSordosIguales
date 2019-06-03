@@ -36,7 +36,7 @@ class SendMailable extends Mailable
                 return $this->subject('Contacto')->view('emails.correo');
             }
         }else{
-            return $this->subject('Contacto')->view('emails.voluntario');
+            return $this->subject('Contacto')->attach(public_path('temp/'.$this->datos[6]))->view('emails.voluntario');
         }
 
     }

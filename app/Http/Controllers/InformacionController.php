@@ -30,42 +30,48 @@ class InformacionController extends Controller
             $nombre=$request->name;
             $mensaje=$request->mensaje;
             $tipo="";
-
             switch ($request->opcion){
                 case 1://consulta
                     $tipo='consulta';
                     $this->validate($request, [
                         'name'=>'required',
-                        'email'=>'required',
-                        'mensaje'=> 'required',
                     ]);
                     break;
                 case 3://denuncias
                     $tipo='denuncia';
-                    $this->validate($request, [
-                        'email'=>'required',
-                        'mensaje'=> 'required',
-                    ]);
+                    if($nombre==""){
+                        $nombre="Anonimo";
+                    }
                     break;
                 case 4://otros
                     $tipo='otros';
                     $this->validate($request, [
                         'name'=>'required',
-                        'email'=>'required',
-                        'mensaje'=> 'required',
                     ]);
                     break;
             }
+            $this->validate($request, [
+                'email'=>'required',
+                'mensaje'=> 'required_without:archivo',
+            ]);
             $filename="";
-            if($request->file!=null){
-                $filename = time() . '.' . $request->file->getClientOriginalExtension();
+            if($request->archivo!=null){
+                $this->validate($request, ['archivo'=>'mimes:mp4']);
+                $filename = time() . '.' . $request->archivo->getClientOriginalExtension();
                 $path=public_path('/temp');
-                $request->file->move($path,$filename);
+                $request->archivo->move($path,$filename);
             }
             $datos=[$tipo,$nombre,$request->email,$mensaje,$filename];
             //Mail::to($request->email)->send(new SendMailable($datos));
-            Mail::to('naitsircnunez@gmail.com')->send(new SendMailable($datos));
-            return view('contacto')->with('successMsg','Su mensaje fue enviado con exito');
+            try {
+                Mail::to('naitsircnunez@gmail.com')->send(new SendMailable($datos));
+            } catch(\Exception $e) {
+                return 'error';
+                //return ['error',$e->getMessage()];
+                //alert($e->getMessage()); // error in the above string (in this case, yes)!
+            }
+            //return back()->with('successMsg','Su mensaje fue enviado con exito')->with('archivo',$filename);
+            //return view('contacto')->with('successMsg','Su mensaje fue enviado con exito');
         }else{//voluntario
             $this->validate($request, [
                 'name'=>'required',
@@ -74,15 +80,21 @@ class InformacionController extends Controller
                 'ciudad'=>'required',
                 'phone'=>'required',
                 'profesion'=>'required',
-                'file'=>'required'
+                'archivo'=>'required|mimes:pdf'
             ]);
-            $filename = time() . '.' . $request->file->getClientOriginalExtension();
+            $filename = time() . '.' . $request->archivo->getClientOriginalExtension();
             $path=public_path('/temp');
-            $request->file->move($path,$filename);
+            $request->archivo->move($path,$filename);
             $datos=[$request->name,$request->rut,$request->email,$request->ciudad,$request->phone,$request->profesion,$filename];
             //Mail::to('naitsircnunez@gmail.com')->send(new SendMailable($datos));
-            Mail::to('naitsircnunez@gmail.com')->send(new SendMailable($datos));
-            return view('contacto')->with('successMsg','Su mensaje fue enviado con exito');
+            try {
+                Mail::to('naitsircnunez@gmail.com')->send(new SendMailable($datos));
+            }catch(\Exception $e) {
+                return 'error';
+                //return ['error',$e->getMessage()];
+                //alert($e->getMessage()); // error in the above string (in this case, yes)!
+            }
+            //return view('contacto')->with('successMsg','Su mensaje fue enviado con exito');
         }
     }
 
