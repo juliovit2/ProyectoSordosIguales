@@ -24,7 +24,7 @@
                         <label for="contenido"><h4>Contenido</h4></label>
                         <textarea class="form-control" id="contenido" name="contenido"></textarea>
                     </div>-->
-                    <div class="form-group">
+                    <div class="form-group mt-3">
                         <label for="video"><h4>Video</h4></label>
                         <input type="file" id="video" name="video">
                     </div>
@@ -78,7 +78,19 @@
         return false;
     }
     $(document).ready(function() {
-        $('#contenido').summernote({ lang: 'es-ES' });
+        $('#contenido').summernote({
+            lang: 'es-ES',
+            fontNames:['Source Sans Pro'],
+            toolbar: [
+                ['style', ['style', 'bold', 'underline', 'italic', 'paragraph']],
+                ['look', ['font', 'forecolor', 'backcolor']],
+                ['lists', ['ol', 'ul']],
+                ['insert', ['table', 'link', 'picture', 'video']],
+                ['misc', ['fullscreen', 'help']]
+            ],
+            maximumImageFileSize: 10485760
+        });
+        $('#contenido').summernote('fontName', 'Source Sans Pro');
         @isset($data)
             @if ($data['is_edit'])
                 $('#contenido').summernote('code', {!! json_encode($data['noticia_a_editar']['contenido']) !!});
