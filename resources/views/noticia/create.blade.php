@@ -5,7 +5,7 @@
     <!-- Lo siguiente es necesario para el editor HTML WYSIWYG -->
     <!-- include libraries(jQuery, bootstrap) -->
     <script type="text/javascript" src="{{ URL::asset('js/summernote-es-ES.js') }}"></script>
-    <div class="container mt-5 mb-5">
+    <div class="container mt-5 mb-5 containerForm">
         <div class="row">
             <div class="col-md">
 
