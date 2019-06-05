@@ -103,7 +103,7 @@
                                         <div class="form-group">
                                             <p align="left">Nombre</p>
                                             <div>
-                                                <input id="name" name="name" type="text" placeholder="Ingrese nombre" class="form-control" pattern="([A-z]|ñ|\s)*">
+                                                <input required id="name" name="name" type="text" placeholder="Ingrese nombre" class="form-control" pattern="([A-z]|ñ|\s)*">
                                             </div>
                                         </div>
 
@@ -111,7 +111,7 @@
                                         <div class="form-group">
                                             <p align="left">Correo</p>
                                             <div>
-                                                <input id="email" name="email" type="text" placeholder="Ingrese email" class="form-control" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}">
+                                                <input required id="email" name="email" type="text" placeholder="Ingrese email" class="form-control" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}">
                                             </div>
                                         </div>
 
@@ -122,18 +122,18 @@
                                         </div>
 
                                         <div class="form-group" align="left">
+                                            <input id="archivo1" type="hidden" name="archivo">
                                             <p align="left">Sube tu video (opcional)</p>
-                                            <input id="file"  name="archivo" type="file" accept="video/mp4"/>
+                                            <input onchange="subidav2(this,1)" id="file" type="file" accept="video/mp4"/>
                                             <div class="progress" style="height: 5%">
                                                 <div class="bar"></div >
                                                 <div class="percent">0%</div >
                                             </div>
                                         </div>
-
                                         <!-- Form actions -->
                                         <br>
                                         <div class="col-md-12 text-center">
-                                            <button id="consulta" onclick="subirArchivo(1)" type="submit" class="btn btn-primary btn-lg text-reset">Enviar</button>
+                                            <button id="consulta" onclick="revisar(1)" type="submit" class="btn btn-primary btn-lg text-reset">Enviar</button>
                                         </div>
                                     </div>
                             </form>
@@ -161,21 +161,21 @@
                                 <div class="form-group">
                                     <p align="left">Nombre</p>
                                     <div>
-                                        <input id="name2" name="name" type="text" placeholder="Ingrese nombre" class="form-control" pattern="([A-z]|ñ|\s)*">
+                                        <input required id="name2" name="name" type="text" placeholder="Ingrese nombre" class="form-control" pattern="([A-z]|ñ|\s)*">
                                     </div>
                                 </div>
                                 <!-- Rut input-->
                                 <div class="form-group">
                                     <p align="left">Rut</p>
                                     <div>
-                                        <input oninput="checkRut(this)" id="rut" name="rut" type="text" placeholder="Ingrese Rut" class="form-control">
+                                        <input required oninput="checkRut(this)" id="rut" name="rut" type="text" placeholder="Ingrese Rut" class="form-control">
                                     </div>
                                 </div>
                                 <!-- Email input-->
                                 <div class="form-group">
                                     <p align="left">Correo</p>
                                     <div>
-                                        <input id="email2" name="email" type="text" placeholder="Ingrese email" class="form-control" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}">
+                                        <input required id="email2" name="email" type="text" placeholder="Ingrese email" class="form-control" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}">
                                     </div>
                                 </div>
 
@@ -183,7 +183,7 @@
                                 <div class="form-group">
                                     <p align="left">Ciudad</p>
                                     <div>
-                                        <input id="ciudad" name="ciudad" type="text" placeholder="Ingrese ciudad" class="form-control" pattern="([A-z]|ñ|\s)*">
+                                        <input required id="ciudad" name="ciudad" type="text" placeholder="Ingrese ciudad" class="form-control" pattern="([A-z]|ñ|\s)*">
                                     </div>
                                 </div>
 
@@ -192,7 +192,7 @@
                                     <p align="left">Telefono (Ej. 12345678)</p>
                                     <div>
                                         {{--                                                    <input id="phone" name="phone" type="tel" placeholder="Ingrese Telefono" pattern="+569[0-9]{8}" required class="form-control">--}}
-                                        <input id="phone" name="phone" type="tel" placeholder="Ingrese Telefono" class="form-control" pattern="[0-9]{8}">
+                                        <input required id="phone" name="phone" type="tel" placeholder="Ingrese Telefono" class="form-control" pattern="[0-9]{8}">
                                     </div>
                                 </div>
 
@@ -200,14 +200,15 @@
                                 <div class="form-group">
                                     <p align="left">Profesion</p>
                                     <div>
-                                        <input id="profesion" name="profesion" type="text" placeholder="Ingrese profesion" class="form-control" pattern="([A-z]|ñ|\s)*">
+                                        <input required id="profesion" name="profesion" type="text" placeholder="Ingrese profesion" class="form-control" pattern="([A-z]|ñ|\s)*">
                                     </div>
                                 </div>
 
                                 <!-- upload file -->
                                 <div class="form-group" align="left">
                                     <p align="left">Certificados o Curriculum</p>
-                                    <input id="file2" name="archivo" type="file" accept="application/pdf" />
+                                    <input id="archivo2" type="hidden" name="archivo">
+                                    <input id="file2" onchange="subidav2(this,2)" type="file" accept="application/pdf" />
                                     <div class="progress" style="height: 5%">
                                         <div class="bar"></div >
                                         <div class="percent">0%</div >
@@ -216,7 +217,7 @@
                                 <!-- Form actions -->
                                 <div class="form-group">
                                     <div class="text-center">
-                                        <button id="voluntario" onclick="subirArchivo(2)" type="submit" class="btn btn-primary btn-lg text-reset">Enviar</button>
+                                        <button id="voluntario" onclick="revisar(2)" type="submit" class="btn btn-primary btn-lg text-reset">Enviar</button>
                                     </div>
                                 </div>
                             </div>
@@ -255,7 +256,7 @@
                                     <div class="form-group">
                                         <p align="left">Correo</p>
                                         <div>
-                                            <input id="email3" name="email" type="text" placeholder="Ingrese email" class="form-control" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}">
+                                            <input required id="email3" name="email" type="text" placeholder="Ingrese email" class="form-control" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}">
                                         </div>
                                     </div>
 
@@ -267,7 +268,8 @@
 
                                     <div class="form-group" align="left">
                                         <p align="left">Sube tu video (opcional)</p>
-                                        <input id="file3" name="archivo" type="file" accept="video/mp4"/>
+                                        <input id="archivo3" type="hidden" name="archivo">
+                                        <input id="file3" onchange="subidav2(this,3)" type="file" accept="video/mp4"/>
                                         <div class="progress" style="height: 5%">
                                             <div class="bar"></div >
                                             <div class="percent">0%</div >
@@ -277,7 +279,7 @@
                                     <!-- Form actions -->
                                     <br>
                                     <div class="col-md-12 text-center">
-                                        <button id="denuncia" onclick="subirArchivo(3)" type="submit" class="btn btn-primary btn-lg text-reset">Enviar</button>
+                                        <button id="denuncia" onclick="revisar(3)" type="submit" class="btn btn-primary btn-lg text-reset">Enviar</button>
                                     </div>
                                 </div>
                             </div>
@@ -308,7 +310,7 @@
                                     <div class="form-group">
                                         <p align="left">Nombre</p>
                                         <div>
-                                            <input id="name4" name="name" type="text" placeholder="Ingrese nombre" class="form-control" pattern="([A-z]|ñ|\s)*">
+                                            <input required id="name4" name="name" type="text" placeholder="Ingrese nombre" class="form-control" pattern="([A-z]|ñ|\s)*">
                                         </div>
                                     </div>
 
@@ -316,7 +318,7 @@
                                     <div class="form-group">
                                         <p align="left">Correo</p>
                                         <div>
-                                            <input id="email4" name="email" type="text" placeholder="Ingrese email" class="form-control" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}">
+                                            <input required id="email4" name="email" type="text" placeholder="Ingrese email" class="form-control" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}">
                                         </div>
                                     </div>
 
@@ -328,7 +330,8 @@
 
                                     <div class="form-group" align="left">
                                         <p align="left">Sube tu video (opcional)</p>
-                                        <input id="file4" name="archivo" type="file" accept="video/mp4"/>
+                                        <input id="archivo4" type="hidden" name="archivo">
+                                        <input id="file4" onchange="subidav2(this,4)" type="file" accept="video/mp4"/>
                                         <div class="progress" style="height: 5%">
                                             <div class="bar"></div >
                                             <div class="percent">0%</div >
@@ -338,7 +341,7 @@
                                     <!-- Form actions -->
                                     <br>
                                     <div class="col-md-12 text-center">
-                                        <button id="otro" onclick="subirArchivo(4)" type="submit" class="btn btn-primary btn-lg text-reset">Enviar</button>
+                                        <button id="otro" onclick="revisar(4)" type="submit" class="btn btn-primary btn-lg text-reset">Enviar</button>
                                     </div>
                                 </div>
                             </div>
@@ -350,6 +353,79 @@
     </div>
 
     </body>
+    {{--    subida de archivo(barra de progreso)--}}
+    <script src="http://malsup.github.com/jquery.form.js"></script>
+    <script>
+        function revisar(op) {
+            document.getElementById("op").value = op;//indica que boron se esta utilizando
+            $('form').ajaxForm({
+                complete: function(xhr) {
+                    alert(xhr.responseText);//recibe el return del controlador
+                    window.location.href = "/contacto";
+                }
+            });
+        }
+        function subidav2(img,op) {
+            var bar = $('.bar');
+            var percent = $('.percent');
+            var form_data = new FormData();
+            form_data.append('archivo', img.files[0]);
+            form_data.append('op', op);
+            form_data.append('_token', '{{csrf_token()}}');
+            $.ajax({
+                xhr: function() {
+                    var xhr = new window.XMLHttpRequest();
+                    xhr.upload.addEventListener("progress", function(evt) {//proceso de carga
+                        if (evt.lengthComputable) {
+                            var percentComplete = (evt.loaded / evt.total) * 100;
+                            var percentVal = percentComplete + '%';
+                            bar.width(percentVal);
+                            percent.html(percentVal);
+                        }
+                    }, false);
+                    return xhr;
+                },
+                url: "{{url('subidaDeArchivo')}}",
+                data: form_data,
+                type: 'POST',
+                contentType: false,
+                processData: false,
+                success: function (data) {
+                    if (data.fail) {
+                        alert(data.errors['file']);
+                    }
+                    else {
+                        switch (op) {
+                            case 1:
+                                document.getElementById("archivo1").value = data;
+                                break;
+                            case 2:
+                                document.getElementById("archivo2").value = data;
+                                break;
+                            case 3:
+                                document.getElementById("archivo3").value = data;
+                                break;
+                            case 4:
+                                document.getElementById("archivo4").value = data;
+                                break;
+                        }
+                        //alert(data);
+                        alert("Archivo Subido");
+                    }
+                },
+                error: function (xhr, status, error) {
+                    var percentVal='0%';
+                    bar.width(percentVal);
+                    percent.html(percentVal);
+                    if(error=="Unprocessable Entity"){
+                        alert("Formato invalido");
+                    }
+                    //alert(xhr.responseText)
+                    //alert('Error: \n'+xhr.responseText);
+                }
+            });
+        }
+    </script>
 
 {{--    boton de enviando...--}}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -362,16 +438,20 @@
                     $this.data('original-text', $(this).html());
                     $this.html(loadingText);
                 }
+
                 var op=parseInt($('#op').val());
                 //valida los campos que no esten vacios, de estarlos los botones se restablecen y se envia un mensaje
                 switch (op) {
                     case 1:
+                        $('#consulta').attr('disabled','disabled');
                         var name=$('#name').val();
                         var email=$('#email').val();
                         if(name=="" || email==""){
                             //alert("");
                             $('#consulta').html($('#consulta').data('original-text'));
-                            return false;
+                            $('#consulta').removeAttr('disabled');
+                            break;
+                            //return false;
                         }
                         //var textArea=$('#cke_editor1').val();
                         var textArea=CKEDITOR.instances.editor1.getData();
@@ -379,10 +459,12 @@
                         if(textArea=="" && archivo==""){
                             alert("El correo debe contener un mensaje o un video.");
                             $('#consulta').html($('#consulta').data('original-text'));
+                            $('#consulta').removeAttr('disabled');
                             return false;
                         }
                         break;
                     case 2:
+                        $('#voluntario').attr('disabled','disabled');
                         var name=$('#name2').val();
                         var rut=$('#rut').val();
                         var email=$('#email2').val();
@@ -391,21 +473,27 @@
                         var profesion=$('#profesion').val();
                         if(name=="" || email=="" || rut=="" || ciudad=="" || phone=="" || profesion==""){
                             $('#voluntario').html($('#voluntario').data('original-text'));
-                            return false;
+                            $('#voluntario').removeAttr('disabled');
+                            break;
+                            //return false;
                         }
                         var archivo=$('#file2').val();
                         if(archivo==""){
-                            alert("El correo debe contener un mensaje o un video.");
+                            alert("El correo debe contener un archivo pdf.");
                             $('#voluntario').html($('#voluntario').data('original-text'));
+                            $('#voluntario').removeAttr('disabled');
                             return false;
                         }
                         break;
                     case 3:
+                        $('#denuncia').attr('disabled','disabled');
                         //var name=$('#name3').val();
                         var email=$('#email3').val();
                         if(email==""){
                             $('#denuncia').html($('#denuncia').data('original-text'));
-                            return false;
+                            $('#denuncia').removeAttr('disabled');
+                            break;
+                            //return false;
                         }
                         //var textArea=$('#editor3').val();
                         var textArea=CKEDITOR.instances.editor3.getData();
@@ -413,22 +501,27 @@
                         if(textArea=="" && archivo==""){
                             alert("El correo debe contener un mensaje o un video.");
                             $('#denuncia').html($('#denuncia').data('original-text'));
+                            $('#denuncia').removeAttr('disabled');
                             return false;
                         }
                         break;
                     case 4:
+                        $('#otro').attr('disabled','disabled');
                         var name=$('#name4').val();
                         var email=$('#email4').val();
                         if(name=="" || email==""){
                             $('#otro').html($('#otro').data('original-text'));
-                            return false;
+                            $('#otro').removeAttr('disabled');
+                            break;
+                            //return false;
                         }
                         //var textArea=$('#editor4').val();
                         var textArea=CKEDITOR.instances.editor4.getData();
                         var archivo=$('#file4').val();
                         if(textArea=="" && archivo==""){
-                            alert("El mensaje debe contener un mensaje o un video.");
+                            alert("El correo debe contener un mensaje o un video.");
                             $('#otro').html($('#otro').data('original-text'));
+                            $('#otro').removeAttr('disabled');
                             return false;
                         }
                         break;
@@ -441,148 +534,6 @@
         })
     </script>
 
-{{--    subida de archivo(barra de progreso)--}}
-    <script src="http://malsup.github.com/jquery.form.js"></script>
-    <script type="text/javascript">
-
-        // function validate(formData, jqForm, options) {
-        //     var form = jqForm[0];
-        //     if (!form.archivo.value) {
-        //         alert('File not found');
-        //         return false;
-        //     }
-        // }
-        //codigo repetido
-        // function checkmsn() {
-        //     //var op=$('#op').val();
-        //     var op=parseInt($('#op').val());
-        //     switch (op) {
-        //         case 1:
-        //             var textArea=$('#editor1').val();
-        //             var archivo=$('#file').val();
-        //             if(textArea=="" && archivo==""){
-        //                 alert("El mensaje debe contener un mensaje o un video.");
-        //                 //$('#consulta').html($('#consulta').data('original-text'));
-        //                 return false;
-        //             }
-        //             break;
-        //         case 2:
-        //             var archivo=$('#file2').val();
-        //             if(archivo==""){
-        //                 alert("El mensaje debe contener un archivo pdf");
-        //                 //$('#voluntario').html($('#voluntario').data('original-text'));
-        //                 return false;
-        //             }
-        //             break;
-        //         case 3:
-        //             var textArea=$('#editor3').val();
-        //             var archivo=$('#file3').val();
-        //             if(textArea=="" && archivo==""){
-        //                 alert("El mensaje debe contener un mensaje o un video.");
-        //                 //$('#denuncia').html($('#denuncia').data('original-text'));
-        //                 return false;
-        //             }
-        //             break;
-        //         case 4:
-        //             var textArea=$('#editor4').val();
-        //             var archivo=$('#file4').val();
-        //             if(textArea=="" && archivo==""){
-        //                 alert("El mensaje debe contener un mensaje o un video.");
-        //                 //$('#otro').html($('#otro').data('original-text'));
-        //                 return false;
-        //             }
-        //             break;
-        //     }
-        //
-        // }
-        function restablecerBotones() {
-            $('#consulta').html($('#consulta').data('original-text'));
-            $('#voluntario').html($('#voluntario').data('original-text'));
-            $('#denuncia').html($('#denuncia').data('original-text'));
-            $('#otro').html($('#otro').data('original-text'));
-            $('#consulta').removeAttr('disabled');
-            $('#voluntario').removeAttr('disabled');
-            $('#denuncia').removeAttr('disabled');
-            $('#otro').removeAttr('disabled');
-            var bar = $('.bar');
-            var percent = $('.percent');
-            var percentVal = '0%';
-            bar.width(percentVal);
-            percent.html(percentVal);
-        }
-        function subirArchivo(op) {
-            var bar = $('.bar');
-            var percent = $('.percent');
-            var status = $('#status');
-            var percentVal = '0%';
-            //se guarda la opcion en el input op del inicio
-            document.getElementById("op").value = op;
-            $('form').ajaxForm({
-                //beforeSubmit: validate,
-                //beforeSubmit: checkmsn,
-                beforeSend: function() {
-                    $('#consulta').attr('disabled','disabled');
-                    $('#voluntario').attr('disabled','disabled');
-                    $('#denuncia').attr('disabled','disabled');
-                    $('#otro').attr('disabled','disabled');
-                    status.empty();
-                    percentVal = '0%';
-                    var posterValue = $('input[name=archivo]').fieldValue();
-                    bar.width(percentVal);
-                    percent.html(percentVal);
-                },
-                uploadProgress: function(event, position, total, percentComplete) {
-                    var file="";
-                    switch (op) {
-                        case 1:
-                            file=$('#file').val();
-                            break;
-                        case 2:
-                            file=$('#file2').val();
-                            break;
-                        case 3:
-                            file=$('#file3').val();
-                            break;
-                        case 4:
-                            file=$('#file4').val();
-                            break;
-                    }
-                    if(file!=""){
-                        var percentVal = percentComplete + '%';
-                        bar.width(percentVal);
-                        percent.html(percentVal);
-                    }
-                },
-                success: function() {
-                    bar.width(percentVal);
-                    percent.html(percentVal);
-                },
-                complete: function(xhr) {
-                    debugger;
-                    var percentVal = 'Wait, Saving';
-                    status.html(xhr.responseText);
-                    var aux=xhr.responseText;
-                    if(aux=='error'){
-                        alert('Error inténtelo mas tarde');
-                        restablecerBotones();
-                        return false;
-                    }else{
-                        if(aux=="{\"message\":\"The given data was invalid.\",\"errors\":{\"name\":[\"El campo name es obligatorio.\"]}}" ||
-                        aux=="{\"message\":\"The given data was invalid.\",\"errors\":{\"archivo\":[\"El campo archivo debe ser un archivo de tipo: pdf.\"]}}" ||
-                        aux=="{\"message\":\"The given data was invalid.\",\"errors\":{\"archivo\":[\"El campo archivo debe ser un archivo de tipo: mp4.\"]}}"){
-                            alert('Formato invalido');
-                            restablecerBotones();
-                            return false;
-                        }else{
-                            alert('Mensaje enviado');
-                        }
-                    }
-                    restablecerBotones()
-                    window.location.href = "/contacto";
-                }
-            });
-        }
-    </script>
 
 {{--    tabs--}}
     <script>

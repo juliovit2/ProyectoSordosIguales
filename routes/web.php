@@ -18,6 +18,7 @@ Route::get('/', function () {
 Route::resource('/contacto','InformacionController');
 Route::get('/informacion','InformacionController@info');
 Route::post('/contacto','InformacionController@enviarCorreo');
+Route::post('subidaDeArchivo','InformacionController@subirArchivo');
 
 
 //escribir todas las rutas requeridas aqui siguiendo el mismo formato

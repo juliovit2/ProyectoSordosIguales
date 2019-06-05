@@ -54,21 +54,15 @@ class InformacionController extends Controller
                 'email'=>'required',
                 'mensaje'=> 'required_without:archivo',
             ]);
-            $filename="";
-            if($request->archivo!=null){
-                $this->validate($request, ['archivo'=>'mimes:mp4']);
-                $filename = time() . '.' . $request->archivo->getClientOriginalExtension();
-                $path=public_path('/temp');
-                $request->archivo->move($path,$filename);
-            }
-            $datos=[$tipo,$nombre,$request->email,$mensaje,$filename];
+            $datos=[$tipo,$nombre,$request->email,$mensaje,$request->archivo];
             //Mail::to($request->email)->send(new SendMailable($datos));
             try {
                 Mail::to('naitsircnunez@gmail.com')->send(new SendMailable($datos));
+                return 'Mensaje enviado';
             } catch(\Exception $e) {
-                return 'error';
+                //return 'error';
                 //return ['error',$e->getMessage()];
-                //alert($e->getMessage()); // error in the above string (in this case, yes)!
+                return $e->getMessage(); // error in the above string (in this case, yes)!
             }
             //return back()->with('successMsg','Su mensaje fue enviado con exito')->with('archivo',$filename);
             //return view('contacto')->with('successMsg','Su mensaje fue enviado con exito');
@@ -80,22 +74,38 @@ class InformacionController extends Controller
                 'ciudad'=>'required',
                 'phone'=>'required',
                 'profesion'=>'required',
-                'archivo'=>'required|mimes:pdf'
+                'archivo'=>'required'
             ]);
-            $filename = time() . '.' . $request->archivo->getClientOriginalExtension();
-            $path=public_path('/temp');
-            $request->archivo->move($path,$filename);
-            $datos=[$request->name,$request->rut,$request->email,$request->ciudad,$request->phone,$request->profesion,$filename];
+            $datos=[$request->name,$request->rut,$request->email,$request->ciudad,$request->phone,$request->profesion,$request->archivo];
             //Mail::to('naitsircnunez@gmail.com')->send(new SendMailable($datos));
             try {
                 Mail::to('naitsircnunez@gmail.com')->send(new SendMailable($datos));
+                return 'Mensaje enviado';
             }catch(\Exception $e) {
-                return 'error';
+                return $e->getMessage();
                 //return ['error',$e->getMessage()];
                 //alert($e->getMessage()); // error in the above string (in this case, yes)!
             }
             //return view('contacto')->with('successMsg','Su mensaje fue enviado con exito');
         }
+    }
+
+    public function subirArchivo(Request $request)
+    {
+
+        if($request->op!="2"){
+            $this->validate($request,[
+                'archivo' => 'required|mimes:mp4',
+            ]);
+        }else{
+            $this->validate($request,[
+                'archivo' => 'required|mimes:pdf',
+            ]);
+        }
+        $imageName = time().'.'.request()->archivo->getClientOriginalExtension();
+        $request->archivo->move(public_path('/temp'), $imageName);
+        return $imageName;
+        //return back()->with('success','You have successfully upload image.')->with('archivo',$imageName);
     }
 
     /**
