@@ -37,8 +37,8 @@ class DatabaseSeeder extends Seeder
         $this->call(UsuarioCursoSeeder::class);
         $this->call(UsuarioNotasSeeder::class);
         $this->call(EvaluacionesCursoSeeder::class);
-        $this->call(NoticiaSeeder::class);
-        $this->call(ImagenesNoticiasSeeder::class);
+        //$this->call(NoticiaSeeder::class);
+        //$this->call(ImagenesNoticiasSeeder::class);
         // llamar a los seeders correspondientes faltantes
 
         DB::statement('SET FOREIGN_KEY_CHECKS = 1;');
