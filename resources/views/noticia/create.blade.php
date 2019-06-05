@@ -51,7 +51,7 @@
     }
 
     function isImage(filename) {
-        var ext = getExtension(filename);
+        /*var ext = getExtension(filename);
         switch (ext.toLowerCase()) {
             case 'jpg':
             case 'gif':
@@ -60,12 +60,13 @@
             case 'jpeg':
             case 'svg':
                 return true;
-        }
-        return false;
+        }*/
+        return true;
     }
 
     function isVideo(filename) {
-        var ext = getExtension(filename);
+        
+        /*var ext = getExtension(filename);
         switch (ext.toLowerCase()) {
             case 'm4v':
             case 'avi':
@@ -74,8 +75,8 @@
             case 'flv':
             case 'mpeg':
                 return true;
-        }
-        return false;
+        }*/
+        return true;
     }
     $(document).ready(function() {
         $('#contenido').summernote({
