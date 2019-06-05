@@ -32,15 +32,15 @@
             </div>
 
             <div class="form-group row">
-                <label for="inputPortada" class="col-sm-2 col-form-label">Foto de Portada (Opcional) </label>
-                <div class="col-sm-3">
-                    <input type="file" class="form-control file" style="background: #EEF2FC;" name="inputPortada" id="inputPortada">
-                </div>
-            </div>
-            <div class="form-group row">
                 <label for="inputMemoria" class="col-sm-2 col-form-label">Documento de Memoria</label>
                 <div class="col-sm-3">
                     <input type="file" class="form-control file" style="background: #EEF2FC;" name="inputMemoria" id="inputMemoria">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputPortada" class="col-sm-2 col-form-label">Foto de Portada (Opcional) </label>
+                <div class="col-sm-3">
+                    <input type="file" class="form-control file" style="background: #EEF2FC;" name="inputPortada" id="inputPortada">
                 </div>
             </div>
             <div class="form-group row">

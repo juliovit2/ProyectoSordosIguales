@@ -44,7 +44,7 @@
         <br />
         <br />
 
-    <div class="container">
+    <div class="container containerForm">
         <h2> Elija uno o más atributos a modificar</h2>
         <br />
         <form autocomplete="off" method="POST" action="{{route('memorias.update',$memoria['id'])}} " enctype="multipart/form-data">
@@ -61,18 +61,16 @@
                     </select>
                 </div>
             </div>
-
-
+            <div class="form-group row ">
+                <label for="inputMemoria" class="col-sm-2 col-form-label">Documento de Memoria</label>
+                <div class="col-sm-3 d-flex align-items-center">
+                    <input type="file" class="form-control file" name="inputMemoria" id="inputMemoria">
+                </div>
+            </div>
             <div class="form-group row d-flex align-items-center">
                 <label for="inputPortada" class="col-sm-2 col-form-label">Foto de Portada</label>
                 <div class="col-sm-3">
                     <input type="file" class="form-control file" name="inputPortada" id="inputPortada">
-                </div>
-            </div>
-            <div class="form-group row border">
-                <label for="inputMemoria" class="col-sm-2 col-form-label">Documento de Memoria</label>
-                <div class="col-sm-3 d-flex align-items-center">
-                    <input type="file" class="form-control file" name="inputMemoria" id="inputMemoria">
                 </div>
             </div>
             <div class="form-group row">
