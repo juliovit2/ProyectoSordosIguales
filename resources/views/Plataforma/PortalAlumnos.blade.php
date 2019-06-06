@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Proyecto Codelco</title>
+    <title>Plataforma Sordos Iguales</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
@@ -70,7 +70,9 @@
     @if (Route::has('login'))
         <div class="top-right links">
             @auth
-                <a href="{{ url('/home') }}">Página de Inicio</a>
+                <a href="{{ url('/') }}">Página de Inicio</a>
+                <a href="{{url('/logout')}}">Logout</a>
+
             @else
                 <a href="{{ route('login') }}">Login</a>
 
@@ -87,6 +89,7 @@
         </div>
         <div>
             <a href="{{route('users.index')}}"><button class="btn btn-primary" type="submit">Estudiantes</button></a>
+            <a href="{{url('/IngresarNotas')}}"><button class="btn btn-primary" type="submit">Notas</button></a>
         </div>
     </div>
 </div>

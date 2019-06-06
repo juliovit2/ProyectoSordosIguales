@@ -29,7 +29,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -59,5 +59,10 @@ class LoginController extends Controller
         if ($rut != $rut_value || $password != $clave) {
             return redirect()->back()->withInput()->withErrors('Rut o contraseña incorrectos');
         }
+    }
+
+    public function logout(Request $request) {
+        Auth::logout();
+        return redirect('/login');
     }
 }

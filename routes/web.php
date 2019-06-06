@@ -37,22 +37,19 @@ Route::post('admin/noticias/previsualizar', 'NoticiaController@show_preview');
 
 // ----------- MODULO CURSOS -----------
 
-Route::get('/Plataforma', function () {
-    return view('Plataforma/IniciarSesion');
-});
-
-Route::get('/IngresarNotas', function () {
-    return view('Plataforma/IngresarNotas');
-});
-
+// -----------LOGIN-----------
 Route::post('login', 'Auth\LoginController@login')->name('login');
-Route::post('ingresarNotas', 'NotasController@ingresar')->name('ingresarNotas');
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
-
+//PORTAL
 Route::get('/PortalAlumnos', function () {
     return view('Plataforma/PortalAlumnos');
 });
-
+//INGRESAR NOTAS
+Route::post('ingresarNotas', 'NotasController@ingresar')->name('ingresarNotas');
+Route::get('/IngresarNotas', function () {
+    return view('Plataforma/IngresarNotas');
+});
 // ----------- MODULO CONTACTO -----------
 
 
