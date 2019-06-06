@@ -40,6 +40,9 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="{{route('users.index')}}">Estudiantes <span class="sr-only">(current)</span></a>
                 </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{route('cursos.index')}}">Cursos <span class="sr-only">(current)</span></a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link disabled" href="#">Algun Link</a>
                 </li>
