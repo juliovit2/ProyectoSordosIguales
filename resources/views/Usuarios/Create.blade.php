@@ -3,14 +3,13 @@
 @section('title', "Crear usuario")
 
 @section('content')
+
     @card
         @slot('header', 'Nuevo Usuario')
 
         @include('shared._errors')
 
         <form method="POST" action="{{url('usuarios') }}">
-
-            @render('UsersFields', ['user'=>$user])
 
             @include('Usuarios._fields')
 
@@ -21,6 +20,4 @@
         </form>
 
     @endcard
-
-
 @endsection
