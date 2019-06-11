@@ -366,6 +366,21 @@
             });
         }
         function subidav2(img,op) {
+            switch (op) {
+                case 1:
+                    $('#consulta').attr('disabled','disabled');
+                    break;
+                case 2:
+                    $('#voluntario').attr('disabled','disabled');
+                    break;
+                case 3:
+                    $('#denuncia').attr('disabled','disabled');
+                    break;
+                case 4:
+                    $('#otro').attr('disabled','disabled');
+                    break;
+            }
+            $('#consulta').attr('disabled','disabled');
             var bar = $('.bar');
             var percent = $('.percent');
             var form_data = new FormData();
@@ -395,6 +410,7 @@
                         alert(data.errors['file']);
                     }
                     else {
+                        debugger;
                         switch (op) {
                             case 1:
                                 document.getElementById("archivo1").value = data;
@@ -410,6 +426,20 @@
                                 break;
                         }
                         //alert(data);
+                        switch (op) {
+                            case 1:
+                                $('#consulta').removeAttr('disabled');
+                                break;
+                            case 2:
+                                $('#voluntario').removeAttr('disabled');
+                                break;
+                            case 3:
+                                $('#denuncia').removeAttr('disabled');
+                                break;
+                            case 4:
+                                $('#otro').removeAttr('disabled');
+                                break;
+                        }
                         alert("Archivo Subido");
                     }
                 },
@@ -418,7 +448,21 @@
                     bar.width(percentVal);
                     percent.html(percentVal);
                     if(error=="Unprocessable Entity"){
-                        alert("Formato invalido");
+                        alert("El formato invalido o el archivo supera los 30mb");
+                    }
+                    switch (op) {
+                        case 1:
+                            $('#consulta').removeAttr('disabled');
+                            break;
+                        case 2:
+                            $('#voluntario').removeAttr('disabled');
+                            break;
+                        case 3:
+                            $('#denuncia').removeAttr('disabled');
+                            break;
+                        case 4:
+                            $('#otro').removeAttr('disabled');
+                            break;
                     }
                     //alert(xhr.responseText)
                     //alert('Error: \n'+xhr.responseText);
