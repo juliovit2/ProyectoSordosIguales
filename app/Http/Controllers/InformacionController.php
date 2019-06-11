@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\SendMailable;
 use App\tabla_persona;
 use File;
+use App\Http\Requests;
+use Dropbox\Client;
+use Dropbox\WriteMode;
+use Illuminate\Support\Facades\Storage;
 
 class InformacionController extends Controller
 {
@@ -18,11 +22,11 @@ class InformacionController extends Controller
      */
     public function index()
     {
-        return view('contacto');
+        return view('InfoContacto.contacto');
     }
 
     public function info(){
-        return view('informacion');
+        return view('InfoContacto.informacion');
     }
 
     public function enviarCorreo(Request $request){
@@ -55,6 +59,7 @@ class InformacionController extends Controller
                 'mensaje'=> 'required_without:archivo',
             ]);
             $datos=[$tipo,$nombre,$request->email,$mensaje,$request->archivo];
+            //$datos=[$tipo,$nombre,$request->email,$mensaje];
             //Mail::to($request->email)->send(new SendMailable($datos));
             try {
                 Mail::to('naitsircnunez@gmail.com')->send(new SendMailable($datos));
@@ -95,16 +100,33 @@ class InformacionController extends Controller
 
         if($request->op!="2"){
             $this->validate($request,[
-                'archivo' => 'required|mimes:mp4',
+                'archivo' => 'required|mimes:mp4|max:30720',
             ]);
+            if($request->op="1"){
+                $imageName = 'Consulta-'.time().'.'.request()->archivo->getClientOriginalExtension();
+            }else{
+                if($request->op="3"){
+                    $imageName = 'Denuncia-'.time().'.'.request()->archivo->getClientOriginalExtension();
+                }else{
+                    $imageName = 'Otro-'.time().'.'.request()->archivo->getClientOriginalExtension();
+                }
+            }
+            Storage::disk('dropbox')->putFileAs(
+                '/',
+                $request->file('archivo'),
+                $imageName
+            );
+            return $imageName;
         }else{
             $this->validate($request,[
                 'archivo' => 'required|mimes:pdf',
             ]);
+            $imageName = time().'.'.request()->archivo->getClientOriginalExtension();
+            $request->archivo->move(public_path('/temp'), $imageName);
+            //return $imageName;
         }
-        $imageName = time().'.'.request()->archivo->getClientOriginalExtension();
-        $request->archivo->move(public_path('/temp'), $imageName);
-        return $imageName;
+//        $request->archivo->move(public_path('/temp'), $imageName);
+//        return $imageName;
         //return back()->with('success','You have successfully upload image.')->with('archivo',$imageName);
     }
 
