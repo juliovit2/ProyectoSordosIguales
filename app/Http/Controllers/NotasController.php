@@ -56,4 +56,16 @@ class NotasController extends Controller
         }
     }
 
+    public function modificar(Request $request){
+
+        $users = DB::select('select * from student');
+        return view('stud_edit_view',['users'=>$users]);
+
+    }
+
+    public function eliminar(Request $request){
+
+
+    }
+
 }
