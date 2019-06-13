@@ -15,10 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('/contacto','InformacionController');
-Route::get('/informacion','InformacionController@info');
-Route::post('/contacto','InformacionController@enviarCorreo');
-Route::post('subidaDeArchivo','InformacionController@subirArchivo');
 
 
 //escribir todas las rutas requeridas aqui siguiendo el mismo formato
@@ -93,6 +89,11 @@ Route::post('IndiceNotas/mod/{user}','NotasController@modificarIndex');
 Route::get('IndiceNotas/delete/{user}','NotasController@eliminar');
 // ----------- MODULO CONTACTO -----------
 
+Route::resource('/contacto','InformacionController');
+Route::get('/informacion','InformacionController@info');
+Route::post('/contacto','InformacionController@enviarCorreo');
+Route::post('subidaDeArchivo','InformacionController@subirArchivo');
+Route::resource('/faq','FaqController');
 
 // ----------- MODULO (MEMORIAS)-----------
 Route::resource('admin/memorias', 'MemoriaController');
