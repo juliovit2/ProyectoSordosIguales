@@ -29,7 +29,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/PortalAlumnos';
 
     /**
      * Create a new controller instance.
@@ -41,10 +41,8 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-
     public function login(Request $request)
     {
-
         $rut_value = request()->rut;
         $rut = DB::table('users')->where('rut', $rut_value)->value('rut');
 
@@ -53,7 +51,9 @@ class LoginController extends Controller
         //dd($rut_value, $rut,$password,$clave);
 
         if ($rut == $rut_value && Hash::check($password, $clave)) {
-            return view('Plataforma/PortalAlumnos');
+            if ($this->attemptLogin($request)) {
+                return $this->sendLoginResponse($request);
+            }
         }
 
         if ($rut != $rut_value || $password != $clave) {
@@ -64,5 +64,11 @@ class LoginController extends Controller
     public function logout(Request $request) {
         Auth::logout();
         return redirect('/login');
+    }
+
+    protected function credentials(Request $request)
+    {
+        $credentials = $request->only('rut', 'password');
+        return $credentials;
     }
 }
