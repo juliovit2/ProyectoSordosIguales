@@ -95,6 +95,15 @@ Route::post('/contacto','InformacionController@enviarCorreo');
 Route::post('subidaDeArchivo','InformacionController@subirArchivo');
 Route::resource('/faq','FaqController');
 
+Route::resource('admin/voluntarios', 'VoluntariosController');
+Route::get('admin/voluntarios/edit/{id}', 'VoluntariosController@edit');
+Route::get('admin/voluntarios/delete/{id}', "VoluntariosController@destroy");
+
+Route::post('admin/voluntarios/create', 'VoluntariosController@store');
+Route::post('admin/voluntarios/edit/{id}', 'VoluntariosController@update');
+Route::post('admin/voluntarios/previsualizar', 'VoluntariosController@show_preview');
+
+
 // ----------- MODULO (MEMORIAS)-----------
 Route::resource('admin/memorias', 'MemoriaController');
 
