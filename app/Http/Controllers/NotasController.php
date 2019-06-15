@@ -56,4 +56,42 @@ class NotasController extends Controller
         }
     }
 
+    public function modificar(Request $request){
+
+        $usuarios = DB::select('select name, rut, nota, tabla_usuario_notas.id  from users, tabla_usuario_notas where users.id = tabla_usuario_notas.usuarioid');
+        return view('Plataforma/ModificarNotas',compact('usuarios'));
+
+    }
+
+    public function modificar2($idNota){
+
+        return view('Plataforma/ModificarNotas2',compact('idNota'));
+
+    }
+
+    public function modificar3(Request $request, $idNota){
+
+        if(is_numeric($request->notaAlumno)){
+
+            DB::table('tabla_usuario_notas')
+                ->where('id', $idNota)
+                ->update(['nota' => $request->notaAlumno]);
+
+            return redirect('ModificarNotas');
+
+        }
+
+        return back()->with('error','Formato de Nota Incorrecto');
+
+    }
+
+
+    public function eliminar($idNota){
+
+        DB::table('tabla_usuario_notas')->where('id', '=', $idNota)->delete();
+
+        return back();
+
+    }
+
 }
