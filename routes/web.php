@@ -56,6 +56,13 @@ Route::post('ingresarNotas', 'NotasController@ingresar')->name('ingresarNotas');
 Route::get('/IngresarNotas', function () {
     return view('Plataforma/IngresarNotas');
 });
+//MODIFICAR NOTAS
+Route::get('ModificarNotas', 'NotasController@modificar')->name('ModificarNotas');
+Route::get('edit/{id}','NotasController@modificar2');
+Route::post('mod/{id}','NotasController@modificar3');
+Route::get('delete/{id}','NotasController@eliminar');
+
+
 // ----------- MODULO CONTACTO -----------
 
 

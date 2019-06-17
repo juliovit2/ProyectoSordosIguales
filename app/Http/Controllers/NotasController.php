@@ -25,13 +25,13 @@ class NotasController extends Controller
         $nota = request()->nota;
 
         if($rut_alumno != $rut){
-            return 'El alumno ingresado no existe';
+            return back()->with('error1','El Estudiante no existe');
         }else{
             if($nombre_curso != $curso){
-                return 'El curso no existe';
+                return back()->with('error2','El Curso no existe');
             }else{
                 if($tipo_evaluacion != $evaluacion ) {
-                    return 'Tipo de evaluación no correcponde';
+                    return back()->with('error3','Tipo de Evaluación no corresponde');
                 }else{
                     if(is_numeric($nota)) {
 
@@ -46,14 +46,52 @@ class NotasController extends Controller
                         );
                         DB::statement('SET FOREIGN_KEY_CHECKS = 1;');
 
-                        return 'LISTO';
+                        return back()->with('exito','Nota ingresada correctamente');
 
                     }else{
-                        return 'Formato de Nota es incorrecto';
+                        return back()->with('error4','Formato de Nota incorrecto');
                     }
                 }
             }
         }
+    }
+
+    public function modificar(Request $request){
+
+        $usuarios = DB::select('select name, rut, nota, tabla_usuario_notas.id, tabla_cursos.nombre  from users, tabla_usuario_notas, tabla_cursos where users.id = tabla_usuario_notas.usuarioid and tabla_cursos.id = tabla_usuario_notas.cursoid');
+        return view('Plataforma/ModificarNotas',compact('usuarios'));
+
+    }
+
+    public function modificar2($idNota){
+
+        return view('Plataforma/ModificarNotas2',compact('idNota'));
+
+    }
+
+    public function modificar3(Request $request, $idNota){
+
+        if(is_numeric($request->notaAlumno)){
+
+            DB::table('tabla_usuario_notas')
+                ->where('id', $idNota)
+                ->update(['nota' => $request->notaAlumno]);
+
+            return redirect('ModificarNotas');
+
+        }
+
+        return back()->with('error','Formato de Nota Incorrecto');
+
+    }
+
+
+    public function eliminar($idNota){
+
+        DB::table('tabla_usuario_notas')->where('id', '=', $idNota)->delete();
+
+        return back();
+
     }
 
 }
