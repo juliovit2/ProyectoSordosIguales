@@ -5,7 +5,7 @@
         <h2>
             Listado de Preguntas y Respuestas
         </h2>
-        <a href="{{route('faq.create')}}" class="btn btn-primary pull-right active" >Agregar Preguntas y Respuestas &nbsp;<i class="fas fa-plus"></i></a>
+        <a href="{{route('create')}}" class="btn btn-primary pull-right active" >Agregar Preguntas y Respuestas &nbsp;<i class="fas fa-plus"></i></a>
         <table class = "table table-hover table-striped">
             <thead>
 

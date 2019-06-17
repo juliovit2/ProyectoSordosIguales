@@ -14,59 +14,32 @@
                     <input type="hidden" name="_token" value="{!! csrf_token() !!}">
                     <div class="form-group">
                         <label for="Titulo"><h4>Pregunta</h4></label>
-                        <input type="text" id="titulo" name="titulo" class="form-control">
+                        <input type="text" id="titulo" name="pregunta" class="form-control">
                     </div>
+
                     <div class="form-group mt-3">
+                        <label for="respuesta"><h4>Video</h4></label>
+                        <input type="url" name="video" placeholder="Ingrese link del video" class="form-control">
+                    </div>
+                   <!-- <div class="form-group mt-3">
                         <label for="video"><h4>Video</h4></label>
                         <input type="file" id="video" name="video">
-                    </div>
+                    </div>-->
                     <div class=form-group">
-                        <input id="but" type="button" value="Agregar Preguntas y Respuestas" class="btn btn-primary">
-                    </div>
+                        <button id="agregar" type="submit" formaction="create" value="store" class="btn btn-primary"> Agregar Preguntas y Respuestas </button>
+                    </div>/
                 </form>
             </div>
         </div>
     </div>
 
-    <!-- La script tag es necesaria para iniciar summernote-->
     <script>
-        function getExtension(filename) {
-            var parts = filename.split('.');
-            return parts[parts.length - 1];
-        }
-
-
-        function isVideo(filename) {
-
-            /*var ext = getExtension(filename);
-            switch (ext.toLowerCase()) {
-                case 'm4v':
-                case 'avi':
-                case 'mpg':
-                case 'mp4':
-                case 'flv':
-                case 'mpeg':
-                    return true;
-            }*/
-            return true;
-        }
-        $(document).ready(function() {
-
-            $('#but').click(function () {
-                if($('#Pregunta').val().replace(" ","").length <= 0) {
-                    alert("Debe contener una Pregunta.");
-                    return;
+        function enviar() {
+            $('form').ajaxForm({
+                complete: function(xhr) {
+                    alert(xhr.responseText);///recibe el return del controlador
+                    window.location.href = "show_faq";
                 }
-                let hayVideo = $('#video').val() != "";
-
-                if(hayVideo && !isVideo($('#video').val())){
-                    alert("El archivo " + $('#video').val() + " no es un video.");
-                    return;
-                }
-
-                $('form#form').submit();
-
             });
-        });
-    </script>
+        }
 @endsection
