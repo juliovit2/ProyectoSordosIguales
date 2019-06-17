@@ -50,6 +50,7 @@ Route::get('/cursos/{curso}', 'CursoController@show')->where('curso', '[0-9]+')-
 Route::get('/cursos/nuevo', 'CursoController@create')->name('cursos.create');
 Route::get('/cursos/{curso}/editar', 'CursoController@edit')->name('cursos.edit');
 Route::delete('/cursos/{curso}', 'CursoController@destroy')->name('cursos.destroy');
+
 //INGRESAR NOTAS
 Route::post('ingresarNotas', 'NotasController@ingresar')->name('ingresarNotas');
 Route::get('/IngresarNotas', function () {
@@ -79,15 +80,11 @@ Route::get('/usuarios/{user}', 'UserController@show')
     ->where('user', '[0-9]+')
     ->name('users.show');
 
-Route::get('/usuarios/nuevo', 'UserController@create')
-    ->name('users.create');
-
-Route::get('/usuarios/{user}/editar', 'UserController@edit')
-    ->name('users.edit');
-
+Route::get('/usuarios/nuevo', 'UserController@create')->name('users.create');
+Route::post('/usuarios', 'UserController@store');
+Route::get('/usuarios/{user}/editar', 'UserController@edit')->name('users.edit');
 Route::put('/usuarios/{user}', 'UserController@update');
 
-Route::post('/usuarios/crear', 'UserController@store');
 
 Route::delete('/usuarios/{user}', 'UserController@destroy')
     ->name('users.destroy');
