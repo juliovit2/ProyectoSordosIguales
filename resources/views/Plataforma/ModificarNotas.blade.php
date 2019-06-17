@@ -66,12 +66,14 @@
         <tr>
             <td>RUT</td>
             <td>Nombre</td>
+            <td>Curso</td>
             <td>Nota</td>
         </tr>
         @foreach ($usuarios as $usuario)
             <tr>
                 <td>{{ $usuario->rut }}</td>
                 <td>{{ $usuario->name }}</td>
+                <td>{{ $usuario->nombre }}</td>
                 <td>{{ $usuario->nota }}</td>
                 <td><a href = 'edit/{{ $usuario->id }}'>Modificar</a></td>
                 <td><a href = 'delete/{{ $usuario->id }}'>Eliminar</a></td>
