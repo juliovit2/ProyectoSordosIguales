@@ -13,15 +13,21 @@
 
 
     <div class="container">
-        <h1 align="center">{{$tabla_preguntas_frecuente->pregunta}}</h1 >
 
-        @if($tabla_preguntas_frecuente->respuesta != "0")<!--este es el video que contiene pregunta y respuesta -->
-            <div align="center">
-                <video  id="sampleMovie" width="640" height="360" preload controls>
-                    <source src="{{ asset('storage/'.$tabla_preguntas_frecuente->respuesta)}}"  />
-                </video>
-            </div>
-        @endif
+
+        @foreach($pregunta as $p)
+            {{dd("https://www.youtube.com/embed/".$p->respuesta)}}
+            <h1 align="center">{{$p->pregunta}}</h1 >
+
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/".{{$p->respuesta}} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+{{--            <div align="center">--}}
+{{--                <video  id="sampleMovie" width="640" height="360" preload controls>--}}
+{{--                    <source src="{{ asset('storage/'.$p->respuesta)}}"  />--}}
+{{--                </video>--}}
+{{--            </div>--}}
+        @endforeach
+
     </div>
 
     <!-- Bootstrap core JavaScript

@@ -360,7 +360,7 @@
             document.getElementById("op").value = op;//indica que boron se esta utilizando
             $('form').ajaxForm({
                 complete: function(xhr) {
-                    alert(xhr.responseText);//recibe el return del controlador
+                    alert(xhr.responseText);///recibe el return del controlador
                     window.location.href = "/contacto";
                 }
             });
