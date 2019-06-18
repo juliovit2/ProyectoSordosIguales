@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\tabla_noticia;
 use App\tabla_preguntas_frecuente;
 use Illuminate\Http\Request;
 
@@ -16,12 +15,10 @@ class FaqController extends Controller
 
     public function create()
     {
-
         return view('InfoContacto.create_faq');
     }
 
-    public function showFaq(){
-//        $pregunta = tabla_preguntas_frecuenta::find($id);
+    public function show(){
         $pregunta =tabla_preguntas_frecuente::all();
         return view('InfoContacto.show_faq',compact('pregunta'));
     }
@@ -35,7 +32,7 @@ class FaqController extends Controller
 
     public function update(Request $request, $id)
     {
-        $respuesta_path = null;
+       /* $respuesta_path = null;
         $faqEditada = array(
             'tipo' => $request->get('tipo'),
             'pregunta' => $request->get("pregunta"),
@@ -45,7 +42,10 @@ class FaqController extends Controller
             ->where('id', $id)
             ->update($faqEditada);
 
-        return redirect()->route('faq/index');
+        return redirect()->route('faq.index');*/
+        $this->validate($request,['nombre'=>"algo",'pregunta'=>'required','respuesta'=>'required']);
+        tabla_preguntas_frecuente::find($id)->update($request->all());
+        return redirect()->route('faq.index')->with('success','Registro actualizado satisfactoriamente');
     }
 
     public function store(request $request)
@@ -60,7 +60,7 @@ class FaqController extends Controller
         $pregunta->pregunta=$request->pregunta;
         $pregunta->respuesta=substr($request->video, 32, strlen($request->video));
         $pregunta->save();
-        return $this->showFaq();
+        return $this->show();
         //return redirect()->route('faq/show');
     }
 
@@ -69,7 +69,7 @@ class FaqController extends Controller
         $eliminarFaq = tabla_preguntas_frecuente::find($id);
         $eliminarFaq->delete();
 
-        return redirect()->route('faq/index');
+        return redirect()->route('faq.index');
     }
 
 

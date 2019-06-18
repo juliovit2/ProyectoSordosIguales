@@ -1,10 +1,6 @@
 @extends('layoutGeneral')
 @section('content')
 
-
-    <!-- Lo siguiente es necesario para el editor HTML WYSIWYG -->
-    <!-- include libraries(jQuery, bootstrap) -->
-    <script type="text/javascript" src="{{ URL::asset('js/summernote-es-ES.js') }}"></script>
     <div class="container mt-5 mb-5 containerForm">
         <div class="row">
             <div class="col-md">
@@ -26,14 +22,15 @@
                         <input type="file" id="video" name="video">
                     </div>-->
                     <div class=form-group">
-                        <button id="agregar" type="submit" formaction="create" value="store" class="btn btn-primary"> Agregar Preguntas y Respuestas </button>
-                    </div>/
+                        <button id="agregar" type="submit"  href="faq/show" value="store" class="btn btn-primary"> Agregar Preguntas y Respuestas </button>
+                        <a href="{{ route('faq.index') }}" class="btn btn-primary" >Atrás</a>
+                    </div>
                 </form>
             </div>
         </div>
     </div>
 
-    <script>
+   <!-- <script>
         function enviar() {
             $('form').ajaxForm({
                 complete: function(xhr) {
@@ -41,5 +38,5 @@
                     window.location.href = "show_faq";
                 }
             });
-        }
+        }-->
 @endsection
