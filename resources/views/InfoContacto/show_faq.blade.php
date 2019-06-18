@@ -13,23 +13,11 @@
 
 
     <div class="container">
-
-
         @foreach($pregunta as $p)
-           {{--dd("https://www.youtube.com/embed/".$p->respuesta)--}}
             <h1 align="center">{{$p->pregunta}}</h1 >
-
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/".{{$p->respuesta}} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-{{--            <div align="center">--}}
-{{--                <video  id="sampleMovie" width="640" height="360" preload controls>--}}
-{{--                    <source src="{{ asset('storage/'.$p->respuesta)}}"  />--}}
-{{--                </video>--}}
-{{--            </div>--}}
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/{{$p->respuesta}}" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         @endforeach
-
     </div>
-
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

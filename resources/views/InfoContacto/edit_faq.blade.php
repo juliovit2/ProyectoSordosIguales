@@ -1,5 +1,3 @@
-<!--{{$editarFaq->pregunta}}-->
-
 @extends('layoutGeneral')
 
 @section('content')
@@ -28,19 +26,19 @@
                     </div>
                     <div class="panel-body">
                         <div class="table-container">
-                            @foreach($pregunta as $p)
-                            <form method="POST" action="{{ route('faq.update',$p->id) }}"  role="form">
+
+                            <form method="POST" action="{{ route('faq.update',$pregunta->id) }}"  role="form">
                                 {{ csrf_field() }}
                                 <input name="_method" type="hidden" value="PATCH">
                                 <div class="row">
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
-                                            <input type="text" name="pregunta" id="pregunta" class="form-control input-sm" value="{{$p->pregunta}}">
+                                            <input type="text" name="pregunta" id="pregunta" class="form-control input-sm" value="{{$pregunta->pregunta}}">
                                         </div>
                                     </div>
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
-                                            <input type="text" name="respuesta" id="respuesta" class="form-control input-sm" value="{{$p->respuesta}}">
+                                            <input type="text" name="respuesta" id="respuesta" class="form-control input-sm" value="https://www.youtube.com/".{{$pregunta->respuesta}}>
                                         </div>
                                     </div>
                                 </div>
@@ -48,13 +46,13 @@
                                 <div class="row">
 
                                     <div class="col-xs-12 col-sm-12 col-md-12">
-                                        <input type="submit"  value="Actualizar" class="btn btn-success btn-block">
-                                        <a href="{{ route('faq.index') }}" class="btn btn-info btn-block" >Atrás</a>
+                                        <input type="submit"  value="Actualizar" class="btn btn-sm btn-primary active">
+                                        <a href="{{ route('faq.index') }}" class="btn btn-sm btn-primary active" >Atrás</a>
                                     </div>
 
                                 </div>
                             </form>
-                             @endforeach
+
                         </div>
                     </div>
 
