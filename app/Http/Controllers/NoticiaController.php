@@ -119,7 +119,7 @@ class NoticiaController extends Controller
             }
         }
 
-        return redirect()->route('noticia.index');
+        return redirect()->route('noticias.index');
     }
 
     /**
