@@ -9,7 +9,8 @@ use Illuminate\Http\Request;
 class FaqController extends Controller
 {
     public function index()
-    {   $pregunta= tabla_preguntas_frecuente::all();
+    {  // $pregunta= tabla_preguntas_frecuente::all();
+        $pregunta=tabla_preguntas_frecuente::orderBy('id','DESC')->paginate(15);
         return view('InfoContacto.index_faq',compact('pregunta'));
     }
 
@@ -26,8 +27,8 @@ class FaqController extends Controller
 
     public function edit($id)
     {
-        $editarFaq = tabla_preguntas_frecuente::find($id);
-        return view('InfoContacto.edit_faq',compact('editarFaq'));
+        $pregunta = tabla_preguntas_frecuente::find($id);
+        return view('InfoContacto.edit_faq',compact('pregunta'));
     }
 
     public function update(Request $request, $id)
