@@ -85,6 +85,7 @@ class InformacionController extends Controller
             //Mail::to('naitsircnunez@gmail.com')->send(new SendMailable($datos));
             try {
                 Mail::to('naitsircnunez@gmail.com')->send(new SendMailable($datos));
+                File::delete(public_path('/temp/'.$request->archivo));
                 return 'Mensaje enviado';
             }catch(\Exception $e) {
                 return $e->getMessage();
@@ -102,10 +103,10 @@ class InformacionController extends Controller
             $this->validate($request,[
                 'archivo' => 'required|mimes:mp4|max:30720',
             ]);
-            if($request->op="1"){
+            if($request->op=="1"){
                 $imageName = 'Consulta-'.time().'.'.request()->archivo->getClientOriginalExtension();
             }else{
-                if($request->op="3"){
+                if($request->op=="3"){
                     $imageName = 'Denuncia-'.time().'.'.request()->archivo->getClientOriginalExtension();
                 }else{
                     $imageName = 'Otro-'.time().'.'.request()->archivo->getClientOriginalExtension();
@@ -123,7 +124,7 @@ class InformacionController extends Controller
             ]);
             $imageName = time().'.'.request()->archivo->getClientOriginalExtension();
             $request->archivo->move(public_path('/temp'), $imageName);
-            //return $imageName;
+            return $imageName;
         }
 //        $request->archivo->move(public_path('/temp'), $imageName);
 //        return $imageName;
