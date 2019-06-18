@@ -358,7 +358,6 @@
     <script src="http://malsup.github.com/jquery.form.js"></script>
     <script>
         function revisarv2(op) {
-            debugger;
             var img;
             var name;
             var email;
@@ -403,14 +402,16 @@
             $.ajax({
                 xhr: function() {
                     var xhr = new window.XMLHttpRequest();
-                    xhr.upload.addEventListener("progress", function(evt) {//proceso de carga
-                        if (evt.lengthComputable) {
-                            var percentComplete = (evt.loaded / evt.total) * 100;
-                            var percentVal = percentComplete + '%';
-                            bar.width(percentVal);
-                            percent.html(percentVal);
-                        }
-                    }, false);
+                    if(img.value!="") {
+                        xhr.upload.addEventListener("progress", function (evt) {//proceso de carga
+                            if (evt.lengthComputable) {
+                                var percentComplete = (evt.loaded / evt.total) * 100;
+                                var percentVal = percentComplete + '%';
+                                bar.width(percentVal);
+                                percent.html(percentVal);
+                            }
+                        }, false);
+                    }
                     return xhr;
                 },
                 url: "{{url('contacto')}}",
