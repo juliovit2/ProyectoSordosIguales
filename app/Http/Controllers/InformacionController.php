@@ -43,7 +43,7 @@ class InformacionController extends Controller
                     break;
                 case 3://denuncias
                     $tipo='denuncia';
-                    if($nombre==""){
+                    if($nombre=="" || $nombre==null){
                         $nombre="Anonimo";
                     }
                     break;
@@ -54,11 +54,37 @@ class InformacionController extends Controller
                     ]);
                     break;
             }
+
             $this->validate($request, [
                 'email'=>'required',
                 'mensaje'=> 'required_without:archivo',
             ]);
-            $datos=[$tipo,$nombre,$request->email,$mensaje,$request->archivo];
+            if($request->archivo!=null){
+                $this->validate($request,[
+                    'archivo' => 'mimes:mp4|max:30720',
+                ]);
+
+                if($request->op==1){
+                    $imageName = 'Consulta-'.time().'.'.request()->archivo->getClientOriginalExtension();
+                }else{
+                    if($request->op==3){
+                        $imageName = 'Denuncia-'.time().'.'.request()->archivo->getClientOriginalExtension();
+                    }else{
+                        $imageName = 'Otro-'.time().'.'.request()->archivo->getClientOriginalExtension();
+                    }
+                }
+
+                Storage::disk('dropbox')->putFileAs(
+                    '/',
+                    $request->file('archivo'),
+                    $imageName
+                );
+            }else{
+                $imageName="";
+            }
+
+
+            $datos=[$tipo,$nombre,$request->email,$mensaje,$imageName];
             //$datos=[$tipo,$nombre,$request->email,$mensaje];
             //Mail::to($request->email)->send(new SendMailable($datos));
             try {
