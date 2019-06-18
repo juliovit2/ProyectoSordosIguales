@@ -124,7 +124,7 @@
                                         <div class="form-group" align="left">
                                             <input id="archivo1" type="hidden" name="archivo">
                                             <p align="left">Sube tu video (opcional)</p>
-                                            <input onchange="subidav2(this,1)" id="file" type="file" accept="video/mp4"/>
+                                            <input name="archivo" id="file" type="file" accept="video/mp4"/>
                                             <div class="progress" style="height: 5%">
                                                 <div class="bar"></div >
                                                 <div class="percent">0%</div >
@@ -133,7 +133,7 @@
                                         <!-- Form actions -->
                                         <br>
                                         <div class="col-md-12 text-center">
-                                            <button id="consulta" onclick="revisar(1)" type="submit" class="btn btn-primary btn-lg text-reset">Enviar</button>
+                                            <button id="consulta" onclick="revisarv2(1)" type="button" class="btn btn-primary btn-lg text-reset">Enviar</button>
                                         </div>
                                     </div>
                             </form>
@@ -268,8 +268,9 @@
 
                                     <div class="form-group" align="left">
                                         <p align="left">Sube tu video (opcional)</p>
-                                        <input id="archivo3" type="hidden" name="archivo">
-                                        <input id="file3" onchange="subidav2(this,3)" type="file" accept="video/mp4"/>
+{{--                                        <input id="archivo3" type="hidden" name="archivo">--}}
+{{--                                        <input id="file3" onchange="subidav2(this,3)" type="file" accept="video/mp4"/>--}}
+                                        <input id="file3" name="archivo" type="file" accept="video/mp4"/>
                                         <div class="progress" style="height: 5%">
                                             <div class="bar"></div >
                                             <div class="percent">0%</div >
@@ -279,7 +280,7 @@
                                     <!-- Form actions -->
                                     <br>
                                     <div class="col-md-12 text-center">
-                                        <button id="denuncia" onclick="revisar(3)" type="submit" class="btn btn-primary btn-lg text-reset">Enviar</button>
+                                        <button id="denuncia" onclick="revisarv2(3)" type="button" class="btn btn-primary btn-lg text-reset">Enviar</button>
                                     </div>
                                 </div>
                             </div>
@@ -330,8 +331,8 @@
 
                                     <div class="form-group" align="left">
                                         <p align="left">Sube tu video (opcional)</p>
-                                        <input id="archivo4" type="hidden" name="archivo">
-                                        <input id="file4" onchange="subidav2(this,4)" type="file" accept="video/mp4"/>
+{{--                                        <input id="archivo4" type="hidden" name="archivo">--}}
+                                        <input id="file4" name="archivo" type="file" accept="video/mp4"/>
                                         <div class="progress" style="height: 5%">
                                             <div class="bar"></div >
                                             <div class="percent">0%</div >
@@ -341,7 +342,7 @@
                                     <!-- Form actions -->
                                     <br>
                                     <div class="col-md-12 text-center">
-                                        <button id="otro" onclick="revisar(4)" type="submit" class="btn btn-primary btn-lg text-reset">Enviar</button>
+                                        <button id="otro" onclick="revisarv2(4)" type="button" class="btn btn-primary btn-lg text-reset">Enviar</button>
                                     </div>
                                 </div>
                             </div>
@@ -356,8 +357,124 @@
     {{--    subida de archivo(barra de progreso)--}}
     <script src="http://malsup.github.com/jquery.form.js"></script>
     <script>
+        function revisarv2(op) {
+            debugger;
+            var img;
+            var name;
+            var email;
+            var msn;
+            switch (op) {
+                case 1:
+                    name=document.getElementById("name").value;
+                    email= document.getElementById("email").value;
+                    msn=CKEDITOR.instances.editor1.getData();
+                    img=document.getElementById("file");
+                    $('#consulta').attr('disabled','disabled');
+                    break;
+                case 3:
+                    name=document.getElementById("name3").value;
+                    email= document.getElementById("email3").value;
+                    msn=CKEDITOR.instances.editor3.getData();
+                    img=document.getElementById("file3");
+                    $('#denuncia').attr('disabled','disabled');
+                    break;
+                case 4:
+                    name=document.getElementById("name4").value;
+                    email= document.getElementById("email4").value;
+                    msn=CKEDITOR.instances.editor4.getData();
+                    img=document.getElementById("file4");
+                    $('#otro').attr('disabled','disabled');
+                    break;
+            }
+            var bar = $('.bar');
+            var percent = $('.percent');
+            var form_data = new FormData();
+            if(img.value!=""){
+                form_data.append('archivo', img.files[0]);
+            }else{
+                form_data.append('archivo', "");
+            }
+            form_data.append('op', op);
+            form_data.append('name', name);
+            form_data.append('email', email);
+            form_data.append('mensaje', msn);
+            form_data.append('_token', '{{csrf_token()}}');
+
+            $.ajax({
+                xhr: function() {
+                    var xhr = new window.XMLHttpRequest();
+                    xhr.upload.addEventListener("progress", function(evt) {//proceso de carga
+                        if (evt.lengthComputable) {
+                            var percentComplete = (evt.loaded / evt.total) * 100;
+                            var percentVal = percentComplete + '%';
+                            bar.width(percentVal);
+                            percent.html(percentVal);
+                        }
+                    }, false);
+                    return xhr;
+                },
+                url: "{{url('contacto')}}",
+                data: form_data,
+                type: 'POST',
+                contentType: false,
+                processData: false,
+                success: function (data) {
+                    if (data.fail) {
+                        alert(data.errors['file']);
+                    }
+                    else {
+                        //alert(data);
+                        switch (op) {
+                            case 1:
+                                $('#consulta').removeAttr('disabled');
+                                break;
+                            case 2:
+                                $('#voluntario').removeAttr('disabled');
+                                break;
+                            case 3:
+                                $('#denuncia').removeAttr('disabled');
+                                break;
+                            case 4:
+                                $('#otro').removeAttr('disabled');
+                                break;
+                        }
+                        //alert("Mensaje enviado");
+                    }
+                },
+                error: function (xhr, status, error) {
+                    var percentVal='0%';
+                    bar.width(percentVal);
+                    percent.html(percentVal);
+                    if(error=="Unprocessable Entity"){
+                        alert("El formato invalido o el archivo supera los 30mb");
+                    }
+                    switch (op) {
+                        case 1:
+                            $('#consulta').removeAttr('disabled');
+                            break;
+                        case 2:
+                            $('#voluntario').removeAttr('disabled');
+                            break;
+                        case 3:
+                            $('#denuncia').removeAttr('disabled');
+                            break;
+                        case 4:
+                            $('#otro').removeAttr('disabled');
+                            break;
+                    }
+                    //alert(xhr.responseText)
+                    //alert('Error: \n'+xhr.responseText);
+                },
+                complete: function(xhr) {
+                    alert(xhr.responseText);//recibe el return del controlador
+                    window.location.href = "/contacto";
+                }
+            });
+        }
+    </script>
+    <script>
         function revisar(op) {
-            document.getElementById("op").value = op;//indica que boron se esta utilizando
+            document.getElementById("op").value = op;//indica que boton se esta utilizando
             $('form').ajaxForm({
                 complete: function(xhr) {
                     alert(xhr.responseText);///recibe el return del controlador
@@ -380,7 +497,6 @@
                     $('#otro').attr('disabled','disabled');
                     break;
             }
-            $('#consulta').attr('disabled','disabled');
             var bar = $('.bar');
             var percent = $('.percent');
             var form_data = new FormData();
