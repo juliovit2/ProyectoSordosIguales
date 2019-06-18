@@ -74,7 +74,7 @@
                 <td>{{ $usuario->rut }}</td>
                 <td>{{ $usuario->name }}</td>
                 <td>{{ $usuario->nombre }}</td>
-                <td>{{ $usuario->nota }}</td>
+                <td>{{ $usuario->nota * 0.1}}</td>
                 <td><a href = 'edit/{{ $usuario->id }}'>Modificar</a></td>
                 <td><a href = 'delete/{{ $usuario->id }}'>Eliminar</a></td>
             </tr>

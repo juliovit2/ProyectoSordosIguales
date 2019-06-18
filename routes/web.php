@@ -50,6 +50,8 @@ Route::get('/cursos/{curso}', 'CursoController@show')->where('curso', '[0-9]+')-
 Route::get('/cursos/nuevo', 'CursoController@create')->name('cursos.create');
 Route::get('/cursos/{curso}/editar', 'CursoController@edit')->name('cursos.edit');
 Route::delete('/cursos/{curso}', 'CursoController@destroy')->name('cursos.destroy');
+Route::post('/cursos', 'CursoController@store');
+Route::put('/cursos/{curso}', 'CursoController@update');
 
 //INGRESAR NOTAS
 Route::post('ingresarNotas', 'NotasController@ingresar')->name('ingresarNotas');

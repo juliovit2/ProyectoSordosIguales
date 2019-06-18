@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 use App\tabla_curso;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use App\Http\Forms\CursoForm;
 use Illuminate\Validation\Rule;
+use App\Http\Requests\CreateCursoRequest;
 class CursoController extends Controller
 {
     public function index()
@@ -19,16 +19,32 @@ class CursoController extends Controller
         return view('Cursos.Show', compact('curso'));
     }
 
+    public function store(CreateCursoRequest $request )
+    {
+        $request->createCurso();
+
+        return redirect()->route('cursos.index');
+    }
+
     public function create()
     {
-        $curso = new tabla_curso;
-
-        return view('Cursos.Create', compact('curso'));
+        return new CursoForm('Cursos.Create', new tabla_curso);
     }
 
     public function edit(tabla_curso $curso)
     {
-        return view('Cursos.edit', compact('curso'));
+        return new CursoForm('Cursos.Edit', $curso);
+    }
+
+    public function update(tabla_curso $curso)
+    {
+        $data = request()->validate([
+            'name' => 'required',
+            'profesorid' => 'required'
+        ]);
+
+        //$user->update($data);
+        return redirect()->route('cursos.show', ['curso' => $curso]);
     }
 
     function destroy(tabla_curso $curso){

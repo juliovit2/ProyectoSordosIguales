@@ -33,8 +33,8 @@ class NotasController extends Controller
                 if($tipo_evaluacion != $evaluacion ) {
                     return back()->with('error3','Tipo de Evaluación no corresponde');
                 }else{
-                    if(is_numeric($nota)) {
-
+                    if(is_numeric($nota) && $nota >= 1 && $nota <= 7) {
+                        $nota = $nota*10;
                         $alumnoID = DB::table('users')->where('rut', $rut)->value('id');
                         $cursoID = DB::table('tabla_cursos')->where('nombre', $nombre_curso)->value('id');
                         $notaID = DB::table('tabla_evaluaciones_cursos')->where('nombreEvaluacion', $evaluacion)->value('id');
@@ -65,13 +65,13 @@ class NotasController extends Controller
 
     public function modificar2($idNota){
 
-        return view('Plataforma/ModificarNotas2',compact('idNota'));
+        return view('Plataforma/ModificarNotasIndex',compact('idNota'));
 
     }
 
     public function modificar3(Request $request, $idNota){
-
-        if(is_numeric($request->notaAlumno)){
+        $request->notaAlumno = ($request->notaAlumno)*10;
+        if(is_numeric($request->notaAlumno) && $request->notaAlumno >= 10 && $request->notaAlumno <= 70){
 
             DB::table('tabla_usuario_notas')
                 ->where('id', $idNota)
