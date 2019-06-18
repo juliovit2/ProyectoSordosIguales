@@ -5,7 +5,7 @@
         <h2>
             Listado de Preguntas y Respuestas
         </h2>
-        <a href="{{route('create')}}" class="btn btn-primary pull-right active" >Agregar Preguntas y Respuestas &nbsp;<i class="fas fa-plus"></i></a>
+        <a href="{{route('faq.create')}}" class="btn btn-primary pull-right active" >Agregar Preguntas y Respuestas &nbsp;<i class="fas fa-plus"></i></a>
         <table class = "table table-hover table-striped">
             <thead>
 
@@ -26,20 +26,14 @@
                     <td>{{$p->Pregunta}}</td>
                     <td>{{$p->Respuesta}}</td>
                     <td>
-                        <a href="{{route('preguntas.show_faq',$p->id)}}"
-                           class="btn btn-sm btn-primary active" title="Ver Preguntas y Respuestas">
-                            <i class="fas fa-eye"></i>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="/faq/edit/{{$p->id}}"
+                        <a href="{{action('FaqController@edit', $p->id)}}"
                            class="btn btn-sm btn-primary active" title="Editar Preguntas y Respuestas">
                             <i class="fas fa-pencil-alt"></i>
                         </a>
                     </td>
 
                     <td>
-                        <a href="/faq/delete/{{$p->id}}"
+                        <a href="{{action('FaqController@destroy', $p->id)}}"
                            class="btn btn-sm btn-danger active"  title="Eliminar Preguntas y Respuestas">
                             <i class="fas fa-trash-alt"></i>
                         </a>

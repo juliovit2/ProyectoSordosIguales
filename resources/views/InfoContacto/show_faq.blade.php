@@ -16,7 +16,7 @@
 
 
         @foreach($pregunta as $p)
-            {{dd("https://www.youtube.com/embed/".$p->respuesta)}}
+           {{--dd("https://www.youtube.com/embed/".$p->respuesta)--}}
             <h1 align="center">{{$p->pregunta}}</h1 >
 
             <iframe width="560" height="315" src="https://www.youtube.com/embed/".{{$p->respuesta}} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
