@@ -25,6 +25,12 @@ class NoticiaController extends Controller
         return view('noticia.index',compact('noticias','imagenes_noticia'));
     }
 
+    public function public_index() {
+        $noticias = tabla_noticia::orderBy('id','DESC')->paginate(6);
+        $imagenes_noticia = tabla_imagenes_noticia::all();
+        return view('noticia.public_index',compact('noticias','imagenes_noticia'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *

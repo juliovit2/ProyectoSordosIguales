@@ -29,10 +29,13 @@ Route::post('/contacto','InformacionController@enviarCorreo');
 Route::resource('admin/noticias', 'NoticiaController');
 Route::get('admin/noticias/edit/{id}', 'NoticiaController@edit');
 Route::get('admin/noticias/delete/{id}', "NoticiaController@destroy");
+Route::get('/noticias/delete/{id}', "NoticiaController@destroy");
 
 Route::post('admin/noticias/create', 'NoticiaController@store');
 Route::post('admin/noticias/edit/{id}', 'NoticiaController@update');
 Route::post('admin/noticias/previsualizar', 'NoticiaController@show_preview');
+Route::get('/noticias', 'NoticiaController@public_index');
+Route::get('/noticias/{id}', 'NoticiaController@show');
 
 // ----------- MODULO CURSOS -----------
 
