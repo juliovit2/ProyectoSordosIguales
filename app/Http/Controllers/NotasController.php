@@ -31,8 +31,10 @@ class NotasController extends Controller
                 return back()->with('error2','El Curso no existe');
             }else{
                 if($tipo_evaluacion != $evaluacion ) {
-                    return back()->with('error3','Tipo de Evaluación no corresponde');
+                    return back()->with('error3','Tipo de EvaluaciÃ³n no corresponde');
                 }else{
+
+                    $nota = str_replace(",",".",$nota);
 
                     if(is_numeric($nota)){
 
@@ -104,7 +106,7 @@ class NotasController extends Controller
 
     public function modificarIndex(Request $request, $idNota){
 
-        $request->notaAlumno = ($request->notaAlumno)*10;
+        $request->notaAlumno = str_replace(",",".",$request->notaAlumno);
 
         if(is_numeric($request->notaAlumno) ){
 
