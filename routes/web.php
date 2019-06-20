@@ -50,19 +50,18 @@ Route::get('/cursos/{curso}', 'CursoController@show')->where('curso', '[0-9]+')-
 Route::get('/cursos/nuevo', 'CursoController@create')->name('cursos.create');
 Route::get('/cursos/{curso}/editar', 'CursoController@edit')->name('cursos.edit');
 Route::delete('/cursos/{curso}', 'CursoController@destroy')->name('cursos.destroy');
+Route::post('/cursos', 'CursoController@store');
+Route::put('/cursos/{curso}', 'CursoController@update');
 
 //INGRESAR NOTAS
 Route::post('ingresarNotas', 'NotasController@ingresar')->name('ingresarNotas');
 Route::get('/IngresarNotas', function () {
     return view('Plataforma/IngresarNotas');
 });
-//MODIFICAR NOTAS
 Route::get('ModificarNotas', 'NotasController@modificar')->name('ModificarNotas');
-Route::get('edit/{id}','NotasController@modificar2');
-Route::post('mod/{id}','NotasController@modificar3');
+Route::get('edit/{id}','NotasController@modificarConector');
+Route::post('mod/{id}','NotasController@modificarIndex');
 Route::get('delete/{id}','NotasController@eliminar');
-
-
 // ----------- MODULO CONTACTO -----------
 
 

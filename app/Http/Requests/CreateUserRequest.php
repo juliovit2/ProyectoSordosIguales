@@ -41,6 +41,7 @@ class CreateUserRequest extends FormRequest
 
         return[
             'name.required' => 'El campo nombre es obligatorio',
+            'rut.required' => 'El campo rut es obligatorio',
             'email.required' => 'El campo e-mail es obligatorio',
             'password.required' => 'El campo password es obligatorio',
         ];
