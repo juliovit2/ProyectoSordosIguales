@@ -1,13 +1,24 @@
 {{csrf_field()}}
 <div class="form-row">
+
     <div class="col-md-4 mb-3">
         <label for="name">Nombre:</label>
         <input type="text"
                name="name"
                class="form-control is-valid"
                id="name"
-               placeholder="nombre apellido"
+               placeholder="Nombre"
                value="{{ old('name', $user->name) }}" required>
+    </div>
+
+    <div class="col-md-4 mb-3">
+        <label for="name">Rut:</label>
+        <input type="text"
+               name="rut"
+               class="form-control is-valid"
+               id="name"
+               placeholder="RUT"
+               value="{{ old('name', $user->rut) }}" required>
     </div>
 
     <div class="col-md-4 mb-3">
@@ -28,4 +39,40 @@
                id="password"
                placeholder="Contraseña" required>
     </div>
+
+    <div class="col-md-4 mb-3">
+        <label for="name">Direccion:</label>
+        <input type="text"
+               name="direccion"
+               class="form-control is-valid"
+               id="direccion"
+               placeholder="Dirección"
+               value="{{ old('name', $user->direccion) }}" required>
+    </div>
+
+
+    <div class="col-md-4 mb-3">
+        <label for="name">Teléfono:</label>
+        <input type="text"
+               name="telefono"
+               class="form-control is-valid"
+               id="telefono"
+               placeholder="Teléfono"
+               value="{{ old('name', $user->telefono) }}" required>
+    </div>
+
+    <div class="col-md-4 mb-3">
+        <label for="name">Ciudad:</label>
+        <input type="text"
+               name="ciudad"
+               class="form-control is-valid"
+               id="ciudad"
+               placeholder="Ciudad"
+               value="{{ old('name', $user->ciudad) }}" required>
+    </div>
+
+
+
+
+
 </div>

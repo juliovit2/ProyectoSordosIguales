@@ -50,17 +50,18 @@ Route::get('/cursos/{curso}', 'CursoController@show')->where('curso', '[0-9]+')-
 Route::get('/cursos/nuevo', 'CursoController@create')->name('cursos.create');
 Route::get('/cursos/{curso}/editar', 'CursoController@edit')->name('cursos.edit');
 Route::delete('/cursos/{curso}', 'CursoController@destroy')->name('cursos.destroy');
+Route::post('/cursos', 'CursoController@store');
+Route::put('/cursos/{curso}', 'CursoController@update');
+
 //INGRESAR NOTAS
 Route::post('ingresarNotas', 'NotasController@ingresar')->name('ingresarNotas');
 Route::get('/IngresarNotas', function () {
     return view('Plataforma/IngresarNotas');
 });
-//MODIFICAR NOTAS
-Route::post('modificiarNotas', 'NotasController@modificiar')->name('modificarNotas');
-Route::get('/ModificarNotas', function () {
-    return view('Plataforma/ModificarNotas');
-});
-
+Route::get('ModificarNotas', 'NotasController@modificar')->name('ModificarNotas');
+Route::get('edit/{id}','NotasController@modificarConector');
+Route::post('mod/{id}','NotasController@modificarIndex');
+Route::get('delete/{id}','NotasController@eliminar');
 // ----------- MODULO CONTACTO -----------
 
 
@@ -85,15 +86,11 @@ Route::get('/usuarios/{user}', 'UserController@show')
     ->where('user', '[0-9]+')
     ->name('users.show');
 
-Route::get('/usuarios/nuevo', 'UserController@create')
-    ->name('users.create');
-
-Route::get('/usuarios/{user}/editar', 'UserController@edit')
-    ->name('users.edit');
-
+Route::get('/usuarios/nuevo', 'UserController@create')->name('users.create');
+Route::post('/usuarios', 'UserController@store');
+Route::get('/usuarios/{user}/editar', 'UserController@edit')->name('users.edit');
 Route::put('/usuarios/{user}', 'UserController@update');
 
-Route::post('/usuarios/crear', 'UserController@store');
 
 Route::delete('/usuarios/{user}', 'UserController@destroy')
     ->name('users.destroy');

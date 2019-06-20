@@ -55,33 +55,26 @@
         }
     </style>
     <br>
-    <html>
-    <head>
-        <title>View Student Records</title>
-    </head>
 
-    <body>
+    <form action = "/mod/{{ $idNota }}" method = "post">
+        {{ csrf_field() }}
+        <p>Ingresar Nota de Alumno: <input type="search" name="notaAlumno"></p>
 
-    <table border = "1">
-        <tr>
-            <td>RUT</td>
-            <td>Nombre</td>
-            <td>Curso</td>
-            <td>Nota</td>
-        </tr>
-        @foreach ($usuarios as $usuario)
-            <tr>
-                <td>{{ $usuario->rut }}</td>
-                <td>{{ $usuario->name }}</td>
-                <td>{{ $usuario->nombre }}</td>
-                <td>{{ $usuario->nota * 0.1}}</td>
-                <td><a href = 'edit/{{ $usuario->id }}'>Modificar</a></td>
-                <td><a href = 'delete/{{ $usuario->id }}'>Eliminar</a></td>
-            </tr>
-        @endforeach
+        <button type="submit" class="btn btn-primary">
+            {{ __('Cambiar Nota') }}
+        </button>
+    </form>
 
+    @if ($message = Session::get('error'))
 
-    </table>
-    </body>
-    </html>
+        <div class="alert alert-danger alert-block">
+
+            <button type="button" class="close" data-dismiss="alert">×</button>
+
+            <strong>{{ $message }}</strong>
+
+        </div>
+
+    @endif
+
 @endsection

@@ -22,7 +22,8 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('direccion');
             $table->string('telefono');
-            $table->string('ciudad');$table->enum('rol',['Alumno', 'Administrador'])->default('Alumno');
+            $table->string('ciudad');
+            $table->enum('rol',['Alumno', 'Administrador'])->default('Alumno');
             $table->boolean('cursando')->nullable();
             $table->rememberToken();
             $table->timestamps();
