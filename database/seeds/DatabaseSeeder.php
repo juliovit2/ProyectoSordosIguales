@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
             //,'tabla_imagenes_noticias'
             //,'tabla_memorias'
             //,'tabla_noticias'
-            //,'tabla_personas'
+            ,'tabla_personas'
             //,'tabla_preguntas_frecuentes'
             //,'tabla_suscrptores'
             ,'tabla_usuario_cursos'
@@ -37,6 +37,7 @@ class DatabaseSeeder extends Seeder
         $this->call(UsuarioCursoSeeder::class);
         $this->call(UsuarioNotasSeeder::class);
         $this->call(EvaluacionesCursoSeeder::class);
+        $this->call(PersonaSeeder::class);
         //$this->call(NoticiaSeeder::class);
         //$this->call(ImagenesNoticiasSeeder::class);
         // llamar a los seeders correspondientes faltantes
