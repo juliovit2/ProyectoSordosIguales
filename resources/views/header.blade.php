@@ -11,11 +11,16 @@
         </div>
         <div class="col-sm-2  align-self-center" style="font-size:200%">
             <a class = "headerLink" href = "monkey.png"><i class="fab fa-twitter-square"></i></a>
-            <a class = "headerLink" href = "monkey.png"><i class="fab fa-facebook"></i></a>
+            <a class = "headerLink" href = "https://www.facebook.com/SordosIguales/"><i class="fab fa-facebook"></i></a>
             <a class = "headerLink" href = "monkey.png"><i class="fab fa-instagram"></i></a>
             <a class = "headerLink" href = "monkey.png"><i class="fab fa-whatsapp"></i></a>
+            <a class = "headerLink" href = "monkey.png"><i class="fas fa-donate"></i>
+            </div>
         </div>
-    </div>
+
+
+
+
 </div>
 <nav class="navbar-default navbar navbar-expand-md">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
