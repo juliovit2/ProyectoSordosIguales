@@ -41,5 +41,12 @@ class UsuarioCursoSeeder extends Seeder
             'estado' => 'Cursando',
             'asistencia' => '100'
         ]);
+
+        DB::table('tabla_usuario_cursos')->Insert([
+            'usuarioid' => '3',
+            'cursoid' => '2',
+            'estado' => 'Cursando',
+            'asistencia' => '100'
+        ]);
     }
 }

@@ -45,6 +45,10 @@ Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 Route::get('/PortalAlumnos', function () {
     return view('Plataforma/PortalAlumnos');
 });
+Route::get('/loginCorrecto', function(){
+   return view('Plataforma.LoginExitoso');
+});
+
 Route::get('/cursos', 'CursoController@index')->name('cursos.index');
 Route::get('/cursos/{curso}', 'CursoController@show')->where('curso', '[0-9]+')->name('cursos.show');
 Route::get('/cursos/nuevo', 'CursoController@create')->name('cursos.create');
