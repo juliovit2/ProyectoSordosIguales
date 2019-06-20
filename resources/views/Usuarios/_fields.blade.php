@@ -12,11 +12,11 @@
     </div>
 
     <div class="col-md-4 mb-3">
-        <label for="name">Rut:</label>
+        <label for="name">RUT:</label>
         <input type="text"
                name="rut"
                class="form-control is-valid"
-               id="name"
+               id="rut"
                placeholder="RUT"
                value="{{ old('name', $user->rut) }}" required>
     </div>
@@ -47,7 +47,7 @@
                class="form-control is-valid"
                id="direccion"
                placeholder="Dirección"
-               value="{{ old('name', $user->direccion) }}" required>
+               value="{{ old('name', $user->Direccion) }}" required>
     </div>
 
 

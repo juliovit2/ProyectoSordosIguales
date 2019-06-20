@@ -9,16 +9,26 @@ use Illuminate\Support\Facades\DB;
 
 class CreateUserRequest extends FormRequest
 {
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
     public function authorize()
     {
         return true;
     }
 
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
     public function rules()
     {
         return [
             'name' => 'required',
-            'rut' => ['required', 'rut', 'unique:users,rut'],
+            'rut' => 'required',
             'email' => ['required', 'email', 'unique:users,email'],
             'password' => 'required',
             'direccion' => 'required',
@@ -37,25 +47,21 @@ class CreateUserRequest extends FormRequest
         ];
     }
 
-    public function createUser(){
-        DB::transaction(function (){
-
+    public function createUser()
+    {
+        DB::transaction(function () {
             $data = $this->validated();
+
             $user = new User([
                 'name' => $data['name'],
                 'rut' => $data['rut'],
                 'email' => $data['email'],
                 'password' => bcrypt($data['password']),
-                'telefono' => $data['telefono'],
                 'direccion' => $data['direccion'],
+                'telefono' => $data['telefono'],
                 'ciudad' => $data['ciudad'],
             ]);
             $user->save();
-
         });
-    }
-
-    public function save(){
-        User::createUser($this->validated());
     }
 }

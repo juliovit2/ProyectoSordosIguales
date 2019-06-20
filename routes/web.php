@@ -45,6 +45,10 @@ Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 Route::get('/PortalAlumnos', function () {
     return view('Plataforma/PortalAlumnos');
 });
+Route::get('/loginCorrecto', function(){
+   return view('Plataforma.LoginExitoso');
+});
+
 Route::get('/cursos', 'CursoController@index')->name('cursos.index');
 Route::get('/cursos/{curso}', 'CursoController@show')->where('curso', '[0-9]+')->name('cursos.show');
 Route::get('/cursos/nuevo', 'CursoController@create')->name('cursos.create');
@@ -58,13 +62,10 @@ Route::post('ingresarNotas', 'NotasController@ingresar')->name('ingresarNotas');
 Route::get('/IngresarNotas', function () {
     return view('Plataforma/IngresarNotas');
 });
-//MODIFICAR NOTAS
 Route::get('ModificarNotas', 'NotasController@modificar')->name('ModificarNotas');
-Route::get('edit/{id}','NotasController@modificar2');
-Route::post('mod/{id}','NotasController@modificar3');
+Route::get('edit/{id}','NotasController@modificarConector');
+Route::post('mod/{id}','NotasController@modificarIndex');
 Route::get('delete/{id}','NotasController@eliminar');
-
-
 // ----------- MODULO CONTACTO -----------
 
 

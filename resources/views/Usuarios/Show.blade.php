@@ -37,11 +37,17 @@
                </thead>
 
                @php
-               $idcurso = DB::table('tabla_usuario_cursos')->select('cursoid')->where('usuarioid', '=', $user->id)->first()->cursoid;
-               $nomCurso = DB::table('tabla_cursos')->select('nombre')->where('id','=',$idcurso)->first()->nombre;
-               $asistencia = DB::table('tabla_usuario_cursos')->select('asistencia')->where('usuarioid', '=', $user->id)->first()->asistencia;
-               @endphp
+                   try {
+                        $idcurso = DB::table('tabla_usuario_cursos')->select('cursoid')->where('usuarioid', '=', $user->id)->first()->cursoid;
+                        $nomCurso = DB::table('tabla_cursos')->select('nombre')->where('id','=',$idcurso)->first()->nombre;
+                        $asistencia = DB::table('tabla_usuario_cursos')->select('asistencia')->where('usuarioid', '=', $user->id)->first()->asistencia;
+                    } catch (Exception $e) {
+                        $idcurso = null;
+                        $nomCurso = "no aplica";
+                        $asistencia = "no aplica";
+                    }
 
+               @endphp
 
                <tbody>
                     <tr>
