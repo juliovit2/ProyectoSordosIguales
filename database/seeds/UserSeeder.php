@@ -31,7 +31,19 @@ class UserSeeder extends Seeder
             'direccion' => 'UCN',
             'telefono' => '662606',
             'ciudad' => 'Antofagasta',
-            'password' => bcrypt('julio'),
+            'password' => bcrypt('1'),
+            'rol' => 'Administrador',
+            'cursando' => false
+        ]);
+
+        DB::table('users')->Insert([
+            'rut' => '2',
+            'email' => 'julio@junio.julio',
+            'name' => 'Julio',
+            'direccion' => 'UCN',
+            'telefono' => '662606',
+            'ciudad' => 'Antofagasta',
+            'password' => bcrypt('2'),
             'rol' => 'Alumno',
             'cursando' => false
         ]);

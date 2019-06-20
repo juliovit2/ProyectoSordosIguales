@@ -42,7 +42,7 @@ class UserController extends Controller
 
         $data = request()->validate([
             'name' => 'required',
-            'rut' => ['required', 'rut', Rule::unique('users')->ignore($user->id)],
+            'rut' => 'required',
             'email' => ['required', 'email', Rule::unique('users')->ignore($user->id)],
             'password' => '',
             'direccion' => 'required',
@@ -55,7 +55,7 @@ class UserController extends Controller
         } else {
             unset($data['password']);
         }
-        //$user->update($data);
+        $user->update($data);
         return redirect()->route('users.show', ['user' => $user]);
     }
 
