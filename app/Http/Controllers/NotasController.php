@@ -96,13 +96,13 @@ class NotasController extends Controller
 
     }
 
-    public function modificar2($idNota){
+    public function modificarConector($idNota){
 
         return view('Plataforma/ModificarNotasIndex',compact('idNota'));
 
     }
 
-    public function modificar3(Request $request, $idNota){
+    public function modificarIndex(Request $request, $idNota){
 
         $request->notaAlumno = ($request->notaAlumno)*10;
 
