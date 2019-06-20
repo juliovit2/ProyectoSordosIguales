@@ -23,15 +23,13 @@
                 </tr>
                 </thead>
                 @php
-                    //$idcurso = DB::table('tabla_usuario_cursos')->select('cursoid')->where('usuarioid', '=', $user->id)->first()->cursoid;
-                    //$nomCurso = DB::table('tabla_cursos')->select('nombre')->where('id','=',$idcurso)->first()->nombre;
-                    //$asistencia = DB::table('tabla_usuario_cursos')->select('asistencia')->where('usuarioid', '=', $user->id)->first()->asistencia;
+                    $profesor = DB::table('tabla_personas')->where('id', $curso->profesorid)->value('nombre');
                 @endphp
                 <tbody>
                 <tr>
                     <th>{{ $curso->id }}</th>
                     <td>{{ $curso->nombre }}</td>
-                    <td>{{ $curso->profesorid }}</td>
+                    <td>{{ $profesor }}</td>
                 </tr>
                 </tbody>
             </table>

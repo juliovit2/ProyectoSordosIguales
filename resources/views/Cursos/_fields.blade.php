@@ -6,16 +6,16 @@
                name="name"
                class="form-control is-valid"
                id="name"
-               placeholder="Nombre"
+               placeholder="Lenguaje de Señas Básico"
                value="{{ old('name', $curso->name) }}" required>
     </div>
     <div class="col-md-4 mb-3">
-        <label for="profesorid">Profesor Encargado:</label>
+        <label for="profesor">Profesor Encargado:</label>
         <input type="text"
-               name="profesorid"
+               name="profesor"
                class="form-control is-valid"
-               id="profesorid"
-               placeholder="Manuel Chuleta"
-               value="{{ old('profesorid', $curso->profesorid) }}" required>
+               id="profesor"
+               placeholder="Glenn Gomez"
+               value="{{ old('profesor', $curso->profesor) }}" required>
     </div>
 </div>
