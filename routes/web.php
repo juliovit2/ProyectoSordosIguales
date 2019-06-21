@@ -58,6 +58,7 @@ Route::post('subidaDeArchivo','InformacionController@subirArchivo');
 
 Route::resource('/faq','FaqController');
 Route::post('faq/create', 'FaqController@store');
+Route::get('faq/delete/{id}','FaqController@destroy');
 
 
 
