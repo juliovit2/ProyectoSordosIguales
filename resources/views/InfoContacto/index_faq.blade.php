@@ -12,7 +12,7 @@
             <thead>
 
             <tr>
-                <th width="20px">ID</th>
+                <th>ID</th>
                 <th>Preguntas</th>
                 <th>Respuestas</th>
                 <th>Editar</th>
@@ -22,7 +22,6 @@
             </tr>
             </thead>
             <tbody>
-
             @foreach($pregunta as $p)
                 <tr align-text="center">
                     <td>{{$p->id}}</td>
