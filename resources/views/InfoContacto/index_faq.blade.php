@@ -13,7 +13,6 @@
 
             <tr>
                 <th width="20px">ID</th>
-                <th>Tipo</th>
                 <th>Preguntas</th>
                 <th>Respuestas</th>
                 <th>Editar</th>
@@ -27,7 +26,6 @@
             @foreach($pregunta as $p)
                 <tr align-text="center">
                     <td>{{$p->id}}</td>
-                    <td>{{$p->tipo}}</td>
                     <td>{{$p->pregunta}}</td>
                     <td>{{$p->respuesta}}</td>
 
@@ -39,7 +37,7 @@
                     </td>
 
                     <td>
-                        <a href="{{action('FaqController@destroy', $p->id)}}"
+                        <a href="{{action('FaqController@destroy',$p->id)}}"
                            class="btn btn-sm btn-danger active float-right"  title="Eliminar Preguntas y Respuestas">
                             <i   class="fas fa-trash-alt"></i>
                         </a>

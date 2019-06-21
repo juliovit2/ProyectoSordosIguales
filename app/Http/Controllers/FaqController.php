@@ -10,7 +10,7 @@ class FaqController extends Controller
 {
     public function index()
     {  // $pregunta= tabla_preguntas_frecuente::all();
-        $pregunta=tabla_preguntas_frecuente::orderBy('id','DESC')->paginate(15);
+        $pregunta=tabla_preguntas_frecuente::orderBy('id','ASC')->get();
         return view('InfoContacto.index_faq',compact('pregunta'));
     }
 
@@ -41,7 +41,6 @@ class FaqController extends Controller
     public function store(request $request)
     {
         $pregunta=new tabla_preguntas_frecuente();
-        $pregunta->tipo="algo";
         $pregunta->pregunta=$request->pregunta;
         $pregunta->respuesta=substr($request->video, 32, strlen($request->video));
         $pregunta->save();
@@ -50,11 +49,9 @@ class FaqController extends Controller
 
     public function destroy($id)
     {
-        //$eliminarFaq = tabla_preguntas_frecuente::find($id);
-       // $eliminarFaq->delete();
         tabla_preguntas_frecuente::find($id)->delete();
 
-        return redirect()->route('faq.index')->with('sucess','Registro eliminado satisfactoriamente');
+        return redirect()->route('faq.index')->with('success','Registro actualizado satisfactoriamente');
     }
 
 
