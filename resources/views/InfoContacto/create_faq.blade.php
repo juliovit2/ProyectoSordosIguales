@@ -15,7 +15,7 @@
 
                     <div class="form-group mt-3">
                         <label for="respuesta"><h4>Video</h4></label>
-                        <input type="url" name="video" placeholder="Ingrese link del video" class="form-control">
+                        <input  id="video" onchange="getId(this.value)" name="video" placeholder="Ingrese link del video" class="form-control" >
                     </div>
                     <div class=form-group">
                         <button id="agregar" type="submit"  href="faq/show" value="store" class="btn btn-primary"> Agregar Preguntas y Respuestas </button>
@@ -35,4 +35,17 @@
                 }
             });
         }-->
+<script>
+    function getId(url) {
+        var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+        var match = String(url).match(regExp);
+        debugger;
+        if (match && match[2].length == 11) {
+            document.getElementById("video").value=match[2];
+        } else {
+            return 'error';
+        }
+    }
+
+</script>
 @endsection

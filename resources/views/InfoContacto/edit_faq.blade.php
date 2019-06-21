@@ -38,7 +38,7 @@
                                     </div>
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
-                                           <input type="text" name="respuesta" id="respuesta" class="form-control input-sm" value="{{$pregunta->respuesta}}">
+                                           <input name="respuesta" onchange="getId(this.value)" id="respuesta"  class="form-control input-sm" value="{{$pregunta->respuesta}}">
                                         </div>
                                     </div>
                                 </div>
@@ -67,4 +67,19 @@
         <script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
         <script src="../../../../assets/js/vendor/popper.min.js"></script>
         <script src="../../../../dist/js/bootstrap.min.js"></script>
+
+        <script>
+            function getId(url) {
+                debugger;
+                var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+                var match = String(url).match(regExp);
+                debugger;
+                if (match && match[2].length == 11) {
+                    document.getElementById("respuesta").value=match[2];
+                } else {
+                    return 'error';
+                }
+            }
+
+        </script>
 @endsection

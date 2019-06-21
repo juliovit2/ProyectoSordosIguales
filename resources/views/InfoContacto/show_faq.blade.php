@@ -15,7 +15,7 @@
     <div class="container" align="center">
         @foreach($pregunta as $p)
             <h1 align="center">{{$p->pregunta}}</h1 >
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/{{$p->respuesta}}" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+           <iframe width="560" height="315" src="https://www.youtube.com/embed/{{$p->respuesta}}" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         @endforeach
     </div>
     <!-- Bootstrap core JavaScript
@@ -25,4 +25,5 @@
     <script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
     <script src="../../../../assets/js/vendor/popper.min.js"></script>
     <script src="../../../../dist/js/bootstrap.min.js"></script>
+
 @endsection

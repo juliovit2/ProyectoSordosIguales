@@ -41,8 +41,9 @@ class FaqController extends Controller
     public function store(request $request)
     {
         $pregunta=new tabla_preguntas_frecuente();
+        $pregunta->tipo="algo";
         $pregunta->pregunta=$request->pregunta;
-        $pregunta->respuesta=substr($request->video, 32, strlen($request->video));
+        $pregunta->respuesta=$request->video;
         $pregunta->save();
         return $this->show();
     }
