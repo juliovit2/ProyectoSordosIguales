@@ -95,16 +95,8 @@ Route::post('/contacto','InformacionController@enviarCorreo');
 Route::post('subidaDeArchivo','InformacionController@subirArchivo');
 
 Route::resource('/faq','FaqController');
-//Route::get('faq/show','FaqController@showFaq');
-//Route::get('faq/index','FaqController@index');
-//Route::get('faq/edit/{id}','FaqController@edit');
-//Route::get('faq/create','FaqController@create');
-
-//Route::get('admin/edit/{id}', 'FaqController@edit');
-//Route::get('admin/faq/delete/{id}', "FaqController@destroy");
-
 Route::post('faq/create', 'FaqController@store');
-//Route::post('faq/edit/{id}', 'FaqController@update');
+
 
 
 Route::resource('admin/voluntarios', 'VoluntariosController');

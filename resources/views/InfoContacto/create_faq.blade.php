@@ -17,10 +17,6 @@
                         <label for="respuesta"><h4>Video</h4></label>
                         <input type="url" name="video" placeholder="Ingrese link del video" class="form-control">
                     </div>
-                   <!-- <div class="form-group mt-3">
-                        <label for="video"><h4>Video</h4></label>
-                        <input type="file" id="video" name="video">
-                    </div>-->
                     <div class=form-group">
                         <button id="agregar" type="submit"  href="faq/show" value="store" class="btn btn-primary"> Agregar Preguntas y Respuestas </button>
                         <a href="{{ route('faq.index') }}" class="btn btn-primary" >Atrás</a>
