@@ -36,10 +36,30 @@
                     </td>
 
                     <td>
-                        <a href="{{action('FaqController@destroy',$p->id)}}"
-                           class="btn btn-sm btn-danger active float-right"  title="Eliminar Preguntas y Respuestas">
+                        <a href="#delete" class="btn btn-danger active float-right" data-toggle="modal" title="Eliminar Preguntas y Respuestas">
                             <i   class="fas fa-trash-alt"></i>
                         </a>
+
+                        <!--pop up confirmacion -->
+                        <div class="modal fade" id="delete">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Confirmacion</h5>
+                                        <button tyle="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Si presiona cancelar, no se eliminaran los cambios</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+                                        <a href="{{action('FaqController@destroy',$p->id)}}"  class="btn btn-primary">Eliminar</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- endf pop up-->
                     </td>
 
                 </tr>

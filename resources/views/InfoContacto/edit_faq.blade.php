@@ -46,8 +46,31 @@
                                 <div class="row">
 
                                     <div class="col-xs-12 col-sm-12 col-md-12">
-                                        <input type="submit"  value="Actualizar" class="btn btn-sm btn-primary active">
+                                        
+                                        <a href="#edit" class="btn btn-primary" data-toggle="modal">Actualizar</a>
                                         <a href="{{ route('faq.index') }}" class="btn btn-sm btn-primary active" >Atrás</a>
+
+                                        <!--pop up confirmacion -->
+                                        <div class="modal fade" id="edit">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">Confirmacion</h5>
+                                                        <button tyle="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>Si presiona cancelar, no se guardaran los cambios</p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+                                                        <button type="submit" value="Actualizar" class="btn btn-primary active">Guardar Cambios</button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- endf pop up-->
+
                                     </div>
 
                                 </div>
