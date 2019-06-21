@@ -38,7 +38,7 @@
                                     </div>
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
-                                            <input type="text" name="respuesta" id="respuesta" class="form-control input-sm" value="https://www.youtube.com/".{{$pregunta->respuesta}}>
+                                           <input type="text" name="respuesta" id="respuesta" class="form-control input-sm" value="{{$pregunta->respuesta}}">
                                         </div>
                                     </div>
                                 </div>

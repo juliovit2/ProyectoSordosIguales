@@ -4,7 +4,7 @@
     <div class ="container p-5 border">
 
 
-        <div class = "container pl-5 pr-5" style = "text-align: left">
+        <div class = "container pl-5 pr-5" style = "text-align: center">
             <h1 style="font-weight: lighter;font-size: 60px">Preguntas Frecuentes</h1>
             <hr class = "bluered">
         </div>
@@ -12,7 +12,7 @@
     </div>
 
 
-    <div class="container">
+    <div class="container" align="center">
         @foreach($pregunta as $p)
             <h1 align="center">{{$p->pregunta}}</h1 >
             <iframe width="560" height="315" src="https://www.youtube.com/embed/{{$p->respuesta}}" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
