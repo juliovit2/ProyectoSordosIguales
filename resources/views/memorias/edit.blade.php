@@ -5,13 +5,28 @@
 
 @section('pre-body')
     @if ($errors->any())
-        <div class="alert alert-danger">
-            <p><strong>ERROR:</strong> Por favor corregir los siguientes errores</p>
-            <ul>
-                @foreach($errors->all() as $error)
-                    <li>{{$error}}</li>
-                @endforeach
-            </ul>
+        <!-- Errores de Validacion Modal -->
+        <div class="modal fade" id="errorsModal" aria-label="Errores" tabindex="-1" role="dialog"  aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content" >
+                    <div class="modal-header"style="background-color: #FFAAAA">
+                        <h5 class="modal-title"><i class="fas fa-exclamation-triangle"></i> Por favor corregir los siguientes errores:</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <ul>
+                            @foreach($errors->all() as $error)
+                                <li>{{$error}}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary formButton" data-dismiss="modal">Entendido</button>
+                    </div>
+                </div>
+            </div>
         </div>
     @endif
 @endsection
@@ -47,7 +62,7 @@
     <div class="container containerForm">
         <h2> Elija uno o más atributos a modificar</h2>
         <br />
-        <form autocomplete="off" method="POST" action="{{route('memorias.update',$memoria['id'])}} " enctype="multipart/form-data">
+        <form id="formMemoria" autocomplete="off" method="POST" action="{{route('memorias.update',$memoria['id'])}} " enctype="multipart/form-data">
             {{ csrf_field() }}
             {{ method_field('PUT') }}
             <div class="form-group row d-flex align-items-center">
@@ -59,6 +74,12 @@
                                 <option value= {{$year}}>{{$year}}</option>
                         @endforeach
                     </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputVideo" class="col-sm-2 col-form-label">URL de video</label>
+                <div class="col-sm-3">
+                    <input class="form-control" style="background: #EEF2FC;" name="inputVideo" id="inputVideo" value="{{$memoria['video']}}">
                 </div>
             </div>
             <div class="form-group row ">
@@ -139,12 +160,30 @@
         </form>
     </div>
 
+    <script>
+        $(document).ready(function() {
+            var errors = {!! json_encode($errors->toArray()) !!};
+            if (!Array.isArray(errors)) {
+                $('#errorsModal').modal('show')
+            }
+        })
+        $("#formMemoria").on("submit", function (e) {
+            e.preventDefault();//stop submit event
+            var url = document.getElementById("inputVideo").value
+            var idMatch;
+            var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+            var match = url.match(regExp);
 
-    <!-- Optional JavaScript -->
-
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="{{asset('https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo')}}" crossorigin="anonymous"></script>
-    <script src="{{asset('https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut')}}" crossorigin="anonymous"></script>
-    <script src="{{asset('https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k')}}" crossorigin="anonymous"></script>
-
+            if (match && match[2].length == 11) {
+                idMatch = match[2];
+            } else {
+                idMatch ='error';
+            }
+            var self = $(this);//this form
+            var fullEmbed = "https://www.youtube.com/embed/" + idMatch;
+            $("#inputVideo").val(fullEmbed);//change input
+            $("#formMemoria").off("submit");//need form submit event off.
+            self.submit();//submit form
+        });
+    </script>
 @endsection

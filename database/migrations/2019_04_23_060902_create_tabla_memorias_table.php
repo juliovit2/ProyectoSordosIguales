@@ -18,6 +18,7 @@ class CreateTablaMemoriasTable extends Migration
             $table->integer('year');
             $table->string('pdf');
             $table->string('portada')->nullable();
+            $table->string('video');
             $table->timestamps();
         });
     }
