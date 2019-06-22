@@ -11,5 +11,5 @@
     {!!html_entity_decode($datos[3])!!}
     <br>
     <br>
-    <b>Nombre del archivo:</b>{!!html_entity_decode($datos[4])!!}<br>
+    <b>Nombre del archivo:</b> {!!html_entity_decode($datos[4])!!}<br>
 </div>

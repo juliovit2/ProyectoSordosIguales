@@ -80,8 +80,6 @@
         <button class="tablinks" onclick="openCity(event, 'Otro')">Otro</button>
     </div>
     <!-- FORMS -->
-
-    <input type="hidden" id="op" name="opcion" value="1">
     <div id="Consulta" class="tabcontent">
         <div class="container" align="center">
             <div class="col-md-6 col-md-offset-3">
@@ -217,7 +215,7 @@
                                 <!-- Form actions -->
                                 <div class="form-group">
                                     <div class="text-center">
-                                        <button id="voluntario" onclick="revisar(2)" type="submit" class="btn btn-primary btn-lg text-reset">Enviar</button>
+                                        <button id="voluntario" onclick="revisar()" type="submit" class="btn btn-primary btn-lg text-reset">Enviar</button>
                                     </div>
                                 </div>
                             </div>
@@ -244,6 +242,16 @@
                         <div class="card" >
                             <div class="card-body">
                                 <div id="obligatorio">
+                                    <div class="form-group">
+                                        <p align="left">Tipo de denuncia</p>
+                                        <div align="left">
+                                            <select id="denunciaId" name="tipoDenuncia">
+                                                <option disabled selected value> -- Seleccione una opcion -- </option>
+                                                <option value="Salud">Salud</option>
+                                                <option value="Discriminacion">Discriminacion</option>
+                                            </select>
+                                        </div>
+                                    </div>
                                     <!-- Name input-->
                                     <div class="form-group">
                                         <p align="left">Nombre (opcional)</p>
@@ -356,12 +364,16 @@
     </body>
     {{--    subida de archivo(barra de progreso)--}}
     <script src="http://malsup.github.com/jquery.form.js"></script>
+    {{--    script para consulta,denuncia y otro--}}
     <script>
         function revisarv2(op) {
             var img;
             var name;
             var email;
             var msn;
+            var tdenun="";//tipo de denuncia
+            var vacios;//indica si los campos name y email estan vacios
+            debugger;
             switch (op) {
                 case 1:
                     name=document.getElementById("name").value;
@@ -371,6 +383,7 @@
                     $('#consulta').attr('disabled','disabled');
                     break;
                 case 3:
+                    tdenun=document.getElementById("denunciaId").value;
                     name=document.getElementById("name3").value;
                     email= document.getElementById("email3").value;
                     msn=CKEDITOR.instances.editor3.getData();
@@ -392,17 +405,19 @@
                 form_data.append('archivo', img.files[0]);
             }else{
                 form_data.append('archivo', "");
+                img="";
             }
             form_data.append('op', op);
             form_data.append('name', name);
             form_data.append('email', email);
             form_data.append('mensaje', msn);
+            form_data.append('tipoDenuncia', tdenun);
             form_data.append('_token', '{{csrf_token()}}');
 
             $.ajax({
                 xhr: function() {
                     var xhr = new window.XMLHttpRequest();
-                    if(img.value!="") {
+                    if(img!="") {
                         xhr.upload.addEventListener("progress", function (evt) {//proceso de carga
                             if (evt.lengthComputable) {
                                 var percentComplete = (evt.loaded / evt.total) * 100;
@@ -423,81 +438,71 @@
                     if (data.fail) {
                         alert(data.errors['file']);
                     }
-                    else {
-                        //alert(data);
-                        switch (op) {
-                            case 1:
-                                $('#consulta').removeAttr('disabled');
-                                break;
-                            case 2:
-                                $('#voluntario').removeAttr('disabled');
-                                break;
-                            case 3:
-                                $('#denuncia').removeAttr('disabled');
-                                break;
-                            case 4:
-                                $('#otro').removeAttr('disabled');
-                                break;
-                        }
-                        //alert("Mensaje enviado");
-                    }
                 },
                 error: function (xhr, status, error) {
                     var percentVal='0%';
                     bar.width(percentVal);
                     percent.html(percentVal);
-                    if(error=="Unprocessable Entity"){
-                        alert("El formato invalido o el archivo supera los 30mb");
-                    }
                     switch (op) {
                         case 1:
-                            $('#consulta').removeAttr('disabled');
-                            break;
-                        case 2:
-                            $('#voluntario').removeAttr('disabled');
+                            name=$('#name').val();
+                            email=$('#email').val();
                             break;
                         case 3:
-                            $('#denuncia').removeAttr('disabled');
+                            name="anonymous"
+                            email=$('#email3').val();
                             break;
                         case 4:
-                            $('#otro').removeAttr('disabled');
+                            name=$('#name4').val();
+                            email=$('#email4').val();
                             break;
                     }
-                    //alert(xhr.responseText)
-                    //alert('Error: \n'+xhr.responseText);
+                    if(name!="" && email!=""){
+                        if(error=="Unprocessable Entity" && img!=""){
+                            alert("El formato invalido o el archivo supera los 30mb");
+                        }
+                    }else{
+                        vacios=true;
+                    }
                 },
                 complete: function(xhr) {
-                    alert(xhr.responseText);//recibe el return del controlador
-                    window.location.href = "/contacto";
+                    if(!vacios){
+                        if(msn!="" || img!=""){
+                            alert(xhr.responseText);//recibe el return del controlador
+                            window.location.href = "/contacto";
+                        }
+                    }else{
+                        alert("por favor complete los campos")
+                    }
                 }
             });
         }
     </script>
+    {{--    script para voluntario--}}
     <script>
-        function revisar(op) {
-            document.getElementById("op").value = op;//indica que boton se esta utilizando
+        function revisar() {
+            var refresh=true;
             $('form').ajaxForm({
+                error: function (xhr, status, error) {
+                    debugger;
+                    if(error=="Unprocessable Entity"){
+                        refresh=false;
+                    }
+                },
                 complete: function(xhr) {
-                    alert(xhr.responseText);///recibe el return del controlador
-                    window.location.href = "/contacto";
+                    if(refresh){
+                        alert(xhr.responseText);///recibe el return del controlador
+                        window.location.href = "/contacto";
+                    }else{
+                        $('#voluntario').html($('#voluntario').data('original-text'));
+                        $('#voluntario').removeAttr('disabled');
+                        alert("Debe subir un Certificados o Curriculum");
+                    }
+
                 }
             });
         }
         function subidav2(img,op) {
-            switch (op) {
-                case 1:
-                    $('#consulta').attr('disabled','disabled');
-                    break;
-                case 2:
-                    $('#voluntario').attr('disabled','disabled');
-                    break;
-                case 3:
-                    $('#denuncia').attr('disabled','disabled');
-                    break;
-                case 4:
-                    $('#otro').attr('disabled','disabled');
-                    break;
-            }
             var bar = $('.bar');
             var percent = $('.percent');
             var form_data = new FormData();
@@ -527,36 +532,7 @@
                         alert(data.errors['file']);
                     }
                     else {
-                        debugger;
-                        switch (op) {
-                            case 1:
-                                document.getElementById("archivo1").value = data;
-                                break;
-                            case 2:
-                                document.getElementById("archivo2").value = data;
-                                break;
-                            case 3:
-                                document.getElementById("archivo3").value = data;
-                                break;
-                            case 4:
-                                document.getElementById("archivo4").value = data;
-                                break;
-                        }
-                        //alert(data);
-                        switch (op) {
-                            case 1:
-                                $('#consulta').removeAttr('disabled');
-                                break;
-                            case 2:
-                                $('#voluntario').removeAttr('disabled');
-                                break;
-                            case 3:
-                                $('#denuncia').removeAttr('disabled');
-                                break;
-                            case 4:
-                                $('#otro').removeAttr('disabled');
-                                break;
-                        }
+                        document.getElementById("archivo2").value = data;
                         alert("Archivo Subido");
                     }
                 },
@@ -567,28 +543,12 @@
                     if(error=="Unprocessable Entity"){
                         alert("El formato invalido o el archivo supera los 30mb");
                     }
-                    switch (op) {
-                        case 1:
-                            $('#consulta').removeAttr('disabled');
-                            break;
-                        case 2:
-                            $('#voluntario').removeAttr('disabled');
-                            break;
-                        case 3:
-                            $('#denuncia').removeAttr('disabled');
-                            break;
-                        case 4:
-                            $('#otro').removeAttr('disabled');
-                            break;
-                    }
-                    //alert(xhr.responseText)
-                    //alert('Error: \n'+xhr.responseText);
                 }
             });
         }
     </script>
 
-{{--    boton de enviando...--}}
+    {{--    boton de enviando...--}}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script>
         $(document).ready(function() {
@@ -599,20 +559,16 @@
                     $this.data('original-text', $(this).html());
                     $this.html(loadingText);
                 }
-
-                var op=parseInt($('#op').val());
                 //valida los campos que no esten vacios, de estarlos los botones se restablecen y se envia un mensaje
-                switch (op) {
-                    case 1:
-                        $('#consulta').attr('disabled','disabled');
+                $this.attr('disabled','disabled');
+                switch ($this.context.attributes.id.value) {
+                    case 'consulta':
                         var name=$('#name').val();
                         var email=$('#email').val();
                         if(name=="" || email==""){
-                            //alert("");
-                            $('#consulta').html($('#consulta').data('original-text'));
-                            $('#consulta').removeAttr('disabled');
+                            $this.html($this.data('original-text'));
+                            $this.removeAttr('disabled');
                             break;
-                            //return false;
                         }
                         //var textArea=$('#cke_editor1').val();
                         var textArea=CKEDITOR.instances.editor1.getData();
@@ -624,8 +580,7 @@
                             return false;
                         }
                         break;
-                    case 2:
-                        $('#voluntario').attr('disabled','disabled');
+                    case 'voluntario'://puede ser eliminado
                         var name=$('#name2').val();
                         var rut=$('#rut').val();
                         var email=$('#email2').val();
@@ -633,46 +588,40 @@
                         var phone=$('#phone').val();
                         var profesion=$('#profesion').val();
                         if(name=="" || email=="" || rut=="" || ciudad=="" || phone=="" || profesion==""){
-                            $('#voluntario').html($('#voluntario').data('original-text'));
-                            $('#voluntario').removeAttr('disabled');
+                            $this.html($this.data('original-text'));
+                            $this.removeAttr('disabled');
                             break;
-                            //return false;
                         }
                         var archivo=$('#file2').val();
                         if(archivo==""){
                             alert("El correo debe contener un archivo pdf.");
-                            $('#voluntario').html($('#voluntario').data('original-text'));
-                            $('#voluntario').removeAttr('disabled');
+                            $this.html($this.data('original-text'));
+                            $this.removeAttr('disabled');
                             return false;
                         }
                         break;
-                    case 3:
-                        $('#denuncia').attr('disabled','disabled');
-                        //var name=$('#name3').val();
+                    case 'denuncia':
                         var email=$('#email3').val();
                         if(email==""){
                             $('#denuncia').html($('#denuncia').data('original-text'));
                             $('#denuncia').removeAttr('disabled');
                             break;
-                            //return false;
                         }
-                        //var textArea=$('#editor3').val();
                         var textArea=CKEDITOR.instances.editor3.getData();
                         var archivo=$('#file3').val();
                         if(textArea=="" && archivo==""){
                             alert("El correo debe contener un mensaje o un video.");
-                            $('#denuncia').html($('#denuncia').data('original-text'));
-                            $('#denuncia').removeAttr('disabled');
+                            $this.html($this.data('original-text'));
+                            $this.removeAttr('disabled');
                             return false;
                         }
                         break;
-                    case 4:
-                        $('#otro').attr('disabled','disabled');
+                    case 'otro':
                         var name=$('#name4').val();
                         var email=$('#email4').val();
                         if(name=="" || email==""){
-                            $('#otro').html($('#otro').data('original-text'));
-                            $('#otro').removeAttr('disabled');
+                            $this.html($this.data('original-text'));
+                            $this.removeAttr('disabled');
                             break;
                             //return false;
                         }
@@ -681,16 +630,12 @@
                         var archivo=$('#file4').val();
                         if(textArea=="" && archivo==""){
                             alert("El correo debe contener un mensaje o un video.");
-                            $('#otro').html($('#otro').data('original-text'));
-                            $('#otro').removeAttr('disabled');
+                            $this.html($this.data('original-text'));
+                            $this.removeAttr('disabled');
                             return false;
                         }
                         break;
                 }
-
-                // setTimeout(function() {
-                //     $this.html($this.data('original-text'));
-                // }, 2000);
             });
         })
     </script>
