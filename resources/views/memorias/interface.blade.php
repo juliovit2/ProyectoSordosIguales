@@ -10,7 +10,7 @@
 
         <div class = "container pl-5 pr-5" style = "text-align: left">
             <h1 style="font-weight: lighter;font-size: 60px">Memorias Anuales</h1>
-            <hr class = "bluered">
+            <hr class = "redHR">
         </div>
 
         @if($memorias)
@@ -81,6 +81,7 @@
             $("#videoModal iframe").attr("src", $("#videoModal iframe").attr("src"));
         });
     })
+
 </script>
 
 <!-- Bootstrap core JavaScript

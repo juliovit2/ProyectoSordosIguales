@@ -116,7 +116,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Volver al formulario</button>
-                            <button type="submit" class="btn btn-primary formButton">Confirmar</button>
+                            <button id ="submitButton" type="submit" class="btn btn-primary formButton">Confirmar</button>
                         </div>
                     </div>
                 </div>
