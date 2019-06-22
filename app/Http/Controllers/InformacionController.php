@@ -34,7 +34,7 @@ class InformacionController extends Controller
             $nombre=$request->name;
             $mensaje=$request->mensaje;
             $tipo="";
-            switch ($request->opcion){
+            switch ($request->op){
                 case 1://consulta
                     $tipo='consulta';
                     $this->validate($request, [
@@ -80,11 +80,13 @@ class InformacionController extends Controller
                     $imageName
                 );
             }else{
-                $imageName="";
+                $imageName="Mensaje sin archivo";
             }
-
-
-            $datos=[$tipo,$nombre,$request->email,$mensaje,$imageName];
+            if($request->op==3){
+                $datos=[$tipo,$request->tipoDenuncia,$nombre,$request->email,$mensaje,$imageName];
+            }else{
+                $datos=[$tipo,$nombre,$request->email,$mensaje,$imageName];
+            }
             //$datos=[$tipo,$nombre,$request->email,$mensaje];
             //Mail::to($request->email)->send(new SendMailable($datos));
             try {
