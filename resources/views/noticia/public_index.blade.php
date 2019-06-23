@@ -33,7 +33,11 @@
                                 <div class="col-8">
                                     <h5 class="text-center">{{$noticia->titulo}}</h5>
                                     <div class="col-12">
-                                        <p class="text-justify">Alumno de la Universidad Católica del Norte muere atropellado por un perro que comia sushi mientras dormia a orillas del ferrocarril.</p>
+                                        <?php
+                                            <?php
+
+                                        ?>
+                                        <p id="summary" class="text-justify">Alumno de la Universidad Católica del Norte muere atropellado por un perro que comia sushi mientras dormia a orillas del ferrocarril.</p>
                                     </div>
                                 </div>
                         </div>

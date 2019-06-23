@@ -20,6 +20,17 @@
                         </div>
                 @endif
             @endforeach
+            @if($tabla_noticia->video != "0")
+                <div class="carousel-item">
+                    <div class="item banner-height-400">
+                <div align="center">
+                    <video  id="sampleMovie" width="640" height="360" preload controls>
+                        <source src="{{ asset('storage/'.$tabla_noticia->video)}}"  />
+                    </video>
+                </div>
+                    </div>
+                </div>
+            @endif
         </div>
         <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -41,15 +52,7 @@
         <h3>
             {!! $tabla_noticia->contenido !!}
         </h3>
-    </div>
-        @if($tabla_noticia->video != "0")
-        <div align="center">
-        <video  id="sampleMovie" width="640" height="360" preload controls>
-            <source src="{{ asset('storage/'.$tabla_noticia->video)}}"  />
-        </video>
-        </div>
-        @endif
-    </div>
+
 
     <style>
         .carousel-inner img {
