@@ -1,7 +1,12 @@
 @extends('layout')
 @section('title', "notas")
 @section('content')
-
+    <?php
+    $id = Auth::user()->id;
+    $rol = DB::table('users')->where('id', $id)->value('rol');
+    if($rol == 'Alumno'){?>
+    <meta http-equiv='refresh' content='0; URL=/usuarios/{{ $id }}/'>
+    <?php }else { ?>
     <style>
         html, body {
             background-color: #fff;
@@ -110,12 +115,12 @@
         </div>
     @endif
     @if ($message = Session::get('exito'))
-        <div class="alert alert-danger alert-success">
-            <button type="button" class="close" data-dismiss="alert">×</button>
+        <div class="alert alert-success">
+            <button type="button" class="close" data-dismiss="success">×</button>
             <strong>{{ $message }}</strong>
         </div>
     @endif
 
 
-
+<?php } ?>
 @endsection

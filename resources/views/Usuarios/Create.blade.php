@@ -3,7 +3,12 @@
 @section('title', "Crear usuario")
 
 @section('content')
-
+    <?php
+    $id = Auth::user()->id;
+    $rol = DB::table('users')->where('id', $id)->value('rol');
+    if($rol == 'Alumno'){?>
+    <meta http-equiv='refresh' content='0; URL=/usuarios/{{ $id }}/'>
+    <?php }else{ ?>
     @card
         @slot('header', 'Nuevo Usuario')
 
@@ -20,4 +25,5 @@
         </form>
 
     @endcard
+    <?php } ?>
 @endsection

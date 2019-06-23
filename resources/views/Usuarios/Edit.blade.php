@@ -3,7 +3,12 @@
 @section('title', "Actualizar usuario")
 
 @section('content')
-
+    <?php
+    $id = Auth::user()->id;
+    $rol = DB::table('users')->where('id', $id)->value('rol');
+    if($rol == 'Alumno' && $id != $user->id){?>
+    <meta http-equiv='refresh' content='0; URL=/usuarios/{{ $id }}/'>
+    <?php }else{ ?>
     @card
         @slot('header', 'Editar Usuario')
 
@@ -21,5 +26,5 @@
         </form>
 
     @endcard
-
+    <?php }?>
 @endsection

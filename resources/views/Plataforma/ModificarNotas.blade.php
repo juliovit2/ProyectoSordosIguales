@@ -1,87 +1,80 @@
 @extends('layout')
-@section('title', "notas")
+@section('title', "Notas")
 @section('content')
-
-    <style>
-        html, body {
-            background-color: #fff;
-            color: #636b6f;
-            font-family: 'Nunito', sans-serif;
-            font-weight: 200;
-            height: 100vh;
-            margin: 0;
-        }
-
-        .full-height {
-            height: 100vh;
-        }
-
-        .flex-center {
-            align-items: center;
-            display: flex;
-            justify-content: center;
-        }
-
-        .position-ref {
-            position: relative;
-        }
-
-        .top-right {
-            position: absolute;
-            right: 10px;
-            top: 18px;
-        }
-
-        .content {
-            text-align: center;
-        }
-
-        .title {
-            font-size: 84px;
-        }
-
-        .links > a {
-            color: #636b6f;
-            padding: 0 25px;
-            font-size: 13px;
-            font-weight: 600;
-            letter-spacing: .1rem;
-            text-decoration: none;
-            text-transform: uppercase;
-        }
-
-        .m-b-md {
-            margin-bottom: 30px;
-        }
-    </style>
+    <?php
+    $id = Auth::user()->id;
+    $rol = DB::table('users')->where('id', $id)->value('rol');
+    if($rol == 'Alumno'){?>
+    <meta http-equiv='refresh' content='0; URL=/usuarios/{{ $id }}/'>
+    <?php }else { ?>
     <br>
-    <html>
-    <head>
-        <title>View Student Records</title>
-    </head>
-
+    <?php
+    $id = Auth::user()->id;
+    $rol = DB::table('users')->where('id', $id)->value('rol');
+    if($rol == 'Alumno'){?>
+    <meta http-equiv='refresh' content='0; URL=/usuarios/{{ $id }}/'>
+    <?php }else { }?>
+    <div class="d-flex justify-content-between align-items-end mb-3">
+        <h1 class="pb-1">{{ $title }}</h1>
+        <p>
+            <a href="IngresarNotas" class="btn btn-primary">Añadir Nota</a>
+        </p>
+    </div>
     <body>
-
-    <table border = "1">
+    @if ($users->isNotEmpty())
+        @php $contadorEstudiantes=0 @endphp
+    <table class="table table-striped table-sm">
+        <thead class="thead-dark">
         <tr>
-            <td>RUT</td>
-            <td>Nombre</td>
-            <td>Curso</td>
-            <td>Nota</td>
+            <th scope="col">ID</th>
+            <th scope="col">RUT</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Curso</th>
+            <th scope="col">Promedio</th>
+            <th scope="col">Acciones</th>
         </tr>
-        @foreach ($usuarios as $usuario)
-            <tr>
-                <td>{{ $usuario->rut }}</td>
-                <td>{{ $usuario->name }}</td>
-                <td>{{ $usuario->nombre }}</td>
-                <td>{{ $usuario->nota * 0.1}}</td>
-                <td><a href = 'edit/{{ $usuario->id }}'>Modificar</a></td>
-                <td><a href = 'delete/{{ $usuario->id }}'>Eliminar</a></td>
-            </tr>
+        </thead>
+        <tbody>
+        @foreach($users as $user)
+            @if ($user->rol == 'Alumno')
+                @php $contadorEstudiantes=$contadorEstudiantes+1 @endphp
+                <tr>
+                    <th scope="row">{{ $user->id }}</th>
+                    <td>{{ $user->rut }}</td>
+                    <td>{{ $user->name }}</td>
+                    @php
+                        try {
+                            $idcurso = DB::table('tabla_usuario_cursos')->select('cursoid')->where('usuarioid', '=', $user->id)->first()->cursoid;
+                            $nomCurso = DB::table('tabla_cursos')->select('nombre')->where('id','=',$idcurso)->first()->nombre;
+                            $notas =  DB::table('tabla_usuario_notas')->where('usuarioid', '=', $user->id)->avg('nota')*0.1;
+                        } catch (Exception $e) {
+                            $idcurso = null;
+                            $nomCurso = "No aplica";
+                            $notas = 'No aplica';
+                        }
+                    @endphp
+                    <td>{{ $nomCurso }}</td>
+                    @if($notas != '0')
+                        <td>{{ $notas }}</td>
+                    @else
+                        <td>Sin notas</td>
+                    @endif
+                    <td>
+                        <a href="{{ route('IndiceNotas', $user) }}" class="btn btn-link"><span class="oi oi-eye"></span></a>
+                    </td>
+                </tr>
+            @endif
         @endforeach
+        @if ($contadorEstudiantes == 0)
+            <p>No hay estudiantes registrados.</p>
+        @endif
 
-
+        </tbody>
     </table>
+        <a href="/PortalAlumnos" class="btn btn-link"> Regresar </a>
+    @else
+        <p>No hay estudiantes registrados.</p>
+    @endif
     </body>
-    </html>
+    <?php } ?>
 @endsection

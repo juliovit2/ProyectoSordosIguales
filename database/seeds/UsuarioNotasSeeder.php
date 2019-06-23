@@ -13,63 +13,63 @@ class UsuarioNotasSeeder extends Seeder
     public function run()
     {
         DB::table('tabla_usuario_notas')->Insert([
-            'nota' => '6',
+            'nota' => '60',
             'usuarioid' => '1',
             'cursoid' => '1',
             'notaid' => '1'
         ]);
 
         DB::table('tabla_usuario_notas')->Insert([
-            'nota' => '4',
+            'nota' => '40',
             'usuarioid' => '1',
             'cursoid' => '1',
             'notaid' => '1'
         ]);
 
         DB::table('tabla_usuario_notas')->Insert([
-            'nota' => '3',
+            'nota' => '30',
             'usuarioid' => '1',
             'cursoid' => '1',
             'notaid' => '1'
         ]);
 
         DB::table('tabla_usuario_notas')->Insert([
-            'nota' => '7',
+            'nota' => '70',
             'usuarioid' => '4',
             'cursoid' => '1',
             'notaid' => '1'
         ]);
 
         DB::table('tabla_usuario_notas')->Insert([
-            'nota' => '6',
+            'nota' => '60',
             'usuarioid' => '4',
             'cursoid' => '1',
             'notaid' => '1'
         ]);
 
         DB::table('tabla_usuario_notas')->Insert([
-            'nota' => '3',
+            'nota' => '30',
             'usuarioid' => '5',
             'cursoid' => '2',
             'notaid' => '1'
         ]);
 
         DB::table('tabla_usuario_notas')->Insert([
-            'nota' => '4',
+            'nota' => '40',
             'usuarioid' => '5',
             'cursoid' => '2',
             'notaid' => '1'
         ]);
 
         DB::table('tabla_usuario_notas')->Insert([
-            'nota' => '5',
+            'nota' => '50',
             'usuarioid' => '5',
             'cursoid' => '2',
             'notaid' => '1'
         ]);
 
         DB::table('tabla_usuario_notas')->Insert([
-            'nota' => '5',
+            'nota' => '50',
             'usuarioid' => '6',
             'cursoid' => '2',
             'notaid' => '1'

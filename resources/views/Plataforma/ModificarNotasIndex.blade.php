@@ -1,7 +1,12 @@
 @extends('layout')
 @section('title', "notas")
 @section('content')
-
+    <?php
+    $id = Auth::user()->id;
+    $rol = DB::table('users')->where('id', $id)->value('rol');
+    if($rol == 'Alumno'){?>
+    <meta http-equiv='refresh' content='0; URL=/usuarios/{{ $id }}/'>
+    <?php }else { ?>
     <style>
         html, body {
             background-color: #fff;
@@ -76,5 +81,5 @@
         </div>
 
     @endif
-
+<?php } ?>
 @endsection

@@ -36,21 +36,30 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{route('users.index')}}">Estudiantes <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{route('cursos.index')}}">Cursos <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Algun Link</a>
-                </li>
-            </ul>
+            @auth
+                <?php
+                    $id = Auth::user()->id;
+                    $rol = DB::table('users')->where('id', $id)->value('rol');
+                    if($rol == 'Administrador'){?>
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{{route('users.index')}}">Estudiantes <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{{route('cursos.index')}}">Cursos <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{{route('ModificarNotas')}}">Notas <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link disabled" href="#">Algun Link</a>
+                            </li>
+                        </ul>
+                <?php }?>
+            @endauth
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/') }}">Página de Inicio</a>
                         <a href="{{url('/logout')}}">Logout</a>
 
                     @else

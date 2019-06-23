@@ -3,12 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 use Auth;
 use DB;
 
 
 class NotasController extends Controller
 {
+    public function indiceNotas(User $user){
+        $usuarios = DB::select('select name, rut, nota, tabla_usuario_notas.id, tabla_cursos.nombre  from users, tabla_usuario_notas, tabla_cursos where users.id = tabla_usuario_notas.usuarioid and tabla_cursos.id = tabla_usuario_notas.cursoid');
+        return view('Plataforma/NotasIndex',compact('usuarios', 'user'));
+    }
 
     public function ingresar(Request $request){
 
@@ -92,10 +97,9 @@ class NotasController extends Controller
     }
 
     public function modificar(Request $request){
-
-        $usuarios = DB::select('select name, rut, nota, tabla_usuario_notas.id, tabla_cursos.nombre  from users, tabla_usuario_notas, tabla_cursos where users.id = tabla_usuario_notas.usuarioid and tabla_cursos.id = tabla_usuario_notas.cursoid');
-        return view('Plataforma/ModificarNotas',compact('usuarios'));
-
+        $users = User::all();
+        $title = 'Listado de notas';
+        return view('Plataforma.ModificarNotas', compact('title', 'users'));
     }
 
     public function modificarConector($idNota){
