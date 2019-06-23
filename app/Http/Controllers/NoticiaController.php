@@ -20,7 +20,7 @@ class NoticiaController extends Controller
      */
     public function index()
     {
-        $noticias = tabla_noticia::orderBy('id','ASC')->paginate();
+        $noticias = tabla_noticia::orderBy('id','DESC')->paginate();
         $imagenes_noticia = tabla_imagenes_noticia::all();
         return view('noticia.index',compact('noticias','imagenes_noticia'));
     }
