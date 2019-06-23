@@ -33,11 +33,7 @@
                                 <div class="col-8">
                                     <h5 class="text-center">{{$noticia->titulo}}</h5>
                                     <div class="col-12">
-                                        <?php
-                                            <?php
-
-                                        ?>
-                                        <p id="summary" class="text-justify">Alumno de la Universidad Católica del Norte muere atropellado por un perro que comia sushi mientras dormia a orillas del ferrocarril.</p>
+                                        <p class="text-justify">{{$noticia->getSummary(140)}}.</p>
                                     </div>
                                 </div>
                         </div>
@@ -47,7 +43,7 @@
 
             @endforeach
             <div class="col-12 text-center">
-                        {{ $noticias->links()}}</div></div>
+                        {{ $noticias->links()}}
             </div>
         </div>
     </div>
