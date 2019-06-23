@@ -1,57 +1,63 @@
 @extends('layoutGeneral')
 @section('content')
 
-    <div class="container">
-    <h1 align="center">{{$tabla_noticia->titulo}}</h1 >
 
-    <div id="carousel" class="carousel slide bg-dark" data-ride="carousel" data-interval="4000" width="100%" max-height="460px">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <div class="item banner-height-400">
-                <img width="400px" height="400px" src="{{ asset('storage/logo_fundacion.png')}}" class="d-block w-100" alt="...">
-                </div>
-                </div>
-            @foreach($tabla_imagenes_noticia as $tabla_imagenes_noticia)
-                @if($tabla_imagenes_noticia->noticiaid == $tabla_noticia->id)
-                    <div class="carousel-item">
-                        <div class="item banner-height-400">
-                                <img width="400px" height="400px"  src="{{ asset('storage/'.$tabla_imagenes_noticia->imagen)}}" class="d-block w-100" alt="...">
+    <div class="card">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+            <div class="container">
+                <h1 align="justify">{{$tabla_noticia->titulo}}</h1 >
+
+                <div id="carousel" class="carousel slide bg-dark" data-ride="carousel" data-interval="4000" width="100%" max-height="460px">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="item banner-height-400">
+                                <img width="400px" height="400px" src="{{ asset('storage/logo_fundacion.png')}}" class="d-block w-100" alt="...">
+                            </div>
                         </div>
-                        </div>
-                @endif
-            @endforeach
-            @if($tabla_noticia->video != "0")
-                <div class="carousel-item">
-                    <div class="item banner-height-400">
-                <div align="center">
-                    <video  id="sampleMovie" width="640" height="360" preload controls>
-                        <source src="{{ asset('storage/'.$tabla_noticia->video)}}"  />
-                    </video>
-                </div>
+                        @foreach($tabla_imagenes_noticia as $tabla_imagenes_noticia)
+                            @if($tabla_imagenes_noticia->noticiaid == $tabla_noticia->id)
+                                <div class="carousel-item">
+                                    <div class="item banner-height-400">
+                                        <img width="400px" height="400px"  src="{{ asset('storage/'.$tabla_imagenes_noticia->imagen)}}" class="d-block w-100" alt="...">
+                                    </div>
+                                </div>
+                            @endif
+                        @endforeach
+                        @if($tabla_noticia->video != "0")
+                            <div class="carousel-item">
+                                <div class="item banner-height-400">
+                                    <div align="center">
+                                        <video  id="sampleMovie" width="640" height="360" preload controls>
+                                            <source src="{{ asset('storage/'.$tabla_noticia->video)}}"  />
+                                        </video>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
                     </div>
+                    <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
                 </div>
-            @endif
+
+                <div align="right" class="card-footer text-white bg-secondary border-secondary">{{$tabla_noticia->created_at}}</div>
+
+
+                <div align="justify" class="form-group">
+                    <h3>
+                        {!! $tabla_noticia->contenido !!}
+                    </h3>
+                </div>
         </div>
-        <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
     </div>
 
-    <div class="form-group">
-        <h5 align="right">
-            {{$tabla_noticia->created_at}}
-        </h5>
-    </div>
 
-    <div align="justify" class="form-group">
-        <h3>
-            {!! $tabla_noticia->contenido !!}
-        </h3>
 
 
     <style>
