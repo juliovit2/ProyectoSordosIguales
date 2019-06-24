@@ -25,18 +25,6 @@ class UsuarioSeeder extends Seeder
         ]);
 
         DB::table('tabla_usuarios')->Insert([
-            'rut' => '188974732',
-            'correo' => 'julio@julio.julio',
-            'nombre' => 'Julio Julio',
-            'direccion' => 'UCN',
-            'telefono' => '662606',
-            'ciudad' => 'Antofagasta',
-            'clave' => 'julio',
-            'rol' => 'Alumno',
-            'cursando' => false
-        ]);
-
-        DB::table('tabla_usuarios')->Insert([
             'rut' => '111111111',
             'correo' => 'hi@hi.hi',
             'nombre' => 'Jai',

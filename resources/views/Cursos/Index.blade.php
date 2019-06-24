@@ -28,8 +28,10 @@
                 <tr>
                     <th scope="row">{{ $curso->id }}</th>
                     <td>{{ $curso->nombre }}</td>
-                    {{--//obtener el id del profesor--}}
-                    <td>{{ $curso->profesorid }}</td>
+                    @php
+                    $profesor = DB::table('tabla_personas')->where('id', $curso->profesorid)->value('nombre');
+                    @endphp
+                    <td>{{ $profesor }}</td>
                     <td>
                         <form action="{{ route('cursos.destroy', $curso) }}" method="POST">
                             {{ csrf_field() }}
@@ -48,6 +50,7 @@
             @endif
             </tbody>
         </table>
+        <a href="/PortalAlumnos" class="btn btn-link"> Regresar </a>
     @else
         <p>No hay cursos registrados de momento.</p>
     @endif

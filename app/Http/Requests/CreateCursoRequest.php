@@ -18,7 +18,7 @@ class CreateCursoRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'profesorid' => 'required'
+            'profesor' => 'required'
         ];
     }
 
@@ -26,18 +26,20 @@ class CreateCursoRequest extends FormRequest
 
         return[
             'name.required' => 'El campo "Nombre" es obligatorio',
-            'profesorid.required' => 'El campo "Profesor Encargado" es obligatorio',
+            'profesor.required' => 'El campo "Profesor Encargado" es obligatorio',
         ];
     }
 
     public function createCurso(){
         DB::transaction(function (){
-            DB::statement('SET FOREIGN_KEY_CHECKS = 0;');
             $data = $this->validated();
+            $profesor = $data['profesor'];
+            $profesor = DB::table('tabla_personas')->where('nombre', $profesor)->value('id');
             $curso = new tabla_curso([
                 'nombre' => $data['name'],
-                'profesorid' => $data['profesorid'],
+                'profesorid' => $profesor,
             ]);
+            DB::statement('SET FOREIGN_KEY_CHECKS = 0;');
             $curso->save();
             DB::statement('SET FOREIGN_KEY_CHECKS = 1;');
         });

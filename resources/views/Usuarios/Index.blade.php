@@ -3,6 +3,13 @@
 @section('title', 'Usuarios')
 
 @section('content')
+    <?php
+    $id = Auth::user()->id;
+    $rol = DB::table('users')->where('id', $id)->value('rol');
+    if($rol == 'Alumno'){?>
+    <meta http-equiv='refresh' content='0; URL=/usuarios/{{ $id }}/'>
+    <?php }else { ?>
+    <br>
     <div class="d-flex justify-content-between align-items-end mb-3">
         <h1 class="pb-1">{{ $title }}</h1>
         <p>
@@ -50,9 +57,11 @@
             @endif
             </tbody>
         </table>
+        <a href="/PortalAlumnos" class="btn btn-link"> Regresar </a>
     @else
         <p>No hay estudiantes registrados.</p>
     @endif
+    <?php } ?>
 @endsection
 
 @section('sidebar')

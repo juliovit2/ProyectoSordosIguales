@@ -1,5 +1,12 @@
 <!doctype html>
 @auth
+    <?php
+    $id = Auth::user()->id;
+    $rol = DB::table('users')->where('id', $id)->value('rol');
+    if($rol == 'Alumno'){?>
+        <meta http-equiv='refresh' content='0; URL=/usuarios/{{ $id }}/'>
+    <?php }
+    else { ?>
     @extends('layout')
     <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -74,13 +81,14 @@
             </div>
             <div>
                 <a href="{{route('users.index')}}"><button class="btn btn-primary" type="submit">Estudiantes</button></a>
-                <a href="{{url('/IngresarNotas')}}"><button class="btn btn-primary" type="submit">Notas</button></a>
+                <a href="{{url('/ModificarNotas')}}"><button class="btn btn-primary" type="submit">Notas</button></a>
                 <a href="{{url('/cursos')}}"><button class="btn btn-primary" type="submit">Cursos</button></a>
             </div>
         </div>
     </div>
     </body>
     </html>
+    <?php } ?>
     @else
         <head>
             <meta http-equiv='refresh' content='0; URL=/login'>
