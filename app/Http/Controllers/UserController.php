@@ -23,12 +23,13 @@ class UserController extends Controller
 
         return new UserForm('Usuarios.Create', new User);
 
-    }public function store(CreateUserRequest $request )
-{
+    }
+    public function store(CreateUserRequest $request )
+    {
     $request->createUser();
 
     return redirect()->route('users.index');
-}
+    }
 
 
 

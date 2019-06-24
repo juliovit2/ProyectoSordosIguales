@@ -1,78 +1,73 @@
 {{csrf_field()}}
-<div class="form-row">
+<div class="form-col">
 
     <div class="col-md-4 mb-3">
-        <label for="name">Nombre:</label>
+        <p align="left">Nombre</p>
         <input type="text"
                name="name"
-               class="form-control is-valid"
+               class="form-control"
                id="name"
-               placeholder="Nombre"
-               value="{{ old('name', $user->name) }}" required>
+               placeholder="Ingrese nombre"
+               value="{{ old('name', $user->name) }}" readonly required>
     </div>
 
     <div class="col-md-4 mb-3">
-        <label for="name">RUT:</label>
+        <p align="left">RUT</p>
         <input type="text"
                name="rut"
-               class="form-control is-valid"
+               class="form-control"
                id="rut"
-               placeholder="RUT"
-               value="{{ old('name', $user->rut) }}" required>
+               placeholder="Ingrese RUT"
+               value="{{ old('name', $user->rut) }}" readonly required>
     </div>
 
     <div class="col-md-4 mb-3">
-        <label for="name">Correo Electrónico:</label>
+        <p align="left">Correo Electrónico</p>
         <input type="email"
                name="email"
-               class="form-control is-valid"
+               class="form-control"
                id="email"
-               placeholder="example@example.com"
+               placeholder="Ingrese correo"
                value="{{ old('email', $user->email) }}" required>
     </div>
 
     <div class="col-md-4 mb-3">
-        <label for="password">Contraseña:</label>
-        <input type="password"
-               name="password"
-               class="form-control is-valid"
-               id="password"
-               placeholder="Contraseña" required>
-    </div>
-
-    <div class="col-md-4 mb-3">
-        <label for="name">Direccion:</label>
-        <input type="text"
-               name="direccion"
-               class="form-control is-valid"
-               id="direccion"
-               placeholder="Dirección"
-               value="{{ old('name', $user->Direccion) }}" required>
-    </div>
-
-
-    <div class="col-md-4 mb-3">
-        <label for="name">Teléfono:</label>
+        <p align="left">Teléfono</p>
         <input type="text"
                name="telefono"
-               class="form-control is-valid"
+               class="form-control"
                id="telefono"
-               placeholder="Teléfono"
+               placeholder="Ingrese teléfono"
                value="{{ old('name', $user->telefono) }}" required>
     </div>
 
     <div class="col-md-4 mb-3">
-        <label for="name">Ciudad:</label>
+        <p align="left">Dirección</p>
+        <input type="text"
+               name="direccion"
+               class="form-control"
+               id="direccion"
+               placeholder="Ingrese dirección"
+               value="{{ old('name', $user->direccion) }}" required>
+    </div>
+
+    <div class="col-md-4 mb-3">
+        <p align="left">Ciudad</p>
         <input type="text"
                name="ciudad"
-               class="form-control is-valid"
+               class="form-control"
                id="ciudad"
-               placeholder="Ciudad"
+               placeholder="Ingrese ciudad"
                value="{{ old('name', $user->ciudad) }}" required>
     </div>
 
-
-
-
-
+    <div class="col-md-4 mb-3">
+        <p align="left">Contraseña</p>
+        <input type="password"
+               name="password"
+               class="form-control"
+               id="password"
+               placeholder="Ingrese contraseña"
+               value="{{ old('name', $user->password) }}" required>
+    </div>
 </div>

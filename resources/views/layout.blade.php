@@ -28,6 +28,7 @@
     <link href="sticky-footer-navbar.css" rel="stylesheet">
 </head>
 <body class="d-flex flex-column h-100">
+
 <header>
     <!-- Fixed navbar -->
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
@@ -70,7 +71,7 @@
 <main role="main" class="flex-shrink-0">
 
     <div class="row mt-5">
-        <div class="col-8">
+        <div class="container" align="center">
 
 
             @yield('content')
