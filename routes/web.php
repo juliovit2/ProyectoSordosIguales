@@ -101,6 +101,7 @@ Route::get('faq/delete/{id}','FaqController@destroy');
 
 
 Route::resource('admin/voluntarios', 'VoluntariosController');
+//Route::get('admin/voluntarios', 'VoluntariosController@index');
 Route::get('admin/voluntarios/edit/{id}', 'VoluntariosController@edit');
 Route::get('admin/voluntarios/delete/{id}', "VoluntariosController@destroy");
 Route::post('admin/voluntarios/create', 'VoluntariosController@store');
