@@ -13,7 +13,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Plataforma Sordos Iguales</title>
+        <title>Plataforma FSI</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
@@ -73,20 +73,21 @@
         </style>
     </head>
     <body>
-    <h1>Laravel</h1>
-    <div class="flex-center position-ref full-height">
-        <div class="content">
-            <div class="title m-b-md">
-                Proyecto Sordos Iguales
-            </div>
-            <div>
-                <a href="{{route('users.index')}}"><button class="btn btn-primary" type="submit">Estudiantes</button></a>
-                <a href="{{url('/ModificarNotas')}}"><button class="btn btn-primary" type="submit">Notas</button></a>
-                <a href="{{url('/cursos')}}"><button class="btn btn-primary" type="submit">Cursos</button></a>
-            </div>
-        </div>
-    </div>
+    <h1>espacio</h1>
+        <center>
+            @card
+                @slot('header', 'Plataforma FSI')
+                <div class="content">
+                    <div class="col">
+                        <a href="{{route('users.index')}}"><button class="btn btn-primary" type="submit">Estudiantes</button></a>
+                        <a href="{{url('/ModificarNotas')}}"><button class="btn btn-primary" type="submit">Notas</button></a>
+                        <a href="{{url('/cursos')}}"><button class="btn btn-primary" type="submit">Cursos</button></a>
+                    </div>
+                </div>
+            @endcard
+        </center>
     </body>
+
     </html>
     <?php } ?>
     @else

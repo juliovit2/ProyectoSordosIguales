@@ -8,6 +8,9 @@
                class="form-control"
                id="name"
                placeholder="Ingrese nombre"
+               @php
+
+               @endphp
                value="{{ old('name', $user->name) }}" readonly required>
     </div>
 

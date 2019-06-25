@@ -48,8 +48,9 @@
                         $notas =  DB::table('tabla_usuario_notas')->where('usuarioid', '=', $user->id)->avg('nota')*0.1;
                     } catch (Exception $e) {
                         $idcurso = null;
-                        $nomCurso = "no aplica";
-                        $asistencia = "no aplica";
+                        $nomCurso = "No aplica";
+                        $asistencia = "No aplica";
+                        $notas = "No aplica";
                     }
                @endphp
 

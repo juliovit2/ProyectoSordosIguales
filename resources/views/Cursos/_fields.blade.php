@@ -1,21 +1,23 @@
 {{csrf_field()}}
-<div class="form-row">
+<div class="form-col">
+
     <div class="col-md-4 mb-3">
-        <label for="name">Nombre del Curso:</label>
+        <p align="left">Nombre del Curso</p>
         <input type="text"
                name="name"
-               class="form-control is-valid"
+               class="form-control"
                id="name"
-               placeholder="Lenguaje de Señas Básico"
-               value="{{ old('name', $curso->name) }}" required>
+               placeholder="Ingrese nombre del Curso"
+               value="{{ old('name', $curso->nombre) }}" required>
     </div>
+
     <div class="col-md-4 mb-3">
-        <label for="profesor">Profesor Encargado:</label>
+        <p align="left">Profesor Encargado</p>
         <input type="text"
                name="profesor"
-               class="form-control is-valid"
+               class="form-control"
                id="profesor"
-               placeholder="Glenn Gomez"
+               placeholder="Ingrese nombre del Profesor"
                value="{{ old('profesor', $curso->profesor) }}" required>
     </div>
 </div>

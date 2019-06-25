@@ -36,6 +36,7 @@
                         <form action="{{ route('cursos.destroy', $curso) }}" method="POST">
                             {{ csrf_field() }}
                             {{ method_field('DELETE') }}
+                            <a href="{{ route('cursos.show', $curso) }}" class="btn btn-link"><span class="oi oi-person"></span></a>
                             <a href="{{ route('cursos.show', $curso) }}" class="btn btn-link"><span class="oi oi-eye"></span></a>
                             <a href="{{ route('cursos.edit', $curso) }}" class="btn btn-link"><span class="oi oi-pencil"></span></a>
                             <button type="submit" class="btn btn-link"><span class="oi oi-trash"></span></button>
@@ -46,7 +47,7 @@
             @endforeach
 
             @if ($contadorCursos == 0)
-                <p>No hay cursos registrados de momento.</p>
+                <p>No hay cursos registrados.</p>
             @endif
             </tbody>
         </table>

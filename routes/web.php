@@ -51,6 +51,12 @@ Route::get('/cursos/{curso}/editar', 'CursoController@edit')->name('cursos.edit'
 Route::delete('/cursos/{curso}', 'CursoController@destroy')->name('cursos.destroy');
 Route::post('/cursos', 'CursoController@store');
 Route::put('/cursos/{curso}', 'CursoController@update');
+
+
+//-----------MODULO Notas-------------------------------Mejorado
+//Route::get('/cursos', 'NotasController@index')->name('notas.index');
+
+
 // -----------LOGIN-----------
 Route::post('login', 'Auth\LoginController@login')->name('login');
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
