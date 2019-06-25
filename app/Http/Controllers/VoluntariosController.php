@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\tabla_persona;
+use Illuminate\Support\Facades\DB;
 
 class VoluntariosController extends Controller
 {
@@ -33,12 +34,11 @@ class VoluntariosController extends Controller
     public function store(Request $request)
     {
 
-        $this ->validate($request,[
+        $this->validate($request, [
             'nombre' => 'required',
             'telefono' => 'required',
             'rut' => 'required',
             'correo' => 'required',
-            'certificado' => 'required'
         ]);
 
         //validar
@@ -47,15 +47,13 @@ class VoluntariosController extends Controller
             'telefono' => $request->get('telefono'),
             'rut' => $request->get('rut'),
             'correo' => $request->get('correo'),
-            'certificado' => $request->get('certificado'),
-            ));
-        $voluntarios->roles()->attach('voluntarios');
+            'rol' => 'Voluntario'
+        ));
         $voluntarios->save();
 
 
-        return redirect()->route('admin/voluntarios');
+        return $this->index();
     }
-
 
     /**
      * Display the specified resource.
@@ -77,12 +75,14 @@ class VoluntariosController extends Controller
      */
     public function edit($id)
     {
-        $voluntario_a_editar = tabla_persona::find($id);
+        $v = tabla_persona::find($id);
         $data = array(
-            'voluntario_a_editar' => $voluntario_a_editar,
+            'voluntario_a_editar' => $v,
             "is_edit" => true);
 
-        return view('InfoContacto.create_voluntarios')->with('data', $data);
+        //return view('InfoContacto.create_voluntarios')->with('data', $data);
+        return view('InfoContacto.create_voluntarios',compact('v'));
+        //return view('InfoContacto.create_voluntarios')->with('$voluntario_a_editar', $voluntario_a_editar);
     }
 
     /**
@@ -104,11 +104,11 @@ class VoluntariosController extends Controller
             'rol' => $request->get('rol')
         );
 
-        DB::table('tabla_persona')
+        DB::table('tabla_personas')
             ->where('id', $id)
             ->update($voluntarioEditado);
 
-        return redirect()->route('InfoContacto.index_voluntarios');
+        return $this->index();
     }
 
     /**
@@ -122,6 +122,6 @@ class VoluntariosController extends Controller
         $voluntario_a_eliminar = tabla_persona::find($id);
         $voluntario_a_eliminar->delete();
 
-        return redirect()->route('InfoContacto.index_voluntarios');
+        return $this->index();
     }
 }
