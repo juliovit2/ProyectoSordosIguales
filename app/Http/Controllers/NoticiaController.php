@@ -20,9 +20,15 @@ class NoticiaController extends Controller
      */
     public function index()
     {
-        $noticias = tabla_noticia::orderBy('id','ASC')->paginate();
+        $noticias = tabla_noticia::orderBy('id','DESC')->paginate();
         $imagenes_noticia = tabla_imagenes_noticia::all();
         return view('noticia.index',compact('noticias','imagenes_noticia'));
+    }
+
+    public function public_index() {
+        $noticias = tabla_noticia::orderBy('id','DESC')->paginate(6);
+        $imagenes_noticia = tabla_imagenes_noticia::all();
+        return view('noticia.public_index',compact('noticias','imagenes_noticia'));
     }
 
     /**
@@ -69,13 +75,13 @@ class NoticiaController extends Controller
         return $contenidoHTML;
     }
 
-    /**
-     * Revisa si el contenido de la noticia debe guardarse en la base de datos
-     * o solo previsualizarse
-     *
-     */
-    public function checkPostOrPreview(NoticiaStoreRequest $request) {
-        ;
+    // remove the BOm marks from the beginning of the summernote html output
+    private function strip_bom($string)
+    {
+        if (substr($string, 0, 3) === "\xEF\xBB\xBF") {
+            $string = substr($string, 3);
+        }
+        return $string;
     }
 
     /**
@@ -88,6 +94,8 @@ class NoticiaController extends Controller
     public function store(NoticiaStoreRequest $request)
     {
         $contenidoHTML = $this->saveEditorImages($request);
+        //TODO meterlo en una funcion, elimina los caracteres "BOM" del output del summernote
+        $contenidoHTML = substr($contenidoHTML, 3, strlen($contenidoHTML) - 3);
 
         $video_path = null;
         //validar
@@ -132,7 +140,8 @@ class NoticiaController extends Controller
     {
         $tabla_noticia = tabla_noticia::find($id);
         $tabla_imagenes_noticia = tabla_imagenes_noticia::all();
-        return view('noticia.show',compact('tabla_noticia','tabla_imagenes_noticia'));
+        $is_edit = false;
+        return view('noticia.show',compact('tabla_noticia','tabla_imagenes_noticia', 'is_edit'));
     }
 
     public function  show_preview(NoticiaStoreRequest $request) {
@@ -167,11 +176,16 @@ class NoticiaController extends Controller
     public function edit($id)
     {
         $noticia_a_editar = tabla_noticia::find($id);
+        $tabla_noticia = tabla_noticia::find($id);
+        $tabla_imagenes_noticia = tabla_imagenes_noticia::all();
+        $is_edit = true;
         $data = array(
             'noticia_a_editar' => $noticia_a_editar,
+            'tabla_imagenes_noticia' => $tabla_imagenes_noticia,
+            'tabla_noticia' => $tabla_noticia,
             "is_edit" => true);
 
-        return view('noticia.create')->with('data', $data);
+        return view('noticia.create', compact('tabla_noticia','tabla_imagenes_noticia', 'data', 'is_edit'));
     }
 
     /**
@@ -184,16 +198,52 @@ class NoticiaController extends Controller
     public function update(Request $request, $id)
     {
         $video_path = null;
-        $noticiaEditada = array(
-            'titulo' => $request->get('titulo'),
-            'contenido' => $request->get("contenidoHTML"),
-            'video' => substr ( $video_path , 7, strlen($video_path) -7));
+        //validar
+        if($request->has('video')) {
+            $this->validate($request, [
+                'video' => 'mimes:mp4,avi,mpeg,flv'
+            ]);
+            $video_path = $request->file('video')->store('public/videos/noticias');
+        }
+
+        if ($video_path != null) {
+            $noticiaEditada = array(
+                'titulo' => $request->get('titulo'),
+                'contenido' => $request->get("contenidoHTML"),
+                'video' => substr ( $video_path , 7, strlen($video_path) -7));
+
+            DB::table('tabla_noticias')
+                ->where('id', $id)
+                ->update($noticiaEditada);
+        }
 
         DB::table('tabla_noticias')
             ->where('id', $id)
-            ->update($noticiaEditada);
+            ->update(['contenido' => $request->get("contenidoHTML")]);
 
-        return redirect()->route('noticia.index');
+        if($request->has('imagenes')) {
+            $this->validate($request, [
+                'imagenes.*' => '|mimes:jpeg,png,jpg,gif,svg'
+            ]);
+
+            if (sizeof($request->imagenes) <= 0) {
+                return redirect()->route('noticias.index');
+            }
+
+            //DB::table('tabla_imagenes_noticia')->where('noticiaid', '=', $id)->delete();
+            $imagenes_noticia = tabla_imagenes_noticia::where('noticiaid',$id)->delete();
+
+            foreach ($request->imagenes as $imagen) {
+                $image_path = $imagen->store('public/imagenes/noticias');
+                $imagen_noticia = new tabla_imagenes_noticia(array(
+                    'imagen' =>  substr ( $image_path , 7, strlen($image_path) -7),
+                    'noticiaid' => $id
+                ));
+                $imagen_noticia->save();
+            }
+        }
+
+        return redirect()->route('noticias.index');
     }
 
     /**
@@ -207,6 +257,6 @@ class NoticiaController extends Controller
         $noticia_a_eliminar = tabla_noticia::find($id);
         $noticia_a_eliminar->delete();
      
-        return redirect()->route('noticia.index');
+        return redirect()->route('noticias.index');
     }
 }

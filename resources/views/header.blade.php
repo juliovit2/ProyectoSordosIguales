@@ -43,7 +43,7 @@
                 data-img="http://placehold.it/100x100"
                 data-trigger="hover" 
                 data-placement="top">
-                <a class="nav-link" href="/admin/noticias"><h4><span class="textoHeader"><i class="far fa-newspaper"></i>  Noticias y Articulos</span></h4></a>
+                <a class="nav-link" href={{"/noticias"}}><h4><span class="textoHeader"><i class="far fa-newspaper"></i>  Noticias y Articulos</span></h4></a>
             </li>
             <li class="nav-item"
                 data-toggle="popover" 
