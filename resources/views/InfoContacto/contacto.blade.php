@@ -90,8 +90,11 @@
                     <div class="card" >
                         <div class="card-body">
                             <!-- Envía al usuario al FAQ para no repetir su pregunta-->
-                            <p>Verifique que su consulta no se encuentre en <a href="enlacepagina.html">Preguntas Frecuentes</a></p>
-
+                            <p>Verifique que su consulta no se encuentre en <a href="enlacepagina.html">Preguntas Frecuentes</a><br>o</p>
+                            <a href="skype:live:cnr_118?call">
+                                <img alt="ERROR" src="{{asset("skype.png")}}" style="height: 30px; width: 30px" >
+                                <a href="skype:live:cnr_118?call">Llamanos via Skype</a>
+                            </a>
                             <form action="/contacto" method="post" enctype="multipart/form-data">
                                 {{csrf_field()}}
                                 <!-- Campos obligatorios-->
@@ -135,7 +138,9 @@
                                         </div>
                                     </div>
                             </form>
-                            <img alt="" src="" href="skype:live:cnr_118?call">
+                            <br>
+
+
                         </div>
                     </div>
                 </div>
@@ -242,6 +247,11 @@
                         <!-- Campos obligatorios-->
                         <div class="card" >
                             <div class="card-body">
+                                <p>Envia tu denuncia <br>o</p>
+                                <a href="skype:live:cnr_118?call">
+                                    <img alt="ERROR" src="{{asset("skype.png")}}" style="height: 30px; width: 30px" >
+                                    <a href="skype:live:cnr_118?call">Llamanos via Skype</a>
+                                </a>
                                 <div id="obligatorio">
                                     <div class="form-group">
                                         <p align="left">Tipo de denuncia</p>
@@ -315,6 +325,11 @@
                         <input type="hidden" name="opcion" value="4">
                         <div class="card" >
                             <div class="card-body">
+                                <p>Cuentanos mas<br>o</p>
+                                <a href="skype:live:cnr_118?call">
+                                    <img alt="ERROR" src="{{asset("skype.png")}}" style="height: 30px; width: 30px" >
+                                    <a href="skype:live:cnr_118?call">Llamanos via Skype</a>
+                                </a>
                                 <div id="obligatorio">
                                     <!-- Name input-->
                                     <div class="form-group">
