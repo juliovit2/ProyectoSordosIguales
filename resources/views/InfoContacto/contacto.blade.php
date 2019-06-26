@@ -135,6 +135,7 @@
                                         </div>
                                     </div>
                             </form>
+                            <img alt="" src="" href="skype:live:cnr_118?call">
                         </div>
                     </div>
                 </div>
