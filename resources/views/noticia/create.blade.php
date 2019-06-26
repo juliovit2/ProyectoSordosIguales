@@ -17,7 +17,7 @@
                         <input type="text" id="titulo" name="titulo" class="form-control">
                     </div>
 
-
+                    @if ($is_edit)
                     <div id="carousel" class="carousel slide bg-dark" data-ride="carousel" data-interval="4000" width="100%" max-height="460px">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
@@ -55,6 +55,7 @@
                         <span class="sr-only">Next</span>
                     </a>
                 </div>
+                @endif
 
 
                 <br>
