@@ -38,7 +38,8 @@ class NoticiaController extends Controller
      */
     public function create()
     {
-        return view('noticia.create');
+        $is_edit = false;
+        return view('noticia.create', compact('is_edit'));
     }
 
     public function saveEditorImages(NoticiaStoreRequest $request, bool $store = true)
