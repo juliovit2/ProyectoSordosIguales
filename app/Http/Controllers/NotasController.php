@@ -99,7 +99,7 @@ class NotasController extends Controller
     public function modificar(Request $request){
         $users = User::all();
         $title = 'Listado de notas';
-        return view('Plataforma.ModificarNotas', compact('title', 'users'));
+        return view('Plataforma/ModificarNotas', compact('title', 'users'));
     }
 
     public function modificarConector($idNota){

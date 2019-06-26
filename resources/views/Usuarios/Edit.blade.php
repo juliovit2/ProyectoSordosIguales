@@ -4,6 +4,7 @@
 
 @section('content')
     <?php
+    $tipo=2;
     $id = Auth::user()->id;
     $rol = DB::table('users')->where('id', $id)->value('rol');
     if($rol == 'Alumno' && $id != $user->id){?>

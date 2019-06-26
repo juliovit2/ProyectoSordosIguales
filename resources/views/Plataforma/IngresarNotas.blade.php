@@ -12,35 +12,71 @@
     <form method="POST" action="{{ route('ingresarNotas') }}">
         {{ csrf_field() }}
 
-        <table>
-            <tr>
-                <td><p>Ingresar RUT de Alumno: <input type="search" name="IDalumno"></p></td>
-            </tr>
-            <tr>
-                <td><p>Ingresar Nombre del Curso:
-                        <select id="IDcurso" name="IDcurso">
-                            <option value="Lenguaje Señas Basico">Lenguaje Señas Basico</option>
-                            <option value="Lenguaje Señas Intermedio">Lenguaje Señas Intermedio</option>
-                            <option value="Lenguaje Señas Avansado">Lenguaje Señas Avanzado</option>
-                        </select>
-                    </p></td>
-            </tr>
-            <tr>
-                <td><p>Ingresar Tipo de Evaluación:
-                        <select id="tipoevaluacion" name="tipoevaluacion">
-                            <option value="Taller">Taller</option>
-                            <option value="Taller Abierto">Taller Abierto</option>
-                        </select>
-                    </p></td>
-            </tr>
-            <tr>
-                <td> <p>Ingresar Nota: <input type="search" name="nota"></p></td>
-            </tr>
-        </table>
+    <div class="form-col">
+        @card
+        @slot('header', 'Ingresar Notas')
 
-        <button type="submit" class="btn btn-primary">
-            {{ __('Ingresar Nota') }}
-        </button>
+        <div class="col-md-4 mb-3">
+            <p align="left">RUT</p>
+            <input type="search"
+                   name="IDalumno"
+                   class="form-control"
+                   id="rut"
+                   placeholder="Ingrese RUT del alumno"
+                   required>
+        </div>
+
+
+        <div class="col-md-4 mb-3">
+            <p align="left">Nombre del Curso</p>
+            <select
+                id="IDcurso"
+                name="IDcurso"
+                class="form-control"
+                required>
+
+                <option value="Lenguaje Señas Basico">Lenguaje Señas Basico</option>
+                <option value="Lenguaje Señas Intermedio">Lenguaje Señas Intermedio</option>
+                <option value="Lenguaje Señas Avansado">Lenguaje Señas Avanzado</option>
+            </select>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <p align="left">Tipo de evaluación</p>
+
+            <select
+                    id="tipoevaluacion"
+                    name="tipoevaluacion"
+                    class="form-control"
+                    required>
+
+                <option value="Taller">Taller</option>
+                <option value="Taller Abierto">Taller Abierto</option>
+            </select>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <p align="left">Nota</p>
+            <input type="search"
+                   name="nota"
+                   class="form-control"
+                   id="nota"
+                   placeholder="Ingrese la nota del alumno"
+                   required>
+        </div>
+
+
+
+        <div class="form-group mt-4">
+            <button type="submit" class="btn btn-primary">
+                {{ __('Ingresar Nota') }}
+            </button>
+            <a href=" {{route('ModificarNotas')}} " class="btn btn-link"> Regresar </a>
+        </div>
+
+
+        @endcard
+    </div>
     </form>
 
     @if ($message = Session::get('error1'))

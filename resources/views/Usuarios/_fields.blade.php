@@ -1,28 +1,52 @@
 {{csrf_field()}}
 <div class="form-col">
 
-    <div class="col-md-4 mb-3">
-        <p align="left">Nombre</p>
-        <input type="text"
-               name="name"
-               class="form-control"
-               id="name"
-               placeholder="Ingrese nombre"
-               @php
+    <?php if ($tipo==1): ?>
 
-               @endphp
-               value="{{ old('name', $user->name) }}" readonly required>
-    </div>
+        <div class="col-md-4 mb-3">
+            <p align="left">Nombre</p>
+            <input type="text"
+                   name="name"
+                   class="form-control"
+                   id="name"
+                   placeholder="Ingrese nombre"
+                   value="{{ old('name', $user->name) }}" required>
+        </div>
 
-    <div class="col-md-4 mb-3">
-        <p align="left">RUT</p>
-        <input type="text"
-               name="rut"
-               class="form-control"
-               id="rut"
-               placeholder="Ingrese RUT"
-               value="{{ old('name', $user->rut) }}" readonly required>
-    </div>
+        <div class="col-md-4 mb-3">
+            <p align="left">RUT</p>
+            <input type="text"
+                   name="rut"
+                   class="form-control"
+                   id="rut"
+                   placeholder="Ingrese RUT"
+                   value="{{ old('name', $user->rut) }}" required>
+        </div>
+
+    <?php else: ?>
+
+        <div class="col-md-4 mb-3">
+            <p align="left">Nombre</p>
+            <input type="text"
+                   name="name"
+                   class="form-control"
+                   id="name"
+                   placeholder="Ingrese nombre"
+                   value="{{ old('name', $user->name) }}" readonly required>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <p align="left">RUT</p>
+            <input type="text"
+                   name="rut"
+                   class="form-control"
+                   id="rut"
+                   placeholder="Ingrese RUT"
+                   value="{{ old('name', $user->rut) }}" readonly required>
+        </div>
+
+    <?php endif ?>
+
 
     <div class="col-md-4 mb-3">
         <p align="left">Correo Electrónico</p>

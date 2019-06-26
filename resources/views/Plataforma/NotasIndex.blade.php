@@ -10,7 +10,7 @@
     <html>
     <br>
     <div class="d-flex justify-content-between align-items-end mb-3">
-        <h1 class="pb-1">Detalle notas</h1>
+        <h1 class="pb-1">Detalle Notas</h1>
     </div>
     <body>
         @php $contadorNotas=0 @endphp

@@ -68,6 +68,8 @@ Route::get('/IngresarNotas', function () {
     return view('Plataforma/IngresarNotas');
 });
 Route::get('ModificarNotas', 'NotasController@modificar')->name('ModificarNotas');
+Route::get('edit/{id}','NotasController@modificarConector');
+Route::post('mod/{id}','NotasController@modificarIndex');
 Route::get('IndiceNotas/{user}', 'NotasController@indiceNotas')
     ->where('user', '[0-9]+')
     ->name('IndiceNotas');
