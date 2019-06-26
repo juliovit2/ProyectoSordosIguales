@@ -29,7 +29,7 @@ class MemoriaController extends Controller
      */
     public function index()
     {
-        $memorias = tabla_memoria::OrderBy('id')->get();
+        $memorias = tabla_memoria::OrderBy('year','DESC')->get();
         return view('memorias/index',['memorias'=>$memorias]);//
     }
 
