@@ -140,7 +140,8 @@ class NoticiaController extends Controller
     {
         $tabla_noticia = tabla_noticia::find($id);
         $tabla_imagenes_noticia = tabla_imagenes_noticia::all();
-        return view('noticia.show',compact('tabla_noticia','tabla_imagenes_noticia'));
+        $is_edit = false;
+        return view('noticia.show',compact('tabla_noticia','tabla_imagenes_noticia', 'is_edit'));
     }
 
     public function  show_preview(NoticiaStoreRequest $request) {
@@ -175,11 +176,16 @@ class NoticiaController extends Controller
     public function edit($id)
     {
         $noticia_a_editar = tabla_noticia::find($id);
+        $tabla_noticia = tabla_noticia::find($id);
+        $tabla_imagenes_noticia = tabla_imagenes_noticia::all();
+        $is_edit = true;
         $data = array(
             'noticia_a_editar' => $noticia_a_editar,
+            'tabla_imagenes_noticia' => $tabla_imagenes_noticia,
+            'tabla_noticia' => $tabla_noticia,
             "is_edit" => true);
 
-        return view('noticia.create')->with('data', $data);
+        return view('noticia.create', compact('tabla_noticia','tabla_imagenes_noticia', 'data', 'is_edit'));
     }
 
     /**
@@ -192,16 +198,52 @@ class NoticiaController extends Controller
     public function update(Request $request, $id)
     {
         $video_path = null;
-        $noticiaEditada = array(
-            'titulo' => $request->get('titulo'),
-            'contenido' => $this.strip_bom($request->get("contenidoHTML")),
-            'video' => substr ( $video_path , 7, strlen($video_path) -7));
+        //validar
+        if($request->has('video')) {
+            $this->validate($request, [
+                'video' => 'mimes:mp4,avi,mpeg,flv'
+            ]);
+            $video_path = $request->file('video')->store('public/videos/noticias');
+        }
+
+        if ($video_path != null) {
+            $noticiaEditada = array(
+                'titulo' => $request->get('titulo'),
+                'contenido' => $request->get("contenidoHTML"),
+                'video' => substr ( $video_path , 7, strlen($video_path) -7));
+
+            DB::table('tabla_noticias')
+                ->where('id', $id)
+                ->update($noticiaEditada);
+        }
 
         DB::table('tabla_noticias')
             ->where('id', $id)
-            ->update($noticiaEditada);
+            ->update(['contenido' => $request->get("contenidoHTML")]);
 
-        return redirect()->route('noticia.index');
+        if($request->has('imagenes')) {
+            $this->validate($request, [
+                'imagenes.*' => '|mimes:jpeg,png,jpg,gif,svg'
+            ]);
+
+            if (sizeof($request->imagenes) <= 0) {
+                return redirect()->route('noticias.index');
+            }
+
+            //DB::table('tabla_imagenes_noticia')->where('noticiaid', '=', $id)->delete();
+            $imagenes_noticia = tabla_imagenes_noticia::where('noticiaid',$id)->delete();
+
+            foreach ($request->imagenes as $imagen) {
+                $image_path = $imagen->store('public/imagenes/noticias');
+                $imagen_noticia = new tabla_imagenes_noticia(array(
+                    'imagen' =>  substr ( $image_path , 7, strlen($image_path) -7),
+                    'noticiaid' => $id
+                ));
+                $imagen_noticia->save();
+            }
+        }
+
+        return redirect()->route('noticias.index');
     }
 
     /**

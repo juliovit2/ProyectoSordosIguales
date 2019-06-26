@@ -11,7 +11,7 @@
                     <div  class="container p-2 mb-3">
                         <div class="row">
                                 <div class="col-4">
-                                    <div id="carousel" class="carousel p-2 slide" data-ride="carousel" data-interval="4000">
+                                    <div id="carousel" class="carousel p-2 slide" data-ride="carousel" data-interval="1000">
                                         <div class="carousel-inner">
                                         <div class="carousel-item active">
                                             <div class="item banner-height-400">
