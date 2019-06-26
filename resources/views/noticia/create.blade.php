@@ -84,7 +84,12 @@
                         <input multiple="multiple" type="file" name="imagenes[]" id="imagenes">
                     </div>
                     <div class=form-group">
-                        <input id="but" type="button" value="Agregar Noticia" class="btn btn-primary">
+                        @if($is_edit)
+                            <input id="but" type="button" value="Editar Noticia" class="btn btn-primary">
+                        @else
+                            <input id="but" type="button" value="Agregar Noticia" class="btn btn-primary">
+                        @endif
+
                         <input id="but2" type="submit" formaction="/admin/noticias/previsualizar" value="Previsualizar" class="btn btn-primary">
                         <!-- <input value="Agregar Noticia" class="btn btn-primary" onclick="actualizarContenido()"> -->
                     </div>

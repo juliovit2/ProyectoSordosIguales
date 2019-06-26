@@ -49,7 +49,7 @@
                 <div align="right" class="card-footer text-white bg-secondary border-secondary">{{$tabla_noticia->created_at}}</div>
 
 
-                <div align="justify" class="form-group">
+                <div align="justify" class="form-group mt-5">
                     <h3>
                         {!! $tabla_noticia->contenido !!}
                     </h3>
