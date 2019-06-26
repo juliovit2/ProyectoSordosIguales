@@ -53,7 +53,7 @@
                                 </a>
                             </td>
                             <td>
-                                <a href="/noticia/edit/{{$tabla_noticia->id}}"
+                                <a href="noticias/edit/{{$tabla_noticia->id}}"
                                    class="btn btn-sm btn-primary active" title="Editar Noticia">
                                     <i class="fas fa-pencil-alt"></i>
 
@@ -61,7 +61,7 @@
                             </td>
 
                             <td>
-                                <a href="/noticia/delete/{{$tabla_noticia->id}}"
+                                <a href="/noticias/delete/{{$tabla_noticia->id}}"
                                    class="btn btn-sm btn-danger active"  title="Eliminar Noticia">
                                     <i class="fas fa-trash-alt"></i>
 

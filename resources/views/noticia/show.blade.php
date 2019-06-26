@@ -1,7 +1,7 @@
 @extends('layoutGeneral')
 @section('content')
 
-
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <div class="card">
         <img src="..." class="card-img-top" alt="...">
         <div class="card-body">

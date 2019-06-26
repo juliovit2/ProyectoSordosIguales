@@ -75,13 +75,13 @@ class NoticiaController extends Controller
         return $contenidoHTML;
     }
 
-    /**
-     * Revisa si el contenido de la noticia debe guardarse en la base de datos
-     * o solo previsualizarse
-     *
-     */
-    public function checkPostOrPreview(NoticiaStoreRequest $request) {
-        ;
+    // remove the BOm marks from the beginning of the summernote html output
+    private function strip_bom($string)
+    {
+        if (substr($string, 0, 3) === "\xEF\xBB\xBF") {
+            $string = substr($string, 3);
+        }
+        return $string;
     }
 
     /**
@@ -94,6 +94,8 @@ class NoticiaController extends Controller
     public function store(NoticiaStoreRequest $request)
     {
         $contenidoHTML = $this->saveEditorImages($request);
+        //TODO meterlo en una funcion, elimina los caracteres "BOM" del output del summernote
+        $contenidoHTML = substr($contenidoHTML, 3, strlen($contenidoHTML) - 3);
 
         $video_path = null;
         //validar
@@ -192,7 +194,7 @@ class NoticiaController extends Controller
         $video_path = null;
         $noticiaEditada = array(
             'titulo' => $request->get('titulo'),
-            'contenido' => $request->get("contenidoHTML"),
+            'contenido' => $this.strip_bom($request->get("contenidoHTML")),
             'video' => substr ( $video_path , 7, strlen($video_path) -7));
 
         DB::table('tabla_noticias')
@@ -213,6 +215,6 @@ class NoticiaController extends Controller
         $noticia_a_eliminar = tabla_noticia::find($id);
         $noticia_a_eliminar->delete();
      
-        return redirect()->route('noticia.index');
+        return redirect()->route('noticias.index');
     }
 }
