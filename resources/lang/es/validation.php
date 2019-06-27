@@ -147,6 +147,7 @@ return [
     'attributes' => [
         'anio_memoria'  => 'Año de memoria',
         'inputMemoria' => 'Documento de Memoria',
+        'inputVideo' => 'URL de video'
     ],
 
 ];
