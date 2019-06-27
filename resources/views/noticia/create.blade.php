@@ -17,6 +17,48 @@
                         <input type="text" id="titulo" name="titulo" class="form-control">
                     </div>
 
+                    @if ($is_edit)
+                    <div id="carousel" class="carousel slide bg-dark" data-ride="carousel" data-interval="4000" width="100%" max-height="460px">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="item banner-height-400">
+                                <img width="400px" height="400px" src="{{ asset('storage/logo_fundacion.png')}}" class="d-block w-100" alt="...">
+                            </div>
+                        </div>
+                        @foreach($tabla_imagenes_noticia as $tabla_imagenes_noticia)
+                            @if($tabla_imagenes_noticia->noticiaid == $tabla_noticia->id)
+                                <div class="carousel-item">
+                                    <div class="item banner-height-400">
+                                        <img width="400px" height="400px"  src="{{ asset('storage/'.$tabla_imagenes_noticia->imagen)}}" class="d-block w-100" alt="...">
+                                    </div>
+                                </div>
+                            @endif
+                        @endforeach
+                        @if($tabla_noticia->video != "0")
+                            <div class="carousel-item">
+                                <div class="item banner-height-400">
+                                    <div align="center">
+                                        <video  id="sampleMovie" width="640" height="360" preload controls>
+                                            <source src="{{ asset('storage/'.$tabla_noticia->video)}}"  />
+                                        </video>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                    </div>
+                    <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+                @endif
+
+
+                <br>
                     <!-- Iniciamos el editor WYSIWYG aka. summernote-->
                     <textarea id="contenido" name="contenidoHTML" value="{{ old('title') }}"></textarea>
 
@@ -25,16 +67,30 @@
                         <textarea class="form-control" id="contenido" name="contenido"></textarea>
                     </div>-->
                     <div class="form-group mt-3">
-                        <label for="video"><h4>Video</h4></label>
+                        @if($is_edit)
+                            <label for="video"><h4>Reemplazar Video</h4></label>
+                        @else
+                            <label for="video"><h4>Video</h4></label>
+                        @endif
+
                         <input type="file" id="video" name="video">
                     </div>
                     <div class="form-group">
-                        <label for="imagenes"><h4>Imágenes</h4></label>
+                        @if($is_edit)
+                            <label for="imagenes"><h4>Reemplazar imagenes</h4></label>
+                        @else
+                            <label for="imagenes"><h4>Imagenes</h4></label>
+                        @endif
                         <!-- <input multiple="multiple" type="file" name="imagen" id="imagen"> -->
                         <input multiple="multiple" type="file" name="imagenes[]" id="imagenes">
                     </div>
                     <div class=form-group">
-                        <input id="but" type="button" value="Agregar Noticia" class="btn btn-primary">
+                        @if($is_edit)
+                            <input id="but" type="button" value="Editar Noticia" class="btn btn-primary">
+                        @else
+                            <input id="but" type="button" value="Agregar Noticia" class="btn btn-primary">
+                        @endif
+
                         <input id="but2" type="submit" formaction="/admin/noticias/previsualizar" value="Previsualizar" class="btn btn-primary">
                         <!-- <input value="Agregar Noticia" class="btn btn-primary" onclick="actualizarContenido()"> -->
                     </div>
@@ -46,6 +102,7 @@
     <!-- La script tag es necesaria para iniciar summernote-->
     <script>
     function getExtension(filename) {
+        filename = '' + filename;
         var parts = filename.split('.');
         return parts[parts.length - 1];
     }
@@ -123,7 +180,7 @@
             }
 
             for (var i=0; i<imagenes.files.length; i++) {
-                if(!isImage(imagenes.files[i].name.substr)) {
+                if(!isImage(imagenes.files[i].name)) {
                     alert("El archivo " + imagenes.files[i].name + " no es una imagen.");
                     return;
                 }

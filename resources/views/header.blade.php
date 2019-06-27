@@ -11,11 +11,16 @@
         </div>
         <div class="col-sm-2  align-self-center" style="font-size:200%">
             <a class = "headerLink" href = "monkey.png"><i class="fab fa-twitter-square"></i></a>
-            <a class = "headerLink" href = "monkey.png"><i class="fab fa-facebook"></i></a>
+            <a class = "headerLink" href = "https://www.facebook.com/SordosIguales/"><i class="fab fa-facebook"></i></a>
             <a class = "headerLink" href = "monkey.png"><i class="fab fa-instagram"></i></a>
             <a class = "headerLink" href = "monkey.png"><i class="fab fa-whatsapp"></i></a>
+            <a class = "headerLink" href = "monkey.png"><i class="fas fa-donate"></i>
+            </div>
         </div>
-    </div>
+
+
+
+
 </div>
 <nav class="navbar-default navbar navbar-expand-md">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,7 +48,7 @@
                 data-img="http://placehold.it/100x100"
                 data-trigger="hover" 
                 data-placement="top">
-                <a class="nav-link" href="/admin/noticias"><h4><span class="textoHeader"><i class="far fa-newspaper"></i>  Noticias y Articulos</span></h4></a>
+                <a class="nav-link" href={{"/noticias"}}><h4><span class="textoHeader"><i class="far fa-newspaper"></i>  Noticias y Articulos</span></h4></a>
             </li>
             <li class="nav-item"
                 data-toggle="popover" 
