@@ -30,18 +30,18 @@
 
                     <td>
                         <a href="{{action('FaqController@edit', $p->id)}}"
-                           class="btn btn-sm btn-primary active float-right" title="Editar Preguntas y Respuestas">
+                           class="btn btn-primary " title="Editar Preguntas y Respuestas">
                             <i  class="fas fa-pencil-alt" ></i>
                         </a>
                     </td>
 
                     <td>
-                        <a href="#delete" class="btn btn-danger active float-right" data-toggle="modal" title="Eliminar Preguntas y Respuestas">
+                        <button type="button" class="btn btn-danger" data-toggle="modal"  data-target="#{{$p->id}}" title="Eliminar Preguntas y Respuestas">
                             <i   class="fas fa-trash-alt"></i>
-                        </a>
+                        </button>
 
                         <!--pop up confirmacion -->
-                        <div class="modal fade" id="delete">
+                        <div class="modal fade" id="{{$p->id}}" aria-labelledby="{{ $p->id }}" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">

@@ -20,17 +20,25 @@
                         {{Session::get('success')}}
                     </div>
                 @endif
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Nueva Pregunta</h3>
+                        </div>
+
                 <form method="POST" action="{{ route('faq.update',$pregunta->id) }}"  role="form">
                     {{ csrf_field() }}
                     <input name="_method" type="hidden" value="PATCH">
                     <div class="row">
                         <div class="col-xs-6 col-sm-6 col-md-6">
                             <div class="form-group">
+                                <h5 class="pane-title">Titulo:</h5>
                                 <input type="text" name="pregunta" id="pregunta" class="form-control input-sm" value="{{$pregunta->pregunta}}">
                             </div>
                         </div>
                         <div class="col-xs-6 col-sm-6 col-md-6">
                             <div class="form-group">
+                                <h5 class="pane-title">URL video:</h5>
                                 <input name="respuesta" onchange="getId(this.value)" id="respuesta"  class="form-control input-sm" value="{{$pregunta->respuesta}}">
                             </div>
                         </div>
@@ -68,6 +76,7 @@
 
                     </div>
                 </form>
+                    </div>
             </div>
         </div>
     </div>
