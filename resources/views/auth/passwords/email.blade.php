@@ -1,12 +1,13 @@
-@extends('layouts.app')
+@extends('layoutGeneral')
 
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="wrapper fadeInDown">
+                <br>
                 <div class="card">
-                    <div class="card-header">{{ __('Reset Password') }}</div>
+                    <div class="cardHeader">{{ __('Reset Password') }}</div>
 
                     <div class="card-body">
                         @if (session('status'))
@@ -42,6 +43,7 @@
                         </form>
                     </div>
                 </div>
+                <br>
             </div>
         </div>
     </div>

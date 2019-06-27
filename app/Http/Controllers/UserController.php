@@ -1,9 +1,9 @@
 <?php
 namespace App\Http\Controllers;
-use App\{Http\Requests\CreateUserRequest, Profession, Skill, User, UserProfile};
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use App\User;
+use App\Http\Forms\UserForm;
 use Illuminate\Validation\Rule;
+use App\Http\Requests\CreateUserRequest;
 class UserController extends Controller
 {
     public function index()
@@ -20,30 +20,37 @@ class UserController extends Controller
 
     public function create()
     {
-        $user = new user;
 
-        return view('Usuarios.Create', compact('user'));
+        return new UserForm('Usuarios.Create', new User);
+
     }
-
     public function store(CreateUserRequest $request )
     {
-        $request->createUser();
+    $request->createUser();
 
-        return redirect()->route('users.index');
+    return redirect()->route('users.index');
     }
+
+
 
     public function edit(User $user)
     {
-        return view('Usuarios.edit', compact('user'));
+        return new UserForm('Usuarios.Edit', $user);
     }
 
     public function update(User $user)
     {
-        $data = request()->validated([
+
+        $data = request()->validate([
             'name' => 'required',
+            'rut' => 'required',
             'email' => ['required', 'email', Rule::unique('users')->ignore($user->id)],
             'password' => '',
+            'direccion' => 'required',
+            'telefono' => 'required',
+            'ciudad' => 'required'
         ]);
+
         if ($data['password'] != null) {
             $data['password'] = bcrypt($data['password']);
         } else {

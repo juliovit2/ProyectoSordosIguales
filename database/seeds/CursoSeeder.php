@@ -23,7 +23,7 @@ class CursoSeeder extends Seeder
         ]);
 
         DB::table('tabla_cursos')->Insert([
-            'nombre' => 'Lenguaje Señas Avansado',
+            'nombre' => 'Lenguaje Señas Avanzado',
             'profesorid' => '1'
         ]);
     }

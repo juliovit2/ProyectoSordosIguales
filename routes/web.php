@@ -38,24 +38,47 @@ Route::post('admin/noticias/previsualizar', 'NoticiaController@show_preview');
 Route::get('/noticias', 'NoticiaController@public_index');
 Route::get('/noticias/{id}', 'NoticiaController@show');
 
-// ----------- MODULO CURSOS -----------
-
-Route::get('/Plataforma', function () {
-    return view('Plataforma/IniciarSesion');
-});
-
-Route::get('/IngresarNotas', function () {
-    return view('Plataforma/IngresarNotas');
-});
-
-Route::post('login', 'Auth\LoginController@login')->name('login');
-Route::post('ingresarNotas', 'NotasController@ingresar')->name('ingresarNotas');
-
-
+//PORTAL
 Route::get('/PortalAlumnos', function () {
     return view('Plataforma/PortalAlumnos');
 });
+Route::get('/loginCorrecto', function(){
+    return view('Plataforma.LoginExitoso');
+});
 
+// ----------- MODULO CURSOS -----------
+Route::get('/cursos', 'CursoController@index')->name('cursos.index');
+Route::get('/cursos/{curso}', 'CursoController@show')->where('curso', '[0-9]+')->name('cursos.show');
+Route::get('/cursos/nuevo', 'CursoController@create')->name('cursos.create');
+Route::get('/cursos/{curso}/editar', 'CursoController@edit')->name('cursos.edit');
+Route::delete('/cursos/{curso}', 'CursoController@destroy')->name('cursos.destroy');
+Route::post('/cursos', 'CursoController@store');
+Route::put('/cursos/{curso}', 'CursoController@update');
+
+
+//-----------MODULO Notas-------------------------------Mejorado
+//Route::get('/cursos', 'NotasController@index')->name('notas.index');
+
+
+// -----------LOGIN-----------
+Route::post('login', 'Auth\LoginController@login')->name('login');
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
+
+//INGRESAR NOTAS
+Route::post('ingresarNotas', 'NotasController@ingresar')->name('ingresarNotas');
+Route::get('/IngresarNotas', function () {
+    return view('Plataforma/IngresarNotas');
+});
+Route::get('ModificarNotas', 'NotasController@modificar')->name('ModificarNotas');
+Route::get('edit/{id}','NotasController@modificarConector');
+Route::post('mod/{id}','NotasController@modificarIndex');
+Route::get('IndiceNotas/{user}', 'NotasController@indiceNotas')
+    ->where('user', '[0-9]+')
+    ->name('IndiceNotas');
+Route::get('IndiceNotas/edit/{user}','NotasController@modificarConector');
+Route::post('IndiceNotas/mod/{user}','NotasController@modificarIndex');
+Route::get('IndiceNotas/delete/{user}','NotasController@eliminar');
 // ----------- MODULO CONTACTO -----------
 
 
@@ -84,15 +107,11 @@ Route::get('/usuarios/{user}', 'UserController@show')
     ->where('user', '[0-9]+')
     ->name('users.show');
 
-Route::get('/usuarios/nuevo', 'UserController@create')
-    ->name('users.create');
-
-Route::get('/usuarios/{user}/editar', 'UserController@edit')
-    ->name('users.edit');
-
+Route::get('/usuarios/nuevo', 'UserController@create')->name('users.create');
+Route::post('/usuarios', 'UserController@store');
+Route::get('/usuarios/{user}/editar', 'UserController@edit')->name('users.edit');
 Route::put('/usuarios/{user}', 'UserController@update');
 
-Route::post('/usuarios/crear', 'UserController@store');
 
 Route::delete('/usuarios/{user}', 'UserController@destroy')
     ->name('users.destroy');

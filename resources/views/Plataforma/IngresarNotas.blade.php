@@ -1,15 +1,118 @@
 @extends('layout')
-@section('title', "notas")
+@section('title', "Notas")
 @section('content')
+    <?php
+    $id = Auth::user()->id;
+    $rol = DB::table('users')->where('id', $id)->value('rol');
+    if($rol == 'Alumno'){?>
+    <meta http-equiv='refresh' content='0; URL=/usuarios/{{ $id }}/'>
+    <?php }else { ?>
+
     <br>
     <form method="POST" action="{{ route('ingresarNotas') }}">
         {{ csrf_field() }}
-    <p>Ingresar RUT de Alumno: <input type="search" name="IDalumno"></p>
-    <p>Ingresar ID del Curso: <input type="search" name="IDcurso"></p>
-    <p>Ingresar Tipo de Evaluación: <input type="search" name="tipoevaluacion"></p>
-    <p>Ingresar Nota: <input type="search" name="nota"></p>
-    <button type="submit" class="btn btn-primary">
-        {{ __('Ingresar Nota') }}
-    </button>
-</form>
+
+    <div class="form-col">
+        @card
+        @slot('header', 'Ingresar Notas')
+
+        <div class="col-md-4 mb-3">
+            <p align="left">RUT</p>
+            <input type="search"
+                   name="IDalumno"
+                   class="form-control"
+                   id="rut"
+                   placeholder="Ingrese RUT del alumno"
+                   required>
+        </div>
+
+
+        <div class="col-md-4 mb-3">
+            <p align="left">Nombre del Curso</p>
+            <select
+                id="IDcurso"
+                name="IDcurso"
+                class="form-control"
+                required>
+
+                <option value="Lenguaje Señas Basico">Lenguaje Señas Basico</option>
+                <option value="Lenguaje Señas Intermedio">Lenguaje Señas Intermedio</option>
+                <option value="Lenguaje Señas Avansado">Lenguaje Señas Avanzado</option>
+            </select>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <p align="left">Tipo de evaluación</p>
+
+            <select
+                    id="tipoevaluacion"
+                    name="tipoevaluacion"
+                    class="form-control"
+                    required>
+
+                <option value="Taller">Taller</option>
+                <option value="Taller Abierto">Taller Abierto</option>
+            </select>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <p align="left">Nota</p>
+            <input type="search"
+                   name="nota"
+                   class="form-control"
+                   id="nota"
+                   placeholder="Ingrese la nota del alumno"
+                   required>
+        </div>
+
+
+
+        <div class="form-group mt-4">
+            <button type="submit" class="btn btn-primary">
+                {{ __('Ingresar Nota') }}
+            </button>
+            <a href=" {{route('ModificarNotas')}} " class="btn btn-link"> Regresar </a>
+        </div>
+
+
+        @endcard
+    </div>
+    </form>
+
+    @if ($message = Session::get('error1'))
+        <div class="alert alert-danger alert-block">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong>{{ $message }}</strong>
+        </div>
+    @endif
+
+    @if ($message = Session::get('error2'))
+        <div class="alert alert-danger alert-block">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong>{{ $message }}</strong>
+        </div>
+    @endif
+
+    @if ($message = Session::get('error3'))
+        <div class="alert alert-danger alert-block">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong>{{ $message }}</strong>
+        </div>
+    @endif
+
+    @if ($message = Session::get('error4'))
+        <div class="alert alert-danger alert-block">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong>{{ $message }}</strong>
+        </div>
+    @endif
+    @if ($message = Session::get('exito'))
+        <div class="alert alert-success">
+            <button type="button" class="close" data-dismiss="success">×</button>
+            <strong>{{ $message }}</strong>
+        </div>
+    @endif
+
+
+<?php } ?>
 @endsection

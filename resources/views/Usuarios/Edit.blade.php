@@ -3,7 +3,13 @@
 @section('title', "Actualizar usuario")
 
 @section('content')
-
+    <?php
+    $tipo=2;
+    $id = Auth::user()->id;
+    $rol = DB::table('users')->where('id', $id)->value('rol');
+    if($rol == 'Alumno' && $id != $user->id){?>
+    <meta http-equiv='refresh' content='0; URL=/usuarios/{{ $id }}/'>
+    <?php }else{ ?>
     @card
         @slot('header', 'Editar Usuario')
 
@@ -12,7 +18,7 @@
         <form method="POST" action="{{url("usuarios/{$user->id}")}}">
             {{method_field('PUT')}}
 
-            @render('UsersFields', compact('user'))
+            @include('Usuarios._fields')
 
             <div class="form-group mt-4">
                 <button class="btn btn-primary" type="submit">Actualizar usuario</button>
@@ -21,5 +27,5 @@
         </form>
 
     @endcard
-
+    <?php }?>
 @endsection

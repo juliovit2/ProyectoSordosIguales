@@ -28,6 +28,7 @@
     <link href="sticky-footer-navbar.css" rel="stylesheet">
 </head>
 <body class="d-flex flex-column h-100">
+
 <header>
     <!-- Fixed navbar -->
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
@@ -36,18 +37,41 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{route('users.index')}}">Estudiantes <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Algun Link</a>
-                </li>
-            </ul>
-            <form class="form-inline mt-2 mt-md-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
+            @auth
+                <?php
+                    $id = Auth::user()->id;
+                    $rol = DB::table('users')->where('id', $id)->value('rol');
+                    if($rol == 'Administrador'){?>
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{{route('users.index')}}">Estudiantes <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{{route('cursos.index')}}">Cursos <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{{route('ModificarNotas')}}">Notas <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link disabled" href="#">Algun Link</a>
+                            </li>
+                        </ul>
+                <?php }?>
+            @endauth
+            @if (Route::has('login'))
+                <div class="top-right links">
+                    @auth
+                        <a href="{{url('/logout')}}">Logout</a>
+
+                    @else
+                        <a href="{{ route('login') }}">Login</a>
+
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}">Register</a>
+                        @endif
+                    @endauth
+                </div>
+            @endif
         </div>
     </nav>
 </header>
@@ -56,7 +80,7 @@
 <main role="main" class="flex-shrink-0">
 
     <div class="row mt-5">
-        <div class="col-8">
+        <div class="container" align="center">
 
 
             @yield('content')
