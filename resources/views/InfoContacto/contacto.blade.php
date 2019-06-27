@@ -430,68 +430,163 @@
             form_data.append('tipoDenuncia', tdenun);
             form_data.append('_token', '{{csrf_token()}}');
 
-            $.ajax({
-                xhr: function() {
-                    var xhr = new window.XMLHttpRequest();
-                    if(img!="") {
-                        xhr.upload.addEventListener("progress", function (evt) {//proceso de carga
-                            if (evt.lengthComputable) {
-                                var percentComplete = (evt.loaded / evt.total) * 100;
-                                var percentVal = percentComplete + '%';
-                                bar.width(percentVal);
-                                percent.html(percentVal);
+            //valida los campos que no esten vacios, de estarlos los botones se restablecen y se envia un mensaje
+            debugger;
+            var $this=""
+            switch (op) {
+                case 1:
+                    $this = $('#consulta');
+                    break;
+                case 2:
+                    $this = $('#voluntario');
+                    break;
+                case 3:
+                    $this = $('#denuncia');
+                    break;
+                case 4:
+                    $this = $('#otro');
+                    break;
+            }
+            var loadingText = '<i class="fa fa-circle-o-notch fa-spin"></i> enviando...';
+            if ($(this).html() !== loadingText) {
+                $this.data('original-text', $(this).html());
+                $this.html(loadingText);
+            }
+            switch (op) {
+                case 1:
+                    var name=$('#name').val();
+                    var email=$('#email').val();
+                    if(name=="" || email==""){
+                        $this.html("Enviar");
+                        $this.removeAttr('disabled');
+                        if(name==""){
+                            alert("El mensaje debe contener su nombre");
+                        }
+                        if(email==""){
+                            alert("El mensaje debe contener su email");
+                        }
+                        return false;
+                    }
+                    //var textArea=$('#cke_editor1').val();
+                    var textArea=CKEDITOR.instances.editor1.getData();
+                    var archivo=$('#file').val();
+                    if(textArea=="" && archivo==""){
+                        alert("El correo debe contener un mensaje o un video.");
+                        $this.html("Enviar");
+                        $this.removeAttr('disabled');
+                        return false;
+                    }
+                    break;
+                case 3:
+                    var email=$('#email3').val();
+                    if(email==""){
+                        $this.html("Enviar");
+                        $this.removeAttr('disabled');
+                        alert("El mensaje debe contener su email");
+                        return false;
+                    }
+                    var textArea=CKEDITOR.instances.editor3.getData();
+                    var archivo=$('#file3').val();
+                    if(textArea=="" && archivo==""){
+                        alert("El correo debe contener un mensaje o un video.");
+                        $this.html("Enviar");
+                        $this.removeAttr('disabled');
+                        return false;
+                    }
+                    break;
+                case 4:
+                    var name=$('#name4').val();
+                    var email=$('#email4').val();
+                    if(name=="" || email==""){
+                        $this.html("Enviar");
+                        $this.removeAttr('disabled');
+                        if(name==""){
+                            alert("El mensaje debe contener su nombre");
+                        }
+                        if(email==""){
+                            alert("El mensaje debe contener su email");
+                        }
+                        return false;
+                        //return false;
+                    }
+                    //var textArea=$('#editor4').val();
+                    var textArea=CKEDITOR.instances.editor4.getData();
+                    var archivo=$('#file4').val();
+                    if(textArea=="" && archivo==""){
+                        alert("El correo debe contener un mensaje o un video.");
+                        $this.html("Enviar");
+                        $this.removeAttr('disabled');
+                        return false;
+                    }
+                    break;
+            }
+            if(confirm("¿Estas seguro de enviar los datos?")){
+                $.ajax({
+                    xhr: function() {
+                        var xhr = new window.XMLHttpRequest();
+                        if(img!="") {
+                            xhr.upload.addEventListener("progress", function (evt) {//proceso de carga
+                                if (evt.lengthComputable) {
+                                    var percentComplete = (evt.loaded / evt.total) * 100;
+                                    var percentVal = percentComplete + '%';
+                                    bar.width(percentVal);
+                                    percent.html(percentVal);
+                                }
+                            }, false);
+                        }
+                        return xhr;
+                    },
+                    url: "{{url('contacto')}}",
+                    data: form_data,
+                    type: 'POST',
+                    contentType: false,
+                    processData: false,
+                    success: function (data) {
+                        if (data.fail) {
+                            alert(data.errors['file']);
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        var percentVal='0%';
+                        bar.width(percentVal);
+                        percent.html(percentVal);
+                        switch (op) {
+                            case 1:
+                                name=$('#name').val();
+                                email=$('#email').val();
+                                break;
+                            case 3:
+                                name="anonymous"
+                                email=$('#email3').val();
+                                break;
+                            case 4:
+                                name=$('#name4').val();
+                                email=$('#email4').val();
+                                break;
+                        }
+                        if(name!="" && email!=""){
+                            if(error=="Unprocessable Entity" && img!=""){
+                                alert("El formato invalido o el archivo supera los 30mb");
                             }
-                        }, false);
-                    }
-                    return xhr;
-                },
-                url: "{{url('contacto')}}",
-                data: form_data,
-                type: 'POST',
-                contentType: false,
-                processData: false,
-                success: function (data) {
-                    if (data.fail) {
-                        alert(data.errors['file']);
-                    }
-                },
-                error: function (xhr, status, error) {
-                    var percentVal='0%';
-                    bar.width(percentVal);
-                    percent.html(percentVal);
-                    switch (op) {
-                        case 1:
-                            name=$('#name').val();
-                            email=$('#email').val();
-                            break;
-                        case 3:
-                            name="anonymous"
-                            email=$('#email3').val();
-                            break;
-                        case 4:
-                            name=$('#name4').val();
-                            email=$('#email4').val();
-                            break;
-                    }
-                    if(name!="" && email!=""){
-                        if(error=="Unprocessable Entity" && img!=""){
-                            alert("El formato invalido o el archivo supera los 30mb");
+                        }else{
+                            vacios=true;
                         }
-                    }else{
-                        vacios=true;
-                    }
-                },
-                complete: function(xhr) {
-                    if(!vacios){
-                        if(msn!="" || img!=""){
-                            alert(xhr.responseText);//recibe el return del controlador
-                            window.location.href = "/contacto";
+                    },
+                    complete: function(xhr) {
+                        if(!vacios){
+                            if(msn!="" || img!=""){
+                                alert(xhr.responseText);//recibe el return del controlador
+                                window.location.href = "/contacto";
+                            }
+                        }else{
+                            alert("por favor complete los campos")
                         }
-                    }else{
-                        alert("por favor complete los campos")
                     }
-                }
-            });
+                });
+            }else{
+                $this.html("Enviar");
+                $this.removeAttr('disabled');
+            }
         }
     </script>
     {{--    script para voluntario--}}
@@ -566,95 +661,6 @@
 
     {{--    boton de enviando...--}}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script>
-        $(document).ready(function() {
-            $('.btn').on('click', function() {
-                var $this = $(this);
-                var loadingText = '<i class="fa fa-circle-o-notch fa-spin"></i> enviando...';
-                if ($(this).html() !== loadingText) {
-                    $this.data('original-text', $(this).html());
-                    $this.html(loadingText);
-                }
-                //valida los campos que no esten vacios, de estarlos los botones se restablecen y se envia un mensaje
-                $this.attr('disabled','disabled');
-                switch ($this.context.attributes.id.value) {
-                    case 'consulta':
-                        var name=$('#name').val();
-                        var email=$('#email').val();
-                        if(name=="" || email==""){
-                            $this.html($this.data('original-text'));
-                            $this.removeAttr('disabled');
-                            break;
-                        }
-                        //var textArea=$('#cke_editor1').val();
-                        var textArea=CKEDITOR.instances.editor1.getData();
-                        var archivo=$('#file').val();
-                        if(textArea=="" && archivo==""){
-                            alert("El correo debe contener un mensaje o un video.");
-                            $('#consulta').html($('#consulta').data('original-text'));
-                            $('#consulta').removeAttr('disabled');
-                            return false;
-                        }
-                        break;
-                    case 'voluntario'://puede ser eliminado
-                        var name=$('#name2').val();
-                        var rut=$('#rut').val();
-                        var email=$('#email2').val();
-                        var ciudad=$('#ciudad').val();
-                        var phone=$('#phone').val();
-                        var profesion=$('#profesion').val();
-                        if(name=="" || email=="" || rut=="" || ciudad=="" || phone=="" || profesion==""){
-                            $this.html($this.data('original-text'));
-                            $this.removeAttr('disabled');
-                            break;
-                        }
-                        var archivo=$('#file2').val();
-                        if(archivo==""){
-                            alert("El correo debe contener un archivo pdf.");
-                            $this.html($this.data('original-text'));
-                            $this.removeAttr('disabled');
-                            return false;
-                        }
-                        break;
-                    case 'denuncia':
-                        var email=$('#email3').val();
-                        if(email==""){
-                            $('#denuncia').html($('#denuncia').data('original-text'));
-                            $('#denuncia').removeAttr('disabled');
-                            break;
-                        }
-                        var textArea=CKEDITOR.instances.editor3.getData();
-                        var archivo=$('#file3').val();
-                        if(textArea=="" && archivo==""){
-                            alert("El correo debe contener un mensaje o un video.");
-                            $this.html($this.data('original-text'));
-                            $this.removeAttr('disabled');
-                            return false;
-                        }
-                        break;
-                    case 'otro':
-                        var name=$('#name4').val();
-                        var email=$('#email4').val();
-                        if(name=="" || email==""){
-                            $this.html($this.data('original-text'));
-                            $this.removeAttr('disabled');
-                            break;
-                            //return false;
-                        }
-                        //var textArea=$('#editor4').val();
-                        var textArea=CKEDITOR.instances.editor4.getData();
-                        var archivo=$('#file4').val();
-                        if(textArea=="" && archivo==""){
-                            alert("El correo debe contener un mensaje o un video.");
-                            $this.html($this.data('original-text'));
-                            $this.removeAttr('disabled');
-                            return false;
-                        }
-                        break;
-                }
-            });
-        })
-    </script>
 
 
 {{--    tabs--}}
