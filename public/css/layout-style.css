@@ -130,10 +130,10 @@ footer{
     border-width: thin;
 }
 
-hr.bluered{
+hr.redHR{
     height: 1px;
     background-image: linear-gradient(to right,
-    blue    20%,
+    #972329    20%,
     red  20%,
     red  100%
     );

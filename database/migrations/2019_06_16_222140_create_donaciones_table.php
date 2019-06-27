@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTablaMemoriasTable extends Migration
+class CreateDonacionesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreateTablaMemoriasTable extends Migration
      */
     public function up()
     {
-        Schema::create('tabla_memorias', function (Blueprint $table) {
-            $table->Increments('id');
-            $table->integer('year');
-            $table->string('pdf');
-            $table->string('portada')->nullable();
-            $table->string('video');
+        Schema::create('donaciones', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->timestamps();
         });
     }
@@ -30,6 +26,6 @@ class CreateTablaMemoriasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tabla_memorias');
+        Schema::dropIfExists('donaciones');
     }
 }

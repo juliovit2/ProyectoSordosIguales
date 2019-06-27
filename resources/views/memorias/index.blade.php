@@ -53,6 +53,9 @@
                                         <a class="btn btn-secondary" href = "{{$memorias[$key]['pdf']}}" target="_blank">
                                             <i class="fas fa-eye"></i>
                                         </a>
+                                        <a class = "btn btn-secondary" title = "Abrir el video de la memoria" data-toggle="modal" data-video="{{$memorias[$key]['video']}}" data-title="{{$memorias[$key]['year']}}" href="#videoModal">
+                                            <i class="far fa-play-circle"></i>
+                                        </a>
                                         <a class="btn btn-secondary" role="button"href="{{route('memorias.edit',$item->id)}}" >
                                             <i class="fas fa-pencil-alt"></i>
                                         </a>
@@ -90,6 +93,24 @@
                         </tr>
                     @endforeach
                 </ul>
+                <!-- Video Modal -->
+                <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title"></h1>
+                                <button type="button"  class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">X</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="embed-responsive embed-responsive-16by9">
+                                    <iframe id="iframeVideo" class="embed-responsive-item" width="800" height="450" src="" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             @else
                 <p> No hay Memorias registradas </p>
             @endif
@@ -99,14 +120,25 @@
 
 
     </body>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-            crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-            crossorigin="anonymous"></script>
-
-
     </form>
     </div>
 
+    <script>
+        $(document).ready(function() {
+            $('#videoModal').on('show.bs.modal', function (event) {
+                var button = $(event.relatedTarget) // Button that triggered the modal
+                var recipient = button.data('video') // Extract info from data-* attributes
+                var year = button.data('title')
+                // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+                // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+                var modal = $(this)
+                modal.find('.modal-title').text('Memoria ' + year)
+                document.getElementById('iframeVideo').src = recipient;
+            })
+
+            $("#videoModal").on('hidden.bs.modal', function (e) {
+                $("#videoModal iframe").attr("src", $("#videoModal iframe").attr("src"));
+            });
+        })
+    </script>
 @endsection

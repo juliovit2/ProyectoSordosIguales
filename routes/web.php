@@ -64,6 +64,10 @@ Route::resource('admin/memorias', 'MemoriaController');
 
 Route::get('memorias', 'MemoriaController@interface')->name('memorias.interface');
 
+//Donaciones
+Route::resource('admin/donaciones', 'DonacionesController');
+Route::get('Donaciones', 'DonacionesController@interface')->name('Donaciones.interface');
+
 
 
 Auth::routes();
