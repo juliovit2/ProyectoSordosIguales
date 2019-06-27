@@ -161,7 +161,7 @@ class MemoriaController extends Controller
         }
 
         //Cambiar Año
-        if(Arr::exists($data, 'anio_memoria')){
+        if(Arr::exists($data, 'anio_memoria') && $data['anio_memoria'] != $memoria->year){
             if(!Arr::exists($data, 'inputMemoria')){
                 $url = $memoria->pdf;
                 $location = str_replace("/storage","public",$url);
@@ -170,7 +170,7 @@ class MemoriaController extends Controller
                 $newMemoria = \Storage::url($newLocation);
             }
 
-            if(!Arr::exists($data, 'inputPortada')){
+            if(!Arr::exists($data, 'inputPortada') && $newPortada != null){
                 $url = $memoria->portada;
                 $location = str_replace("/storage","public",$url);
                 $newLocation = str_replace($yearActual,$data['anio_memoria'],$location);
