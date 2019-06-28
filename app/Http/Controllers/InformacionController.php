@@ -109,11 +109,17 @@ class InformacionController extends Controller
                 'profesion'=>'required',
                 'archivo'=>'required'
             ]);
-            $datos=[$request->name,$request->rut,$request->email,$request->ciudad,$request->phone,$request->profesion,$request->archivo];
+            $this->validate($request,[
+                'archivo' => 'required|mimes:pdf',
+            ]);
+            $imageName = time().'.'.request()->archivo->getClientOriginalExtension();
+            $request->archivo->move(public_path('/temp'), $imageName);
+            $datos=[$request->name,$request->rut,$request->email,$request->ciudad,$request->phone,$request->profesion,$imageName];
+//            $datos=[$request->name,$request->rut,$request->email,$request->ciudad,$request->phone,$request->profesion,$request->archivo];
             //Mail::to('naitsircnunez@gmail.com')->send(new SendMailable($datos));
             try {
                 Mail::to('naitsircnunez@gmail.com')->send(new SendMailable($datos));
-                File::delete(public_path('/temp/'.$request->archivo));
+                File::delete(public_path('/temp/'.$imageName));
                 return 'Mensaje enviado';
             }catch(\Exception $e) {
                 return $e->getMessage();
