@@ -11,7 +11,7 @@
                     <div  class="container p-2 mb-3">
                         <div class="row">
                                 <div class="col-4">
-                                    <div id="carousel" class="carousel p-2 slide" data-ride="carousel" data-interval="4000">
+                                    <div id="carousel" class="carousel p-2 slide" data-ride="carousel" data-interval="2000">
                                         <div class="carousel-inner">
                                         <div class="carousel-item active">
                                             <div class="item banner-height-400">
@@ -33,10 +33,7 @@
                                 <div class="col-8">
                                     <h5 class="text-center">{{$noticia->titulo}}</h5>
                                     <div class="col-12">
-                                        <?php
-
-                                        ?>
-                                        <p id="summary" class="text-justify">Alumno de la Universidad Católica del Norte muere atropellado por un perro que comia sushi mientras dormia a orillas del ferrocarril.</p>
+                                        <p class="text-justify">{{$noticia->getSummary(140)}}</p>    
                                     </div>
                                 </div>
                         </div>
