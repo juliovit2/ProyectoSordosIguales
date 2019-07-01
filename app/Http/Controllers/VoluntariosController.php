@@ -79,10 +79,7 @@ class VoluntariosController extends Controller
         $data = array(
             'voluntario_a_editar' => $v,
             "is_edit" => true);
-
-        //return view('InfoContacto.create_voluntarios')->with('data', $data);
         return view('InfoContacto.create_voluntarios',compact('v'));
-        //return view('InfoContacto.create_voluntarios')->with('$voluntario_a_editar', $voluntario_a_editar);
     }
 
     /**
@@ -101,7 +98,7 @@ class VoluntariosController extends Controller
             'rut' => $request->get('rut'),
             'correo' => $request->get('correo'),
             'certificado' => $request->get('certificado'),
-            'rol' => $request->get('rol')
+            'rol' => 'Voluntario'
         );
 
         DB::table('tabla_personas')

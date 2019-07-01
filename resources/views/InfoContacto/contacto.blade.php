@@ -211,19 +211,24 @@
                                 <!-- upload file -->
                                 <div class="form-group" align="left">
                                     <p align="left">Certificados o Curriculum</p>
-                                    <input id="archivo2" type="hidden" name="archivo">
-                                    <input id="file2" onchange="subidav2(this,2)" type="file" accept="application/pdf" />
-                                    <div class="progress" style="height: 5%">
-                                        <div class="bar"></div >
-                                        <div class="percent">0%</div >
-                                    </div>
+                                    <input id="file2" name="archivo" type="file" accept="application/pdf" />
+{{--                                    <input id="file2" name="archivo" onchange="subidav2(this,2)" type="file" accept="application/pdf" />--}}
+{{--                                    <input id="archivo2" type="hidden" name="archivo">--}}
+{{--                                    <input id="file2" onchange="subidav2(this,2)" type="file" accept="application/pdf" />--}}
+{{--                                    <div class="progress" style="height: 5%">--}}
+{{--                                        <div class="bar"></div >--}}
+{{--                                        <div class="percent">0%</div >--}}
+{{--                                    </div>--}}
                                 </div>
                                 <!-- Form actions -->
                                 <div class="form-group">
                                     <div class="text-center">
-                                        <button id="voluntario" onclick="revisar()" type="submit" class="btn btn-primary btn-lg text-reset">Enviar</button>
+                                        <button id="voluntario" onclick="revisar(2)" type="button" class="btn btn-primary btn-lg text-reset">Enviar</button>
                                     </div>
                                 </div>
+
+
+
                             </div>
                         </div>
                     </form>
@@ -377,20 +382,253 @@
         </div>
     </div>
 
+
+    <!--pop up confirmacion voluntario -->
+    <div class="modal fade" id="confirmVoluntario">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Confirmacion</h5>
+                    <button tyle="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>¿Esta seguro de enviar el correo?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+                    <button id="btnCon2" onclick="enviarVoluntario(2)" data-dismiss="modal" type="button" class="btn btn-primary">Enviar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- endf pop up-->
+
+    <!--pop up confirmacion -->
+    <div class="modal fade" id="confirm">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Confirmacion</h5>
+                    <button tyle="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>¿Esta seguro de enviar el correo?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+                    <button id="btnCon" onclick="enviar()" type="button" data-dismiss="modal" class="btn btn-primary">Enviar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- endf pop up-->
+
+    <!--pop up alerta -->
+    <div class="modal fade" id="alert">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Error</h5>
+                    <button tyle="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p id="mensaje"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- endf pop up-->
+
+    <!--pop up success -->
+    {{--    undismiss modal--}}
+    <div class="modal fade" id="success" data-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Correo enviado</h5>
+                    <button tyle="button" class="close" onclick="refresh()" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p id="mensajeSuccess"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" onclick="refresh()" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- endf pop up-->
+
     </body>
     {{--    subida de archivo(barra de progreso)--}}
     <script src="http://malsup.github.com/jquery.form.js"></script>
     {{--    script para consulta,denuncia y otro--}}
-    <script>
+    <script type="text/javascript" src="{{asset('js/bootstrap.js')}}"></script>
+
+    <script type="text/javascript">
+        var opcion="";
+        var $this="";
+
+        //funciona con la funcion de enviarVoluntario() en la otra etiqueta
+        function revisar(op) {//voluntario
+            jQuery.noConflict();//existe mas de jQuery, por lo que existe conflicto al utilizar la funcion
+            opcion=op;
+            var name=document.getElementById("name2").value;;
+            var email=document.getElementById("email2").value;;
+            var rut=document.getElementById("rut").value;
+            var city=document.getElementById("ciudad").value;
+            var numero=document.getElementById("phone").value;
+            var profesion=document.getElementById("profesion").value;;
+            if(name=="" || rut=="" || email=="" || city=="" || numero=="" || profesion==""){
+                msnVal="Los siguientes campos no han sido completados:<br> <br>";
+                if(name==""){
+                    msnVal+="nombre <br>";
+                }
+                if(rut==""){
+                    msnVal+="rut <br>";
+                }
+                if(email==""){
+                    msnVal+="correo <br>";
+                }
+                if(city==""){
+                    msnVal+="ciudad <br>";
+                }
+                if(numero==""){
+                    msnVal+="telefono <br>";
+                }
+                if(profesion==""){
+                    msnVal+="profesion <br>";
+                }
+                document.getElementById("mensaje").innerHTML=msnVal;
+                $("#alert").modal('show');
+                return false;
+            }
+            var archivo=$('#file2').val();
+            if(archivo==""){
+                document.getElementById("mensaje").innerHTML="Debe subir un Certificados o Curriculum";
+                $("#alert").modal('show');
+                return false;
+            }
+            $("#confirmVoluntario").modal('show');
+        }
+
         function revisarv2(op) {
+            var msnVal="";
+            //valida los campos que no esten vacios, de estarlos los botones se restablecen y se envia un mensaje
+            opcion=op;
+            jQuery.noConflict();//existe mas de jQuery, por lo que existe conflicto al utilizar la funcion
+            switch (op) {
+                case 1:
+                    var name=$('#name').val();
+                    var email=$('#email').val();
+                    if(name=="" || email==""){
+                        msnVal="Los siguientes campos no han sido completados:<br> <br>";
+                        if(name==""){
+                            msnVal+="nombre <br>";
+                        }
+                        if(email==""){
+                            msnVal+="correo";
+                        }
+                        document.getElementById("mensaje").innerHTML=msnVal;
+                        $("#alert").modal('show');
+                        return false;
+                    }
+                    //var textArea=$('#cke_editor1').val();
+                    var textArea=CKEDITOR.instances.editor1.getData();
+                    var archivo=$('#file').val();
+                    if(textArea=="" && archivo==""){
+                        document.getElementById("mensaje").innerHTML="El correo debe contener un mensaje o un video.";
+                        $("#alert").modal('show');
+                        return false;
+                    }
+                    break;
+                case 3:
+                    var email=$('#email3').val();
+                    if(email==""){
+                        document.getElementById("mensaje").innerHTML="El mensaje debe contener su email";
+                        $("#alert").modal('show');
+                        return false;
+                    }
+                    var textArea=CKEDITOR.instances.editor3.getData();
+                    var archivo=$('#file3').val();
+                    if(textArea=="" && archivo==""){
+                        document.getElementById("mensaje").innerHTML="El correo debe contener un mensaje o un video";
+                        $("#alert").modal('show');
+                        return false;
+                    }
+                    break;
+                case 4:
+                    var name=$('#name4').val();
+                    var email=$('#email4').val();
+                    if(name=="" || email==""){
+                        msnVal="Los siguientes campos no han sido completados:<br> <br>";
+                        if(name==""){
+                            msnVal+="nombre <br>";
+                        }
+                        if(email==""){
+                            msnVal+="correo";
+                        }
+                        document.getElementById("mensaje").innerHTML=msnVal;
+                        $("#alert").modal('show');
+                        return false;
+                        //return false;
+                    }
+                    //var textArea=$('#editor4').val();
+                    var textArea=CKEDITOR.instances.editor4.getData();
+                    var archivo=$('#file4').val();
+                    if(textArea=="" && archivo==""){
+                        document.getElementById("mensaje").innerHTML="El correo debe contener un mensaje o un video.";
+                        $("#alert").modal('show');
+                        return false;
+                    }
+                    break;
+            }
+            $("#confirm").modal('show');
+        }
+
+        //boton de carga
+        $(document).ready(function() {
+            $('#btnCon').on('click', function() {
+                switch (opcion) {
+                    case 1:
+                        $this=$('#consulta');
+                        break;
+                    case 3:
+                        $this=$('#denuncia');
+                        break;
+                    case 4:
+                        $this=$('#otro');
+                        break;
+                }
+                var loadingText = '<i class="fa fa-circle-o-notch fa-spin"></i> enviando...';
+                if ($(this).html() !== loadingText) {
+                    $this.data('original-text', $(this).html());
+                    $this.html(loadingText);
+                }
+                $this.attr('disabled','disabled');
+            });
+            $('#btnCon2').on('click', function() {
+                $this=$('#voluntario');
+                var loadingText = '<i class="fa fa-circle-o-notch fa-spin"></i> enviando...';
+                if ($(this).html() !== loadingText) {
+                    $this.data('original-text', $(this).html());
+                    $this.html(loadingText);
+                }
+                $this.attr('disabled','disabled');
+            });
+        });
+        //enviar funcion enviar para consulta, denuncia y otros
+        function enviar() {
             var img;
             var name;
             var email;
             var msn;
             var tdenun="";//tipo de denuncia
             var vacios;//indica si los campos name y email estan vacios
-            debugger;
-            switch (op) {
+            switch (opcion) {
                 case 1:
                     name=document.getElementById("name").value;
                     email= document.getElementById("email").value;
@@ -423,7 +661,7 @@
                 form_data.append('archivo', "");
                 img="";
             }
-            form_data.append('op', op);
+            form_data.append('op', opcion);
             form_data.append('name', name);
             form_data.append('email', email);
             form_data.append('mensaje', msn);
@@ -454,12 +692,14 @@
                     if (data.fail) {
                         alert(data.errors['file']);
                     }
+                    $this.html("Enviar");
+                    $this.removeAttr('disabled');
                 },
                 error: function (xhr, status, error) {
                     var percentVal='0%';
                     bar.width(percentVal);
                     percent.html(percentVal);
-                    switch (op) {
+                    switch (opcion) {
                         case 1:
                             name=$('#name').val();
                             email=$('#email').val();
@@ -475,70 +715,60 @@
                     }
                     if(name!="" && email!=""){
                         if(error=="Unprocessable Entity" && img!=""){
-                            alert("El formato invalido o el archivo supera los 30mb");
+                            jQuery.noConflict();
+                            document.getElementById("mensaje").innerHTML="El formato invalido o el archivo supera los 30mb";
+                            $("#alert").modal('show');
                         }
                     }else{
                         vacios=true;
                     }
+                    $this.html("Enviar");
+                    $this.removeAttr('disabled');
                 },
                 complete: function(xhr) {
+                    jQuery.noConflict();
                     if(!vacios){
                         if(msn!="" || img!=""){
-                            alert(xhr.responseText);//recibe el return del controlador
-                            window.location.href = "/contacto";
+                            document.getElementById("mensajeSuccess").innerHTML=xhr.responseText;
+                            $("#success").modal('show');
+                            //alert(xhr.responseText);//recibe el return del controlador
+                            //window.location.href = "/contacto";
                         }
                     }else{
-                        alert("por favor complete los campos")
+                        document.getElementById("mensaje").innerHTML="por favor complete los campos";
+                        $("#alert").modal('show');
                     }
+                    $this.html("Enviar");
+                    $this.removeAttr('disabled');
                 }
             });
         }
     </script>
     {{--    script para voluntario--}}
     <script>
-        function revisar() {
+        function enviarVoluntario(op) {
             var refresh=true;
-            $('form').ajaxForm({
-                error: function (xhr, status, error) {
-                    debugger;
-                    if(error=="Unprocessable Entity"){
-                        refresh=false;
-                    }
-                },
-                complete: function(xhr) {
-                    if(refresh){
-                        alert(xhr.responseText);///recibe el return del controlador
-                        window.location.href = "/contacto";
-                    }else{
-                        $('#voluntario').html($('#voluntario').data('original-text'));
-                        $('#voluntario').removeAttr('disabled');
-                        alert("Debe subir un Certificados o Curriculum");
-                    }
-
-                }
-            });
-        }
-        function subidav2(img,op) {
-            var bar = $('.bar');
-            var percent = $('.percent');
             var form_data = new FormData();
-            form_data.append('archivo', img.files[0]);
-            form_data.append('op', op);
+
+            var name=document.getElementById("name2").value;;
+            var email=document.getElementById("email2").value;;
+            var rut=document.getElementById("rut").value;
+            var city=document.getElementById("ciudad").value;
+            var numero=document.getElementById("phone").value;
+            var profesion=document.getElementById("profesion").value;;
+            var file=document.getElementById("file2");
+            form_data.append('opcion', op);
+            form_data.append('name', name);
+            form_data.append('email', email);
+            form_data.append('rut', rut);
+            form_data.append('ciudad', city);
+            form_data.append('phone', numero);
+            form_data.append('profesion', profesion);
+            form_data.append('archivo', file.files[0]);
             form_data.append('_token', '{{csrf_token()}}');
+
             $.ajax({
-                xhr: function() {
-                    var xhr = new window.XMLHttpRequest();
-                    xhr.upload.addEventListener("progress", function(evt) {//proceso de carga
-                        if (evt.lengthComputable) {
-                            var percentComplete = (evt.loaded / evt.total) * 100;
-                            var percentVal = percentComplete + '%';
-                            bar.width(percentVal);
-                            percent.html(percentVal);
-                        }
-                    }, false);
-                    return xhr;
-                },
-                url: "{{url('subidaDeArchivo')}}",
+                url: "{{url('contacto')}}",
                 data: form_data,
                 type: 'POST',
                 contentType: false,
@@ -547,115 +777,37 @@
                     if (data.fail) {
                         alert(data.errors['file']);
                     }
-                    else {
-                        document.getElementById("archivo2").value = data;
-                        alert("Archivo Subido");
-                    }
+                    $this.html("Enviar");
+                    $this.removeAttr('disabled');
                 },
                 error: function (xhr, status, error) {
-                    var percentVal='0%';
-                    bar.width(percentVal);
-                    percent.html(percentVal);
                     if(error=="Unprocessable Entity"){
-                        alert("El formato invalido o el archivo supera los 30mb");
+                        refresh=false;
+                        alert("improcesable");
                     }
+                },
+                complete: function(xhr) {
+                    if(refresh){
+                        document.getElementById("mensajeSuccess").innerHTML=xhr.responseText;
+                        $("#success").modal('show');
+                        //window.location.href = "/contacto";
+                    }else{
+                        $this.html("Enviar");
+                        $this.removeAttr('disabled');
+                        alert("Debe subir un Certificados o Curriculum");
+                    }
+
                 }
             });
         }
+
+        function refresh() {
+            window.location.href = "/contacto";
+        }
     </script>
 
-    {{--    boton de enviando...--}}
+    {{--    iconos para el boton enviar...--}}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script>
-        $(document).ready(function() {
-            $('.btn').on('click', function() {
-                var $this = $(this);
-                var loadingText = '<i class="fa fa-circle-o-notch fa-spin"></i> enviando...';
-                if ($(this).html() !== loadingText) {
-                    $this.data('original-text', $(this).html());
-                    $this.html(loadingText);
-                }
-                //valida los campos que no esten vacios, de estarlos los botones se restablecen y se envia un mensaje
-                $this.attr('disabled','disabled');
-                switch ($this.context.attributes.id.value) {
-                    case 'consulta':
-                        var name=$('#name').val();
-                        var email=$('#email').val();
-                        if(name=="" || email==""){
-                            $this.html($this.data('original-text'));
-                            $this.removeAttr('disabled');
-                            break;
-                        }
-                        //var textArea=$('#cke_editor1').val();
-                        var textArea=CKEDITOR.instances.editor1.getData();
-                        var archivo=$('#file').val();
-                        if(textArea=="" && archivo==""){
-                            alert("El correo debe contener un mensaje o un video.");
-                            $('#consulta').html($('#consulta').data('original-text'));
-                            $('#consulta').removeAttr('disabled');
-                            return false;
-                        }
-                        break;
-                    case 'voluntario'://puede ser eliminado
-                        var name=$('#name2').val();
-                        var rut=$('#rut').val();
-                        var email=$('#email2').val();
-                        var ciudad=$('#ciudad').val();
-                        var phone=$('#phone').val();
-                        var profesion=$('#profesion').val();
-                        if(name=="" || email=="" || rut=="" || ciudad=="" || phone=="" || profesion==""){
-                            $this.html($this.data('original-text'));
-                            $this.removeAttr('disabled');
-                            break;
-                        }
-                        var archivo=$('#file2').val();
-                        if(archivo==""){
-                            alert("El correo debe contener un archivo pdf.");
-                            $this.html($this.data('original-text'));
-                            $this.removeAttr('disabled');
-                            return false;
-                        }
-                        break;
-                    case 'denuncia':
-                        var email=$('#email3').val();
-                        if(email==""){
-                            $('#denuncia').html($('#denuncia').data('original-text'));
-                            $('#denuncia').removeAttr('disabled');
-                            break;
-                        }
-                        var textArea=CKEDITOR.instances.editor3.getData();
-                        var archivo=$('#file3').val();
-                        if(textArea=="" && archivo==""){
-                            alert("El correo debe contener un mensaje o un video.");
-                            $this.html($this.data('original-text'));
-                            $this.removeAttr('disabled');
-                            return false;
-                        }
-                        break;
-                    case 'otro':
-                        var name=$('#name4').val();
-                        var email=$('#email4').val();
-                        if(name=="" || email==""){
-                            $this.html($this.data('original-text'));
-                            $this.removeAttr('disabled');
-                            break;
-                            //return false;
-                        }
-                        //var textArea=$('#editor4').val();
-                        var textArea=CKEDITOR.instances.editor4.getData();
-                        var archivo=$('#file4').val();
-                        if(textArea=="" && archivo==""){
-                            alert("El correo debe contener un mensaje o un video.");
-                            $this.html($this.data('original-text'));
-                            $this.removeAttr('disabled');
-                            return false;
-                        }
-                        break;
-                }
-            });
-        })
-    </script>
-
 
 {{--    tabs--}}
     <script>
