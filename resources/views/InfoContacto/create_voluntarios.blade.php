@@ -24,11 +24,12 @@
 
                         <div class="form-group">
                             <label for="Correo"><h4>Correo *</h4></label>
-                            <input type="text" id="correo" name="correo" class="form-control" value="{{$v->correo}}">
+                            <input type="text" id="correo" name="correo"  pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" class="form-control" value="{{$v->correo}}">
                         </div>
 
                         <div class=form-group">
-                            <input id="but" type="button" value="Editar Voluntario" class="btn btn-primary">
+                            <a href="#confirmation" class="btn btn-primary" data-toggle="modal">Editar</a>
+                            <a href="{{ route('voluntarios.index') }}" class="btn btn-primary" >Atrás</a>
                         </div>
                     @else
                         <div class="form-group">
@@ -48,13 +49,34 @@
 
                         <div class="form-group">
                             <label for="Correo"><h4>Correo *</h4></label>
-                            <input type="text" id="correo" name="correo" class="form-control">
+                            <input type="text" id="correo"  pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" name="correo" class="form-control">
                         </div>
 
                         <div class=form-group">
-                            <input id="but" type="button" value="Agregar Voluntario" class="btn btn-primary">
+                            <a href="#confirmation" class="btn btn-primary" data-toggle="modal">Agregar </a>
+                            <a href="{{ route('voluntarios.index') }}" class="btn btn-primary" >Atrás</a>
                         </div>
                     @endif
+
+                <!--pop up confirmacion -->
+                    <div class="modal fade" id="confirmation">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Confirmacion</h5>
+                                    <button tyle="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Si presiona cancelar, los cambios seran descartados</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+                                    <button type="submit"  value="store" class="btn btn-primary">Guardar Cambios</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- endf pop up-->
 
 
                 </form>
@@ -62,33 +84,12 @@
         </div>
     </div>
 
-    <script>
-        $(document).ready(function() {
-            $('#but').click(function () {
-                if($('#nombre').val().replace(" ","").length <= 0) {
-                    alert("El campo nombre es obligatorio.");
-                    return;
-                }
-
-                if($('#telefono').val().replace(" ","").length <= 0) {
-                    alert("El campo telefono es obligatorio.");
-                    return;
-                }
-
-                if($('#rut').val().replace(" ","").length <= 0) {
-                    alert("El campo rut es obligatorio.");
-                    return;
-                }
-
-                if($('#correo').val().replace(" ","").length <= 0) {
-                    alert("El campo correo es obligatorio.");
-                    return;
-                }
 
 
-                $('form#form').submit();
-
-            });
-        });
-    </script>
+{{--    <script>--}}
+{{--        function enviar() {--}}
+{{--            $('alert').modal('show');--}}
+{{--            jQuery.noConflict();--}}
+{{--        }--}}
+{{--    </script>--}}
 @endsection
