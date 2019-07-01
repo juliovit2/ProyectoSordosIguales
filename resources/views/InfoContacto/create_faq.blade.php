@@ -35,7 +35,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
-                                        <button type="submit" href="faq/show" value="store" class="btn btn-primary">Guardar Cambios</button>
+                                        <button type="submit" href="{{route('faq.index')}}"  class="btn btn-primary">Guardar Cambios</button>
                                     </div>
 
                                 </div>

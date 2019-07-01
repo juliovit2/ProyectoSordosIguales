@@ -45,7 +45,8 @@ class FaqController extends Controller
         $pregunta->pregunta=$request->pregunta;
         $pregunta->respuesta=$request->video;
         $pregunta->save();
-        return $this->show();
+        return redirect()->route('faq.index');
+        
     }
 
     public function destroy($id)
