@@ -61,9 +61,20 @@ Route::resource('admin/memorias', 'MemoriaController');
 
 Route::get('memorias', 'MemoriaController@interface')->name('memorias.interface');
 
-//Donaciones
+// ----------- MODULO (DONACIONES)-----------
 Route::resource('admin/donaciones', 'DonacionesController');
 Route::get('Donaciones', 'DonacionesController@interface')->name('Donaciones.interface');
+
+
+Route::get('/donar', function () {
+    return view('Donaciones/donar');
+});
+
+//Route::get('webpay', 'DonacionesController@Webpay')->name('Donaciones.Webpay');
+Route::post('webpay', 'DonacionesController@Webpay')->name('Donaciones.Webpay');
+Route::post('return', 'DonacionesController@Retorno')->name('Donaciones.Retorno');
+
+
 
 
 
