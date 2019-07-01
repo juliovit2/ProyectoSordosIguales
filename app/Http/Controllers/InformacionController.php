@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\SendMailable;
 use App\tabla_persona;
 use File;
+use App\Http\Requests;
+use Dropbox\Client;
+use Dropbox\WriteMode;
+use Illuminate\Support\Facades\Storage;
 
 class InformacionController extends Controller
 {
@@ -18,11 +22,11 @@ class InformacionController extends Controller
      */
     public function index()
     {
-        return view('contacto');
+        return view('InfoContacto.contacto');
     }
 
     public function info(){
-        return view('informacion');
+        return view('InfoContacto.informacion');
     }
 
     public function enviarCorreo(Request $request){
@@ -30,7 +34,7 @@ class InformacionController extends Controller
             $nombre=$request->name;
             $mensaje=$request->mensaje;
             $tipo="";
-            switch ($request->opcion){
+            switch ($request->op){
                 case 1://consulta
                     $tipo='consulta';
                     $this->validate($request, [
@@ -39,7 +43,7 @@ class InformacionController extends Controller
                     break;
                 case 3://denuncias
                     $tipo='denuncia';
-                    if($nombre==""){
+                    if($nombre=="" || $nombre==null){
                         $nombre="Anonimo";
                     }
                     break;
@@ -50,11 +54,40 @@ class InformacionController extends Controller
                     ]);
                     break;
             }
+
             $this->validate($request, [
                 'email'=>'required',
                 'mensaje'=> 'required_without:archivo',
             ]);
-            $datos=[$tipo,$nombre,$request->email,$mensaje,$request->archivo];
+            if($request->archivo!=null){
+                $this->validate($request,[
+                    'archivo' => 'mimes:mp4|max:30720',
+                ]);
+
+                if($request->op==1){
+                    $imageName = 'Consulta-'.time().'.'.request()->archivo->getClientOriginalExtension();
+                }else{
+                    if($request->op==3){
+                        $imageName = 'Denuncia-'.time().'.'.request()->archivo->getClientOriginalExtension();
+                    }else{
+                        $imageName = 'Otro-'.time().'.'.request()->archivo->getClientOriginalExtension();
+                    }
+                }
+
+                Storage::disk('dropbox')->putFileAs(
+                    '/',
+                    $request->file('archivo'),
+                    $imageName
+                );
+            }else{
+                $imageName="Mensaje sin archivo";
+            }
+            if($request->op==3){
+                $datos=[$tipo,$request->tipoDenuncia,$nombre,$request->email,$mensaje,$imageName];
+            }else{
+                $datos=[$tipo,$nombre,$request->email,$mensaje,$imageName];
+            }
+            //$datos=[$tipo,$nombre,$request->email,$mensaje];
             //Mail::to($request->email)->send(new SendMailable($datos));
             try {
                 Mail::to('naitsircnunez@gmail.com')->send(new SendMailable($datos));
@@ -76,10 +109,17 @@ class InformacionController extends Controller
                 'profesion'=>'required',
                 'archivo'=>'required'
             ]);
-            $datos=[$request->name,$request->rut,$request->email,$request->ciudad,$request->phone,$request->profesion,$request->archivo];
+            $this->validate($request,[
+                'archivo' => 'required|mimes:pdf',
+            ]);
+            $imageName = time().'.'.request()->archivo->getClientOriginalExtension();
+            $request->archivo->move(public_path('/temp'), $imageName);
+            $datos=[$request->name,$request->rut,$request->email,$request->ciudad,$request->phone,$request->profesion,$imageName];
+//            $datos=[$request->name,$request->rut,$request->email,$request->ciudad,$request->phone,$request->profesion,$request->archivo];
             //Mail::to('naitsircnunez@gmail.com')->send(new SendMailable($datos));
             try {
                 Mail::to('naitsircnunez@gmail.com')->send(new SendMailable($datos));
+                File::delete(public_path('/temp/'.$imageName));
                 return 'Mensaje enviado';
             }catch(\Exception $e) {
                 return $e->getMessage();
@@ -95,16 +135,33 @@ class InformacionController extends Controller
 
         if($request->op!="2"){
             $this->validate($request,[
-                'archivo' => 'required|mimes:mp4',
+                'archivo' => 'required|mimes:mp4|max:30720',
             ]);
+            if($request->op=="1"){
+                $imageName = 'Consulta-'.time().'.'.request()->archivo->getClientOriginalExtension();
+            }else{
+                if($request->op=="3"){
+                    $imageName = 'Denuncia-'.time().'.'.request()->archivo->getClientOriginalExtension();
+                }else{
+                    $imageName = 'Otro-'.time().'.'.request()->archivo->getClientOriginalExtension();
+                }
+            }
+            Storage::disk('dropbox')->putFileAs(
+                '/',
+                $request->file('archivo'),
+                $imageName
+            );
+            return $imageName;
         }else{
             $this->validate($request,[
                 'archivo' => 'required|mimes:pdf',
             ]);
+            $imageName = time().'.'.request()->archivo->getClientOriginalExtension();
+            $request->archivo->move(public_path('/temp'), $imageName);
+            return $imageName;
         }
-        $imageName = time().'.'.request()->archivo->getClientOriginalExtension();
-        $request->archivo->move(public_path('/temp'), $imageName);
-        return $imageName;
+//        $request->archivo->move(public_path('/temp'), $imageName);
+//        return $imageName;
         //return back()->with('success','You have successfully upload image.')->with('archivo',$imageName);
     }
 

@@ -80,8 +80,6 @@
         <button class="tablinks" onclick="openCity(event, 'Otro')">Otro</button>
     </div>
     <!-- FORMS -->
-
-    <input type="hidden" id="op" name="opcion" value="1">
     <div id="Consulta" class="tabcontent">
         <div class="container" align="center">
             <div class="col-md-6 col-md-offset-3">
@@ -92,8 +90,11 @@
                     <div class="card" >
                         <div class="card-body">
                             <!-- Envía al usuario al FAQ para no repetir su pregunta-->
-                            <p>Verifique que su consulta no se encuentre en <a href="enlacepagina.html">Preguntas Frecuentes</a></p>
-
+                            <p>Verifique que su consulta no se encuentre en <a href="enlacepagina.html">Preguntas Frecuentes</a><br>o</p>
+                            <a href="skype:live:cnr_118?call">
+                                <img alt="ERROR" src="{{asset("skype.png")}}" style="height: 30px; width: 30px" >
+                                <a href="skype:live:cnr_118?call">Llamanos via Skype</a>
+                            </a>
                             <form action="/contacto" method="post" enctype="multipart/form-data">
                                 {{csrf_field()}}
                                 <!-- Campos obligatorios-->
@@ -124,7 +125,7 @@
                                         <div class="form-group" align="left">
                                             <input id="archivo1" type="hidden" name="archivo">
                                             <p align="left">Sube tu video (opcional)</p>
-                                            <input onchange="subidav2(this,1)" id="file" type="file" accept="video/mp4"/>
+                                            <input name="archivo" id="file" type="file" accept="video/mp4"/>
                                             <div class="progress" style="height: 5%">
                                                 <div class="bar"></div >
                                                 <div class="percent">0%</div >
@@ -133,10 +134,13 @@
                                         <!-- Form actions -->
                                         <br>
                                         <div class="col-md-12 text-center">
-                                            <button id="consulta" onclick="revisar(1)" type="submit" class="btn btn-primary btn-lg text-reset">Enviar</button>
+                                            <button id="consulta" onclick="revisarv2(1)" type="button" class="btn btn-primary btn-lg text-reset">Enviar</button>
                                         </div>
                                     </div>
                             </form>
+                            <br>
+
+
                         </div>
                     </div>
                 </div>
@@ -207,19 +211,24 @@
                                 <!-- upload file -->
                                 <div class="form-group" align="left">
                                     <p align="left">Certificados o Curriculum</p>
-                                    <input id="archivo2" type="hidden" name="archivo">
-                                    <input id="file2" onchange="subidav2(this,2)" type="file" accept="application/pdf" />
-                                    <div class="progress" style="height: 5%">
-                                        <div class="bar"></div >
-                                        <div class="percent">0%</div >
-                                    </div>
+                                    <input id="file2" name="archivo" type="file" accept="application/pdf" />
+{{--                                    <input id="file2" name="archivo" onchange="subidav2(this,2)" type="file" accept="application/pdf" />--}}
+{{--                                    <input id="archivo2" type="hidden" name="archivo">--}}
+{{--                                    <input id="file2" onchange="subidav2(this,2)" type="file" accept="application/pdf" />--}}
+{{--                                    <div class="progress" style="height: 5%">--}}
+{{--                                        <div class="bar"></div >--}}
+{{--                                        <div class="percent">0%</div >--}}
+{{--                                    </div>--}}
                                 </div>
                                 <!-- Form actions -->
                                 <div class="form-group">
                                     <div class="text-center">
-                                        <button id="voluntario" onclick="revisar(2)" type="submit" class="btn btn-primary btn-lg text-reset">Enviar</button>
+                                        <button id="voluntario" onclick="revisar(2)" type="button" class="btn btn-primary btn-lg text-reset">Enviar</button>
                                     </div>
                                 </div>
+
+
+
                             </div>
                         </div>
                     </form>
@@ -243,7 +252,22 @@
                         <!-- Campos obligatorios-->
                         <div class="card" >
                             <div class="card-body">
+                                <p>Envia tu denuncia <br>o</p>
+                                <a href="skype:live:cnr_118?call">
+                                    <img alt="ERROR" src="{{asset("skype.png")}}" style="height: 30px; width: 30px" >
+                                    <a href="skype:live:cnr_118?call">Llamanos via Skype</a>
+                                </a>
                                 <div id="obligatorio">
+                                    <div class="form-group">
+                                        <p align="left">Tipo de denuncia</p>
+                                        <div align="left">
+                                            <select id="denunciaId" name="tipoDenuncia">
+                                                <option disabled selected value> -- Seleccione una opcion -- </option>
+                                                <option value="Salud">Salud</option>
+                                                <option value="Discriminacion">Discriminacion</option>
+                                            </select>
+                                        </div>
+                                    </div>
                                     <!-- Name input-->
                                     <div class="form-group">
                                         <p align="left">Nombre (opcional)</p>
@@ -268,8 +292,9 @@
 
                                     <div class="form-group" align="left">
                                         <p align="left">Sube tu video (opcional)</p>
-                                        <input id="archivo3" type="hidden" name="archivo">
-                                        <input id="file3" onchange="subidav2(this,3)" type="file" accept="video/mp4"/>
+{{--                                        <input id="archivo3" type="hidden" name="archivo">--}}
+{{--                                        <input id="file3" onchange="subidav2(this,3)" type="file" accept="video/mp4"/>--}}
+                                        <input id="file3" name="archivo" type="file" accept="video/mp4"/>
                                         <div class="progress" style="height: 5%">
                                             <div class="bar"></div >
                                             <div class="percent">0%</div >
@@ -279,7 +304,7 @@
                                     <!-- Form actions -->
                                     <br>
                                     <div class="col-md-12 text-center">
-                                        <button id="denuncia" onclick="revisar(3)" type="submit" class="btn btn-primary btn-lg text-reset">Enviar</button>
+                                        <button id="denuncia" onclick="revisarv2(3)" type="button" class="btn btn-primary btn-lg text-reset">Enviar</button>
                                     </div>
                                 </div>
                             </div>
@@ -305,6 +330,11 @@
                         <input type="hidden" name="opcion" value="4">
                         <div class="card" >
                             <div class="card-body">
+                                <p>Cuentanos mas<br>o</p>
+                                <a href="skype:live:cnr_118?call">
+                                    <img alt="ERROR" src="{{asset("skype.png")}}" style="height: 30px; width: 30px" >
+                                    <a href="skype:live:cnr_118?call">Llamanos via Skype</a>
+                                </a>
                                 <div id="obligatorio">
                                     <!-- Name input-->
                                     <div class="form-group">
@@ -330,8 +360,8 @@
 
                                     <div class="form-group" align="left">
                                         <p align="left">Sube tu video (opcional)</p>
-                                        <input id="archivo4" type="hidden" name="archivo">
-                                        <input id="file4" onchange="subidav2(this,4)" type="file" accept="video/mp4"/>
+{{--                                        <input id="archivo4" type="hidden" name="archivo">--}}
+                                        <input id="file4" name="archivo" type="file" accept="video/mp4"/>
                                         <div class="progress" style="height: 5%">
                                             <div class="bar"></div >
                                             <div class="percent">0%</div >
@@ -341,7 +371,7 @@
                                     <!-- Form actions -->
                                     <br>
                                     <div class="col-md-12 text-center">
-                                        <button id="otro" onclick="revisar(4)" type="submit" class="btn btn-primary btn-lg text-reset">Enviar</button>
+                                        <button id="otro" onclick="revisarv2(4)" type="button" class="btn btn-primary btn-lg text-reset">Enviar</button>
                                     </div>
                                 </div>
                             </div>
@@ -352,40 +382,308 @@
         </div>
     </div>
 
+
+    <!--pop up confirmacion voluntario -->
+    <div class="modal fade" id="confirmVoluntario">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Confirmacion</h5>
+                    <button tyle="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>¿Esta seguro de enviar el correo?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+                    <button id="btnCon2" onclick="enviarVoluntario(2)" data-dismiss="modal" type="button" class="btn btn-primary">Enviar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- endf pop up-->
+
+    <!--pop up confirmacion -->
+    <div class="modal fade" id="confirm">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Confirmacion</h5>
+                    <button tyle="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>¿Esta seguro de enviar el correo?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+                    <button id="btnCon" onclick="enviar()" type="button" data-dismiss="modal" class="btn btn-primary">Enviar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- endf pop up-->
+
+    <!--pop up alerta -->
+    <div class="modal fade" id="alert">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Error</h5>
+                    <button tyle="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p id="mensaje"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- endf pop up-->
+
+    <!--pop up success -->
+    {{--    undismiss modal--}}
+    <div class="modal fade" id="success" data-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Correo enviado</h5>
+                    <button tyle="button" class="close" onclick="refresh()" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p id="mensajeSuccess"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" onclick="refresh()" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- endf pop up-->
+
     </body>
     {{--    subida de archivo(barra de progreso)--}}
     <script src="http://malsup.github.com/jquery.form.js"></script>
-    <script>
-        function revisar(op) {
-            document.getElementById("op").value = op;//indica que boron se esta utilizando
-            $('form').ajaxForm({
-                complete: function(xhr) {
-                    alert(xhr.responseText);//recibe el return del controlador
-                    window.location.href = "/contacto";
+    {{--    script para consulta,denuncia y otro--}}
+    <script type="text/javascript" src="{{asset('js/bootstrap.js')}}"></script>
+
+    <script type="text/javascript">
+        var opcion="";
+        var $this="";
+
+        //funciona con la funcion de enviarVoluntario() en la otra etiqueta
+        function revisar(op) {//voluntario
+            jQuery.noConflict();//existe mas de jQuery, por lo que existe conflicto al utilizar la funcion
+            opcion=op;
+            var name=document.getElementById("name2").value;;
+            var email=document.getElementById("email2").value;;
+            var rut=document.getElementById("rut").value;
+            var city=document.getElementById("ciudad").value;
+            var numero=document.getElementById("phone").value;
+            var profesion=document.getElementById("profesion").value;;
+            if(name=="" || rut=="" || email=="" || city=="" || numero=="" || profesion==""){
+                msnVal="Los siguientes campos no han sido completados:<br> <br>";
+                if(name==""){
+                    msnVal+="nombre <br>";
                 }
-            });
+                if(rut==""){
+                    msnVal+="rut <br>";
+                }
+                if(email==""){
+                    msnVal+="correo <br>";
+                }
+                if(city==""){
+                    msnVal+="ciudad <br>";
+                }
+                if(numero==""){
+                    msnVal+="telefono <br>";
+                }
+                if(profesion==""){
+                    msnVal+="profesion <br>";
+                }
+                document.getElementById("mensaje").innerHTML=msnVal;
+                $("#alert").modal('show');
+                return false;
+            }
+            var archivo=$('#file2').val();
+            if(archivo==""){
+                document.getElementById("mensaje").innerHTML="Debe subir un Certificados o Curriculum";
+                $("#alert").modal('show');
+                return false;
+            }
+            $("#confirmVoluntario").modal('show');
         }
-        function subidav2(img,op) {
+
+        function revisarv2(op) {
+            var msnVal="";
+            //valida los campos que no esten vacios, de estarlos los botones se restablecen y se envia un mensaje
+            opcion=op;
+            jQuery.noConflict();//existe mas de jQuery, por lo que existe conflicto al utilizar la funcion
+            switch (op) {
+                case 1:
+                    var name=$('#name').val();
+                    var email=$('#email').val();
+                    if(name=="" || email==""){
+                        msnVal="Los siguientes campos no han sido completados:<br> <br>";
+                        if(name==""){
+                            msnVal+="nombre <br>";
+                        }
+                        if(email==""){
+                            msnVal+="correo";
+                        }
+                        document.getElementById("mensaje").innerHTML=msnVal;
+                        $("#alert").modal('show');
+                        return false;
+                    }
+                    //var textArea=$('#cke_editor1').val();
+                    var textArea=CKEDITOR.instances.editor1.getData();
+                    var archivo=$('#file').val();
+                    if(textArea=="" && archivo==""){
+                        document.getElementById("mensaje").innerHTML="El correo debe contener un mensaje o un video.";
+                        $("#alert").modal('show');
+                        return false;
+                    }
+                    break;
+                case 3:
+                    var email=$('#email3').val();
+                    if(email==""){
+                        document.getElementById("mensaje").innerHTML="El mensaje debe contener su email";
+                        $("#alert").modal('show');
+                        return false;
+                    }
+                    var textArea=CKEDITOR.instances.editor3.getData();
+                    var archivo=$('#file3').val();
+                    if(textArea=="" && archivo==""){
+                        document.getElementById("mensaje").innerHTML="El correo debe contener un mensaje o un video";
+                        $("#alert").modal('show');
+                        return false;
+                    }
+                    break;
+                case 4:
+                    var name=$('#name4').val();
+                    var email=$('#email4').val();
+                    if(name=="" || email==""){
+                        msnVal="Los siguientes campos no han sido completados:<br> <br>";
+                        if(name==""){
+                            msnVal+="nombre <br>";
+                        }
+                        if(email==""){
+                            msnVal+="correo";
+                        }
+                        document.getElementById("mensaje").innerHTML=msnVal;
+                        $("#alert").modal('show');
+                        return false;
+                        //return false;
+                    }
+                    //var textArea=$('#editor4').val();
+                    var textArea=CKEDITOR.instances.editor4.getData();
+                    var archivo=$('#file4').val();
+                    if(textArea=="" && archivo==""){
+                        document.getElementById("mensaje").innerHTML="El correo debe contener un mensaje o un video.";
+                        $("#alert").modal('show');
+                        return false;
+                    }
+                    break;
+            }
+            $("#confirm").modal('show');
+        }
+
+        //boton de carga
+        $(document).ready(function() {
+            $('#btnCon').on('click', function() {
+                switch (opcion) {
+                    case 1:
+                        $this=$('#consulta');
+                        break;
+                    case 3:
+                        $this=$('#denuncia');
+                        break;
+                    case 4:
+                        $this=$('#otro');
+                        break;
+                }
+                var loadingText = '<i class="fa fa-circle-o-notch fa-spin"></i> enviando...';
+                if ($(this).html() !== loadingText) {
+                    $this.data('original-text', $(this).html());
+                    $this.html(loadingText);
+                }
+                $this.attr('disabled','disabled');
+            });
+            $('#btnCon2').on('click', function() {
+                $this=$('#voluntario');
+                var loadingText = '<i class="fa fa-circle-o-notch fa-spin"></i> enviando...';
+                if ($(this).html() !== loadingText) {
+                    $this.data('original-text', $(this).html());
+                    $this.html(loadingText);
+                }
+                $this.attr('disabled','disabled');
+            });
+        });
+        //enviar funcion enviar para consulta, denuncia y otros
+        function enviar() {
+            var img;
+            var name;
+            var email;
+            var msn;
+            var tdenun="";//tipo de denuncia
+            var vacios;//indica si los campos name y email estan vacios
+            switch (opcion) {
+                case 1:
+                    name=document.getElementById("name").value;
+                    email= document.getElementById("email").value;
+                    msn=CKEDITOR.instances.editor1.getData();
+                    img=document.getElementById("file");
+                    $('#consulta').attr('disabled','disabled');
+                    break;
+                case 3:
+                    tdenun=document.getElementById("denunciaId").value;
+                    name=document.getElementById("name3").value;
+                    email= document.getElementById("email3").value;
+                    msn=CKEDITOR.instances.editor3.getData();
+                    img=document.getElementById("file3");
+                    $('#denuncia').attr('disabled','disabled');
+                    break;
+                case 4:
+                    name=document.getElementById("name4").value;
+                    email= document.getElementById("email4").value;
+                    msn=CKEDITOR.instances.editor4.getData();
+                    img=document.getElementById("file4");
+                    $('#otro').attr('disabled','disabled');
+                    break;
+            }
             var bar = $('.bar');
             var percent = $('.percent');
             var form_data = new FormData();
-            form_data.append('archivo', img.files[0]);
-            form_data.append('op', op);
+            if(img.value!=""){
+                form_data.append('archivo', img.files[0]);
+            }else{
+                form_data.append('archivo', "");
+                img="";
+            }
+            form_data.append('op', opcion);
+            form_data.append('name', name);
+            form_data.append('email', email);
+            form_data.append('mensaje', msn);
+            form_data.append('tipoDenuncia', tdenun);
             form_data.append('_token', '{{csrf_token()}}');
+
             $.ajax({
                 xhr: function() {
                     var xhr = new window.XMLHttpRequest();
-                    xhr.upload.addEventListener("progress", function(evt) {//proceso de carga
-                        if (evt.lengthComputable) {
-                            var percentComplete = (evt.loaded / evt.total) * 100;
-                            var percentVal = percentComplete + '%';
-                            bar.width(percentVal);
-                            percent.html(percentVal);
-                        }
-                    }, false);
+                    if(img!="") {
+                        xhr.upload.addEventListener("progress", function (evt) {//proceso de carga
+                            if (evt.lengthComputable) {
+                                var percentComplete = (evt.loaded / evt.total) * 100;
+                                var percentVal = percentComplete + '%';
+                                bar.width(percentVal);
+                                percent.html(percentVal);
+                            }
+                        }, false);
+                    }
                     return xhr;
                 },
-                url: "{{url('subidaDeArchivo')}}",
+                url: "{{url('contacto')}}",
                 data: form_data,
                 type: 'POST',
                 contentType: false,
@@ -394,146 +692,122 @@
                     if (data.fail) {
                         alert(data.errors['file']);
                     }
-                    else {
-                        switch (op) {
-                            case 1:
-                                document.getElementById("archivo1").value = data;
-                                break;
-                            case 2:
-                                document.getElementById("archivo2").value = data;
-                                break;
-                            case 3:
-                                document.getElementById("archivo3").value = data;
-                                break;
-                            case 4:
-                                document.getElementById("archivo4").value = data;
-                                break;
-                        }
-                        //alert(data);
-                        alert("Archivo Subido");
-                    }
+                    $this.html("Enviar");
+                    $this.removeAttr('disabled');
                 },
                 error: function (xhr, status, error) {
                     var percentVal='0%';
                     bar.width(percentVal);
                     percent.html(percentVal);
-                    if(error=="Unprocessable Entity"){
-                        alert("Formato invalido");
+                    switch (opcion) {
+                        case 1:
+                            name=$('#name').val();
+                            email=$('#email').val();
+                            break;
+                        case 3:
+                            name="anonymous"
+                            email=$('#email3').val();
+                            break;
+                        case 4:
+                            name=$('#name4').val();
+                            email=$('#email4').val();
+                            break;
                     }
-                    //alert(xhr.responseText)
-                    //alert('Error: \n'+xhr.responseText);
+                    if(name!="" && email!=""){
+                        if(error=="Unprocessable Entity" && img!=""){
+                            jQuery.noConflict();
+                            document.getElementById("mensaje").innerHTML="El formato invalido o el archivo supera los 30mb";
+                            $("#alert").modal('show');
+                        }
+                    }else{
+                        vacios=true;
+                    }
+                    $this.html("Enviar");
+                    $this.removeAttr('disabled');
+                },
+                complete: function(xhr) {
+                    jQuery.noConflict();
+                    if(!vacios){
+                        if(msn!="" || img!=""){
+                            document.getElementById("mensajeSuccess").innerHTML=xhr.responseText;
+                            $("#success").modal('show');
+                            //alert(xhr.responseText);//recibe el return del controlador
+                            //window.location.href = "/contacto";
+                        }
+                    }else{
+                        document.getElementById("mensaje").innerHTML="por favor complete los campos";
+                        $("#alert").modal('show');
+                    }
+                    $this.html("Enviar");
+                    $this.removeAttr('disabled');
                 }
             });
         }
     </script>
-
-{{--    boton de enviando...--}}
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    {{--    script para voluntario--}}
     <script>
-        $(document).ready(function() {
-            $('.btn').on('click', function() {
-                var $this = $(this);
-                var loadingText = '<i class="fa fa-circle-o-notch fa-spin"></i> enviando...';
-                if ($(this).html() !== loadingText) {
-                    $this.data('original-text', $(this).html());
-                    $this.html(loadingText);
-                }
+        function enviarVoluntario(op) {
+            var refresh=true;
+            var form_data = new FormData();
 
-                var op=parseInt($('#op').val());
-                //valida los campos que no esten vacios, de estarlos los botones se restablecen y se envia un mensaje
-                switch (op) {
-                    case 1:
-                        $('#consulta').attr('disabled','disabled');
-                        var name=$('#name').val();
-                        var email=$('#email').val();
-                        if(name=="" || email==""){
-                            //alert("");
-                            $('#consulta').html($('#consulta').data('original-text'));
-                            $('#consulta').removeAttr('disabled');
-                            break;
-                            //return false;
-                        }
-                        //var textArea=$('#cke_editor1').val();
-                        var textArea=CKEDITOR.instances.editor1.getData();
-                        var archivo=$('#file').val();
-                        if(textArea=="" && archivo==""){
-                            alert("El correo debe contener un mensaje o un video.");
-                            $('#consulta').html($('#consulta').data('original-text'));
-                            $('#consulta').removeAttr('disabled');
-                            return false;
-                        }
-                        break;
-                    case 2:
-                        $('#voluntario').attr('disabled','disabled');
-                        var name=$('#name2').val();
-                        var rut=$('#rut').val();
-                        var email=$('#email2').val();
-                        var ciudad=$('#ciudad').val();
-                        var phone=$('#phone').val();
-                        var profesion=$('#profesion').val();
-                        if(name=="" || email=="" || rut=="" || ciudad=="" || phone=="" || profesion==""){
-                            $('#voluntario').html($('#voluntario').data('original-text'));
-                            $('#voluntario').removeAttr('disabled');
-                            break;
-                            //return false;
-                        }
-                        var archivo=$('#file2').val();
-                        if(archivo==""){
-                            alert("El correo debe contener un archivo pdf.");
-                            $('#voluntario').html($('#voluntario').data('original-text'));
-                            $('#voluntario').removeAttr('disabled');
-                            return false;
-                        }
-                        break;
-                    case 3:
-                        $('#denuncia').attr('disabled','disabled');
-                        //var name=$('#name3').val();
-                        var email=$('#email3').val();
-                        if(email==""){
-                            $('#denuncia').html($('#denuncia').data('original-text'));
-                            $('#denuncia').removeAttr('disabled');
-                            break;
-                            //return false;
-                        }
-                        //var textArea=$('#editor3').val();
-                        var textArea=CKEDITOR.instances.editor3.getData();
-                        var archivo=$('#file3').val();
-                        if(textArea=="" && archivo==""){
-                            alert("El correo debe contener un mensaje o un video.");
-                            $('#denuncia').html($('#denuncia').data('original-text'));
-                            $('#denuncia').removeAttr('disabled');
-                            return false;
-                        }
-                        break;
-                    case 4:
-                        $('#otro').attr('disabled','disabled');
-                        var name=$('#name4').val();
-                        var email=$('#email4').val();
-                        if(name=="" || email==""){
-                            $('#otro').html($('#otro').data('original-text'));
-                            $('#otro').removeAttr('disabled');
-                            break;
-                            //return false;
-                        }
-                        //var textArea=$('#editor4').val();
-                        var textArea=CKEDITOR.instances.editor4.getData();
-                        var archivo=$('#file4').val();
-                        if(textArea=="" && archivo==""){
-                            alert("El correo debe contener un mensaje o un video.");
-                            $('#otro').html($('#otro').data('original-text'));
-                            $('#otro').removeAttr('disabled');
-                            return false;
-                        }
-                        break;
-                }
+            var name=document.getElementById("name2").value;;
+            var email=document.getElementById("email2").value;;
+            var rut=document.getElementById("rut").value;
+            var city=document.getElementById("ciudad").value;
+            var numero=document.getElementById("phone").value;
+            var profesion=document.getElementById("profesion").value;;
+            var file=document.getElementById("file2");
+            form_data.append('opcion', op);
+            form_data.append('name', name);
+            form_data.append('email', email);
+            form_data.append('rut', rut);
+            form_data.append('ciudad', city);
+            form_data.append('phone', numero);
+            form_data.append('profesion', profesion);
+            form_data.append('archivo', file.files[0]);
+            form_data.append('_token', '{{csrf_token()}}');
 
-                // setTimeout(function() {
-                //     $this.html($this.data('original-text'));
-                // }, 2000);
+            $.ajax({
+                url: "{{url('contacto')}}",
+                data: form_data,
+                type: 'POST',
+                contentType: false,
+                processData: false,
+                success: function (data) {
+                    if (data.fail) {
+                        alert(data.errors['file']);
+                    }
+                    $this.html("Enviar");
+                    $this.removeAttr('disabled');
+                },
+                error: function (xhr, status, error) {
+                    if(error=="Unprocessable Entity"){
+                        refresh=false;
+                        alert("improcesable");
+                    }
+                },
+                complete: function(xhr) {
+                    if(refresh){
+                        document.getElementById("mensajeSuccess").innerHTML=xhr.responseText;
+                        $("#success").modal('show');
+                        //window.location.href = "/contacto";
+                    }else{
+                        $this.html("Enviar");
+                        $this.removeAttr('disabled');
+                        alert("Debe subir un Certificados o Curriculum");
+                    }
+
+                }
             });
-        })
+        }
+
+        function refresh() {
+            window.location.href = "/contacto";
+        }
     </script>
 
+    {{--    iconos para el boton enviar...--}}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 {{--    tabs--}}
     <script>

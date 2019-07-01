@@ -55,7 +55,7 @@
                 data-img="http://placehold.it/100x100"
                 data-trigger="hover" 
                 data-placement="top">
-                <a class="nav-link" href="#"><h4><span class="textoHeader"><i class="far fa-question-circle"></i>  Preguntas Frecuentes</span></h4></a>
+                <a class="nav-link" href="/faq/show"><h4><span class="textoHeader"><i class="far fa-question-circle"></i>  Preguntas Frecuentes</span></h4></a>
             </li>
             <li class="nav-item"
                 data-toggle="popover" 

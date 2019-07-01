@@ -15,10 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('/contacto','InformacionController');
-Route::get('/informacion','InformacionController@info');
-Route::post('/contacto','InformacionController@enviarCorreo');
-Route::post('subidaDeArchivo','InformacionController@subirArchivo');
 
 
 //escribir todas las rutas requeridas aqui siguiendo el mismo formato
@@ -80,6 +76,21 @@ Route::get('IndiceNotas/edit/{user}','NotasController@modificarConector');
 Route::post('IndiceNotas/mod/{user}','NotasController@modificarIndex');
 Route::get('IndiceNotas/delete/{user}','NotasController@eliminar');
 // ----------- MODULO CONTACTO -----------
+
+Route::resource('/contacto','InformacionController');
+Route::get('/informacion','InformacionController@info');
+Route::post('/contacto','InformacionController@enviarCorreo');
+Route::post('subidaDeArchivo','InformacionController@subirArchivo');
+
+Route::resource('/faq','FaqController');
+Route::post('faq/create', 'FaqController@store');
+Route::get('faq/delete/{id}','FaqController@destroy');
+
+Route::resource('admin/voluntarios', 'VoluntariosController');
+Route::get('admin/voluntarios/edit/{id}', 'VoluntariosController@edit');
+Route::get('admin/voluntarios/delete/{id}', "VoluntariosController@destroy");
+Route::post('admin/voluntarios/create', 'VoluntariosController@store');
+Route::post('admin/voluntarios/edit/{id}', 'VoluntariosController@update');
 
 
 // ----------- MODULO (MEMORIAS)-----------
