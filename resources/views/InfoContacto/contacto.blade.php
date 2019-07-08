@@ -90,7 +90,7 @@
                     <div class="card" >
                         <div class="card-body">
                             <!-- Envía al usuario al FAQ para no repetir su pregunta-->
-                            <p>Verifique que su consulta no se encuentre en <a href="enlacepagina.html">Preguntas Frecuentes</a><br>o</p>
+                            <p>Verifique que su consulta no se encuentre en <a href="/faq/show">Preguntas Frecuentes</a><br>o</p>
                             <a href="skype:live:cnr_118?call">
                                 <img alt="ERROR" src="{{asset("skype.png")}}" style="height: 30px; width: 30px" >
                                 <a href="skype:live:cnr_118?call">Llamanos via Skype</a>
