@@ -39,7 +39,7 @@
                             <a href="{{ route('cursos.show', $curso) }}" class="btn btn-link"><span class="oi oi-person"></span></a>
                             <a href="{{ route('cursos.show', $curso) }}" class="btn btn-link"><span class="oi oi-eye"></span></a>
                             <a href="{{ route('cursos.edit', $curso) }}" class="btn btn-link"><span class="oi oi-pencil"></span></a>
-                            <button type="submit" class="btn btn-link"><span class="oi oi-trash"></span></button>
+                            <button type="submit" class="btn btn-link" onclick="return confirm('¿Está seguro de eliminar el curso de los registros?')"><span class="oi oi-trash"></span></button>
                         </form>
                     </td>
                 </tr>

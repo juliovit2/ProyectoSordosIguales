@@ -29,7 +29,7 @@
                             <td>{{ $usuario->nota * 0.1}}</td>
                             <td>
                                 <a href = 'edit/{{ $usuario->id }}'><span class="oi oi-pencil"></span></a>
-                                <a href = 'delete/{{ $usuario->id }}'><span class="oi oi-trash"></span></a>
+                                <a href = 'delete/{{ $usuario->id }}' onclick="return confirm('¿Está seguro de eliminar esta nota?')"><span class="oi oi-trash"></span></a>
                             </td>
                         </tr>
                     @endif
