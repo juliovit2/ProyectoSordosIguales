@@ -19,7 +19,7 @@ class CreateTablaUsuarioCursosTable extends Migration
             $table->enum('estado', ['Aprobado', 'Reprobado', 'Cursando'])->default('Cursando');
             $table->integer('usuarioid')->unsigned()->nullable();
             $table->foreign('usuarioid')->references('id')
-                ->on('tabla_usuarios')->onDelete('cascade');
+                ->on('User')->onDelete('cascade');
             
             $table->integer('cursoid')->unsigned()->nullable();
             $table->foreign('cursoid')->references('id')

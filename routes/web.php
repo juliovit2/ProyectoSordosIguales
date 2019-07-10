@@ -44,12 +44,24 @@ Route::get('/loginCorrecto', function(){
 
 // ----------- MODULO CURSOS -----------
 Route::get('/cursos', 'CursoController@index')->name('cursos.index');
+
 Route::get('/cursos/{curso}', 'CursoController@show')->where('curso', '[0-9]+')->name('cursos.show');
+Route::get('añadirAlumno/{idCurso}','CursoController@agregarAlumnoIndex');
+Route::post('ingresarAlumnoCurso', 'CursoController@agregarAlumno')->name('ingresarAlumno');
+Route::get('visualizarCursos/{idCurso}','CursoController@visualizarCursoIndex')
+    ->where('idCurso', '[0-9]+')
+    ->name('visualizarCursos');
+Route::get('eliminarAlumno','CursoController@eliminarAlumno')->name('eliminarAlumno');
+
 Route::get('/cursos/nuevo', 'CursoController@create')->name('cursos.create');
 Route::get('/cursos/{curso}/editar', 'CursoController@edit')->name('cursos.edit');
 Route::delete('/cursos/{curso}', 'CursoController@destroy')->name('cursos.destroy');
 Route::post('/cursos', 'CursoController@store');
 Route::put('/cursos/{curso}', 'CursoController@update');
+
+
+
+
 
 
 //-----------MODULO Notas-------------------------------Mejorado
