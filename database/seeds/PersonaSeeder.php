@@ -24,7 +24,7 @@ class PersonaSeeder extends Seeder
         DB::table('tabla_personas')->Insert([
             'rut' => '183116150',
             'correo' => 'barbs@hamsterlover.com',
-            'nombre' => 'Barbara Hormazal',
+            'nombre' => 'Bárbara Hormazabal',
             'telefono' => '923187',
             'rol' => 'Interprete',
             'certificado' => 'Esta persona se encuentra certificada para desenvolverse como interprete'
