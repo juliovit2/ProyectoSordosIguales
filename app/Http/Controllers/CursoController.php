@@ -6,6 +6,7 @@ use App\Http\Forms\CursoForm;
 use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateCursoRequest;
+use App\User;
 use Auth;
 use DB;
 
@@ -68,8 +69,9 @@ class CursoController extends Controller
 
         $id = request()->idCurso;
         $nombreCurso = DB::table('tabla_cursos')->where('id', $id)->value('nombre');
+        $users = User::all();
 
-        return view('Cursos/IngresarAlumno',compact('nombreCurso'));
+        return view('Cursos/IngresarAlumno',compact('nombreCurso', 'users'));
     }
 
     function agregarAlumno(Request $request){

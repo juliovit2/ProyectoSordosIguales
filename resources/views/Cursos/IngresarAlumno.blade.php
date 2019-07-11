@@ -27,8 +27,26 @@
                            class="form-control"
                            id="rut"
                            placeholder="Ingrese RUT del alumno"
-                           required>
+                            >
                 </div>
+
+
+                {{--Listado desplegable dinamico, comentar si es necesario--}}
+                <div class="col-md-4 mb-3">
+                    <p align="left">Alumno</p>
+                    <select name="alumnoRut" id="rut" class="form-control">
+                        <option value="">Seleccione un usuario</option>
+                        @foreach($users as $user)
+                            @if($user->rol == "Alumno")
+                            <option value="{{ $user->rut }}"}}>
+                                {{ $user->rut . " - " . $user->name }}
+                            </option>
+                            @endif
+                        @endforeach
+                    </select>
+                </div>
+
+
 
 
                 <div class="col-md-4 mb-3">
@@ -61,8 +79,6 @@
                     </button>
                     <a href=" {{route('cursos.index')}} " class="btn btn-link"> Regresar </a>
                 </div>
-            </form>
-
         @endforeach
         @endcard
 
