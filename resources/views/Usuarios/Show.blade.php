@@ -46,6 +46,7 @@
                         $nomCurso = DB::table('tabla_cursos')->select('nombre')->where('id','=',$idcurso)->first()->nombre;
                         $asistencia = DB::table('tabla_usuario_cursos')->select('asistencia')->where('usuarioid', '=', $user->id)->first()->asistencia;
                         $notas =  DB::table('tabla_usuario_notas')->where('usuarioid', '=', $user->id)->avg('nota')*0.1;
+                        $notas = number_format($notas, 1);
                     } catch (Exception $e) {
                         $idcurso = null;
                         $nomCurso = "No aplica";

@@ -33,11 +33,9 @@ class CreateCursoRequest extends FormRequest
     public function createCurso(){
         DB::transaction(function (){
             $data = $this->validated();
-            $profesor = $data['profesor'];
-            $profesor = DB::table('tabla_personas')->where('nombre', $profesor)->value('id');
             $curso = new tabla_curso([
                 'nombre' => $data['name'],
-                'profesorid' => $profesor,
+                'profesorid' => $data['profesor']
             ]);
             DB::statement('SET FOREIGN_KEY_CHECKS = 0;');
             $curso->save();

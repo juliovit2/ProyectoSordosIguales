@@ -10,6 +10,7 @@
     if($rol == 'Alumno'){?>
     <meta http-equiv='refresh' content='0; URL=/usuarios/{{ $id }}/'>
     <?php }else{ ?>
+
     @card
         @slot('header', 'Nuevo Usuario')
 
