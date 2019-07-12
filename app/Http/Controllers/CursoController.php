@@ -38,7 +38,7 @@ class CursoController extends Controller
 
     public function create()
     {
-        return new CursoForm('Cursos.Create', new tabla_curso);
+        return (new CursoForm('Cursos.Create', new tabla_curso));
     }
 
     public function edit(tabla_curso $curso)
@@ -50,12 +50,13 @@ class CursoController extends Controller
     {
         $data = request()->validate([
             'name' => 'required',
-            'profesorid' => 'required'
         ]);
 
-        //$user->update($data);
+        $curso->update($data);
+
         return redirect()->route('cursos.show', ['curso' => $curso]);
     }
+
 
     function destroy(tabla_curso $curso){
 
@@ -92,13 +93,37 @@ class CursoController extends Controller
             return back()->with('error2','ERROR: Curso no creado');
         }
 
-        DB::statement('SET FOREIGN_KEY_CHECKS = 0;');
-        DB::table('tabla_usuario_cursos')->insert(
-            ['asistencia' => 100, 'estado' => $estado, 'usuarioid' => $idAlumno, 'cursoid' => $idCurso]
-        );
-        DB::statement('SET FOREIGN_KEY_CHECKS = 1;');
+        $existeAlumno = DB::select('select usuarioid, cursoid from tabla_usuario_cursos where estado = :estado and usuarioid = :idAlumno and cursoid = :idCurso',['estado' => $estado, 'idAlumno' => $idAlumno, 'idCurso' => $idCurso]);
 
-        return back()->with('exito','Alumno ingresado correctamente');
+        if (empty($existeAlumno)) {
+
+            $actualizarEstado = DB::select('select estado from tabla_usuario_cursos where usuarioid = :idAlumno and cursoid = :idCurso',['idAlumno' => $idAlumno, 'idCurso' => $idCurso]);
+            if(empty($actualizarEstado)){
+
+                DB::statement('SET FOREIGN_KEY_CHECKS = 0;');
+                DB::table('tabla_usuario_cursos')->insert(
+                    ['asistencia' => 100, 'estado' => $estado, 'usuarioid' => $idAlumno, 'cursoid' => $idCurso]
+                );
+                DB::statement('SET FOREIGN_KEY_CHECKS = 1;');
+
+                return back()->with('exito','Alumno ingresado correctamente');
+
+            }else{
+
+                DB::table('tabla_usuario_cursos')
+                    ->where('usuarioid', $idAlumno)
+                    ->where('cursoid', $idCurso)
+                    ->update(['estado' => $estado]);
+
+                return back()->with('exito2','Alumno actualizado correctamente');
+
+            }
+
+        }else{
+            return back()->with('error3','ERROR: El Alumno ya estaba ingresado anteriormente');
+        }
+
+
     }
 
     function visualizarCursoIndex($idCurso){

@@ -26,7 +26,7 @@ class PersonaSeeder extends Seeder
             'correo' => 'barbs@hamsterlover.com',
             'nombre' => 'Bárbara Hormazábal',
             'telefono' => '923187',
-            'rol' => 'Interprete',
+            'rol' => 'Profesor',
             'certificado' => 'Esta persona se encuentra certificada para desenvolverse como interprete'
         ]);
 
@@ -35,7 +35,7 @@ class PersonaSeeder extends Seeder
             'correo' => 'juanq@gmail.com',
             'nombre' => 'Juan Quispe',
             'telefono' => '873521',
-            'rol' => 'Interprete'
+            'rol' => 'Profesor'
         ]);
     }
 }
