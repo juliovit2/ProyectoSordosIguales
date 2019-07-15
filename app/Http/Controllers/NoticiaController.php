@@ -18,6 +18,10 @@ class NoticiaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function construct() {
+        $this->middleware('auth');
+    }
     public function index()
     {
         $noticias = tabla_noticia::orderBy('id','DESC')->paginate();
@@ -94,7 +98,6 @@ class NoticiaController extends Controller
      */
     public function store(NoticiaStoreRequest $request)
     {
-        return;
         $contenidoHTML = $this->saveEditorImages($request);
         //TODO meterlo en una funcion, elimina los caracteres "BOM" del output del summernote
         $contenidoHTML = substr($contenidoHTML, 3, strlen($contenidoHTML) - 3);
