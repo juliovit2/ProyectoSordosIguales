@@ -98,11 +98,11 @@ Route::resource('admin/memorias', 'MemoriaController');
 
 Route::get('memorias', 'MemoriaController@interface')->name('memorias.interface');
 
-//Donaciones
+// ----------- MODULO (MEMORIAS)-----------
 Route::resource('admin/donaciones', 'DonacionesController');
 Route::get('Donaciones', 'DonacionesController@interface')->name('Donaciones.interface');
 
-
+Route::resource('admin/donaciones/index', 'DonacionesController');
 
 Auth::routes();
 

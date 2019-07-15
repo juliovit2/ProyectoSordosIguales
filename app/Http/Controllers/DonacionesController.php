@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Donaciones;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 
 class DonacionesController extends Controller
 {
@@ -14,7 +15,8 @@ class DonacionesController extends Controller
      */
     public function index()
     {
-        return view('Donaciones/index');//
+        $donaciones = Donaciones::OrderBy('id')->get();
+        return view('Donaciones/index',['donaciones'=>$donaciones]);//
     }
 
     /**
@@ -24,7 +26,7 @@ class DonacionesController extends Controller
      */
     public function create()
     {
-        //
+        return view('Donaciones/create');//
     }
 
     /**
@@ -35,7 +37,28 @@ class DonacionesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = request()->all();
+        $this->validate(request(),[
+            'name_donante' => 'string',
+            'monto_donacion' => 'required',
+            'fecha_donacion' => 'required',
+        ]);
+        if(Arr::exists($data, 'name_donante')){
+            Donaciones::create([
+                'name_donante' => $data['name_donante'],
+                'monto_donacion' => $data{'monto_donacion'},
+                'fecha_donacion' => $data{'fecha_donacion'},
+            ]);
+        }else{
+            Donaciones::create([
+                'name_donante' => 'Anonimo',
+                'monto_donacion' => $data{'monto_donacion'},
+                'fecha_donacion' => $data{'fecha_donacion'},
+            ]);
+        }
+
+        return $this->index();
+
     }
 
     /**
@@ -78,8 +101,10 @@ class DonacionesController extends Controller
      * @param  \App\Donaciones  $donaciones
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Donaciones $donaciones)
+    public function destroy($id)
     {
-        //
+        $donaciones = Donaciones::get()->find($id);
+        $donaciones->delete();
+        return redirect()->route('donaciones.index');
     }
 }
