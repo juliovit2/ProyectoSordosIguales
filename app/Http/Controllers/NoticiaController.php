@@ -19,6 +19,11 @@ class NoticiaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function construct() {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $noticias = tabla_noticia::orderBy('id','DESC')->paginate();
