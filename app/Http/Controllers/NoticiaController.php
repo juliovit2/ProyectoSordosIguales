@@ -94,6 +94,7 @@ class NoticiaController extends Controller
      */
     public function store(NoticiaStoreRequest $request)
     {
+        return;
         $contenidoHTML = $this->saveEditorImages($request);
         //TODO meterlo en una funcion, elimina los caracteres "BOM" del output del summernote
         $contenidoHTML = substr($contenidoHTML, 3, strlen($contenidoHTML) - 3);
@@ -218,9 +219,11 @@ class NoticiaController extends Controller
                 ->update($noticiaEditada);
         }
 
+        info($request);
         DB::table('tabla_noticias')
             ->where('id', $id)
-            ->update(['contenido' => $request->get("contenidoHTML")]);
+            ->update(['contenido' => $request->get("contenidoHTML"),
+                     'titulo' => $request->get("titulo")]);
 
         if($request->has('imagenes')) {
             $this->validate($request, [
