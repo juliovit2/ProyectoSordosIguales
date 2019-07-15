@@ -31,42 +31,44 @@
         <ul class="navbar-nav mr-auto" >
             <li class="nav-item"
                 data-toggle="popover" 
-                data-img="http://placehold.it/100x100"
+                data-img="{{ asset('storage/header/contactenos.gif')}}"
                 data-trigger="hover" 
                 data-placement="top">
                 <a class="nav-link" href={{'/'}}><h4><span class="textoHeader"><i class="fas fa-home"></i>  Inicio</span></h4></a>
             </li>
             <li class="nav-item"
                 data-toggle="popover" 
-                data-img="http://placehold.it/100x100"
+                data-img="{{ asset('storage/header/que_somos.gif')}}"
                 data-trigger="hover" 
-                data-placement="top">
+                data-placement="top"
+                width="80%"
+            >
                 <a class="nav-link" href={{'/informacion'}}><h4><span class="textoHeader"><i class="fas fa-info-circle"></i> ¿Quienes Somos?</span></h4></a>
             </li>
             <li class="nav-item"
                 data-toggle="popover" 
-                data-img="http://placehold.it/100x100"
+                data-img="{{ asset('storage/header/noti_señas.gif')}}"
                 data-trigger="hover" 
                 data-placement="top">
                 <a class="nav-link" href={{"/noticias"}}><h4><span class="textoHeader"><i class="far fa-newspaper"></i>  Noticias y Articulos</span></h4></a>
             </li>
             <li class="nav-item"
                 data-toggle="popover" 
-                data-img="http://placehold.it/100x100"
+                data-img="{{ asset('storage/header/contactenos.gif')}}"
                 data-trigger="hover" 
                 data-placement="top">
                 <a class="nav-link" href="/faq/show"><h4><span class="textoHeader"><i class="far fa-question-circle"></i>  Preguntas Frecuentes</span></h4></a>
             </li>
             <li class="nav-item"
                 data-toggle="popover" 
-                data-img="http://placehold.it/100x100"
+                data-img="{{ asset('storage/header/contactenos.gif')}}"
                 data-trigger="hover" 
                 data-placement="top">
                 <a class="nav-link" href="{{'/contacto'}}"><h4><span class="textoHeader"><i class="fas fa-phone"></i>  Contacto</span></h4></a>
             </li>
             <li class="nav-item"
                 data-toggle="popover" 
-                data-img="http://placehold.it/100x100"
+                data-img="{{ asset('storage/header/contactenos.gif')}}"
                 data-trigger="hover" 
                 data-placement="top">
                 <a class="nav-link" href="{{'/login'}}"><h4><span class="textoHeader"><i class="fas fa-th"></i>  Plataforma</span></h4></a>
@@ -84,7 +86,7 @@
       html: true,
       trigger: 'hover',
       placement: 'top',
-      content: function () { return '<img src="' + $(this).data('img') + '" />'; }
+      content: function () { return '<img src="' + $(this).data('img') + '"  width="100%" />'; }
     });
 
 </script>
