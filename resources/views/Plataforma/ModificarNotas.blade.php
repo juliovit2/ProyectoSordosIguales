@@ -29,8 +29,8 @@
             <th scope="col">ID</th>
             <th scope="col">RUT</th>
             <th scope="col">Nombre</th>
-            <th scope="col">Curso</th>
-            <th scope="col">Promedio</th>
+            <th scope="col">Curso Actual</th>
+            <th scope="col">Promedio Aritmético</th>
             <th scope="col">Acciones</th>
         </tr>
         </thead>
