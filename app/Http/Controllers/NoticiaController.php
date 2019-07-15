@@ -10,6 +10,7 @@ use App\Http\Requests\NoticiaStoreRequest;
 use Illuminate\Support\Facades\DB;
 use App\Request\TickerFormRequest;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class NoticiaController extends Controller
 {
@@ -94,7 +95,6 @@ class NoticiaController extends Controller
      */
     public function store(NoticiaStoreRequest $request)
     {
-        return;
         $contenidoHTML = $this->saveEditorImages($request);
         //TODO meterlo en una funcion, elimina los caracteres "BOM" del output del summernote
         $contenidoHTML = substr($contenidoHTML, 3, strlen($contenidoHTML) - 3);
@@ -107,6 +107,7 @@ class NoticiaController extends Controller
             ]);
             $video_path = $request->file('video')->store('public/videos/noticias');
         }
+
         $noticia = new tabla_noticia(array(
             'titulo' => $request->get('titulo'),
             'contenido' => $contenidoHTML,
@@ -258,8 +259,37 @@ class NoticiaController extends Controller
      */
     public function destroy($id)
     {
+        $video_path = null;
+        $image_paths = null;
+
+        $images = tabla_imagenes_noticia::where('noticiaid', $id)->get();
+        $video_path = DB::table('tabla_noticias')
+                     ->select('video')
+                     ->where('id', $id)
+                     ->get();
+        $images = $images->toArray();
+        $videos = $video_path->toArray();
+
         $noticia_a_eliminar = tabla_noticia::find($id);
         $noticia_a_eliminar->delete();
+
+        // Log::info($image_paths);
+        // Log::info($video_path);
+        $imagenes_noticia = tabla_imagenes_noticia::where('noticiaid',$id)->delete();
+        if ($images != []) {
+            foreach ($images as $image)  {
+                //Storage::disk('local')->delete(storage_path()."/app/public/".$images[0]["imagen"]);
+                unlink(storage_path()."/app/public/".$image["imagen"]);
+            }
+        }
+
+        foreach ($videos as $video)  {
+            //Storage::disk('local')->delete(storage_path()."/app/public/".$images[0]["imagen"]);
+            if ($video->video == "0") {
+                continue;
+            }
+            unlink(storage_path()."/app/public/".$video->video);
+        }
      
         return redirect()->route('noticias.index');
     }
