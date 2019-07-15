@@ -104,7 +104,9 @@
                             <input id="but" type="button" value="Agregar Noticia" class="btn btn-primary">
                         @endif
 
-                        <input id="but2" type="submit" formaction="/admin/noticias/previsualizar" value="Previsualizar" class="btn btn-primary">
+                        <input id="but2" type="submit" formaction="/admin/noticias/previsualizar" value="Previsualizar" class="btn btn-primary"/>
+                        <p>*Previsualizar no incluye videos</p>
+
                         <!-- <input value="Agregar Noticia" class="btn btn-primary" onclick="actualizarContenido()"> -->
                     </div>
                 </form>
@@ -162,7 +164,7 @@
     }
 
     function isImage(filename) {
-        /*var ext = getExtension(filename);
+        var ext = getExtension(filename);
         switch (ext.toLowerCase()) {
             case 'jpg':
             case 'gif':
@@ -171,13 +173,13 @@
             case 'jpeg':
             case 'svg':
                 return true;
-        }*/
-        return true;
+        }
+        return false;
     }
 
     function isVideo(filename) {
 
-        /*var ext = getExtension(filename);
+        var ext = getExtension(filename);
         switch (ext.toLowerCase()) {
             case 'm4v':
             case 'avi':
@@ -186,8 +188,8 @@
             case 'flv':
             case 'mpeg':
                 return true;
-        }*/
-        return true;
+        }
+        return false;
     }
     $(document).ready(function() {
         $('#loadingModal').modal({backdrop: 'static', keyboard: false, show: false});

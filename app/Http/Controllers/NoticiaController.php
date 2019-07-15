@@ -22,6 +22,7 @@ class NoticiaController extends Controller
     public function construct() {
         $this->middleware('auth');
     }
+
     public function index()
     {
         $noticias = tabla_noticia::orderBy('id','DESC')->paginate();
