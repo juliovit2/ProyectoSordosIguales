@@ -99,13 +99,13 @@ Route::get('memorias', 'MemoriaController@interface')->name('memorias.interface'
 
 // ----------- MODULO (Convenios y Alianzas)-----------
 Route::resource('admin/colaboradores', 'ColaboradorController');
-
-
-// ----------- MODULO (MEMORIAS)-----------
+// ----------- MODULO (Donaciones)-----------
 Route::resource('admin/donaciones', 'DonacionesController');
-Route::get('Donaciones', 'DonacionesController@interface')->name('Donaciones.interface');
+Route::get('donaciones', 'DonacionesController@interface')->name('Donaciones.interface');
 
 Route::resource('admin/donaciones/index', 'DonacionesController');
+
+// ----------------------
 
 Auth::routes();
 

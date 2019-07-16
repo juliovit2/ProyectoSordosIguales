@@ -16,7 +16,7 @@
     <main role="main" class="container">
             <div class ="container p-5">
                 <div class = "container containerForm">
-                    <center> <h1 style="font-weight: lighter;font-size: 20px">REGISTRAR NUEVA DONACIÓN</h1> </center>
+                    <h1 class = "text-center">REGISTRAR NUEVA DONACIÓN</h1>
                     <form id="formDonacion" autocomplete="off" method="POST" action="{{route('donaciones.store')}} " enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <!-- Nombre -->
