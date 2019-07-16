@@ -49,7 +49,7 @@
                                             <div class="carousel-inner">
                                                 <div class="carousel-item active">
                                                     <div class="item banner-height-400">
-                                                        <img src="{{ asset('storage/logo_fundacion.png')}}" class="d-block w-100" alt="...">
+                                                        <img src="{{ asset('storage/logo_fundacion.png')}}" class="d-block w-100" style="height: 115px" alt="...">
                                                     </div>
                                                 </div>
                                                 @foreach($imagenes_noticia as $var_imagenes_noticia)
