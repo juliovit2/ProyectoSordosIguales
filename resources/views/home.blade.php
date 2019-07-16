@@ -56,7 +56,7 @@
                                                     @if($var_imagenes_noticia->noticiaid == $noticia->id)
                                                         <div class="carousel-item">
                                                             <div class="item banner-height-400">
-                                                                <img src="{{ asset('storage/'.$var_imagenes_noticia->imagen)}}" class="d-block w-100" alt="...">
+                                                                <img src="{{ asset('storage/'.$var_imagenes_noticia->imagen)}}" class="d-block w-100" style="height: 115px" alt="...">
                                                             </div>
                                                         </div>
                                                     @endif
