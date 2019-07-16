@@ -24,6 +24,12 @@
 
         <div class="card-body">
 
+            <h4 class="text-primary">
+                <div class="form-row">
+                    Informacion Personal
+                </div>
+            </h4>
+
            <table class="table">
                <thead class="thead-dark">
                     <tr>
@@ -32,11 +38,8 @@
                         <th scope="col">RUT</th>
                         <th scope="col">Correo</th>
                         <th scope="col">Teléfono</th>
-                        <th scope="col">Curso</th>
-                        <th scope="col">Asistencia</th>
                         <th scope="col">Dirección</th>
                         <th scope="col">Ciudad</th>
-                        <th scope="col">Promedio</th>
                     </tr>
                </thead>
 
@@ -46,11 +49,9 @@
                         $nomCurso = DB::table('tabla_cursos')->select('nombre')->where('id','=',$idcurso)->first()->nombre;
                         $asistencia = DB::table('tabla_usuario_cursos')->select('asistencia')->where('usuarioid', '=', $user->id)->first()->asistencia;
                         $notas =  DB::table('tabla_usuario_notas')->where('usuarioid', '=', $user->id)->avg('nota')*0.1;
+                        $notas = number_format($notas, 1);
                     } catch (Exception $e) {
                         $idcurso = null;
-                        $nomCurso = "No aplica";
-                        $asistencia = "No aplica";
-                        $notas = "No aplica";
                     }
                @endphp
 
@@ -61,15 +62,69 @@
                         <td>{{ $user->rut }}</td>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->telefono }}</td>
-                        <td>{{ $nomCurso }}</td>
-                        <td>{{ $asistencia }}</td>
                         <td>{{ $user->direccion }}</td>
                         <td>{{ $user->ciudad }}</td>
-                        <td>{{ $notas }}</td>
                     </tr>
                </tbody>
            </table>
 
+            <h4 class="text-primary">
+                <div class="form-row">
+                    Historico de Cursos del Estudiante
+                </div>
+            </h4>
+
+            <table class="table">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Nombre del Curso</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Asistencia</th>
+                    <th scope="col">Promedio</th>
+                </tr>
+                </thead>
+
+                @php
+                    try {
+                         $idcurso = DB::table('tabla_usuario_cursos')->select('cursoid')->where('usuarioid', '=', $user->id)->get('cursoid');
+                         //dd($idcurso[0]->cursoid);
+                         $i = 0;
+                         $max = 0;
+                         foreach ($idcurso as $id){
+                             $nomCurso = DB::table('tabla_cursos')->select('nombre')->where('id' ,'=', $id->cursoid)->first()->nombre;
+                             $asistencia = DB::table('tabla_usuario_cursos')->select('asistencia')->where('usuarioid', '=', $user->id)->where('cursoid' ,'=', $id->cursoid)->first()->asistencia;
+                             $notas =  DB::table('tabla_usuario_notas')->where('usuarioid', '=', $user->id)->where('cursoid' ,'=', $id->cursoid)->avg('nota')*0.1;
+                             $estado = DB::table('tabla_usuario_cursos')->select('estado')->where('usuarioid', '=', $user->id)->where('cursoid' ,'=', $id->cursoid)->first()->estado;
+                             $Historicos[$i]['nomCurso'] = $nomCurso;
+                             $Historicos[$i]['asistencia'] = $asistencia;
+                             $Historicos[$i]['notas'] = $notas;
+                             $Historicos[$i]['estado'] = $estado;
+                             $i = $i + 1;
+                             $max = $i;
+                         }
+
+                     } catch (Exception $e) {
+                         $idcurso = null;
+                         $max = 1;
+                         $Historicos[0]['nomCurso'] = "No existen cursos anteriores";
+                         $Historicos[0]['asistencia'] = "-";
+                         $Historicos[0]['notas'] = "-";
+                         $Historicos[0]['estado'] = "-";
+                         //$Historicos = [$nomCurso, $asistencia, $notas, $estado];
+                     }
+                @endphp
+
+                <tbody>
+                @for($i = 0; $i<$max; $i = $i + 1)
+                    <tr>
+                        <td>{{ $Historicos[$i]['nomCurso'] }}</td>
+                        <td>{{ $Historicos[$i]['estado'] }}</td>
+                        <td>{{ $Historicos[$i]['asistencia'] }}</td>
+                        <td>{{ $Historicos[$i]['notas'] }}</td>
+                    </tr>
+                @endfor
+                </tbody>
+            </table>
             <a href=" {{route('users.index')}} " class="btn btn-link"> Regresar </a>
 
         </div>

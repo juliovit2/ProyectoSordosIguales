@@ -19,12 +19,12 @@ class CursoSeeder extends Seeder
 
         DB::table('tabla_cursos')->Insert([
             'nombre' => 'Lenguaje Señas Intermedio',
-            'profesorid' => '1'
+            'profesorid' => '2'
         ]);
 
         DB::table('tabla_cursos')->Insert([
             'nombre' => 'Lenguaje Señas Avanzado',
-            'profesorid' => '1'
+            'profesorid' => '3'
         ]);
     }
 }

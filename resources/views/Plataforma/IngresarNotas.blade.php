@@ -29,30 +29,22 @@
 
         <div class="col-md-4 mb-3">
             <p align="left">Nombre del Curso</p>
-            <select
-                id="IDcurso"
-                name="IDcurso"
-                class="form-control"
-                required>
-
-                <option value="Lenguaje Señas Basico">Lenguaje Señas Basico</option>
-                <option value="Lenguaje Señas Intermedio">Lenguaje Señas Intermedio</option>
-                <option value="Lenguaje Señas Avansado">Lenguaje Señas Avanzado</option>
-            </select>
+            <input type="search"
+                   name="IDcurso"
+                   class="form-control"
+                   id="IDcurso"
+                   placeholder="Ingrese el Nombre del Curso"
+                   required>
         </div>
 
         <div class="col-md-4 mb-3">
-            <p align="left">Tipo de evaluación</p>
-
-            <select
-                    id="tipoevaluacion"
-                    name="tipoevaluacion"
-                    class="form-control"
-                    required>
-
-                <option value="Taller">Taller</option>
-                <option value="Taller Abierto">Taller Abierto</option>
-            </select>
+            <p align="left">Tipo de Evaluación</p>
+            <input type="search"
+                   name="tipoevaluacion"
+                   class="form-control"
+                   id="tipoevaluacion"
+                   placeholder="Ingrese el Tipo de Evaluación"
+                   required>
         </div>
 
         <div class="col-md-4 mb-3">
@@ -61,7 +53,7 @@
                    name="nota"
                    class="form-control"
                    id="nota"
-                   placeholder="Ingrese la nota del alumno"
+                   placeholder="Ingrese la Nota del alumno"
                    required>
         </div>
 
@@ -106,6 +98,14 @@
             <strong>{{ $message }}</strong>
         </div>
     @endif
+
+    @if ($message = Session::get('error5'))
+        <div class="alert alert-danger alert-block">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong>{{ $message }}</strong>
+        </div>
+    @endif
+
     @if ($message = Session::get('exito'))
         <div class="alert alert-success">
             <button type="button" class="close" data-dismiss="success">×</button>
