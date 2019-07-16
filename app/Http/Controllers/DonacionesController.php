@@ -63,7 +63,7 @@ class DonacionesController extends Controller
             ]);
         }
 
-        return $this->index();
+        return redirect()->route('donaciones.index');
 
     }
 
@@ -104,6 +104,7 @@ class DonacionesController extends Controller
             'monto_donacion'=>'required',
             'fecha_donacion'=>'required'
         ]);
+
         $donaciones = Donaciones::findOrfail($id);
         $donaciones->name_donante =  $request->get('name_donante');
         $donaciones->monto_donacion = $request->get('monto_donacion');

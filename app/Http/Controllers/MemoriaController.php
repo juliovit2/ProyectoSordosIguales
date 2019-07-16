@@ -91,7 +91,7 @@ class MemoriaController extends Controller
             ]);
         }
 
-        return $this->index();
+        return redirect()->route('memorias.index');
         //
     }
 
