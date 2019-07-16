@@ -1,5 +1,5 @@
 @extends('layoutGeneral')
-@section('title')Administrar Memorias
+@section('title')Administrar colaboradores y alianzas
 @endsection
 
 
@@ -18,14 +18,14 @@
     <div class = "container">
         <table class="table table-bordered  table-striped table-hover" id="MyTable">
             <h2>
-                Listado de Memorias
+                Listado de colaboradores y alianzas
                 <a class="btn btn-secondary" href="{{route('memorias.create')}}" role="button"><i class="fas fa-plus"></i></a>
             </h2>
             <thead>
             <tr>
                 <th class="text-center">ID</th>
-                <th class="text-center">Portada</th>
-                <th class="text-center">Memoria</th>
+                <th class="text-center">Logo</th>
+                <th class="text-center">Nombre</th>
                 <th class="text-center">Fecha de publicación</th>
                 <th class="text-center">Acciones</th>
             </tr>
@@ -37,7 +37,7 @@
                         <tr>
                             <td class="text-center" id="{{ $item->id }}">{{ $item->id }}</td>
                             <td class="text-center">
-                                @if($memorias[$key]['portada'])
+                                @if($memorias[$key]['logo'])
                                     <img class = "img-thumbnail" src="{{$memorias[$key]['portada']}}" width="250px" height="250px">
                                 @else
                                     <i class="fas fa-file-pdf" style="font-size: 1000%;color: #972329"></i>
