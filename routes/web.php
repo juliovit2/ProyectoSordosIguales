@@ -11,10 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::get('/', 'HomeController@index');
 
 
 //escribir todas las rutas requeridas aqui siguiendo el mismo formato
@@ -107,8 +104,6 @@ Route::resource('admin/donaciones/index', 'DonacionesController');
 // ----------------------
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
 
 
 //RUTAS DE USUARIO
