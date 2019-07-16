@@ -13,6 +13,12 @@ class DonacionesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function interface()
+    {
+        return view('Donaciones/interface');//
+    }
+
     public function index()
     {
         $donaciones = Donaciones::OrderBy('id')->get();
@@ -41,7 +47,7 @@ class DonacionesController extends Controller
         $this->validate(request(),[
             'name_donante' => 'string',
             'monto_donacion' => 'required',
-            'fecha_donacion' => 'required',
+            'fecha_donacion' => 'date| required',
         ]);
         if(Arr::exists($data, 'name_donante')){
             Donaciones::create([
@@ -78,9 +84,10 @@ class DonacionesController extends Controller
      * @param  \App\Donaciones  $donaciones
      * @return \Illuminate\Http\Response
      */
-    public function edit(Donaciones $donaciones)
+    public function edit($id)
     {
-        //
+        $donaciones = Donaciones::get()->find($id);
+        return view('donaciones/edit',compact("donaciones"));//
     }
 
     /**
@@ -90,9 +97,21 @@ class DonacionesController extends Controller
      * @param  \App\Donaciones  $donaciones
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Donaciones $donaciones)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name_donante'=>'required',
+            'monto_donacion'=>'required',
+            'fecha_donacion'=>'required'
+        ]);
+        $donaciones = Donaciones::findOrfail($id);
+        $donaciones->name_donante =  $request->get('name_donante');
+        $donaciones->monto_donacion = $request->get('monto_donacion');
+        $donaciones->fecha_donacion = $request->get('fecha_donacion');
+
+        $donaciones->save();
+
+        return redirect()->route('donaciones.index');
     }
 
     /**
