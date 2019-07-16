@@ -11,7 +11,11 @@
 
     <div class="d-flex justify-content-between align-items-end mb-3">
         <h1 class="pb-1">Alumnos Inscritos</h1>
+        <p>
+            <a href="{{ url('Asistencia') }}" class="btn btn-primary">Modificar Asistencia</a>
+        </p>
     </div>
+
     <body>
     <div class="card">
         <table class="table table-striped table-sm">
@@ -19,6 +23,7 @@
             <tr>
                 <th scope="col">Nombre Alumno</th>
                 <th scope="col">Estado</th>
+                <th scope="col">Asistencia (%)</th>
                 <th scope="col">Acciones</th>
             </tr>
             </thead>
@@ -27,6 +32,7 @@
                 <tr>
                     <th scope="row">{{ $alumnos->name }}</th>
                     <td scope="row">{{ $alumnos->estado }}</td>
+                    <td scope="row">{{ $alumnos->asistencia }}</td>
                     <td>
                         <a href="{{ route('IndiceNotas', $alumnos->id) }}" class="btn btn-link"><span class="oi oi-eye"></span></a>
 

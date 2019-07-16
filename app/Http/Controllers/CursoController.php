@@ -129,15 +129,51 @@ class CursoController extends Controller
     function visualizarCursoIndex($idCurso){
 
         $id = request()->idCurso;
-        $alumnos = DB::select('select users.name, users.id, tabla_usuario_cursos.estado  from users, tabla_usuario_cursos where users.id = tabla_usuario_cursos.usuarioid and tabla_usuario_cursos.cursoid = :id',['id' => $id]);
+        $alumnos = DB::select('select users.name, users.id, tabla_usuario_cursos.estado, tabla_usuario_cursos.asistencia  from users, tabla_usuario_cursos where users.id = tabla_usuario_cursos.usuarioid and tabla_usuario_cursos.cursoid = :id',['id' => $id]);
 
         return view('Cursos/VisualizarCurso',compact('alumnos'));
 
     }
 
-    function eliminarAlumno(Request $request){
+    function asistencia(Request $request){
 
-        return 'Listo';
+        $rut = $request->RUTalumno;
+        $curso = $request->NOMBREcurso;
+        $asistencia = $request->asistencia;
+
+        $idAlumno = DB::table('users')->where('rut', $rut)->value('id');
+
+        if($idAlumno == null){
+            return back()->with('error1','ERROR: El Alumno no existe');
+        }
+
+        $idCurso = DB::table('tabla_cursos')->where('nombre', $curso)->value('id');
+
+        if($idCurso == null){
+            return back()->with('error2','ERROR: El Curso no existe');
+        }
+
+        $existeAlumnoEnCurso = DB::select('select asistencia from tabla_usuario_cursos where usuarioid = :idAlumno and cursoid = :idCurso',['idAlumno' => $idAlumno, 'idCurso' => $idCurso]);
+
+        if (empty($existeAlumnoEnCurso)) {
+            return back()->with('error3','ERROR: El Alumno no está ingresado en el Curso');
+        }
+
+        if(!is_numeric($asistencia)){
+            return back()->with('error4','ERROR: Formato de Asistencia incorrecto');
+        }
+
+        if($asistencia < 0 || $asistencia > 100){
+            return back()->with('error5','ERROR: La Asistencia debe estar entre 0 y 100');
+        }
+
+        DB::table('tabla_usuario_cursos')
+            ->where('usuarioid', $idAlumno)
+            ->where('cursoid', $idCurso)
+            ->update(['asistencia' => $asistencia]);
+
+        return back()->with('exito','Asistencia actualizada correctamente');
+
     }
 
 

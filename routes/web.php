@@ -46,12 +46,16 @@ Route::get('/loginCorrecto', function(){
 Route::get('/cursos', 'CursoController@index')->name('cursos.index');
 
 Route::get('/cursos/{curso}', 'CursoController@show')->where('curso', '[0-9]+')->name('cursos.show');
-Route::get('añadirAlumno/{idCurso}','CursoController@agregarAlumnoIndex');
+Route::get('aÃ±adirAlumno/{idCurso}','CursoController@agregarAlumnoIndex');
 Route::post('ingresarAlumnoCurso', 'CursoController@agregarAlumno')->name('ingresarAlumno');
 Route::get('visualizarCursos/{idCurso}','CursoController@visualizarCursoIndex')
     ->where('idCurso', '[0-9]+')
     ->name('visualizarCursos');
-Route::get('eliminarAlumno','CursoController@eliminarAlumno')->name('eliminarAlumno');
+
+Route::post('asistencia', 'CursoController@asistencia')->name('asistencia');
+Route::get('/Asistencia', function () {
+    return view('Cursos/Asistencia');
+});
 
 Route::get('/cursos/nuevo', 'CursoController@create')->name('cursos.create');
 Route::get('/cursos/{curso}/editar', 'CursoController@edit')->name('cursos.edit');
