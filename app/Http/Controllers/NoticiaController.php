@@ -20,7 +20,7 @@ class NoticiaController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function construct() {
+    public function __construct() {
         $this->middleware('auth');
     }
 
