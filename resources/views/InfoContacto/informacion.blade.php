@@ -3,15 +3,14 @@
     <div class="container" style="padding: 0 !important; margin-left: 0 !important;">
         <div class="row">
 
-            <div id="panel_derecho" class="col-3">
-                <ul>
-                    <li>
-                        <a href="#quienessomos">Quienes Somos</a>
-                    </li>
-                    <li>
-                        <a href="#directiva">Directiva</a>
-                    </li>
-                </ul>
+            <div id="panel_izquierdo" class="col-3">
+                <nav>
+                    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                        <a id="button-side" class="nav-link" href="#quienessomos" role="tab">Quienes Somos</a>
+                        <hr id="separador-sidebar"/>
+                        <a id="button-side" class="nav-link" href="#directiva" role="tab">Directiva</a>
+                    </div>
+                </nav> 
             </div>
 
             <div id="cuerpo" class="col-9 shadow" style="width: 100%">

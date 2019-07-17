@@ -1,6 +1,28 @@
-#panel_derecho{
+#panel_izquierdo{
     background: rgb(255,255,197);
     height: auto;
+    padding-top: 3%;
+    padding-right: 0;
+    padding-left: 0;
+}
+
+#button-side{
+    margin: 0;
+    width: 100%;
+    background: #972329;
+    border-radius: 0;
+    color: white;
+    text-align: center;
+}
+
+#button-side:hover{
+    background: #971000;
+    font-weight: bold;
+}
+
+#separador-sidebar{
+    margin-top: 0.5%;
+    margin-bottom: 0.5%;
 }
 
 #title{
@@ -9,7 +31,7 @@
 }
 
 #cuerpo{
-    background: rgb(255,255,197,0.5);
+    background: rgb(255,255,197, 0.5);
     padding-left: 5%;
     padding-right: 5%;
     padding-bottom: 5%;
