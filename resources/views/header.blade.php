@@ -14,7 +14,7 @@
             <a class = "headerLink" href = "https://www.facebook.com/SordosIguales/"><i class="fab fa-facebook"></i></a>
             <a class = "headerLink" href = "monkey.png"><i class="fab fa-instagram"></i></a>
             <a class = "headerLink" href = "monkey.png"><i class="fab fa-whatsapp"></i></a>
-            <a class = "headerLink" href = "monkey.png"><i class="fas fa-donate"></i>
+            <a class = "headerLink" href = "/donaciones"><i class="fas fa-donate"></i>
             </div>
         </div>
 
