@@ -91,8 +91,6 @@ Route::post('admin/voluntarios/edit/{id}', 'VoluntariosController@update');
 
 
 // ----------- MODULO (Documentos)-----------
-Route::resource('admin/memorias', 'MemoriaController');
-Route::get('memorias', 'MemoriaController@interface')->name('memorias.interface');
 Route::resource('admin/documentos', 'DocumentoController');
 Route::get('documentos', 'DocumentoController@interface')->name('documentos.interface');
 
