@@ -1,5 +1,10 @@
 <div class="paged_index">
-    @foreach($noticias as $noticia)
+    <div class="row">
+        <?php if(!isset($max)) $max = 1000 ?>
+        <?php $count = 0; ?>
+    @foreach($noticias  as $noticia)
+        <?php if($count >= $max) return; ?>
+        <?php $count++; ?>
         <div id="item-container" class="col-sm-12 col-lg-6">
             <a style="color: black; text-decoration: none;" href="noticias/{{$noticia->id}}">
                 <div  class="container p-2 mb-3">
@@ -36,4 +41,5 @@
         </div>
 
     @endforeach
+    </div>
 </div>
