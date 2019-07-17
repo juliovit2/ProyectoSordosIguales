@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class tabla_colaborador_alianza extends Model
+class Documento extends Model
 {
     protected $fillable = [
-        'url', 'logo', 'nombre',
+        'titulo','pdf','portada','video'
     ];
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\tabla_colaborador_alianza;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 
 class ColaboradorController extends Controller
 {
@@ -31,8 +32,9 @@ class ColaboradorController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function store(Request $request)
     {
@@ -40,19 +42,19 @@ class ColaboradorController extends Controller
         $this->validate(request(),[
             'inputNombre' => 'required',
             'inputURL' => 'required',
-            'inputLogo' => 'file|image|mimes:jpeg,png,gif,webp,pdf|max:2048',
+            'inputLogo' => 'required|file|image|mimes:jpeg,png,gif,webp,pdf|max:2048',
         ]);
         $filenameLogo = time() . $data['inputLogo']->getClientOriginalName();
         $fileLogo = $request->file('inputLogo')->storeAs('public/Colaboradores/',$filenameLogo);
         $logoURL = \Storage::url($fileLogo);
 
         tabla_colaborador_alianza::create([
-            'year' => $data['anio_memoria'],
-            'video' => $data['inputVideo'],
-            'pdf' => $memoriaURL,
+            'nombre' => $data['inputNombre'],
+            'logo' => $logoURL,
+            'url' => $data['inputURL'],
         ]);
 
-        return redirect()->route('memorias.index');
+        return redirect()->route('colaboradores.index');
         //
     }
 
@@ -75,6 +77,8 @@ class ColaboradorController extends Controller
      */
     public function edit($id)
     {
+        $colaborador = tabla_colaborador_alianza::get()->find($id);
+        return view('colaboradores/edit', compact("colaborador"));//
         //
     }
 
@@ -87,6 +91,42 @@ class ColaboradorController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $data = request()->all();
+        $this->validate(request(),[
+            'inputNombre' => 'required',
+            'inputURL' => 'required',
+            'inputLogo' => 'file|image|mimes:jpeg,png,gif,webp,pdf|max:2048',
+        ]);
+
+        $colaborador = tabla_colaborador_alianza::findOrfail($id);
+
+        $logoURL = $colaborador->logo;
+
+
+        //Reemplazar Portada
+        if (Arr::exists($data, 'inputLogo')) {
+            //Encontrar la direcion url guardada
+            $url = $colaborador->logo;
+            // Transformar la direccion URL en direccion de directorio y borrar
+            $location = str_replace("/storage", "public", $url);
+            \Storage::delete($location);
+
+            // Crear nuevo archivo
+
+            $filenameLogo = time() . $data['inputLogo']->getClientOriginalName();
+            $fileLogo = $request->file('inputLogo')->storeAs('public/Colaboradores/',$filenameLogo);
+            $logoURL = \Storage::url($fileLogo);
+        }
+
+
+        $colaborador->update([
+            'nombre' => $data['inputNombre'],
+            'logo' => $logoURL,
+            'url' => $data['inputURL'],
+        ]);
+
+        return redirect()->route('colaboradores.index');
+        //
         //
     }
 
@@ -98,6 +138,12 @@ class ColaboradorController extends Controller
      */
     public function destroy($id)
     {
+        $colab = tabla_colaborador_alianza::get()->find($id);
+        $direccion = $colab->logo;
+        $location = str_replace("/storage","public",$direccion);
+        \Storage::delete($location);
+        $colab->delete();
+        return redirect()->route('colaboradores.index');
         //
     }
 }

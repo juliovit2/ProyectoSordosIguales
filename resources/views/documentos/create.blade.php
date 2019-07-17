@@ -34,17 +34,12 @@
 
 
     <div class="container containerForm">
-        <form id="formMemoria" autocomplete="off" method="POST" action="{{route('documentos.store')}} " enctype="multipart/form-data">
+        <form id="formDocumento" autocomplete="off" method="POST" action="{{route('documentos.store')}} " enctype="multipart/form-data">
             {{ csrf_field() }}
             <div class="form-group row">
-                <label for="anio_memoria_select" class="col-sm-2 col-form-label">Año de Memoria</label>
+                <label for="inputTitulo" class="col-sm-2 col-form-label">Titulo de documento</label>
                 <div class="col-sm-3">
-                    <select class="form-control" name = "anio_memoria" id="anio_memoria_select" style="background: #EEF2FC;">
-                        <option value="" disabled selected>Seleccione año</option>
-                        @foreach($yearList as $year)
-                            <option value= {{$year}}>{{$year}}</option>
-                        @endforeach
-                    </select>
+                    <input class="form-control" style="background: #EEF2FC;" name="inputTitulo" id="inputTitulo">
                 </div>
             </div>
 
@@ -56,9 +51,9 @@
             </div>
 
             <div class="form-group row">
-                <label for="inputMemoria" class="col-sm-2 col-form-label">Documento de Memoria</label>
+                <label for="inputDocumento" class="col-sm-2 col-form-label">PDF de Documento</label>
                 <div class="col-sm-3">
-                    <input type="file" class="form-control file" style="background: #EEF2FC;" name="inputMemoria" id="inputMemoria">
+                    <input type="file" class="form-control file" style="background: #EEF2FC;" name="inputDocumento" id="inputDocumento">
                 </div>
             </div>
             <div class="form-group row">
@@ -95,7 +90,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Volver al formulario</button>
-                            <a type="button" class="btn btn-primary" href="{{route('memorias.index')}}" role="button">Cancelar registro</a>
+                            <a type="button" class="btn btn-primary" href="{{route('documentos.index')}}" role="button">Cancelar registro</a>
                         </div>
                     </div>
                 </div>
@@ -132,7 +127,7 @@
                 $('#errorsModal').modal('show')
             }
         })
-        $("#formMemoria").on("submit", function (e) {
+        $("#formDocumento").on("submit", function (e) {
             if (document.getElementById("inputVideo").value){
                 e.preventDefault();//stop submit event
                 var url = document.getElementById("inputVideo").value
@@ -148,7 +143,7 @@
                 var self = $(this);//this form
                 var fullEmbed = "https://www.youtube.com/embed/" + idMatch;
                 $("#inputVideo").val(fullEmbed);//change input
-                $("#formMemoria").off("submit");//need form submit event off.
+                $("#formDocumento").off("submit");//need form submit event off.
                 self.submit();//submit form
             }
         });

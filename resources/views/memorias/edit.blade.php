@@ -186,4 +186,5 @@
             self.submit();//submit form
         });
     </script>
+
 @endsection

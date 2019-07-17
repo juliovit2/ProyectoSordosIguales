@@ -90,9 +90,11 @@ Route::post('admin/voluntarios/create', 'VoluntariosController@store');
 Route::post('admin/voluntarios/edit/{id}', 'VoluntariosController@update');
 
 
-// ----------- MODULO (MEMORIAS)-----------
+// ----------- MODULO (Documentos)-----------
 Route::resource('admin/memorias', 'MemoriaController');
 Route::get('memorias', 'MemoriaController@interface')->name('memorias.interface');
+Route::resource('admin/documentos', 'DocumentoController');
+Route::get('documentos', 'DocumentoController@interface')->name('documentos.interface');
 
 // ----------- MODULO (Convenios y Alianzas)-----------
 Route::resource('admin/colaboradores', 'ColaboradorController');

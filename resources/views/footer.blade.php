@@ -9,6 +9,7 @@
             <span style="font-size: 20px;color: #BABDC2">
                 Colaboradores y Alianzas
             </span>
+
         </div>
         <!-- Grid row-->
         <hr class="rgba-white-light" style="margin: 0 20%;background-color: #95a5a6">
@@ -19,42 +20,9 @@
             <!-- Grid column -->
             <div class="col-md-12 col-12 mt-5">
                 <div style="text-align: center;">
-                    <a href="http://sordosiguales.net/" rel="home">
-                        <img class = "img" src="{{"/storage/Test logo UCN.png"}}" style ="width:150px;height: 150px; padding: 15px;" alt="SordosIguales">
-                    </a>
-                    <a href="http://sordosiguales.net/" rel="home">
-                        <img class = "img" src="{{"/storage/Test logo UCN.png"}}" style ="width:150px;height: 150px; padding: 15px;" alt="SordosIguales">
-                    </a>
-                    <a href="http://sordosiguales.net/" rel="home">
-                        <img class = "img" src="{{"/storage/Test logo UCN.png"}}" style ="width:150px;height: 150px; padding: 15px;" alt="SordosIguales">
-                    </a>
-                    <a href="http://sordosiguales.net/" rel="home">
-                        <img class = "img" src="{{"/storage/Test logo UCN.png"}}" style ="width:150px;height: 150px; padding: 15px;" alt="SordosIguales">
-                    </a>
-                    <a href="http://sordosiguales.net/" rel="home">
-                        <img class = "img" src="{{"/storage/Test logo UCN.png"}}" style ="width:150px;height: 150px; padding: 15px;" alt="SordosIguales">
-                    </a>
-                    <a href="http://sordosiguales.net/" rel="home">
-                        <img class = "img" src="{{"/storage/Test logo UCN.png"}}" style ="width:150px;height: 150px; padding: 15px;" alt="SordosIguales">
-                    </a>
-                    <a href="http://sordosiguales.net/" rel="home">
-                        <img class = "img" src="{{"/storage/Test logo UCN.png"}}" style ="width:150px;height: 150px; padding: 15px;" alt="SordosIguales">
-                    </a>
-                    <a href="http://sordosiguales.net/" rel="home">
-                        <img class = "img" src="{{"/storage/Test logo UCN.png"}}" style ="width:150px;height: 150px; padding: 15px;" alt="SordosIguales">
-                    </a>
-                    <a href="http://sordosiguales.net/" rel="home">
-                        <img class = "img" src="{{"/storage/Test logo UCN.png"}}" style ="width:150px;height: 150px; padding: 15px;" alt="SordosIguales">
-                    </a>
-                    <a href="http://sordosiguales.net/" rel="home">
-                        <img class = "img" src="{{"/storage/Test logo UCN.png"}}" style ="width:150px;height: 150px; padding: 15px;" alt="SordosIguales">
-                    </a>
-                    <a href="http://sordosiguales.net/" rel="home">
-                        <img class = "img" src="{{"/storage/Test logo UCN.png"}}" style ="width:150px;height: 150px; padding: 15px;" alt="SordosIguales">
-                    </a>
-                    <a href="http://sordosiguales.net/" rel="home">
-                        <img class = "img" src="{{"/storage/Test logo UCN.png"}}" style ="width:150px;height: 150px; padding: 15px;" alt="SordosIguales">
-                    </a>
+                    @foreach($colabs as $colab)
+                        <a href="{{$colab['url']}}" target="_blank"><img class = "img" src="{{$colab['logo']}}" style ="width:150px;height: 150px; padding: 15px;" alt="{{$colab['nombre']}}" title="{{$colab['nombre']}}"></a>
+                    @endforeach
                 </div>
             </div>
             <!-- Grid column -->
