@@ -18,10 +18,20 @@
             text-anchor: middle;
         }
 
+        body{
+            background-color: #EEF2FC;
+        }
         @media (min-width: 768px) {
             .bd-placeholder-img-lg {
                 font-size: 3.5rem;
             }
+        }
+        .card{
+            border-radius:20px;
+            border:2px solid #972329;
+            background: #D5DFF8;
+            padding: 2%;
+            max-width: 50%;
         }
         .links > a {
             color: #fff;
@@ -32,6 +42,10 @@
             text-decoration: none;
             text-transform: uppercase;
         }
+        .col-md-4 {
+            max-width: 80.333333%;
+        }
+
     </style>
     <!-- Custom styles for this template -->
     <link href="sticky-footer-navbar.css" rel="stylesheet">

@@ -13,62 +13,63 @@
         {{ csrf_field() }}
 
     <div class="form-col">
-        @card
-        @slot('header', 'Ingresar Notas')
+        <br>
+        <div class ="card">
+                <h4>Ingresar Notas</h4>
 
-        <div class="col-md-4 mb-3">
-            <p align="left">RUT</p>
-            <input type="search"
-                   name="IDalumno"
-                   class="form-control"
-                   id="rut"
-                   placeholder="Ingrese RUT del alumno"
-                   required>
+            <div class="col-md-4 mb-3">
+                <p align="left">RUT</p>
+                <input type="search"
+                       name="IDalumno"
+                       class="form-control"
+                       id="rut"
+                       placeholder="Ingrese RUT del alumno"
+                       required>
+            </div>
+
+
+            <div class="col-md-4 mb-3">
+                <p align="left">Nombre del Curso</p>
+                <input type="search"
+                       name="IDcurso"
+                       class="form-control"
+                       id="IDcurso"
+                       placeholder="Ingrese el Nombre del Curso"
+                       required>
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <p align="left">Tipo de Evaluación</p>
+                <input type="search"
+                       name="tipoevaluacion"
+                       class="form-control"
+                       id="tipoevaluacion"
+                       placeholder="Ingrese el Tipo de Evaluación"
+                       required>
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <p align="left">Nota</p>
+                <input type="search"
+                       name="nota"
+                       class="form-control"
+                       id="nota"
+                       placeholder="Ingrese la Nota del alumno"
+                       required>
+            </div>
+
+
+
+            <div class="form-group mt-4">
+                <button type="submit" class="btn btn-primary">
+                    {{ __('Ingresar Nota') }}
+                </button>
+                <a href=" {{route('ModificarNotas')}} " class="btn btn-primary"> Regresar </a>
+            </div>
+
+
+            </div>
         </div>
-
-
-        <div class="col-md-4 mb-3">
-            <p align="left">Nombre del Curso</p>
-            <input type="search"
-                   name="IDcurso"
-                   class="form-control"
-                   id="IDcurso"
-                   placeholder="Ingrese el Nombre del Curso"
-                   required>
-        </div>
-
-        <div class="col-md-4 mb-3">
-            <p align="left">Tipo de Evaluación</p>
-            <input type="search"
-                   name="tipoevaluacion"
-                   class="form-control"
-                   id="tipoevaluacion"
-                   placeholder="Ingrese el Tipo de Evaluación"
-                   required>
-        </div>
-
-        <div class="col-md-4 mb-3">
-            <p align="left">Nota</p>
-            <input type="search"
-                   name="nota"
-                   class="form-control"
-                   id="nota"
-                   placeholder="Ingrese la Nota del alumno"
-                   required>
-        </div>
-
-
-
-        <div class="form-group mt-4">
-            <button type="submit" class="btn btn-primary">
-                {{ __('Ingresar Nota') }}
-            </button>
-            <a href=" {{route('ModificarNotas')}} " class="btn btn-link"> Regresar </a>
-        </div>
-
-
-        @endcard
-    </div>
     </form>
 
     @if ($message = Session::get('error1'))

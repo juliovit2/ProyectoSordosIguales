@@ -17,7 +17,7 @@
     </div>
 
     <body>
-    <div class="card">
+
         <table class="table table-striped table-sm">
             <thead class="thead-dark">
             <tr>
@@ -40,9 +40,9 @@
                 </tr>
             @endforeach
         </table>
-    </div>
+
     </body>
-    <a href=" {{route('cursos.index')}} " class="btn btn-link"> Regresar </a>
+    <a href=" {{route('cursos.index')}} " class="btn btn-primary"> Regresar </a>
 
     <?php } ?>
 @endsection

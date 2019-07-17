@@ -10,8 +10,9 @@
     if($rol == 'Alumno' && $id != $user->id){?>
     <meta http-equiv='refresh' content='0; URL=/usuarios/{{ $id }}/'>
     <?php }else{ ?>
-    @card
-        @slot('header', 'Editar Usuario')
+    <br>
+    <div class ="card">
+        <h4>Editar Usuario</h4>
 
         @include('shared._errors')
 
@@ -22,10 +23,9 @@
 
             <div class="form-group mt-4">
                 <button class="btn btn-primary" type="submit">Actualizar usuario</button>
-                <a href=" {{route('users.index')}} " class="btn btn-link"> Regresar </a>
+                <a href=" {{route('users.index')}} " class="btn btn-primary"> Regresar </a>
             </div>
         </form>
-
-    @endcard
+    </div>
     <?php }?>
 @endsection

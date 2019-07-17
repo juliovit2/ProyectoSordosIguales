@@ -10,26 +10,22 @@
 
     <br>
 
-    @card
-    @slot('header', 'Modificar Nota')
-
-    <form action = "/mod/{{ $idNota }}" method = "post">
-        {{ csrf_field() }}
-
-        <p>Ingresar Nota de Alumno: <input type="search" name="notaAlumno"></p>
-
-
-
-        <div class="form-group mt-4">
-            <button type="submit" class="btn btn-primary">
-                {{ __('Cambiar Nota') }}
-            </button>
-            <a href=" {{route('ModificarNotas')}} " class="btn btn-link"> Regresar </a>
-        </div>
-
-
-    @endcard
-    </form>
+    <br>
+    <div class ="card">
+        <h4>Modificar Nota</h4>
+        <form action = "/mod/{{ $idNota }}" method = "post">
+            {{ csrf_field() }}
+            <div class="col-md-4 mb-3">
+                <p align="left">Ingresar Nota de Alumno: <input type="search" name="notaAlumno" class="form-control"></p>
+            </div>
+            <div class="form-group mt-4">
+                <button type="submit" class="btn btn-primary">
+                    {{ __('Cambiar Nota') }}
+                </button>
+                <a href=" {{route('ModificarNotas')}} " class="btn btn-primary"> Regresar </a>
+            </div>
+        </form>
+    </div>
 
     @if ($message = Session::get('error'))
 

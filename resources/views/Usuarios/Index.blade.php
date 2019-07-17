@@ -57,7 +57,7 @@
             @endif
             </tbody>
         </table>
-        <a href="/PortalAlumnos" class="btn btn-link"> Regresar </a>
+        <a href="/PortalAlumnos" class="btn btn-primary "> Regresar </a>
     @else
         <p>No hay estudiantes registrados.</p>
     @endif

@@ -4,6 +4,12 @@
 
 @section('content')
     <br>
+    <?php
+    $id = Auth::user()->id;
+    $rol = DB::table('users')->where('id', $id)->value('rol');
+    if($rol == 'Alumno'){?>
+    <meta http-equiv='refresh' content='0; URL=/usuarios/{{ $id }}/'>
+    <?php }else { ?>
     <div class="d-flex justify-content-between align-items-end mb-3">
         <h1 class="pb-1">{{ $title }}</h1>
         <p>
@@ -53,12 +59,13 @@
             @endif
             </tbody>
         </table>
-        <a href="/PortalAlumnos" class="btn btn-link"> Regresar </a>
+        <a href="/PortalAlumnos" class="btn btn-primary"> Regresar </a>
     @else
         <p>No hay cursos registrados de momento.</p>
     @endif
 @endsection
-
+<?php } ?>
 @section('sidebar')
     @parent
 @endsection
+

@@ -1,6 +1,12 @@
 @extends('layout')
 @section('title', "Curso {$curso->id}")
 @section('content')
+    <?php
+    $id = Auth::user()->id;
+    $rol = DB::table('users')->where('id', $id)->value('rol');
+    if($rol == 'Alumno'){?>
+    <meta http-equiv='refresh' content='0; URL=/usuarios/{{ $id }}/'>
+    <?php }else { ?>
     <div class="card">
         <h4 class="card-header">
             <div class="form-row">
@@ -36,4 +42,5 @@
             <a href=" {{route('cursos.index')}} " class="btn btn-link"> Regresar </a>
         </div>
     </div>
+    <?php } ?>
 @endsection

@@ -9,10 +9,12 @@
     if($rol == 'Alumno' && $id != $user->id){?>
         <meta http-equiv='refresh' content='0; URL=/usuarios/{{ $id }}/'>
     <?php }else{ ?>
-    <div class="card">
-        <h4 class="card-header">
+    <br>
+
+
+        <div class="card-body">
             <div class="form-row">
-                Detalles del Usuario {{ $user->name }}
+                <h1 class="pb-1">Detalles del Usuario {{ $user->name }}</h1>
                 <form action="{{ route('users.destroy', $user) }}" method="POST">
                     {{ csrf_field() }}
                     {{ method_field('DELETE') }}
@@ -20,10 +22,6 @@
                     <button type="submit" class="btn btn-link"><span class="oi oi-trash"></span></button>
                 </form>
             </div>
-        </h4>
-
-        <div class="card-body">
-
             <h4 class="text-primary">
                 <div class="form-row">
                     Informacion Personal
@@ -57,13 +55,13 @@
 
                <tbody>
                     <tr>
-                        <th>{{ $user->id }}</th>
-                        <td>{{ $user->name }}</td>
-                        <td>{{ $user->rut }}</td>
-                        <td>{{ $user->email }}</td>
-                        <td>{{ $user->telefono }}</td>
-                        <td>{{ $user->direccion }}</td>
-                        <td>{{ $user->ciudad }}</td>
+                        <th scope="row">{{ $user->id }}</th>
+                        <td scope="row">{{ $user->name }}</td>
+                        <td scope="row">{{ $user->rut }}</td>
+                        <td scope="row">{{ $user->email }}</td>
+                        <td scope="row">{{ $user->telefono }}</td>
+                        <td scope="row">{{ $user->direccion }}</td>
+                        <td scope="row">{{ $user->ciudad }}</td>
                     </tr>
                </tbody>
            </table>
@@ -117,18 +115,17 @@
                 <tbody>
                 @for($i = 0; $i<$max; $i = $i + 1)
                     <tr>
-                        <td>{{ $Historicos[$i]['nomCurso'] }}</td>
-                        <td>{{ $Historicos[$i]['estado'] }}</td>
-                        <td>{{ $Historicos[$i]['asistencia'] }}</td>
-                        <td>{{ $Historicos[$i]['notas'] }}</td>
+                        <td scope="row">{{ $Historicos[$i]['nomCurso'] }}</td>
+                        <td scope="row">{{ $Historicos[$i]['estado'] }}</td>
+                        <td scope="row">{{ $Historicos[$i]['asistencia'] }}</td>
+                        <td scope="row">{{ $Historicos[$i]['notas'] }}</td>
                     </tr>
                 @endfor
                 </tbody>
             </table>
-            <a href=" {{route('users.index')}} " class="btn btn-link"> Regresar </a>
+            <a href=" {{route('users.index')}} " class="btn btn-primary"> Regresar </a>
 
         </div>
-    </div>
     <?php } ?>
 
 @endsection

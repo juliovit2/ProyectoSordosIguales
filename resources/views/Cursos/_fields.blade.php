@@ -1,10 +1,6 @@
 {{csrf_field()}}
 <div class="form-col">
 
-
-
-
-
     <div class="col-md-4 mb-3">
         <p align="left">Nombre del Curso</p>
         <input type="text"

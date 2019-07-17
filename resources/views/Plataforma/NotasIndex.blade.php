@@ -40,7 +40,7 @@
             @if ($contadorNotas == 0)
                 <p>No hay notas registradas.</p>
             @endif
-        <a href="/ModificarNotas" class="btn btn-link"> Regresar </a>
+        <a href="/ModificarNotas" class="btn btn-primary"> Regresar </a>
     </body>
     </html>
     <?php } ?>
