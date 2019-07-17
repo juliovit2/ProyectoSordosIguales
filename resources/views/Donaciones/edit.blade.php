@@ -60,7 +60,14 @@
                 <div class="form-group">
 
                     <label for="name_donante">Fecha donación:</label>
-                    <input type="date" class="form-control" name="fecha_donacion" placeholder="Ingrese fecha en que se realizó la donación" class="form-control" value={{ $donaciones->fecha_donacion }} />
+
+                    <?php
+                    $timezone = "America/Santiago";
+                    date_default_timezone_set($timezone);
+                    $today = date("Y-m-d");
+                    ?>
+
+                    <input type="date" max="<?php echo $today; ?>" class="form-control" name="fecha_donacion" placeholder="Ingrese fecha en que se realizó la donación" class="form-control" value={{ $donaciones->fecha_donacion }} />
                 </div>
 
             <div class="form-group row">

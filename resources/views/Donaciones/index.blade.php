@@ -21,13 +21,12 @@
                 <center>
                 <h2>Listado de Donaciones
                     <a class="btn btn-secondary" href="{{route('donaciones.create')}}" role="button"><i class="fas fa-plus"></i></a>
-                </center>
-                </h2>
+                </h2> </center>
                 <thead>
                 <tr>
                     <th class="text-center">ID</th>
                     <th class="text-center">Nombre</th>
-                    <th class="text-center">Monto</th>
+                    <th class="text-center">Monto (Pesos)</th>
                     <th class="text-center">Fecha</th>
                     <th class="text-center">Acciones</th>
                 </tr>
@@ -41,7 +40,14 @@
                                 <td class="text-center" id="{{ $item->id }}">{{ $item->id }}</td>
                                 <td class="text-center">{{$item->name_donante}}</td>
                                 <td class="text-center">{{$item->monto_donacion}}</td>
-                                <td class="text-center">{{$item->fecha_donacion}}</td>
+
+                                <?php
+                                $odate = $item->fecha_donacion;
+                                $newDate = date("d-m-Y", strtotime($odate));
+                                ?>
+
+                                <td class="text-center">{{$newDate}}</td>
+
                             <td class="text-center" width="20%">
                             <div class = "btn-group">
                                 <form action="{{route('donaciones.destroy',$item->id)}}" method="POST">
