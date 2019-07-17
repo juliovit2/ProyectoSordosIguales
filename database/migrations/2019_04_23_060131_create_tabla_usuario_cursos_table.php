@@ -19,14 +19,12 @@ class CreateTablaUsuarioCursosTable extends Migration
             $table->integer('asistencia');
             $table->enum('estado', ['Aprobado', 'Reprobado', 'Cursando'])->default('Cursando');
             $table->integer('usuarioid')->unsigned()->nullable();
-            DB::statement('SET FOREIGN_KEY_CHECKS = 0;');
             $table->foreign('usuarioid')->references('id')
                 ->on('users')->onDelete('cascade');
             
             $table->integer('cursoid')->unsigned()->nullable();
             $table->foreign('cursoid')->references('id')
                 ->on('tabla_cursos')->onDelete('cascade');
-            DB::statement('SET FOREIGN_KEY_CHECKS = 1;');
             $table->timestamps();
         });
     }
