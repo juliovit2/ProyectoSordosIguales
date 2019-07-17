@@ -166,32 +166,32 @@
                     <div class="card-deck">
 
                         <div class="card" style="width: 18rem;">
-                            <img src="https://pixabay.com/es/images/download/girl-919048_640.jpg?attachment" class="card-img-top" alt="...">
+                            <img src="{{'/storage/Directivos/DIRECTORIO - ALEXI GODOY GONZÁLEZ.gif'}} " class="card-img-top" alt="...">
                             <h5 class="card-title" style="text-align: center">Lorem Yogurt</h5>
                         </div>
 
                         <div class="card" style="width: 18rem;">
-                            <img src="https://pixabay.com/es/images/download/girl-919048_640.jpg?attachment" class="card-img-top" alt="...">
+                            <img src="{{'/storage/Directivos/DIRECTORIO - CARLOS SÁNCHEZ CLIFT.gif'}} " class="card-img-top" alt="...">
                             <h5 class="card-title" style="text-align: center">Lorem Yogurt</h5>
                         </div>
 
                         <div class="card" style="width: 18rem;">
-                            <img src="https://pixabay.com/es/images/download/girl-919048_640.jpg?attachment" class="card-img-top" alt="...">
+                            <img src="{{'/storage/Directivos/DIRECTORIO - HUGO ÁLVAREZ REINOSO.gif'}} " class="card-img-top" alt="...">
                             <h5 class="card-title" style="text-align: center">Lorem Yogurt</h5>
                         </div>
                     </div>
 
                     <div class="card-deck">
                         <div class="card" style="width: 18rem;">
-                            <img src="https://pixabay.com/es/images/download/girl-919048_640.jpg?attachment" class="card-img-top" alt="...">
+                            <img src="{{'/storage/Directivos/EQUIPO - CARLOS QUIROZ QUIROZ.gif'}} " class="card-img-top" alt="...">
                             <h5 class="card-title" style="text-align: center">Lorem Yogurt</h5>
                         </div>
                         <div class="card" style="width: 18rem;">
-                            <img src="https://pixabay.com/es/images/download/girl-919048_640.jpg?attachment" class="card-img-top" alt="...">
+                            <img src="{{'/storage/Directivos/Equipo - Fracis Tobar Moreno.gif'}} " class="card-img-top" alt="...">
                             <h5 class="card-title" style="text-align: center">Lorem Yogurt</h5>
                         </div>
                         <div class="card" style="width: 18rem;">
-                            <img src="https://pixabay.com/es/images/download/girl-919048_640.jpg?attachment" class="card-img-top" alt="...">
+                            <img src="{{'/storage/Directivos/Equipo -  Lenka Obilinovic Martinez.gif'}} " class="card-img-top" alt="...">
                             <h5 class="card-title" style="text-align: center">Lorem Yogurt</h5>
                         </div>
                     </div>
