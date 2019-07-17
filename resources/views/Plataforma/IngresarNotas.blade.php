@@ -27,6 +27,7 @@
                        required>
             </div>
 
+            {{-- Ingresar Nombre del curso
 
             <div class="col-md-4 mb-3">
                 <p align="left">Nombre del Curso</p>
@@ -37,6 +38,25 @@
                        placeholder="Ingrese el Nombre del Curso"
                        required>
             </div>
+            --}}
+
+            @php
+                $cursos = \App\tabla_curso::all();
+            @endphp
+            <div class="col-md-4 mb-3">
+                <p align="left">Nombre del Curso</p>
+                <select name="IDcurso" id="IDcurso" class="form-control">
+                    <option value="">Seleccione un curso</option>
+                    @foreach($cursos as $curso)
+                        <option value="{{ $curso->nombre }}">
+                        {{--<option value="{{ $curso->id }}"{{ old('cursoid', $nota->cursoid) == $curso->id ? 'selected' : '' }}>--}}
+                            {{ $curso->nombre }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+
+            {{-- ************************************************************** --}}
 
             <div class="col-md-4 mb-3">
                 <p align="left">Tipo de Evaluación</p>

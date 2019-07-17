@@ -20,10 +20,9 @@ class UserController extends Controller
 
     public function create()
     {
-
         return new UserForm('Usuarios.Create', new User);
-
     }
+
     public function store(CreateUserRequest $request )
     {
         if($this->valida_rut($request->rut)) {

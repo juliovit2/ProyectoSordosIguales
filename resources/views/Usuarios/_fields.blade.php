@@ -10,6 +10,7 @@
                    class="form-control"
                    id="name"
                    placeholder="Ingrese nombre"
+                   pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+"
                    value="{{ old('name', $user->name) }}" required>
         </div>
 
@@ -32,6 +33,7 @@
                    class="form-control"
                    id="name"
                    placeholder="Ingrese nombre"
+                   pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+"
                    value="{{ old('name', $user->name) }}" readonly required>
         </div>
 
@@ -42,7 +44,7 @@
                    class="form-control"
                    id="rut"
                    placeholder="Ingrese RUT"
-                   value="{{ old('name', $user->rut) }}" readonly required>
+                   value="{{ old('rut', $user->rut) }}" readonly required>
         </div>
 
     <?php endif ?>
@@ -54,7 +56,7 @@
                name="email"
                class="form-control"
                id="email"
-               placeholder="Ingrese correo"
+               placeholder="Ingrese correo - Ej: correo@ejemplo.cl"
                value="{{ old('email', $user->email) }}" required>
     </div>
 
@@ -64,8 +66,8 @@
                name="telefono"
                class="form-control"
                id="telefono"
-               placeholder="Ingrese teléfono"
-               value="{{ old('name', $user->telefono) }}" required>
+               placeholder="Ingrese teléfono - Ej: 87654321"
+               value="{{ old('telefono', $user->telefono) }}" required>
     </div>
 
     <div class="col-md-4 mb-3">
@@ -74,18 +76,26 @@
                name="direccion"
                class="form-control"
                id="direccion"
-               placeholder="Ingrese dirección"
-               value="{{ old('name', $user->direccion) }}" required>
+               placeholder="Ingrese dirección - Ej: calle 1234"
+               pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+[\s][1-9][0-9]+"
+               value="{{ old('direccion', $user->direccion) }}" required>
     </div>
+
 
     <div class="col-md-4 mb-3">
         <p align="left">Ciudad</p>
-        <input type="text"
-               name="ciudad"
-               class="form-control"
-               id="ciudad"
-               placeholder="Ingrese ciudad"
-               value="{{ old('name', $user->ciudad) }}" required>
+        <select name="ciudad" id="ciudad" class="form-control">
+            <option value="">Seleccione una ciudad</option>
+            <option value="Antofagasta"{{ old('ciudad', $user->ciudad) == "Antofagasta" ? 'selected' : '' }}>Antofagasta</option>
+            <option value="Calama"{{ old('ciudad', $user->ciudad) == "Calama" ? 'selected' : '' }}>Calama</option>
+            <option value="María Helena"{{ old('ciudad', $user->ciudad) == "María Helena" ? 'selected' : '' }}>María Helena</option>
+            <option value="Mejillones"{{ old('ciudad', $user->ciudad) == "Mejillones" ? 'selected' : '' }}>Mejillones</option>
+            <option value="Ollague"{{ old('ciudad', $user->ciudad) == "Ollague" ? 'selected' : '' }}>Ollague</option>
+            <option value="San Pedro de Atacama"{{ old('ciudad', $user->ciudad) == "San Pedro de Atacama" ? 'selected' : '' }}>San Pedro de Atacama</option>
+            <option value="Sierra Gorda"{{ old('ciudad', $user->ciudad) == "Sierra Gorda" ? 'selected' : '' }}>Sierra Gorda</option>
+            <option value="Taltal"{{ old('ciudad', $user->ciudad) == "Taltal" ? 'selected' : '' }}>Taltal</option>
+            <option value="Tocopilla"{{ old('ciudad', $user->ciudad) == "Tocopilla" ? 'selected' : '' }}>Tocopilla</option>
+        </select>
     </div>
 
     <div class="col-md-4 mb-3">
@@ -95,6 +105,6 @@
                class="form-control"
                id="password"
                placeholder="Ingrese contraseña"
-               value="{{ old('name', $user->password) }}" required>
+               value="{{ old('password', $user->password) }}" required>
     </div>
 </div>
