@@ -92,6 +92,7 @@ Route::get('admin/voluntarios/delete/{id}', "VoluntariosController@destroy");
 Route::post('admin/voluntarios/create', 'VoluntariosController@store');
 Route::post('admin/voluntarios/edit/{id}', 'VoluntariosController@update');
 
+Route::get ('/redes','InformacionController@redes');
 
 // ----------- MODULO (MEMORIAS)-----------
 Route::resource('admin/memorias', 'MemoriaController');
