@@ -2,37 +2,27 @@
 
 @section('content')
     <div class="container">
-        <div id="demo" style="margin: 15px" class="carousel slide" data-ride="carousel">
+            <div id="demo" style="margin: 15px" class="carousel slide" data-ride="carousel">
+                <!-- The slideshow -->
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="/storage/logo_fundacion.png" width="1040" height="550" alt="...">
+                    </div>
+                    @foreach($imagenes as $imagen)
+                    <div class="carousel-item " >
+                        <img src="{{ $imagen['imagen']}}" width="1040" height="550" alt="...">
+                    </div>
+                    @endforeach
+                <!-- Left and right controls -->
+                <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </a>
+                <a class="carousel-control-next" href="#demo" data-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </a>
 
-            <!-- Indicators -->
-            <ul class="carousel-indicators">
-                <li data-target="#demo" data-slide-to="0" class="active"></li>
-                <li data-target="#demo" data-slide-to="1"></li>
-                <li data-target="#demo" data-slide-to="2"></li>
-            </ul>
-
-            <!-- The slideshow -->
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="/storage/1.jpg" width="1040" height="550" alt="Los Angeles">
-                </div>
-                <div class="carousel-item">
-                    <img src="/storage/2.jpg" width="1040" height="550" alt="Chicago">
-                </div>
-                <div class="carousel-item">
-                    <img src="/storage/3.jpg" width="1040" height="550" alt="New York">
                 </div>
             </div>
-
-            <!-- Left and right controls -->
-            <a class="carousel-control-prev" href="#demo" data-slide="prev">
-                <span class="carousel-control-prev-icon"></span>
-            </a>
-            <a class="carousel-control-next" href="#demo" data-slide="next">
-                <span class="carousel-control-next-icon"></span>
-            </a>
-
-        </div>
 
         <div class="container" >
             <div class="row">

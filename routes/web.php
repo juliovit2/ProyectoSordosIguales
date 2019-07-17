@@ -11,7 +11,9 @@
 |
 */
 
-Route::get('/', 'HomeController@index');
+Route::resource('/admin/carrusel','HomeController');
+Route::get('/', 'HomeController@interface');
+
 
 
 //escribir todas las rutas requeridas aqui siguiendo el mismo formato
