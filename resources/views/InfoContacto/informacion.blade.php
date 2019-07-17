@@ -8,7 +8,13 @@
                     <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                         <a id="button-side" class="nav-link" href="#quienessomos" role="tab">Quienes Somos</a>
                         <hr id="separador-sidebar"/>
-                        <a id="button-side" class="nav-link" href="#directiva" role="tab">Directiva</a>
+                        <a id="button-side" class="nav-link" href="#vision" role="tab">Vision</a>
+                        <hr id="separador-sidebar"/>
+                        <a id="button-side" class="nav-link" href="#objetivo" role="tab">Objetivo</a>
+                        <hr id="separador-sidebar"/>
+                        <a id="button-side" class="nav-link" href="#mision" role="tab">Mision</a>
+                        <hr id="separador-sidebar"/>
+                        <a id="button-side" class="nav-link" href="#historia" role="tab">Historia</a>
                     </div>
                 </nav> 
             </div>
@@ -17,12 +23,122 @@
 
                 <section id="quienessomos">
                     <hr style="color: #0056b2;" />
-                    <h1 id="title"> Quienes Somos</h1>
+                    <h1 id="title"> Quienes somos</h1>
                     <hr style="color: #0056b2;" />
 
                     <div id="video" class="container">
                         <iframe id="ytplayer" type="text/html" width="720" height="300"
                                 src="https://www.youtube.com/embed/8AkvNVUXiUw?rel=0&autoplay=1&disablekb=1&fs=0&loop=1&modestbranding=1"
+                                frameborder="0" allowfullscreen></iframe>
+                    </div>
+
+                    <article id="text_main">
+                        <p align="justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In aliquam finibus risus id euismod. Praesent vitae augue sollicitudin, congue leo nec, ultricies eros.
+                            Ut quis nulla cursus nulla semper mollis. Donec blandit ipsum a consequat consequat. Proin nibh lacus, ornare et facilisis ac, fermentum a sapien.
+                            Integer id lectus condimentum, aliquet lorem in, posuere diam. In facilisis nulla et condimentum volutpat.
+                            Suspendisse ac dapibus purus. Phasellus euismod neque tempor, sodales risus sit amet, gravida velit.
+                            Vivamus id purus ac sem ornare finibus. Cras mollis ante diam, ac bibendum mauris ultricies ac.
+                            Quisque eleifend eros ac turpis rutrum, vel imperdiet justo aliquet. Nulla laoreet augue sed egestas rhoncus.
+                            Integer in mi ullamcorper, cursus massa at, tristique urna. Mauris ut massa imperdiet, venenatis lacus ac, euismod felis. Praesent ipsum felis, hendrerit eget orci vel, varius eleifend justo.
+                            Sed eu nulla gravida, facilisis mi et, imperdiet quam. Nam nisi augue, rutrum ac nunc a, hendrerit ullamcorper sem.
+                            Nunc accumsan quam in lacus pretium lobortis. Donec luctus vel est sed iaculis. Maecenas pellentesque mattis sagittis.
+                            Nunc tempus, nunc in sagittis imperdiet, quam sapien ornare eros, eget luctus erat lorem faucibus turpis.
+                            Proin in mauris a diam vulputate consequat. Quisque a leo varius, imperdiet neque ut, sollicitudin ante.
+                            Aliquam euismod, ipsum ut pellentesque feugiat, lectus ante facilisis diam, id congue sapien tortor euismod orci.</p>
+                    </article>
+                </section>
+
+                <section id="vision">
+                    <hr style="color: #0056b2;" />
+                    <h1 id="title">Vision</h1>
+                    <hr style="color: #0056b2;" />
+
+                    <div id="video" class="container">
+                        <iframe id="ytplayer" type="text/html" width="720" height="300"
+                                src="https://www.youtube.com/embed/8AkvNVUXiUw?rel=0&disablekb=1&fs=0&loop=1&modestbranding=1"
+                                frameborder="0" allowfullscreen></iframe>
+                    </div>
+
+                    <article id="text_main">
+                        <p align="justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In aliquam finibus risus id euismod. Praesent vitae augue sollicitudin, congue leo nec, ultricies eros.
+                            Ut quis nulla cursus nulla semper mollis. Donec blandit ipsum a consequat consequat. Proin nibh lacus, ornare et facilisis ac, fermentum a sapien.
+                            Integer id lectus condimentum, aliquet lorem in, posuere diam. In facilisis nulla et condimentum volutpat.
+                            Suspendisse ac dapibus purus. Phasellus euismod neque tempor, sodales risus sit amet, gravida velit.
+                            Vivamus id purus ac sem ornare finibus. Cras mollis ante diam, ac bibendum mauris ultricies ac.
+                            Quisque eleifend eros ac turpis rutrum, vel imperdiet justo aliquet. Nulla laoreet augue sed egestas rhoncus.
+                            Integer in mi ullamcorper, cursus massa at, tristique urna. Mauris ut massa imperdiet, venenatis lacus ac, euismod felis. Praesent ipsum felis, hendrerit eget orci vel, varius eleifend justo.
+                            Sed eu nulla gravida, facilisis mi et, imperdiet quam. Nam nisi augue, rutrum ac nunc a, hendrerit ullamcorper sem.
+                            Nunc accumsan quam in lacus pretium lobortis. Donec luctus vel est sed iaculis. Maecenas pellentesque mattis sagittis.
+                            Nunc tempus, nunc in sagittis imperdiet, quam sapien ornare eros, eget luctus erat lorem faucibus turpis.
+                            Proin in mauris a diam vulputate consequat. Quisque a leo varius, imperdiet neque ut, sollicitudin ante.
+                            Aliquam euismod, ipsum ut pellentesque feugiat, lectus ante facilisis diam, id congue sapien tortor euismod orci.</p>
+                    </article>
+                </section>
+
+
+                <section id="objetivo">
+                    <hr style="color: #0056b2;" />
+                    <h1 id="title"> Objetivo</h1>
+                    <hr style="color: #0056b2;" />
+
+                    <div id="video" class="container">
+                        <iframe id="ytplayer" type="text/html" width="720" height="300"
+                                src="https://www.youtube.com/embed/8AkvNVUXiUw?rel=0&disablekb=1&fs=0&loop=1&modestbranding=1"
+                                frameborder="0" allowfullscreen></iframe>
+                    </div>
+
+                    <article id="text_main">
+                        <p align="justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In aliquam finibus risus id euismod. Praesent vitae augue sollicitudin, congue leo nec, ultricies eros.
+                            Ut quis nulla cursus nulla semper mollis. Donec blandit ipsum a consequat consequat. Proin nibh lacus, ornare et facilisis ac, fermentum a sapien.
+                            Integer id lectus condimentum, aliquet lorem in, posuere diam. In facilisis nulla et condimentum volutpat.
+                            Suspendisse ac dapibus purus. Phasellus euismod neque tempor, sodales risus sit amet, gravida velit.
+                            Vivamus id purus ac sem ornare finibus. Cras mollis ante diam, ac bibendum mauris ultricies ac.
+                            Quisque eleifend eros ac turpis rutrum, vel imperdiet justo aliquet. Nulla laoreet augue sed egestas rhoncus.
+                            Integer in mi ullamcorper, cursus massa at, tristique urna. Mauris ut massa imperdiet, venenatis lacus ac, euismod felis. Praesent ipsum felis, hendrerit eget orci vel, varius eleifend justo.
+                            Sed eu nulla gravida, facilisis mi et, imperdiet quam. Nam nisi augue, rutrum ac nunc a, hendrerit ullamcorper sem.
+                            Nunc accumsan quam in lacus pretium lobortis. Donec luctus vel est sed iaculis. Maecenas pellentesque mattis sagittis.
+                            Nunc tempus, nunc in sagittis imperdiet, quam sapien ornare eros, eget luctus erat lorem faucibus turpis.
+                            Proin in mauris a diam vulputate consequat. Quisque a leo varius, imperdiet neque ut, sollicitudin ante.
+                            Aliquam euismod, ipsum ut pellentesque feugiat, lectus ante facilisis diam, id congue sapien tortor euismod orci.</p>
+                    </article>
+                </section>
+
+
+                <section id="mision">
+                    <hr style="color: #0056b2;" />
+                    <h1 id="title"> Misión</h1>
+                    <hr style="color: #0056b2;" />
+
+                    <div id="video" class="container">
+                        <iframe id="ytplayer" type="text/html" width="720" height="300"
+                                src="https://www.youtube.com/embed/8AkvNVUXiUw?rel=0&disablekb=1&fs=0&loop=1&modestbranding=1"
+                                frameborder="0" allowfullscreen></iframe>
+                    </div>
+
+                    <article id="text_main">
+                        <p align="justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In aliquam finibus risus id euismod. Praesent vitae augue sollicitudin, congue leo nec, ultricies eros.
+                            Ut quis nulla cursus nulla semper mollis. Donec blandit ipsum a consequat consequat. Proin nibh lacus, ornare et facilisis ac, fermentum a sapien.
+                            Integer id lectus condimentum, aliquet lorem in, posuere diam. In facilisis nulla et condimentum volutpat.
+                            Suspendisse ac dapibus purus. Phasellus euismod neque tempor, sodales risus sit amet, gravida velit.
+                            Vivamus id purus ac sem ornare finibus. Cras mollis ante diam, ac bibendum mauris ultricies ac.
+                            Quisque eleifend eros ac turpis rutrum, vel imperdiet justo aliquet. Nulla laoreet augue sed egestas rhoncus.
+                            Integer in mi ullamcorper, cursus massa at, tristique urna. Mauris ut massa imperdiet, venenatis lacus ac, euismod felis. Praesent ipsum felis, hendrerit eget orci vel, varius eleifend justo.
+                            Sed eu nulla gravida, facilisis mi et, imperdiet quam. Nam nisi augue, rutrum ac nunc a, hendrerit ullamcorper sem.
+                            Nunc accumsan quam in lacus pretium lobortis. Donec luctus vel est sed iaculis. Maecenas pellentesque mattis sagittis.
+                            Nunc tempus, nunc in sagittis imperdiet, quam sapien ornare eros, eget luctus erat lorem faucibus turpis.
+                            Proin in mauris a diam vulputate consequat. Quisque a leo varius, imperdiet neque ut, sollicitudin ante.
+                            Aliquam euismod, ipsum ut pellentesque feugiat, lectus ante facilisis diam, id congue sapien tortor euismod orci.</p>
+                    </article>
+                </section>
+
+                <section id="historia">
+                    <hr style="color: #0056b2;" />
+                    <h1 id="title"> Historia</h1>
+                    <hr style="color: #0056b2;" />
+
+                    <div id="video" class="container">
+                        <iframe id="ytplayer" type="text/html" width="720" height="300"
+                                src="https://www.youtube.com/embed/8AkvNVUXiUw?rel=0&disablekb=1&fs=0&loop=1&modestbranding=1"
                                 frameborder="0" allowfullscreen></iframe>
                     </div>
 
