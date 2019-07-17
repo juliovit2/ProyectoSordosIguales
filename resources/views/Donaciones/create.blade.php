@@ -23,7 +23,7 @@
                         <div class="form-group">
                             <p align="left">Nombre (opcional)</p>
                             <div>
-                                <input id="name_donante" name="name_donante" type="text" placeholder="Ingrese nombre" class="form-control" pattern="([A-z]|ñ|\s)*">
+                                <input id="name_donante" name="name_donante" type="text" placeholder="Ingrese nombre" class="form-control" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+">
                             </div>
                         </div>
 
@@ -41,7 +41,14 @@
                         <div class="form-group">
                             <p align="left">Fecha donación</p>
                             <div>
-                                <input id="fecha_donacion" name="fecha_donacion" type="date" placeholder="Ingrese fecha en que se realizó la donación" class="form-control">
+
+                                <?php
+                                $timezone = "America/Santiago";
+                                date_default_timezone_set($timezone);
+                                $today = date("Y-m-d");
+                                ?>
+
+                                <input id="fecha_donacion" name="fecha_donacion" type="date" max="<?php echo $today; ?>" placeholder="Ingrese fecha en que se realizó la donación" class="form-control">
                             </div>
                         </div>
 
