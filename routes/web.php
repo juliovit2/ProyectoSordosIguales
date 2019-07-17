@@ -142,3 +142,28 @@ Route::put('/usuarios/{user}', 'UserController@update');
 
 Route::delete('/usuarios/{user}', 'UserController@destroy')
     ->name('users.destroy');
+
+
+//RUTAS de Profesor
+/*
+Route::get('/profesores', 'ProfesorController@index')
+    ->name('profesores.index');
+Route::get('/profesores/{profesor}', 'ProfesorController@show')
+    ->where('profesor', '[0-9]+')
+    ->name('profesores.show');
+Route::get('/profesores/nuevo', 'ProfesorController@create')->name('profesores.create');
+Route::post('/profesores', 'ProfesorController@store');
+Route::get('/profesores/{profesor}/editar', 'ProfesorController@edit')->name('profesores.edit');
+Route::put('/profesores/{profesor}', 'ProfesorController@update');
+Route::delete('/profesores/{profesor}', 'ProfesorController@destroy')
+    ->name('profesores.destroy');
+*/
+
+Route::resource('/profesores', 'ProfesorController');
+Route::get('/profesores/edit/{id}', 'ProfesorController@edit');
+Route::get('/profesores/delete/{id}', "ProfesorController@destroy");
+Route::post('/profesores/create', 'ProfesorController@store');
+Route::post('/profesores/edit/{id}', 'ProfesorController@update');
+Route::get('/profesores/{profesor}', 'ProfesorController@show')
+    ->where('profesor', '[0-9]+')
+    ->name('profesores.show');

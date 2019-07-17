@@ -145,6 +145,17 @@
                 font-size: 25px;
                 text-align: center;
             }
+            #profesores{
+                margin: 8px;
+                position: relative;
+                width: 20%;
+                height: 100px;
+                font-weight: bold;
+                background-color: dodgerblue;
+                border-color: dodgerblue;
+                font-size: 25px;
+                text-align: center;
+            }
             .titulo{
                 margin: 20px;
                 font-size: 60px;
@@ -167,6 +178,7 @@
                         <a href="{{url('/admin/voluntarios')}}"><button id="voluntarios" class="btn btn-primary" type="submit">Voluntarios<br><i class="fas fa-wrench"></i></button></a>
                         <br>
                         <a href="{{url('/faq')}}"><button id="faq" class="btn btn-primary" type="submit">FAQ<br><i class="fas fa-wrench"></i></button></a>
+                        <a href="{{url('/profesores')}}"><button id="profesores" class="btn btn-primary" type="submit">Profesores<br><i class="fas fa-wrench"></i></button></a>
                     </div>
                 </div>
             </div>

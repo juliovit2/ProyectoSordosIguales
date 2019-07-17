@@ -15,11 +15,15 @@
         <div class="card-body">
             <div class="form-row">
                 <h1 class="pb-1">Detalles del Usuario {{ $user->name }}</h1>
-                <form action="{{ route('users.destroy', $user) }}" method="POST">
+
+                <a href="{{ route('users.edit', $user) }}" class="btn btn-link"><span class="oi oi-pencil"></span></a>
+                @if($rol == 'Administrador')
+                    <form action="{{ route('users.destroy', $user) }}" method="POST">
+
                     {{ csrf_field() }}
                     {{ method_field('DELETE') }}
-                    <a href="{{ route('users.edit', $user) }}" class="btn btn-link"><span class="oi oi-pencil"></span></a>
                     <button type="submit" class="btn btn-link"><span class="oi oi-trash"></span></button>
+                @endif
                 </form>
             </div>
             <h4 class="text-primary">
