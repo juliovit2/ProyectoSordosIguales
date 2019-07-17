@@ -14,8 +14,8 @@ class ColaboradorController extends Controller
      */
     public function index()
     {
-        $memorias = tabla_colaborador_alianza::get();
-        return view('colaboradores/index',['memorias'=>$memorias]);//
+        $colabs = tabla_colaborador_alianza::get();
+        return view('colaboradores/index',['colabs'=>$colabs]);//
     }
 
     /**
@@ -25,7 +25,7 @@ class ColaboradorController extends Controller
      */
     public function create()
     {
-        //
+        return view('colaboradores/create');
     }
 
     /**
@@ -36,6 +36,23 @@ class ColaboradorController extends Controller
      */
     public function store(Request $request)
     {
+        $data = request()->all();
+        $this->validate(request(),[
+            'inputNombre' => 'required',
+            'inputURL' => 'required',
+            'inputLogo' => 'file|image|mimes:jpeg,png,gif,webp,pdf|max:2048',
+        ]);
+        $filenameLogo = time() . $data['inputLogo']->getClientOriginalName();
+        $fileLogo = $request->file('inputLogo')->storeAs('public/Colaboradores/',$filenameLogo);
+        $logoURL = \Storage::url($fileLogo);
+
+        tabla_colaborador_alianza::create([
+            'year' => $data['anio_memoria'],
+            'video' => $data['inputVideo'],
+            'pdf' => $memoriaURL,
+        ]);
+
+        return redirect()->route('memorias.index');
         //
     }
 
