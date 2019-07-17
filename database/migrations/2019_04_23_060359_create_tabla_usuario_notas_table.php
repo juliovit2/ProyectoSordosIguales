@@ -18,7 +18,7 @@ class CreateTablaUsuarioNotasTable extends Migration
             $table->integer('nota');
             $table->integer('usuarioid')->unsigned()->nullable();
             $table->foreign('usuarioid')->references('id')
-                ->on('User')->onDelete('cascade');
+                ->on('users')->onDelete('cascade');
 
             $table->integer('cursoid')->unsigned()->nullable();
             $table->foreign('cursoid')->references('id')

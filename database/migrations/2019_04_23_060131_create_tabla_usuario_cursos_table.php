@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -18,12 +19,14 @@ class CreateTablaUsuarioCursosTable extends Migration
             $table->integer('asistencia');
             $table->enum('estado', ['Aprobado', 'Reprobado', 'Cursando'])->default('Cursando');
             $table->integer('usuarioid')->unsigned()->nullable();
+            DB::statement('SET FOREIGN_KEY_CHECKS = 0;');
             $table->foreign('usuarioid')->references('id')
-                ->on('User')->onDelete('cascade');
+                ->on('users')->onDelete('cascade');
             
             $table->integer('cursoid')->unsigned()->nullable();
             $table->foreign('cursoid')->references('id')
                 ->on('tabla_cursos')->onDelete('cascade');
+            DB::statement('SET FOREIGN_KEY_CHECKS = 1;');
             $table->timestamps();
         });
     }
