@@ -80,22 +80,34 @@ class CursoController extends Controller
         $rut = request()->alumnoRUT;
         $idAlumno = DB::table('users')->where('rut', $rut)->value('id');
         if($idAlumno == null){
-            return back()->with('error','ERROR: Alumno no existe');
+            return back()->with('error','ERROR 424: Alumno no existe');
         }
         $estado = request()->estado;
         $nombreCurso = request()->nombreCurso;
         $idCurso = DB::table('tabla_cursos')->where('nombre', $nombreCurso)->value('id');
         if($idCurso == null){
-            return back()->with('error2','ERROR: Curso no creado');
+            return back()->with('error2','ERROR 424: Curso no creado');
         }
-        $existeAlumno = DB::select('select usuarioid, cursoid from tabla_usuario_cursos where estado = :estado and usuarioid = :idAlumno and cursoid = :idCurso',['estado' => $estado, 'idAlumno' => $idAlumno, 'idCurso' => $idCurso]);
+        $existeAlumno = DB::select('select usuarioid, cursoid from tabla_usuario_cursos where estado = :estado and usuarioid = :idAlumno and cursoid = :idCurso',
+            ['estado' => $estado, 'idAlumno' => $idAlumno, 'idCurso' => $idCurso]);
+        $cursando = 'Cursando';
         if (empty($existeAlumno)) {
-            $actualizarEstado = DB::select('select estado from tabla_usuario_cursos where usuarioid = :idAlumno and cursoid = :idCurso',['idAlumno' => $idAlumno, 'idCurso' => $idCurso]);
-            if(empty($actualizarEstado)){
+            $actualizarEstado = DB::select('select estado from tabla_usuario_cursos where usuarioid = :idAlumno and cursoid = :idCurso',
+                ['idAlumno' => $idAlumno, 'idCurso' => $idCurso]);
+            if(empty($actualizarEstado)){//ingresar nuevo curso
+                $notas = DB::table('tabla_usuario_notas')->where('usuarioid', '=', $idAlumno)->where('cursoid', '=', $idCurso)->avg('nota');
+                if($notas < 40){
+                    $estadofinal = 'Reprobado';
+                }else{
+                    $estadofinal = 'Aprobado';
+                }
                 DB::statement('SET FOREIGN_KEY_CHECKS = 0;');
                 DB::table('tabla_usuario_cursos')->insert(
                     ['asistencia' => 100, 'estado' => $estado, 'usuarioid' => $idAlumno, 'cursoid' => $idCurso]
                 );
+
+                DB::table('tabla_usuario_cursos')->where('usuarioid', $idAlumno)->where('cursoid', $idCurso)->where('estado', $cursando)->update(['estado' => $estadofinal]);
+                return back()->with('exito2','Alumno actualizado correctamente');
                 DB::statement('SET FOREIGN_KEY_CHECKS = 1;');
                 return back()->with('exito','Alumno ingresado correctamente');
             }else{
@@ -103,7 +115,7 @@ class CursoController extends Controller
                 return back()->with('exito2','Alumno actualizado correctamente');
             }
         }else{
-            return back()->with('error3','ERROR: El Alumno ya estaba ingresado anteriormente');
+            return back()->with('exito3','Alumno actualizado correctamente');
         }
     }
 
@@ -125,19 +137,19 @@ class CursoController extends Controller
         $idAlumno = DB::table('users')->where('rut', $rut)->value('id');
 
         if($idAlumno == null){
-            return back()->with('error1','ERROR: El Alumno no existe');
+            return back()->with('error1','ERROR 424: El Alumno no existe');
         }
 
         $idCurso = DB::table('tabla_cursos')->where('nombre', $curso)->value('id');
 
         if($idCurso == null){
-            return back()->with('error2','ERROR: El Curso no existe');
+            return back()->with('error2','ERROR 424: El Curso no existe');
         }
 
         $existeAlumnoEnCurso = DB::select('select asistencia from tabla_usuario_cursos where usuarioid = :idAlumno and cursoid = :idCurso',['idAlumno' => $idAlumno, 'idCurso' => $idCurso]);
 
         if (empty($existeAlumnoEnCurso)) {
-            return back()->with('error3','ERROR: El Alumno no está ingresado en el Curso');
+            return back()->with('error3','ERROR 424: El Alumno no está ingresado en el Curso');
         }
 
         if(!is_numeric($asistencia)){

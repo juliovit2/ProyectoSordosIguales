@@ -35,14 +35,14 @@ class NotasController extends Controller
         $existeAlumnoEnCurso = DB::select('select estado from tabla_usuario_cursos where cursoid = :curso_id and usuarioid = :usuario_id',['curso_id' => $curso_id, 'usuario_id' => $usuario_id]);
 
         if (empty($existeAlumnoEnCurso)) {
-            return back()->with('error5','ERROR: El Alumno no está inscrito en el Curso');
+            return back()->with('error5','ERROR 424: El Alumno no está inscrito en el Curso');
         }
 
         if($rut_alumno != $rut){
-            return back()->with('error1','ERROR: El Estudiante no existe');
+            return back()->with('error1','ERROR 424: El Estudiante no existe');
         }else{
             if($nombre_curso != $curso){
-                return back()->with('error2','ERROR: El Curso no existe');
+                return back()->with('error2','ERROR 424: El Curso no existe');
             }else{
 
                 $nota = str_replace(",",".",$nota);
