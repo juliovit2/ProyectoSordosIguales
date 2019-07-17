@@ -19,7 +19,7 @@
         <table class="table table-bordered  table-striped table-hover" id="MyTable">
             <h2>
                 Listado de colaboradores y alianzas
-                <a class="btn btn-secondary" href="{{route('memorias.create')}}" role="button"><i class="fas fa-plus"></i></a>
+                <a class="btn btn-secondary" href="{{route('colaboradores.create')}}" role="button"><i class="fas fa-plus"></i></a>
             </h2>
             <thead>
             <tr>
@@ -31,31 +31,25 @@
             </tr>
             </thead>
             <tbody>
-            @if($memorias)
+            @if($colabs)
                 <ul>
-                    @foreach($memorias as  $key=>$item)
+                    @foreach($colabs as  $key=>$item)
                         <tr>
                             <td class="text-center" id="{{ $item->id }}">{{ $item->id }}</td>
                             <td class="text-center">
-                                @if($memorias[$key]['logo'])
-                                    <img class = "img-thumbnail" src="{{$memorias[$key]['portada']}}" width="250px" height="250px">
-                                @else
-                                    <i class="fas fa-file-pdf" style="font-size: 1000%;color: #972329"></i>
-                                @endif
+                                <img class = "img-thumbnail" src="{{$colabs[$key]['logo']}}" width="250px" height="250px">
                             </td>
-                            <td class="text-center">Memoria {{ $memorias[$key]['year'] }}</td>
-                            <td class="text-center">{{$memorias[$key]->created_at}}</td>
+                            <td class="text-center">{{ $colabs[$key]['nombre'] }}</td>
+                            <td class="text-center">{{$colabs[$key]->created_at}}</td>
                             <td class="text-center" width="20%">
                                 <div class = "btn-group">
-                                    <form action="{{route('memorias.destroy',$item->id)}}" method="POST">
+                                    <form action="{{route('colaboradores.destroy',$item->id)}}" method="POST">
                                         {{csrf_field()}}
-                                        <a class="btn btn-secondary" href = "{{$memorias[$key]['pdf']}}" target="_blank">
+                                        <a class="btn btn-secondary" title = "Abrir la pagina de este colaborador" href = "{{$colabs[$key]['url']}}" target="_blank">
                                             <i class="fas fa-eye"></i>
                                         </a>
-                                        <a class = "btn btn-secondary" title = "Abrir el video de la memoria" data-toggle="modal" data-video="{{$memorias[$key]['video']}}" data-title="{{$memorias[$key]['year']}}" href="#videoModal">
-                                            <i class="far fa-play-circle"></i>
-                                        </a>
-                                        <a class="btn btn-secondary" role="button"href="{{route('memorias.edit',$item->id)}}" >
+
+                                        <a class="btn btn-secondary" role="button"href="{{route('colaboradores.edit',$item->id)}}" >
                                             <i class="fas fa-pencil-alt"></i>
                                         </a>
 
@@ -76,7 +70,7 @@
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        ¿Está seguro que desea eliminar esta memoria?
+                                                        ¿Está seguro que desea eliminar este colaborador?
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Volver</button>
@@ -111,7 +105,7 @@
                     </div>
                 </div>
             @else
-                <p> No hay Memorias registradas </p>
+                <p> No hay colaboradores registrados </p>
             @endif
             </tbody>
         </table>
@@ -122,22 +116,4 @@
     </form>
     </div>
 
-    <script>
-        $(document).ready(function() {
-            $('#videoModal').on('show.bs.modal', function (event) {
-                var button = $(event.relatedTarget) // Button that triggered the modal
-                var recipient = button.data('video') // Extract info from data-* attributes
-                var year = button.data('title')
-                // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-                // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-                var modal = $(this)
-                modal.find('.modal-title').text('Memoria ' + year)
-                document.getElementById('iframeVideo').src = recipient;
-            })
-
-            $("#videoModal").on('hidden.bs.modal', function (e) {
-                $("#videoModal iframe").attr("src", $("#videoModal iframe").attr("src"));
-            });
-        })
-    </script>
 @endsection
