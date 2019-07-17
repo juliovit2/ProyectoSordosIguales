@@ -80,13 +80,13 @@ class CursoController extends Controller
         $rut = request()->alumnoRUT;
         $idAlumno = DB::table('users')->where('rut', $rut)->value('id');
         if($idAlumno == null){
-            return back()->with('error','ERROR: Alumno no existe');
+            return back()->with('error','ERROR 424: Alumno no existe');
         }
         $estado = request()->estado;
         $nombreCurso = request()->nombreCurso;
         $idCurso = DB::table('tabla_cursos')->where('nombre', $nombreCurso)->value('id');
         if($idCurso == null){
-            return back()->with('error2','ERROR: Curso no creado');
+            return back()->with('error2','ERROR 424: Curso no creado');
         }
         $existeAlumno = DB::select('select usuarioid, cursoid from tabla_usuario_cursos where estado = :estado and usuarioid = :idAlumno and cursoid = :idCurso',
             ['estado' => $estado, 'idAlumno' => $idAlumno, 'idCurso' => $idCurso]);
@@ -137,19 +137,19 @@ class CursoController extends Controller
         $idAlumno = DB::table('users')->where('rut', $rut)->value('id');
 
         if($idAlumno == null){
-            return back()->with('error1','ERROR: El Alumno no existe');
+            return back()->with('error1','ERROR 424: El Alumno no existe');
         }
 
         $idCurso = DB::table('tabla_cursos')->where('nombre', $curso)->value('id');
 
         if($idCurso == null){
-            return back()->with('error2','ERROR: El Curso no existe');
+            return back()->with('error2','ERROR 424: El Curso no existe');
         }
 
         $existeAlumnoEnCurso = DB::select('select asistencia from tabla_usuario_cursos where usuarioid = :idAlumno and cursoid = :idCurso',['idAlumno' => $idAlumno, 'idCurso' => $idCurso]);
 
         if (empty($existeAlumnoEnCurso)) {
-            return back()->with('error3','ERROR: El Alumno no está ingresado en el Curso');
+            return back()->with('error3','ERROR 424: El Alumno no está ingresado en el Curso');
         }
 
         if(!is_numeric($asistencia)){
