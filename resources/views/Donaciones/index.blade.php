@@ -20,8 +20,9 @@
             <table class="table table-bordered  table-striped table-hover" id="MyTable">
                 <center>
                 <h2>Listado de Donaciones
-                    <a class="btn btn-secondary" href="{{route('donaciones.create')}}" role="button"><i class="fas fa-plus"></i></a>
-                </h2> </center>
+                </h2>
+                    <a href="{{route('donaciones.create')}}" role="button" class="btn btn-primary pull-right active" >Agregar nuevo registro de donación <i class="fas fa-plus"></i></a>
+               </center>
                 <thead>
                 <tr>
                     <th class="text-center">ID</th>
@@ -52,7 +53,7 @@
                             <div class = "btn-group">
                                 <form action="{{route('donaciones.destroy',$item->id)}}" method="POST">
                                     {{csrf_field()}}
-                                    <a class="btn btn-secondary" role="button"href="{{route('donaciones.edit',$item->id)}}" >
+                                    <a class="btn btn-primary " role="button"href="{{route('donaciones.edit',$item->id)}}" >
                                         <i class="fas fa-pencil-alt"></i>
                                     </a>
 
