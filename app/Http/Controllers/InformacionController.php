@@ -28,9 +28,7 @@ class InformacionController extends Controller
     public function info(){
         return view('InfoContacto.informacion');
     }
-    public function redes(){
-        return view('InfoContacto.redes_contacto');
-    }
+
 
     public function enviarCorreo(Request $request){
         if($request->opcion!=2){

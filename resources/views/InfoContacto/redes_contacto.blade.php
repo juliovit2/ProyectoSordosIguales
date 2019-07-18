@@ -68,6 +68,7 @@
         }
         .margen{
             margin-top: 10%;
+            padding-left: 3%;
         }
         .margen2{
             margin-top: 2%;
@@ -76,7 +77,6 @@
             margin-right: 5%;
         }
     </style>
-
 <div class="row">
     <div class="column " >
         <div class="margen2" style="background-color: #FFFFFF">
@@ -86,7 +86,7 @@
             data-img="http://placehold.it/100x100"
             data-trigger="hover"
             data-placement="top">
-            <input align="center" type="image"  src="{{"/storage/arica.png"}}" width="333" height="64" onclick="myFunction(15)" ></input>
+            <input align="center" id="15" type="image"  src="{{"/storage/regiones/arica.png"}}" width="66%" height="66%" onclick="myFunction(15)" ></input>
 
            <!-- <a class="nav-link" href={{'/'}}><h4><span class="textoHeader"><i class="fas fa-home"></i>  Inicio</span></h4></a>-->
         </div>
@@ -96,7 +96,7 @@
             data-img="http://placehold.it/100x100"
             data-trigger="hover"
             data-placement="top">
-            <input align="center" type="image" src="{{"/storage/tarapacá.png"}}"  width="333" height="87" onclick="myFunction(1)"></input>
+            <input align="center" id="1" type="image" src="{{"/storage/regiones/tarapacá.png"}}"  width="66%" height="66%" onclick="myFunction(1)"></input>
         </div>
         <div class="nav-item"
              align="center"
@@ -104,7 +104,7 @@
         data-img="http://placehold.it/100x100"
         data-trigger="hover"
         data-placement="top">
-            <input  align="center" type="image" src="{{"/storage/antofa.png"}}"   width="333" height="174" onclick="myFunction(2)"></input>
+            <input  align="center" id="2" type="image" src="{{"/storage/regiones/antofa.png"}}"   width="66%" height="66%" onclick="myFunction(2)"></input>
         </div>
         <div class="nav-item"
              align="center"
@@ -112,7 +112,7 @@
              data-img="http://placehold.it/100x100"
              data-trigger="hover"
              data-placement="top">
-            <input  align="center" type="image" src="{{"/storage/atacama.png"}}"  width="333" height="134" onclick="myFunction(3)"></input>
+            <input  align="center" id="3" type="image" src="{{"/storage/regiones/atacama.png"}}"  width="66%" height="66%" onclick="myFunction(3)"></input>
 
         </div>
         <div class="nav-item"
@@ -121,7 +121,7 @@
              data-img="http://placehold.it/100x100"
              data-trigger="hover"
              data-placement="top">
-            <input  align="center" type="image" src="{{"/storage/coquimbo.png"}}"  width="333" height="98" onclick="myFunction(4)"></input>
+            <input  align="center" id="4" type="image" src="{{"/storage/regiones/coquimbo.png"}}"  width="66%" height="66%" onclick="myFunction(4)"></input>
 
         </div>
         <div class="nav-item"
@@ -130,7 +130,7 @@
              data-img="http://placehold.it/100x100"
              data-trigger="hover"
              data-placement="top">
-            <input  align="center" type="image" src="{{"/storage/valpo.png"}}"  width="333" height="38" onclick="myFunction(5)"></input>
+            <input  align="center" id="5"type="image" src="{{"/storage/regiones/valpo.png"}}"  width="67%" height="69%" onclick="myFunction(5)"></input>
 
         </div>
         <div class="nav-item"
@@ -139,7 +139,7 @@
              data-img="http://placehold.it/100x100"
              data-trigger="hover"
              data-placement="top">
-            <input  align="center" type="image" src="{{"/storage/rm.png"}}"  width="333" height="45" onclick="myFunction('rm')"></input>
+            <input  align="center" id="rm" type="image" src="{{"/storage/regiones/rm.png"}}"  width="70%" height="70%" onclick="myFunction('rm')"></input>
 
         </div>
         <div class="nav-item"
@@ -148,7 +148,7 @@
              data-img="http://placehold.it/100x100"
              data-trigger="hover"
              data-placement="top">
-            <input  align="center" type="image" src="{{"/storage/ohiggins.png"}}"  width="333" height="33" onclick="myFunction(6)"></input>
+            <input  align="center" id="6" type="image" src="{{"/storage/regiones/ohiggins.png"}}"  width="70%" height="300%" onclick="myFunction(6)"></input>
 
         </div>
         <div class="nav-item"
@@ -157,7 +157,7 @@
              data-img="http://placehold.it/100x100"
              data-trigger="hover"
              data-placement="top">
-            <input  align="center" type="image" src="{{"/storage/maule.png"}}"  width="333" height="56" onclick="myFunction(7)"></input>
+            <input  align="center" id="7" type="image" src="{{"/storage/regiones/maule.png"}}"  width="66%" height="66%" onclick="myFunction(7)"></input>
 
         </div>
         <div class="nav-item"
@@ -166,7 +166,7 @@
              data-img="http://placehold.it/100x100"
              data-trigger="hover"
              data-placement="top">
-            <input  align="center" type="image" src="{{"/storage/biobio.png"}}"  width="333" height="66" onclick="myFunction(8)"></input>
+            <input  align="center" id="8" type="image" src="{{"/storage/regiones/biobio.png"}}"  width="66%" height="66%" onclick="myFunction(8)"></input>
 
         </div>
         <div class="nav-item"
@@ -175,7 +175,7 @@
              data-img="http://placehold.it/100x100"
              data-trigger="hover"
              data-placement="top">
-            <input  align="center" type="image" src="{{"/storage/araucania.png"}}"  width="333" height="56" onclick="myFunction(9)"></input>
+            <input  align="center" id="9" type="image" src="{{"/storage/regiones/araucania.png"}}"  width="66%" height="66%" onclick="myFunction(9)"></input>
 
         </div>
         <div class="nav-item"
@@ -184,7 +184,7 @@
              data-img="http://placehold.it/100x100"
              data-trigger="hover"
              data-placement="top">
-            <input  align="center" type="image" src="{{"/storage/los rios.png"}}"  width="333" height="47" onclick="myFunction(14)"></input>
+            <input  align="center" id="14" type="image" src="{{"/storage/regiones/los rios.png"}}"  width="66%" height="66%" onclick="myFunction(14)"></input>
 
         </div>
         <div class="nav-item"
@@ -193,7 +193,7 @@
              data-img="http://placehold.it/100x100"
              data-trigger="hover"
              data-placement="top">
-            <input  align="center" type="image" src="{{"/storage/los lagos.png"}}"  width="333" height="131" onclick="myFunction(10)"></input>
+            <input  align="center" id="10" type="image" src="{{"/storage/regiones/los lagos.png"}}"  width="66%" height="66%" onclick="myFunction(10)"></input>
 
         </div>
         <div class="nav-item"
@@ -202,7 +202,7 @@
              data-img="http://placehold.it/100x100"
              data-trigger="hover"
              data-placement="top">
-            <input  align="center" type="image" src="{{"/storage/aysen.png"}}"  width="333" height="193" onclick="myFunction(11)"></input>
+            <input  align="center" id="11" type="image" src="{{"/storage/regiones/aysen.png"}}"  width="66%" height="66%" onclick="myFunction(11)"></input>
 
         </div>
         <div class="nav-item"
@@ -211,7 +211,7 @@
              data-img="http://placehold.it/100x100"
              data-trigger="hover"
              data-placement="top">
-            <input  align="center" type="image" src="{{"/storage/magallanes.png"}}"  width="333" height="276" onclick="myFunction(12)"></input>
+            <input  align="center" id="12" type="image" src="{{"/storage/regiones/magallanes.png"}}"  width="66%" height="66%" onclick="myFunction(12)"></input>
 
         </div>
         </div>
@@ -223,64 +223,112 @@
         <div class="margen">
 
         <div id="myDIV15" align="center">
-            <h2>Región de Arica y Parinacota</h2>
-            <p align="left">Puedes encontrarnos en: </p>
+
+            <!--hr style="color: #0056b2;" /-->
+            <h2>{{$texto[0]->nombre}}</h2>
+            <!--hr style="color: #0056b2;" /-->
+            <div align="left">
+                {!!html_entity_decode($texto[0]->texto)!!}
+
+            </div>
         </div>
         <div id="myDIV" align="center">
-            <h2>Región de Tarapacá</h2>
-            <p align="left">Puedes encontrarnos en: </p>
+            <h2>{{$texto[1]->nombre}}</h2>
+            <div align="left">
+                {!!html_entity_decode($texto[1]->texto)!!}
+
+            </div>
         </div>
         <div id="myDIV2" align="center">
-            <h2>Región de Antofagasta</h2>
-            <p align="left">Puedes encontrarnos en: </p>
+            <h2>{{$texto[2]->nombre}}</h2>
+            <div align="left">
+                {!!html_entity_decode($texto[2]->texto)!!}
+
+            </div>
         </div>
         <div id="myDIV3" align="center">
-            <h2>Región de Atacama</h2>
-            <p align="left">Puedes encontrarnos en: </p>
+            <h2>{{$texto[3]->nombre}}</h2>
+            <div align="left">
+                {!!html_entity_decode($texto[3]->texto)!!}
+
+            </div>
         </div>
         <div id="myDIV4" align="center">
-            <h2>Región de Coquimbo</h2>
-            <p align="left">Puedes encontrarnos en: </p>
+            <h2>{{$texto[4]->nombre}}</h2>
+            <div align="left">
+                {!!html_entity_decode($texto[4]->texto)!!}
+
+            </div>
         </div>
         <div id="myDIV5" align="center">
-            <h2>Región de Valparaíso</h2>
-            <p align="left">Puedes encontrarnos en: </p>
+            <h2>{{$texto[5]->nombre}}</h2>
+            <div align="left">
+                {!!html_entity_decode($texto[5]->texto)!!}
+
+            </div>
         </div>
         <div id="myDIVRM" align="center">
-            <h2>Región Metropolitana</h2>
-            <p align="left">Puedes encontrarnos en: </p>
+            <h2>{{$texto[6]->nombre}}</h2>
+            <div align="left">
+                {!!html_entity_decode($texto[6]->texto)!!}
+
+            </div>
         </div>
         <div id="myDIV6" align="center">
-            <h2>Región Libertador Bernardo O'Higgins</h2>
-            <p align="left">Puedes encontrarnos en: </p>
+            <h2>{{$texto[7]->nombre}}</h2>
+            <div align="left">
+                {!!html_entity_decode($texto[7]->texto)!!}
+
+            </div>
         </div>
         <div id="myDIV7" align="center">
-            <h2>Región del Maule</h2>
-            <p align="left">Puedes encontrarnos en: </p>
+            <h2>{{$texto[8]->nombre}}</h2>
+            <div align="left">
+                {!!html_entity_decode($texto[8]->texto)!!}
+
+            </div>
         </div>
         <div id="myDIV8" align="center">
-            <h2>Región de Biobío</h2>
-            <p align="left">Puedes encontrarnos en: </p>
+            <h2>{{$texto[9]->nombre}}</h2>
+            <div align="left">
+                {!!html_entity_decode($texto[9]->texto)!!}
+
+            </div>
         </div>
         <div id="myDIV9" align="center">
-            <h2>Región de la Araucanía</h2>
-            <p align="left">Puedes encontrarnos en: </p>
+            <h2>{{$texto[10]->nombre}}</h2>
+            <div align="left">
+                {!!html_entity_decode($texto[10]->texto)!!}
+
+            </div>
         </div>
         <div id="myDIV14" align="center">
-            <h2>Región de Los Ríos</h2>
-            <p align="left">Puedes encontrarnos en: </p>
+            <h2>{{$texto[11]->nombre}}</h2>
+            <div align="left">
+                {!!html_entity_decode($texto[11]->texto)!!}
+
+            </div>
         </div>
         <div id="myDIV10" align="center">
-            <h2>Región de Los Lagos</h2>
-            <p align="left">Puedes encontrarnos en: </p>
+            <h2>{{$texto[12]->nombre}}</h2>
+            <div align="left">
+                {!!html_entity_decode($texto[12]->texto)!!}
+
+            </div>
         </div>
         <div id="myDIV11" align="center">
-            <h2>Región de Aysén</h2>
-            <p align="left">Puedes encontrarnos en: </p>
+            <h2>{{$texto[13]->nombre}}</h2>
+            <div align="left">
+                {!!html_entity_decode($texto[13]->texto)!!}
+
+            </div>
         </div>
         <div id="myDIV12" align="center">
-            <h2>Región de Magallanes y Antártica Chilena</h2>
-            <p align="left">Puedes encontrarnos en: </p>
+            <h2>{{$texto[14]->nombre}}</h2>
+            <div align="left">
+                {!!html_entity_decode($texto[14]->texto)!!}
+
+            </div>
         </div>
         </div>
     </div>
