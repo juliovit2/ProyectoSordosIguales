@@ -26,9 +26,9 @@ class UserController extends Controller
     }
     public function store(CreateUserRequest $request )
     {
-    $request->createUser();
+        $request->createUser();
 
-    return redirect()->route('users.index');
+        return redirect()->route('users.index');
     }
 
 
