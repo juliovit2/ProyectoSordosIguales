@@ -9,15 +9,12 @@
     <meta http-equiv='refresh' content='0; URL=/usuarios/{{ $id }}/'>
     <?php }else { ?>
 
-    <div class="d-flex justify-content-between align-items-end mb-3">
-        <h1 class="pb-1">Ingresar/Actualizar Alumno</h1>
-    </div>
 
     <form method="POST" action="{{url("ingresarAlumnoCurso")}}">
         {{ csrf_field() }}
         <div class="form-col">
-            @card
-            @slot('header', 'Ingresar/Actualizar Alumno en un Curso')
+            <div class="card">
+                <h4>Ingresar/Actualizar Alumno en un Curso</h4>
             @foreach((array) $nombreCurso as $nombreCurso)
 
                 <div class="col-md-4 mb-3">
@@ -58,10 +55,10 @@
                     <button type="submit" class="btn btn-primary">
                         {{ __('Ingresar/Actualizar Alumno') }}
                     </button>
-                    <a href=" {{route('cursos.index')}} " class="btn btn-link"> Regresar </a>
+                    <a href=" {{route('cursos.index')}} " class="btn btn-primary"> Regresar </a>
                 </div>
         @endforeach
-        @endcard
+            </div>
 
     </div>
     </form>

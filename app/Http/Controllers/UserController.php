@@ -32,8 +32,6 @@ class UserController extends Controller
         return back()->with('error','ERROR: Formato rut incorrecto');
     }
 
-
-
     public function edit(User $user)
     {
         return new UserForm('Usuarios.Edit', $user);

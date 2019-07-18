@@ -111,20 +111,17 @@ class CursoController extends Controller
                     $estadofinal = 'Aprobado';
                 }
                 DB::statement('SET FOREIGN_KEY_CHECKS = 0;');
+                DB::table('tabla_usuario_cursos')->where('usuarioid', $idAlumno)->where('estado', $cursando)->update(['estado' => $estadofinal]);
                 DB::table('tabla_usuario_cursos')->insert(
                     ['asistencia' => 100, 'estado' => $estado, 'usuarioid' => $idAlumno, 'cursoid' => $idCurso]
                 );
-
-                DB::table('tabla_usuario_cursos')->where('usuarioid', $idAlumno)->where('cursoid', $idCurso)->where('estado', $cursando)->update(['estado' => $estadofinal]);
                 return back()->with('exito2','Alumno actualizado correctamente');
-                DB::statement('SET FOREIGN_KEY_CHECKS = 1;');
-                return back()->with('exito','Alumno ingresado correctamente');
             }else{
                 DB::table('tabla_usuario_cursos')->where('usuarioid', $idAlumno)->where('cursoid', $idCurso)->update(['estado' => $estado]);
                 return back()->with('exito2','Alumno actualizado correctamente');
             }
         }else{
-            return back()->with('exito3','Alumno actualizado correctamente');
+            return back()->with('exito3','Alumno agregado correctamente');
         }
     }
 

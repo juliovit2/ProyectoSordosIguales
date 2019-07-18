@@ -234,4 +234,10 @@ class MemoriaController extends Controller
         $memoria->delete();
         return redirect()->route('memorias.index');
     }
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('admin');
+    }
 }

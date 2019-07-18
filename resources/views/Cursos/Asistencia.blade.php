@@ -9,17 +9,13 @@
     <meta http-equiv='refresh' content='0; URL=/usuarios/{{ $id }}/'>
     <?php }else { ?>
 
-    <div class="d-flex justify-content-between align-items-end mb-3">
-        <h1 class="pb-1">Asistencia</h1>
-    </div>
-
     <br>
     <form method="POST" action="{{ route('asistencia') }}">
         {{ csrf_field() }}
 
         <div class="form-col">
-            @card
-            @slot('header', 'Actualizar Asistencia')
+            <div class="card">
+                <h4>Actualizar Asistencia</h4>
 
             <div class="col-md-4 mb-3">
                 <p align="left">RUT del Alumno</p>
@@ -58,7 +54,7 @@
             </div>
 
 
-            @endcard
+            </div>
         </div>
     </form>
 
