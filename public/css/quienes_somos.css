@@ -1,4 +1,4 @@
-#panel_izquierdo{
+#panel_izquierdo-qsomos{
     background: rgb(255,255,197);
     height: auto;
     padding-top: 3%;
@@ -6,7 +6,7 @@
     padding-left: 0;
 }
 
-#button-side{
+#button-side-qsomos{
     margin: 0;
     width: 100%;
     background: #972329;
@@ -15,29 +15,29 @@
     text-align: center;
 }
 
-#button-side:hover{
+#button-side-qsomos:hover{
     background: #971000;
     font-weight: bold;
 }
 
-#separador-sidebar{
+#separador-sidebar-qsomos{
     margin-top: 0.5%;
     margin-bottom: 0.5%;
 }
 
-#title{
+#title-qsomos{
     margin-top: 3%;
     margin-bottom: 3%;
 }
 
-#cuerpo{
+#cuerpo-qsomos{
     background: rgb(255,255,197, 0.5);
     padding-left: 5%;
     padding-right: 5%;
     padding-bottom: 5%;
 }
 
-#video{
+#video-qsomos{
     height: 0;
     overflow: hidden;
     padding-bottom: 56.25%;
@@ -45,7 +45,7 @@
     position: relative;
 }
 
-#video #ytplayer{
+#video-qsomos #ytplayer{
     height: 100%;
     left: 0;
     position: absolute;
@@ -53,10 +53,11 @@
     width: 100%;
 }
 
-#text_main{
+#text_main-qsomos{
     margin-top: 3%;
 }
-.card{
+
+#card{
     margin: 10px;
     height: 250px;
     width: 250px;
