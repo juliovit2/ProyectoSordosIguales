@@ -21,6 +21,7 @@
             </div>
         </div>
         <div class="row">
+            <div class="col col-12">
                 @include('noticia.error')
                 <form id="form" action="" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="_token" value="{!! csrf_token() !!}">
@@ -110,6 +111,7 @@
                         <!-- <input value="Agregar Noticia" class="btn btn-primary" onclick="actualizarContenido()"> -->
                     </div>
                 </form>
+            </div>
             </div>
         </div>
     </div>
