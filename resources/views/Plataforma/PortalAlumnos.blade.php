@@ -102,7 +102,7 @@
                 font-size: 25px;
                 text-align: center;
             }
-            #memorias{
+            #documentos{
                 margin: 8px;
                 position: relative;
                 width: 20%;
@@ -156,6 +156,39 @@
                 font-size: 25px;
                 text-align: center;
             }
+            #mapa{
+                margin: 8px;
+                position: relative;
+                width: 20%;
+                height: 100px;
+                font-weight: bold;
+                background-color: dodgerblue;
+                border-color: dodgerblue;
+                font-size: 25px;
+                text-align: center;
+            }
+            #colaboradores{
+                margin: 8px;
+                position: relative;
+                width: 20%;
+                height: 100px;
+                font-weight: bold;
+                background-color: dodgerblue;
+                border-color: dodgerblue;
+                font-size: 20px;
+                text-align: center;
+            }
+            #donaciones{
+                margin: 8px;
+                position: relative;
+                width: 20%;
+                height: 100px;
+                font-weight: bold;
+                background-color: dodgerblue;
+                border-color: dodgerblue;
+                font-size: 25px;
+                text-align: center;
+            }
             .titulo{
                 margin: 20px;
                 font-size: 60px;
@@ -173,12 +206,16 @@
                         <a href="{{url('/ModificarNotas')}}"><button id="notas" class="btn btn-primary" type="submit">Notas<br><i class="fas fa-wrench"></i></button></a>
                         <a href="{{url('/cursos')}}"><button id="cursos" class="btn btn-primary" type="submit">Cursos<br><i class="fas fa-wrench"></i></button></a>
                         <br>
-                        <a href="{{url('/admin/memorias')}}"><button id="memorias" class="btn btn-primary" type="submit">Memorias<br><i class="fas fa-wrench"></i></button></a>
+                        <a href="{{url('/admin/documentos')}}"><button id="documentos" class="btn btn-primary" type="submit">Documentos<br><i class="fas fa-wrench"></i></button></a>
                         <a href="{{url('/admin/noticias')}}"><button id="noticias" class="btn btn-primary" type="submit">Noticias<br><i class="fas fa-wrench"></i></button></a>
                         <a href="{{url('/admin/voluntarios')}}"><button id="voluntarios" class="btn btn-primary" type="submit">Voluntarios<br><i class="fas fa-wrench"></i></button></a>
                         <br>
                         <a href="{{url('/faq')}}"><button id="faq" class="btn btn-primary" type="submit">FAQ<br><i class="fas fa-wrench"></i></button></a>
                         <a href="{{url('/profesores')}}"><button id="profesores" class="btn btn-primary" type="submit">Profesores<br><i class="fas fa-wrench"></i></button></a>
+                        <a href="{{url('/redesEdit')}}"><button id="mapa" class="btn btn-primary" type="submit">Mapa Fundaciones<br><i class="fas fa-wrench"></i></button></a>
+                        <br>
+                        <a href="{{url('/admin/colaboradores')}}"><button id="colaboradores" class="btn btn-primary" type="submit">Colaboradores y alianzas<br><i class="fas fa-wrench"></i></button></a>
+                        <a href="{{url('/admin/donaciones')}}"><button id="donaciones" class="btn btn-primary" type="submit">Donaciones<br><i class="fas fa-wrench"></i></button></a>
                     </div>
                 </div>
             </div>
