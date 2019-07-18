@@ -12,7 +12,7 @@ class tabla_noticia extends Model
 
     public function getSummary($size) {
             $summary =  strip_tags($this->contenido);
-        if($summary == '\n') {
+            if(strlen ( $summary) <= 1 ) return '';
             $dom = new \DomDocument();
             $dom->loadHtml($summary, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
             $summary = $dom->getElementsByTagName("p")->item(0)->nodeValue;
@@ -28,9 +28,6 @@ class tabla_noticia extends Model
 
             $summary = substr($summary, 0, $size);
             return ($summary . ($isTruncated ? '...' : ''));
-        }else {
-         return '';
-        }
     }
     
 }

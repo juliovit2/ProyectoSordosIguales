@@ -1,6 +1,6 @@
 @extends('layoutGeneral')
 @section('content')
-    <div class="container m-2">
+    <div class="container m-2 mb-5">
         <div class="row">
             <div class="col-12 text-center mt-4 mb-4">
                 <h1>Noticias y Artículos</h1>
