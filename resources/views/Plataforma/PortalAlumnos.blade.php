@@ -70,7 +70,17 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
-
+            .botonAdmin{
+                margin: 8px;
+                position: relative;
+                width: 20%;
+                height: 100px;
+                font-weight: bold;
+                background-color: dodgerblue;
+                border-color: dodgerblue;
+                font-size: 25px;
+                text-align: center;
+            }
             #users{
                 position: relative;
                 width: 20%;
@@ -189,6 +199,17 @@
                 font-size: 25px;
                 text-align: center;
             }
+            #inicio{
+                margin: 8px;
+                position: relative;
+                width: 20%;
+                height: 100px;
+                font-weight: bold;
+                background-color: dodgerblue;
+                border-color: dodgerblue;
+                font-size: 25px;
+                text-align: center;
+            }
             .titulo{
                 margin: 20px;
                 font-size: 60px;
@@ -216,6 +237,7 @@
                         <br>
                         <a href="{{url('/admin/colaboradores')}}"><button id="colaboradores" class="btn btn-primary" type="submit">Colaboradores y alianzas<br><i class="fas fa-wrench"></i></button></a>
                         <a href="{{url('/admin/donaciones')}}"><button id="donaciones" class="btn btn-primary" type="submit">Donaciones<br><i class="fas fa-wrench"></i></button></a>
+                        <a href="{{url('/admin/carrusel')}}"><button id="inicio" class="btn btn-primary" type="submit">Imagenes inicio<br><i class="fas fa-wrench"></i></button></a>
                     </div>
                 </div>
             </div>

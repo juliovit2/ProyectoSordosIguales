@@ -1,4 +1,4 @@
-@extends('layoutGeneral')
+@extends('layout')
 @section('title')Administrar Documentos
 @endsection
 
@@ -15,6 +15,7 @@
     @endif
 @endsection
 @section('content')
+    <br>
     <div class = "container">
         <table class="table table-bordered  table-striped table-hover" id="MyTable">
             <div style="text-align: center" >

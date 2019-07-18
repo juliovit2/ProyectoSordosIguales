@@ -56,8 +56,7 @@
                 </div>
             </li>
             <li class="nav-item"
-                data-toggle="popover" 
-                data-img="http://placehold.it/100x100"
+                data-toggle="popover"
                 data-img="{{ asset('storage/header/noti_señas.gif')}}"
                 data-trigger="hover" 
                 data-placement="top">
