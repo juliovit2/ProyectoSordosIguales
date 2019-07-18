@@ -8,12 +8,6 @@
     <meta http-equiv='refresh' content='0; URL=/usuarios/{{ $id }}/'>
     <?php }else { ?>
     <br>
-    <?php
-    $id = Auth::user()->id;
-    $rol = DB::table('users')->where('id', $id)->value('rol');
-    if($rol == 'Alumno'){?>
-    <meta http-equiv='refresh' content='0; URL=/usuarios/{{ $id }}/'>
-    <?php }else { }?>
     <div class="d-flex justify-content-between align-items-end mb-3">
         <h1 class="pb-1">{{ $title }}</h1>
         <p>
