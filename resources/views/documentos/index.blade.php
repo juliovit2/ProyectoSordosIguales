@@ -17,10 +17,12 @@
 @section('content')
     <div class = "container">
         <table class="table table-bordered  table-striped table-hover" id="MyTable">
-            <h2>
+            <div style="text-align: center" >
+                <h2>
                 Listado de Documentos
-                <a class="btn btn-secondary" href="{{route('documentos.create')}}" role="button"><i class="fas fa-plus"></i></a>
-            </h2>
+                </h2>
+                <a href="{{route('documentos.create')}}" role="button" class="btn btn-primary pull-right" >Agregar nuevo documento <i class="fas fa-plus"></i></a>
+            </div>
             <thead>
             <tr>
                 <th class="text-center">ID</th>
@@ -49,18 +51,18 @@
                                 <div class = "btn-group">
                                     <form action="{{route('documentos.destroy',$item->id)}}" method="POST">
                                         {{csrf_field()}}
-                                        <a class="btn btn-secondary" href = "{{$documentos[$key]['pdf']}}" target="_blank">
+                                        <a class="btn btn-sm btn-primary" href = "{{$documentos[$key]['pdf']}}" target="_blank">
                                             <i class="fas fa-eye"></i>
                                         </a>
-                                        <a class = "btn btn-secondary" title = "Abrir el video del documento" data-toggle="modal" data-video="{{$documentos[$key]['video']}}" data-title="{{$documentos[$key]['titulo']}}" href="#videoModal">
+                                        <a class = "btn btn-sm btn-primary" title = "Abrir el video del documento" data-toggle="modal" data-video="{{$documentos[$key]['video']}}" data-title="{{$documentos[$key]['titulo']}}" href="#videoModal">
                                             <i class="far fa-play-circle"></i>
                                         </a>
-                                        <a class="btn btn-secondary" role="button"href="{{route('documentos.edit',$item->id)}}" >
+                                        <a class="btn btn-sm btn-primary" role="button"href="{{route('documentos.edit',$item->id)}}" >
                                             <i class="fas fa-pencil-alt"></i>
                                         </a>
 
                                         <input type="hidden" name="_method" value="DELETE">
-                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal{{ $item->id }}" ><i class="fas fa-trash-alt"></i></button>
+                                        <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modal{{ $item->id }}" ><i class="fas fa-trash-alt"></i></button>
 
 
 

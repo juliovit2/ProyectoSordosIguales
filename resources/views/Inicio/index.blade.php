@@ -17,14 +17,18 @@
 @section('content')
     <div class = "container">
         <table class="table table-bordered  table-striped table-hover" id="MyTable">
-            <h2>
-                Listado de Documentos
-                <a class="btn btn-secondary" href="{{route('carrusel.create')}}" role="button"><i class="fas fa-plus"></i></a>
-            </h2>
+            <div style="text-align: center" >
+                <h2>
+                    Listado de imagenes de portada
+                </h2>
+                <a href="{{route('carrusel.create')}}" role="button" class="btn btn-primary pull-right" >Agregar nueva imagen <i class="fas fa-plus"></i></a>
+            </div>
             <thead>
             <tr>
                 <th class="text-center">ID</th>
                 <th class="text-center">Imagen</th>
+                <th class="text-center">Fecha de publicación</th>
+                <th class="text-center">Acciones</th>
             </tr>
             </thead>
             <tbody>
@@ -45,12 +49,12 @@
                                 <div class = "btn-group">
                                     <form action="{{route('carrusel.destroy',$item->id)}}" method="POST">
                                         {{csrf_field()}}
-                                        <a class="btn btn-secondary" role="button"href="{{route('carrusel.edit',$item->id)}}" >
+                                        <a class="btn btn-sm btn-primary" role="button"href="{{route('carrusel.edit',$item->id)}}" >
                                             <i class="fas fa-pencil-alt"></i>
                                         </a>
 
                                         <input type="hidden" name="_method" value="DELETE">
-                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal{{ $item->id }}" ><i class="fas fa-trash-alt"></i></button>
+                                        <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modal{{ $item->id }}" ><i class="fas fa-trash-alt"></i></button>
 
 
 

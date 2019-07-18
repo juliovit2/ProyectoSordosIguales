@@ -15,14 +15,13 @@
         @endif
         @endsection
         @section('content')
-        </div>
         <div class = "container">
             <table class="table table-bordered  table-striped table-hover" id="MyTable">
-                <center>
+                <div style="text-align: center;">
                 <h2>Listado de Donaciones
                 </h2>
-                    <a href="{{route('donaciones.create')}}" role="button" class="btn btn-primary pull-right active" >Agregar nuevo registro de donación <i class="fas fa-plus"></i></a>
-               </center>
+                    <a href="{{route('donaciones.create')}}" role="button" class="btn btn-primary pull-right" >Agregar nuevo registro de donación <i class="fas fa-plus"></i></a>
+               </div>
                 <thead>
                 <tr>
                     <th class="text-center">ID</th>
@@ -53,12 +52,12 @@
                             <div class = "btn-group">
                                 <form action="{{route('donaciones.destroy',$item->id)}}" method="POST">
                                     {{csrf_field()}}
-                                    <a class="btn btn-sm btn-primary active" role="button"href="{{route('donaciones.edit',$item->id)}}" >
+                                    <a class="btn btn-sm btn-primary" role="button"href="{{route('donaciones.edit',$item->id)}}" >
                                         <i class="fas fa-pencil-alt"></i>
                                     </a>
 
                                     <input type="hidden" name="_method" value="DELETE">
-                                    <button type="button" class="btn btn-sm btn-danger active" data-toggle="modal" data-target="#modal{{ $item->id }}" ><i class="fas fa-trash-alt"></i></button>
+                                    <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modal{{ $item->id }}" ><i class="fas fa-trash-alt"></i></button>
 
                                     <!-- Modals --->
 
