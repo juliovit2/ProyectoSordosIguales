@@ -45,7 +45,7 @@
                                 {{ method_field('DELETE') }}
                                 <a href="{{ route('users.show', $user) }}" class="btn btn-link"><span class="oi oi-eye"></span></a>
                                 <a href="{{ route('users.edit', $user) }}" class="btn btn-link"><span class="oi oi-pencil"></span></a>
-                                <button type="submit" class="btn btn-link"><span class="oi oi-trash"></span></button>
+                                <button type="submit" class="btn btn-link" onclick="return confirm('¿Está seguro de eliminar al alumno de los registros?')"><span class="oi oi-trash"></span></button>
                             </form>
                         </td>
                     </tr>
@@ -57,7 +57,7 @@
             @endif
             </tbody>
         </table>
-        <a href="/PortalAlumnos" class="btn btn-link"> Regresar </a>
+        <a href="/PortalAlumnos" class="btn btn-primary "> Regresar </a>
     @else
         <p>No hay estudiantes registrados.</p>
     @endif

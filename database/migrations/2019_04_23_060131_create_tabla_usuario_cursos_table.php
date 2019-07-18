@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -19,7 +20,7 @@ class CreateTablaUsuarioCursosTable extends Migration
             $table->enum('estado', ['Aprobado', 'Reprobado', 'Cursando'])->default('Cursando');
             $table->integer('usuarioid')->unsigned()->nullable();
             $table->foreign('usuarioid')->references('id')
-                ->on('tabla_usuarios')->onDelete('cascade');
+                ->on('users')->onDelete('cascade');
             
             $table->integer('cursoid')->unsigned()->nullable();
             $table->foreign('cursoid')->references('id')

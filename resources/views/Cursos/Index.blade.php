@@ -3,6 +3,13 @@
 @section('title', 'Cursos')
 
 @section('content')
+    <br>
+    <?php
+    $id = Auth::user()->id;
+    $rol = DB::table('users')->where('id', $id)->value('rol');
+    if($rol == 'Alumno'){?>
+    <meta http-equiv='refresh' content='0; URL=/usuarios/{{ $id }}/'>
+    <?php }else { ?>
     <div class="d-flex justify-content-between align-items-end mb-3">
         <h1 class="pb-1">{{ $title }}</h1>
         <p>
@@ -36,10 +43,11 @@
                         <form action="{{ route('cursos.destroy', $curso) }}" method="POST">
                             {{ csrf_field() }}
                             {{ method_field('DELETE') }}
-                            <a href="{{ route('cursos.show', $curso) }}" class="btn btn-link"><span class="oi oi-person"></span></a>
-                            <a href="{{ route('cursos.show', $curso) }}" class="btn btn-link"><span class="oi oi-eye"></span></a>
+
+                            <a href = 'agregarAlumno/{{ $curso->id}}'class="btn btn-link"><span class="oi oi-person"></span></a>
+                            <a href = 'visualizarCursos/{{ $curso->id}}'class="btn btn-link"><span class="oi oi-eye"></span></a>
                             <a href="{{ route('cursos.edit', $curso) }}" class="btn btn-link"><span class="oi oi-pencil"></span></a>
-                            <button type="submit" class="btn btn-link"><span class="oi oi-trash"></span></button>
+                            <button type="submit" class="btn btn-link" onclick="return confirm('¿Está seguro de eliminar el curso de los registros?')"><span class="oi oi-trash"></span></button>
                         </form>
                     </td>
                 </tr>
@@ -51,12 +59,13 @@
             @endif
             </tbody>
         </table>
-        <a href="/PortalAlumnos" class="btn btn-link"> Regresar </a>
+        <a href="/PortalAlumnos" class="btn btn-primary"> Regresar </a>
     @else
         <p>No hay cursos registrados de momento.</p>
     @endif
 @endsection
-
+<?php } ?>
 @section('sidebar')
     @parent
 @endsection
+

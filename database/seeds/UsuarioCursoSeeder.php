@@ -48,5 +48,7 @@ class UsuarioCursoSeeder extends Seeder
             'estado' => 'Cursando',
             'asistencia' => '100'
         ]);
+
+
     }
 }

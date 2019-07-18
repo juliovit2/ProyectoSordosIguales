@@ -3,9 +3,15 @@
 @section('title', "Crear curso")
 
 @section('content')
-
-    @card
-    @slot('header', 'Nuevo Curso')
+    <br>
+    <?php
+    $id = Auth::user()->id;
+    $rol = DB::table('users')->where('id', $id)->value('rol');
+    if($rol == 'Alumno'){?>
+    <meta http-equiv='refresh' content='0; URL=/usuarios/{{ $id }}/'>
+    <?php }else { ?>
+    <div class ="card">
+        <h4>Nuevo Curso</h4>
 
     @include('shared._errors')
 
@@ -15,9 +21,10 @@
 
         <div class="form-group mt-4">
             <button class="btn btn-primary" type="submit">Crear curso</button>
-            <a href=" {{route('cursos.index')}} " class="btn btn-link"> Regresar </a>
+            <a href=" {{route('cursos.index')}} " class="btn btn-primary"> Regresar </a>
         </div>
     </form>
 
-    @endcard
+    </div>
+    <?php } ?>
 @endsection

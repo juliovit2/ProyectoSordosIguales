@@ -8,16 +8,25 @@
                class="form-control"
                id="name"
                placeholder="Ingrese nombre del Curso"
-               value="{{ old('name', $curso->nombre) }}" required>
+               value="{{ old('nombre', $curso->nombre) }}" required>
     </div>
 
+    {{--Listado desplegable dinamico--}}
+
+    @php
+        $personas = \App\tabla_persona::all();
+    @endphp
     <div class="col-md-4 mb-3">
         <p align="left">Profesor Encargado</p>
-        <input type="text"
-               name="profesor"
-               class="form-control"
-               id="profesor"
-               placeholder="Ingrese nombre del Profesor"
-               value="{{ old('profesor', $curso->profesor) }}" required>
+        <select name="profesor" id="profesor" class="form-control">
+            <option value="">Seleccione un profesor</option>
+            @foreach($personas as $persona)
+                @if($persona->rol == "Profesor")
+                    <option value="{{ $persona->id }}"{{ old('profesorid', $curso->profesorid) == $persona->id ? 'selected' : '' }}>
+                        {{ $persona->rut . " - " . $persona->nombre }}
+                    </option>
+                @endif
+            @endforeach
+        </select>
     </div>
 </div>

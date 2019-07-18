@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', "Crear usuario")
+@section('title', "Crear Profesor")
 
 @section('content')
     <?php
@@ -8,7 +8,7 @@
     $id = Auth::user()->id;
     $rol = DB::table('users')->where('id', $id)->value('rol');
     if($rol == 'Alumno'){?>
-    <meta http-equiv='refresh' content='0; URL=/usuarios/{{ $id }}/'>
+        <meta http-equiv='refresh' content='0; URL=/usuarios/{{ $id }}/'>
     <?php }else{ ?>
 
     <br>
@@ -20,17 +20,17 @@
     @endif
 
     <div class ="card">
-        <h4>Nuevo Usuario</h4>
+        <h4>Nuevo Profesor</h4>
 
             @include('shared._errors')
 
-            <form method="POST" action="{{url('usuarios') }}">
+            <form method="POST" action="{{url('profesores') }}">
 
-                @include('Usuarios._fields')
+                @include('Profesores._fields')
 
                 <div class="form-group mt-4">
-                    <button class="btn btn-primary" type="submit">Crear usuario</button>
-                    <a href=" {{route('users.index')}} " class="btn btn-primary"> Regresar </a>
+                    <button class="btn btn-primary" type="submit">Crear Profesor</button>
+                    <a href=" {{route('profesores.index')}} " class="btn btn-primary"> Regresar </a>
                 </div>
             </form>
     </div>

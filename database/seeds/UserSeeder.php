@@ -95,6 +95,5 @@ class UserSeeder extends Seeder
             'rol' => 'Alumno',
             'cursando' => true
         ]);
-
     }
 }

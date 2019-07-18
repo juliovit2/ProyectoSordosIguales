@@ -4,22 +4,29 @@
 
 @section('content')
 
-    @card
-    @slot('header', 'Editar Curso')
+    <br>
+    <?php
+    $id = Auth::user()->id;
+    $rol = DB::table('users')->where('id', $id)->value('rol');
+    if($rol == 'Alumno'){?>
+    <meta http-equiv='refresh' content='0; URL=/usuarios/{{ $id }}/'>
+    <?php }else { ?>
+    <div class ="card">
+        <h4>Editar Curso</h4>
 
-    @include('shared._errors')
+        @include('shared._errors')
 
-    <form method="POST" action="{{url("cursos/{$curso->id}")}}">
-        {{method_field('PUT')}}
+        <form method="POST" action="{{url("cursos/{$curso->id}")}}">
+            {{method_field('PUT')}}
 
-        @include('Cursos._fields')
+            @include('Cursos._fields')
 
-        <div class="form-group mt-4">
-            <button class="btn btn-primary" type="submit">Actualizar curso</button>
-            <a href=" {{route('cursos.index')}} " class="btn btn-link"> Regresar </a>
-        </div>
-    </form>
-
-    @endcard
+            <div class="form-group mt-4">
+                <button class="btn btn-primary" type="submit">Actualizar curso</button>
+                <a href=" {{route('cursos.index')}} " class="btn btn-primary"> Regresar </a>
+            </div>
+        </form>
+    </div>
+    <?php } ?>
 
 @endsection

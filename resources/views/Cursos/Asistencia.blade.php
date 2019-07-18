@@ -1,6 +1,7 @@
 @extends('layout')
-@section('title', "Notas")
+@section('title', "Cursos")
 @section('content')
+    <br>
     <?php
     $id = Auth::user()->id;
     $rol = DB::table('users')->where('id', $id)->value('rol');
@@ -9,88 +10,60 @@
     <?php }else { ?>
 
     <br>
-    <form method="POST" action="{{ route('ingresarNotas') }}">
+    <form method="POST" action="{{ route('asistencia') }}">
         {{ csrf_field() }}
 
-    <div class="form-col">
-        <br>
-        <div class ="card">
-                <h4>Ingresar Notas</h4>
+        <div class="form-col">
+            <div class="card">
+                <h4>Actualizar Asistencia</h4>
 
             <div class="col-md-4 mb-3">
-                <p align="left">RUT</p>
+                <p align="left">RUT del Alumno</p>
                 <input type="search"
-                       name="IDalumno"
+                       name="RUTalumno"
                        class="form-control"
-                       id="rut"
+                       id="RUTalumno"
                        placeholder="Ingrese RUT del alumno"
                        required>
             </div>
 
-            {{-- Ingresar Nombre del curso
-
             <div class="col-md-4 mb-3">
                 <p align="left">Nombre del Curso</p>
                 <input type="search"
-                       name="IDcurso"
+                       name="NOMBREcurso"
                        class="form-control"
-                       id="IDcurso"
+                       id="NOMBREcurso"
                        placeholder="Ingrese el Nombre del Curso"
                        required>
             </div>
-            --}}
-
-            @php
-                $cursos = \App\tabla_curso::all();
-            @endphp
-            <div class="col-md-4 mb-3">
-                <p align="left">Nombre del Curso</p>
-                <select name="IDcurso" id="IDcurso" class="form-control">
-                    <option value="">Seleccione un curso</option>
-                    @foreach($cursos as $curso)
-                        <option value="{{ $curso->nombre }}">
-                        {{--<option value="{{ $curso->id }}"{{ old('cursoid', $nota->cursoid) == $curso->id ? 'selected' : '' }}>--}}
-                            {{ $curso->nombre }}
-                        </option>
-                    @endforeach
-                </select>
-            </div>
-
-            {{-- ************************************************************** --}}
 
             <div class="col-md-4 mb-3">
-                <p align="left">Tipo de Evaluación</p>
+                <p align="left">% de Asistencia</p>
                 <input type="search"
-                       name="tipoevaluacion"
+                       name="asistencia"
                        class="form-control"
-                       id="tipoevaluacion"
-                       placeholder="Ingrese el Tipo de Evaluación"
+                       id="asistencia"
                        required>
             </div>
-
-            <div class="col-md-4 mb-3">
-                <p align="left">Nota</p>
-                <input type="search"
-                       name="nota"
-                       class="form-control"
-                       id="nota"
-                       placeholder="Ingrese la Nota del alumno"
-                       required>
-            </div>
-
-
 
             <div class="form-group mt-4">
                 <button type="submit" class="btn btn-primary">
-                    {{ __('Ingresar Nota') }}
+                    {{ __('Ingresar Asistencia') }}
                 </button>
-                <a href=" {{route('ModificarNotas')}} " class="btn btn-primary"> Regresar </a>
+                <a href=" {{route('cursos.index')}} " class="btn btn-link"> Regresar </a>
             </div>
 
 
             </div>
         </div>
     </form>
+
+    @if ($message = Session::get('exito'))
+        <div class="alert alert-danger alert-block">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong>{{ $message }}</strong>
+        </div>
+    @endif
 
     @if ($message = Session::get('error1'))
         <div class="alert alert-danger alert-block">
@@ -113,6 +86,7 @@
         </div>
     @endif
 
+
     @if ($message = Session::get('error4'))
         <div class="alert alert-danger alert-block">
             <button type="button" class="close" data-dismiss="alert">×</button>
@@ -127,13 +101,6 @@
         </div>
     @endif
 
-    @if ($message = Session::get('exito'))
-        <div class="alert alert-success">
-            <button type="button" class="close" data-dismiss="success">×</button>
-            <strong>{{ $message }}</strong>
-        </div>
-    @endif
-
-
-<?php } ?>
+    <?php } ?>
 @endsection
+
