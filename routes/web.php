@@ -11,9 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::resource('/admin/carrusel','HomeController');
+Route::get('/', 'HomeController@interface');
 
 
 
@@ -31,8 +30,8 @@ Route::get('/noticias/delete/{id}', "NoticiaController@destroy");
 Route::post('admin/noticias/create', 'NoticiaController@store');
 Route::post('admin/noticias/edit/{id}', 'NoticiaController@update');
 Route::post('admin/noticias/previsualizar', 'NoticiaController@show_preview');
-Route::get('/noticias', 'NoticiaController@public_index');
-Route::get('/noticias/{id}', 'NoticiaController@show');
+Route::get('/noticias', 'NoticiaPublicController@public_index');
+Route::get('/noticias/{id}', 'NoticiaPublicController@show');
 
 //PORTAL
 Route::get('/PortalAlumnos', function () {
@@ -96,20 +95,21 @@ Route::resource ('/redes','TablaMapaController');
 Route::get('/redesEdit','tablaMapaController@indexEd');
 Route::patch ('/redesEdit','tablaMapaController@update');
 
-// ----------- MODULO (MEMORIAS)-----------
-Route::resource('admin/memorias', 'MemoriaController');
+// ----------- MODULO (Documentos)-----------
+Route::resource('admin/documentos', 'DocumentoController');
+Route::get('documentos', 'DocumentoController@interface')->name('documentos.interface');
 
-Route::get('memorias', 'MemoriaController@interface')->name('memorias.interface');
-
-//Donaciones
+// ----------- MODULO (Convenios y Alianzas)-----------
+Route::resource('admin/colaboradores', 'ColaboradorController');
+// ----------- MODULO (Donaciones)-----------
 Route::resource('admin/donaciones', 'DonacionesController');
-Route::get('Donaciones', 'DonacionesController@interface')->name('Donaciones.interface');
+Route::get('donaciones', 'DonacionesController@interface')->name('Donaciones.interface');
 
+Route::resource('admin/donaciones/index', 'DonacionesController');
 
+// ----------------------
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
 
 
 //RUTAS DE USUARIO

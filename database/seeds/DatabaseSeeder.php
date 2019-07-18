@@ -39,7 +39,8 @@ class DatabaseSeeder extends Seeder
         $this->call(EvaluacionesCursoSeeder::class);
         $this->call(PersonaSeeder::class);
         $this->call(RedesSeeder::class);
-        //$this->call(NoticiaSeeder::class);
+        $this->call(NoticiaSeeder::class);
+
         //$this->call(ImagenesNoticiasSeeder::class);
         // llamar a los seeders correspondientes faltantes
 

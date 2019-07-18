@@ -6,9 +6,22 @@
     <!-- include libraries(jQuery, bootstrap) -->
     <script type="text/javascript" src="{{ URL::asset('js/summernote-es-ES.js') }}"></script>
     <div class="container mt-5 mb-5 containerForm">
+        <div class="modal fade uploading-modal" id="loadingModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content spinnerModal">
+                    <div class="modal-body">
+                        <h1 class="text-center modal-header" style="color: white">Subiendo Contenido</h1>
+                        <div class='row text-center'>
+                            <div class="col col-12 text-center">
+                                <div class="loader"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="row">
-            <div class="col-md">
-
+            <div class="col col-12">
                 @include('noticia.error')
                 <form id="form" action="" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="_token" value="{!! csrf_token() !!}">
@@ -16,6 +29,7 @@
                         <label for="Titulo"><h4>Título</h4></label>
                         <input type="text" id="titulo" name="titulo" class="form-control">
                     </div>
+
 
                     @if ($is_edit)
                     <div id="carousel" class="carousel slide bg-dark" data-ride="carousel" data-interval="4000" width="100%" max-height="460px">
@@ -91,13 +105,57 @@
                             <input id="but" type="button" value="Agregar Noticia" class="btn btn-primary">
                         @endif
 
-                        <input id="but2" type="submit" formaction="/admin/noticias/previsualizar" value="Previsualizar" class="btn btn-primary">
+                        <input id="but2" type="submit" formaction="/admin/noticias/previsualizar" value="Previsualizar" class="btn btn-primary"/>
+                        <p>*Previsualizar no incluye videos</p>
+
                         <!-- <input value="Agregar Noticia" class="btn btn-primary" onclick="actualizarContenido()"> -->
                     </div>
                 </form>
             </div>
+            </div>
         </div>
     </div>
+
+    <style>
+        .uploading-modal {
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .spinnerModal {
+            background: rgba(0,0,0,0);
+            border: 0;
+        }
+
+        .modal-header {
+            bottom: 121%;
+            left: -24%;
+            color: white;
+            position: fixed;
+        }
+
+        .modal-dialog {
+
+            position: fixed;
+            z-index: 1031;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .loader {
+            border: 16px solid #f3f3f3; /* Light grey */
+            border-top: 16px solid #3498db; /* Blue */
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
 
     <!-- La script tag es necesaria para iniciar summernote-->
     <script>
@@ -108,7 +166,7 @@
     }
 
     function isImage(filename) {
-        /*var ext = getExtension(filename);
+        var ext = getExtension(filename);
         switch (ext.toLowerCase()) {
             case 'jpg':
             case 'gif':
@@ -117,13 +175,13 @@
             case 'jpeg':
             case 'svg':
                 return true;
-        }*/
-        return true;
+        }
+        return false;
     }
 
     function isVideo(filename) {
-        
-        /*var ext = getExtension(filename);
+
+        var ext = getExtension(filename);
         switch (ext.toLowerCase()) {
             case 'm4v':
             case 'avi':
@@ -132,10 +190,12 @@
             case 'flv':
             case 'mpeg':
                 return true;
-        }*/
-        return true;
+        }
+        return false;
     }
     $(document).ready(function() {
+        $('#loadingModal').modal({backdrop: 'static', keyboard: false, show: false});
+
         $('#contenido').summernote({
             lang: 'es-ES',
             fontNames:['Source Sans Pro'],
@@ -148,6 +208,19 @@
             ],
             maximumImageFileSize: 10485760
         });
+
+        // $('#contenido').on('summernote.image.upload', function(we, files) {
+        //        //upload image to server and create imgNode...
+        //        //ejemplo de url generada por la funcion asset() de laravel: http://localhost:8000/storage/imagenes/noticias/imagen.png
+        //        console.log("funciona");
+        //         console.log(files);
+        //         var imgNode = document.createElement("img");
+        //         elem.setAttribute("src", "http://localhost:8000/storage/imagenes/noticias/imagen.png");
+        //         $summernote.summernote('insertNode', imgNode);
+        //  });
+
+
+        //En el caso de estar editando una noticia se sube el contenido html en summernote y en la barra de titulo       
         $('#contenido').summernote('fontName', 'Source Sans Pro');
         @isset($data)
             @if ($data['is_edit'])
@@ -192,6 +265,7 @@
             }
 
             $('form#form').submit();
+            $('#loadingModal').modal({backdrop: 'static', keyboard: false, show: true});
 
         });
     });
