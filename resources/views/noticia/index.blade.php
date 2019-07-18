@@ -5,7 +5,7 @@
 
     <div class="card">
         <div class="card-body">
-            <div align="justify" class="col-sm-8">
+            <div align="justify" class="col-sm-12">
                 <p></p>
                 <h2>
                     Listado de noticias

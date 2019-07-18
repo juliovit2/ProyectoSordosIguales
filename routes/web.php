@@ -30,8 +30,8 @@ Route::get('/noticias/delete/{id}', "NoticiaController@destroy");
 Route::post('admin/noticias/create', 'NoticiaController@store');
 Route::post('admin/noticias/edit/{id}', 'NoticiaController@update');
 Route::post('admin/noticias/previsualizar', 'NoticiaController@show_preview');
-Route::get('/noticias', 'NoticiaController@public_index');
-Route::get('/noticias/{id}', 'NoticiaController@show');
+Route::get('/noticias', 'NoticiaPublicController@public_index');
+Route::get('/noticias/{id}', 'NoticiaPublicController@show');
 
 //PORTAL
 Route::get('/PortalAlumnos', function () {

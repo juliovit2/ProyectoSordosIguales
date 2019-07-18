@@ -10,6 +10,7 @@ use App\Http\Requests\NoticiaStoreRequest;
 use Illuminate\Support\Facades\DB;
 use App\Request\TickerFormRequest;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class NoticiaController extends Controller
 {
@@ -18,6 +19,11 @@ class NoticiaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct() {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $noticias = tabla_noticia::orderBy('id','DESC')->paginate();
@@ -61,12 +67,15 @@ class NoticiaController extends Controller
             list(, $data)      = explode(",", $data);
             $data = base64_decode($data);
             $image_name = time().$k.".png";
-            $store_path = "public/imagenes/noticias/editor/";
+            $store_path = storage_path()."/app/public/imagenes/noticias/editor/";
             $resource_path = "imagenes/noticias/editor/";
             $image_full_path = $store_path.$image_name;
+            //$resource_path = asset($store_path);
+            //dd($image_full_path);
             $resource_name = asset('storage/'.$resource_path.$image_name);
             if ($store) {
-                Storage::disk('local')->put($image_full_path, $data);
+                $filename = "public/imagenes/noticias/editor/".$image_name;
+                Storage::disk('local')->put($filename, $data);
             }
             $img->removeAttribute("src");
             $img->setAttribute("src", $resource_name);
@@ -77,12 +86,11 @@ class NoticiaController extends Controller
     }
 
     // remove the BOm marks from the beginning of the summernote html output
-    private function strip_bom($string)
+    private function strip_bom($text)
     {
-        if (substr($string, 0, 3) === "\xEF\xBB\xBF") {
-            $string = substr($string, 3);
-        }
-        return $string;
+        $bom = "&iuml;&raquo;&iquest";
+        $text = str_replace("&iuml;&raquo;&iquest;", '', $text);
+        return $text;
     }
 
     /**
@@ -94,10 +102,9 @@ class NoticiaController extends Controller
      */
     public function store(NoticiaStoreRequest $request)
     {
-        $contenidoHTML = $this->saveEditorImages($request);
+        $contenidoHTML = $this->saveEditorImages($request, true);
         //TODO meterlo en una funcion, elimina los caracteres "BOM" del output del summernote
-        $contenidoHTML = substr($contenidoHTML, 3, strlen($contenidoHTML) - 3);
-
+        $contenidoHTML = $this->strip_bom($contenidoHTML);
         $video_path = null;
         //validar
         if($request->has('video')) {
@@ -106,6 +113,7 @@ class NoticiaController extends Controller
             ]);
             $video_path = $request->file('video')->store('public/videos/noticias');
         }
+
         $noticia = new tabla_noticia(array(
             'titulo' => $request->get('titulo'),
             'contenido' => $contenidoHTML,
@@ -218,9 +226,11 @@ class NoticiaController extends Controller
                 ->update($noticiaEditada);
         }
 
+        info($request);
         DB::table('tabla_noticias')
             ->where('id', $id)
-            ->update(['contenido' => $request->get("contenidoHTML")]);
+            ->update(['contenido' => $request->get("contenidoHTML"),
+                     'titulo' => $request->get("titulo")]);
 
         if($request->has('imagenes')) {
             $this->validate($request, [
@@ -255,8 +265,37 @@ class NoticiaController extends Controller
      */
     public function destroy($id)
     {
+        $video_path = null;
+        $image_paths = null;
+
+        $images = tabla_imagenes_noticia::where('noticiaid', $id)->get();
+        $video_path = DB::table('tabla_noticias')
+                     ->select('video')
+                     ->where('id', $id)
+                     ->get();
+        $images = $images->toArray();
+        $videos = $video_path->toArray();
+
         $noticia_a_eliminar = tabla_noticia::find($id);
         $noticia_a_eliminar->delete();
+
+        // Log::info($image_paths);
+        // Log::info($video_path);
+        $imagenes_noticia = tabla_imagenes_noticia::where('noticiaid',$id)->delete();
+        if ($images != []) {
+            foreach ($images as $image)  {
+                //Storage::disk('local')->delete(storage_path()."/app/public/".$images[0]["imagen"]);
+                unlink(storage_path()."/app/public/".$image["imagen"]);
+            }
+        }
+
+        foreach ($videos as $video)  {
+            //Storage::disk('local')->delete(storage_path()."/app/public/".$images[0]["imagen"]);
+            if ($video->video == "0") {
+                continue;
+            }
+            unlink(storage_path()."/app/public/".$video->video);
+        }
      
         return redirect()->route('noticias.index');
     }
