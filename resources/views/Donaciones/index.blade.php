@@ -53,12 +53,12 @@
                             <div class = "btn-group">
                                 <form action="{{route('donaciones.destroy',$item->id)}}" method="POST">
                                     {{csrf_field()}}
-                                    <a class="btn btn-primary " role="button"href="{{route('donaciones.edit',$item->id)}}" >
+                                    <a class="btn btn-sm btn-primary active" role="button"href="{{route('donaciones.edit',$item->id)}}" >
                                         <i class="fas fa-pencil-alt"></i>
                                     </a>
 
                                     <input type="hidden" name="_method" value="DELETE">
-                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal{{ $item->id }}" ><i class="fas fa-trash-alt"></i></button>
+                                    <button type="button" class="btn btn-sm btn-danger active" data-toggle="modal" data-target="#modal{{ $item->id }}" ><i class="fas fa-trash-alt"></i></button>
 
                                     <!-- Modals --->
 
