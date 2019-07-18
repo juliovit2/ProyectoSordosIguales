@@ -44,7 +44,7 @@
             <div class="form-group">
 
                 <label for="name_donante">Nombre:</label>
-                <input type="text" class="form-control" name="name_donante" placeholder="Ingrese nombre" class="form-control" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+" value={{ $donaciones->name_donante }} />
+                <input type="text" class="form-control" name="name_donante" placeholder="Ingrese nombre" class="form-control" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+" value="{{ old('name_donante', $donaciones->name_donante) }}" />
             </div>
 
                 <!-- Monto -->

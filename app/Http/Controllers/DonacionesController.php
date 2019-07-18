@@ -45,23 +45,18 @@ class DonacionesController extends Controller
     {
         $data = request()->all();
         $this->validate(request(),[
-            'name_donante' => 'string',
+            'name_donante' => 'string| nullable',
             'monto_donacion' => 'required',
             'fecha_donacion' => 'date| required',
         ]);
-        if(Arr::exists($data, 'name_donante')){
-            Donaciones::create([
-                'name_donante' => $data['name_donante'],
-                'monto_donacion' => $data{'monto_donacion'},
-                'fecha_donacion' => $data{'fecha_donacion'},
-            ]);
-        }else{
-            Donaciones::create([
-                'name_donante' => 'Anonimo',
-                'monto_donacion' => $data{'monto_donacion'},
-                'fecha_donacion' => $data{'fecha_donacion'},
-            ]);
-        }
+
+        $nombre = $data['name_donante'] == null ? 'Anónimo' : $data['name_donante'];
+
+        Donaciones::create([
+            'name_donante' => $nombre,
+            'monto_donacion' => $data{'monto_donacion'},
+            'fecha_donacion' => $data{'fecha_donacion'},
+        ]);
 
         return redirect()->route('donaciones.index');
 
