@@ -206,6 +206,19 @@
             ],
             maximumImageFileSize: 10485760
         });
+
+        // $('#contenido').on('summernote.image.upload', function(we, files) {
+        //        //upload image to server and create imgNode...
+        //        //ejemplo de url generada por la funcion asset() de laravel: http://localhost:8000/storage/imagenes/noticias/imagen.png
+        //        console.log("funciona");
+        //         console.log(files);
+        //         var imgNode = document.createElement("img");
+        //         elem.setAttribute("src", "http://localhost:8000/storage/imagenes/noticias/imagen.png");
+        //         $summernote.summernote('insertNode', imgNode);
+        //  });
+
+
+        //En el caso de estar editando una noticia se sube el contenido html en summernote y en la barra de titulo       
         $('#contenido').summernote('fontName', 'Source Sans Pro');
         @isset($data)
             @if ($data['is_edit'])

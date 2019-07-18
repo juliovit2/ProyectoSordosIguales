@@ -20,9 +20,9 @@ class NoticiaController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function __construct() {
-        $this->middleware('auth');
-    }
+    // public function __construct() {
+    //     $this->middleware('auth');
+    // }
 
     public function index()
     {
@@ -67,12 +67,15 @@ class NoticiaController extends Controller
             list(, $data)      = explode(",", $data);
             $data = base64_decode($data);
             $image_name = time().$k.".png";
-            $store_path = "public/imagenes/noticias/editor/";
+            $store_path = storage_path()."/app/public/imagenes/noticias/editor/";
             $resource_path = "imagenes/noticias/editor/";
             $image_full_path = $store_path.$image_name;
+            //$resource_path = asset($store_path);
+            //dd($image_full_path);
             $resource_name = asset('storage/'.$resource_path.$image_name);
             if ($store) {
-                Storage::disk('local')->put($image_full_path, $data);
+                $filename = "public/imagenes/noticias/editor/".$image_name;
+                Storage::disk('local')->put($filename, $data);
             }
             $img->removeAttribute("src");
             $img->setAttribute("src", $resource_name);
@@ -83,12 +86,11 @@ class NoticiaController extends Controller
     }
 
     // remove the BOm marks from the beginning of the summernote html output
-    private function strip_bom($string)
+    private function strip_bom($text)
     {
-        if (substr($string, 0, 3) === "\xEF\xBB\xBF") {
-            $string = substr($string, 3);
-        }
-        return $string;
+        $bom = "&iuml;&raquo;&iquest";
+        $text = str_replace("&iuml;&raquo;&iquest;", '', $text);
+        return $text;
     }
 
     /**
@@ -100,10 +102,9 @@ class NoticiaController extends Controller
      */
     public function store(NoticiaStoreRequest $request)
     {
-        $contenidoHTML = $this->saveEditorImages($request);
+        $contenidoHTML = $this->saveEditorImages($request, true);
         //TODO meterlo en una funcion, elimina los caracteres "BOM" del output del summernote
-        $contenidoHTML = substr($contenidoHTML, 3, strlen($contenidoHTML) - 3);
-
+        $contenidoHTML = $this->strip_bom($contenidoHTML);
         $video_path = null;
         //validar
         if($request->has('video')) {
