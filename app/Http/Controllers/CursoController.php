@@ -6,9 +6,10 @@ use App\Http\Forms\CursoForm;
 use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateCursoRequest;
+use Illuminate\Support\Facades\DB;
 use App\User;
 use Auth;
-use DB;
+
 
 class CursoController extends Controller
 {
@@ -41,20 +42,28 @@ class CursoController extends Controller
         return (new CursoForm('Cursos.Create', new tabla_curso));
     }
 
-    public function edit(tabla_curso $curso)
+    public function edit($id)
     {
-        return new CursoForm('Cursos.Edit', $curso);
+        $curso = tabla_curso::find($id);
+        $data = array(
+            'curso_a_editar' => $curso,
+            "is_edit" => true);
+        return view('Cursos.Edit',compact('curso'));
     }
 
-    public function update(tabla_curso $curso)
+    public function update(Request $request, $id)
     {
-        $data = request()->validate([
-            'name' => 'required',
-        ]);
 
-        $curso->update($data);
+        $curso = array(
+            'nombre' => $request->get('name'),
+            'profesorid' => $request->get('profesor'),
+        );
 
-        return redirect()->route('cursos.show', ['curso' => $curso]);
+        DB::table('tabla_cursos')
+            ->where('id', $id)
+            ->update($curso);
+
+        return $this->index();
     }
 
 

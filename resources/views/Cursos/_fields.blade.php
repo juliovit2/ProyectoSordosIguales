@@ -8,7 +8,7 @@
                class="form-control"
                id="name"
                placeholder="Ingrese nombre del Curso"
-               value="{{ old('name', $curso->nombre) }}" required>
+               value="{{ old('nombre', $curso->nombre) }}" required>
     </div>
 
     {{--Listado desplegable dinamico--}}
@@ -22,7 +22,7 @@
             <option value="">Seleccione un profesor</option>
             @foreach($personas as $persona)
                 @if($persona->rol == "Profesor")
-                    <option value="{{ $persona->id }}"}}>
+                    <option value="{{ $persona->id }}"{{ old('profesorid', $curso->profesorid) == $persona->id ? 'selected' : '' }}>
                         {{ $persona->rut . " - " . $persona->nombre }}
                     </option>
                 @endif
