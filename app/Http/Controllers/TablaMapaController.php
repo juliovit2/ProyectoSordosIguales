@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\tabla_informacion;
 use App\tabla_mapa;
 use Illuminate\Http\Request;
 
@@ -90,10 +91,14 @@ class TablaMapaController extends Controller
      */
     public function update(Request $request)
     {
-        $info =tabla_mapa::find($request->id);
+
+
+        for ($x = 1; $x <= 15; $x++) {
+            $info =tabla_mapa::find($x);
+            $info->texto=$request->texto[$x-1];
+            $info->save();
+        }
         //$info->nombre=$request->nombre;
-        $info->texto=$request->texto;
-        $info->save();
         return redirect('/redes');
     }
 
