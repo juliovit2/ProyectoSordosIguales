@@ -20,7 +20,7 @@
             <table class="table table-bordered  table-striped table-hover" id="MyTable">
                 <center>
                 <h2>Listado de Donaciones
-                    <a class="btn btn-secondary" href="{{route('donaciones.create')}}" role="button"><i class="fas fa-plus"></i></a>
+                    <a class="btn btn-primary pull-right active" href="{{route('donaciones.create')}}" role="button"><i class="fas fa-plus"></i></a>
                 </h2> </center>
                 <thead>
                 <tr>
@@ -52,12 +52,12 @@
                             <div class = "btn-group">
                                 <form action="{{route('donaciones.destroy',$item->id)}}" method="POST">
                                     {{csrf_field()}}
-                                    <a class="btn btn-secondary" role="button"href="{{route('donaciones.edit',$item->id)}}" >
+                                    <a class="btn btn-sm btn-primary active" role="button"href="{{route('donaciones.edit',$item->id)}}" >
                                         <i class="fas fa-pencil-alt"></i>
                                     </a>
 
                                     <input type="hidden" name="_method" value="DELETE">
-                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal{{ $item->id }}" ><i class="fas fa-trash-alt"></i></button>
+                                    <button type="button" class="btn btn-sm btn-danger active" data-toggle="modal" data-target="#modal{{ $item->id }}" ><i class="fas fa-trash-alt"></i></button>
 
                                     <!-- Modals --->
 
