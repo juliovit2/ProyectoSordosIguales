@@ -262,9 +262,14 @@
                                         <p align="left">Tipo de denuncia</p>
                                         <div align="left">
                                             <select id="denunciaId" name="tipoDenuncia">
-                                                <option disabled selected value> -- Seleccione una opcion -- </option>
-                                                <option value="Salud">Salud</option>
+                                                <option disabled selected value=""> -- Seleccione una opcion -- </option>
                                                 <option value="Discriminacion">Discriminacion</option>
+                                                <option value="Salud">Salud</option>
+                                                <option value="Laboral">Laboral</option>
+                                                <option value="Judicial">Educacion</option>
+                                                <option value="Violencia en el pololeo">Violencia en el pololeo</option>
+                                                <option value="Violencia en el intrefamiliar">Violencia en el intrefamiliar</option>
+                                                <option value="Otro">Otro</option>
                                             </select>
                                         </div>
                                     </div>
@@ -546,6 +551,12 @@
                     }
                     break;
                 case 3:
+                    var denun=$('#denunciaId').val();
+                    if(denun==null){
+                        document.getElementById("mensaje").innerHTML="El debe seleccionar el tipo de denuncia";
+                        $("#alert").modal('show');
+                        return false;
+                    }
                     var email=$('#email3').val();
                     if(email==""){
                         document.getElementById("mensaje").innerHTML="El mensaje debe contener su email";
@@ -559,6 +570,7 @@
                         $("#alert").modal('show');
                         return false;
                     }
+
                     break;
                 case 4:
                     var name=$('#name4').val();

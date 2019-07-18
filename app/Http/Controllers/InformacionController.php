@@ -29,6 +29,7 @@ class InformacionController extends Controller
         return view('InfoContacto.informacion');
     }
 
+
     public function enviarCorreo(Request $request){
         if($request->opcion!=2){
             $nombre=$request->name;

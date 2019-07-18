@@ -91,6 +91,9 @@ Route::get('admin/voluntarios/delete/{id}', "VoluntariosController@destroy");
 Route::post('admin/voluntarios/create', 'VoluntariosController@store');
 Route::post('admin/voluntarios/edit/{id}', 'VoluntariosController@update');
 
+Route::resource ('/redes','TablaMapaController');
+Route::get('/redesEdit','tablaMapaController@indexEd');
+Route::patch ('/redesEdit','tablaMapaController@update');
 
 // ----------- MODULO (Documentos)-----------
 Route::resource('admin/documentos', 'DocumentoController');
