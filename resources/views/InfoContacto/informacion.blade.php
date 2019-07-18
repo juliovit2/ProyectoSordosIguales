@@ -3,7 +3,7 @@
     <div class="container" style="padding: 0 !important; margin-left: 0 !important;">
         <div class="row">
 
-            <div id="panel_izquierdo" class="col-3">
+            <div id="panel_izquierdo-qsomos" class="col-3">
                 <nav>
                     <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                         <a id="button-side" class="nav-link" href="#quienessomos" role="tab">Quienes Somos</a>
@@ -19,14 +19,14 @@
                 </nav> 
             </div>
 
-            <div id="cuerpo" class="col-9 shadow" style="width: 100%">
+            <div id="cuerpo-qsomos" class="col-9 shadow" style="width: 100%">
 
                 <section id="quienessomos">
                     <hr style="color: #0056b2;" />
-                    <h1 id="title"> Quienes somos</h1>
+                    <h1 id="title-qsomos"> Quienes somos</h1>
                     <hr style="color: #0056b2;" />
 
-                    <div id="video" class="container">
+                    <div id="video-qsomos" class="container">
                         <iframe id="ytplayer" type="text/html" width="720" height="300"
                                 src="https://www.youtube.com/embed/8AkvNVUXiUw?rel=0&autoplay=1&disablekb=1&fs=0&loop=1&modestbranding=1"
                                 frameborder="0" allowfullscreen></iframe>
@@ -53,7 +53,7 @@
                     <h1 id="title">Vision</h1>
                     <hr style="color: #0056b2;" />
 
-                    <div id="video" class="container">
+                    <div id="video-qsomos" class="container">
                         <iframe id="ytplayer" type="text/html" width="720" height="300"
                                 src="https://www.youtube.com/embed/8AkvNVUXiUw?rel=0&disablekb=1&fs=0&loop=1&modestbranding=1"
                                 frameborder="0" allowfullscreen></iframe>
@@ -81,7 +81,7 @@
                     <h1 id="title"> Objetivo</h1>
                     <hr style="color: #0056b2;" />
 
-                    <div id="video" class="container">
+                    <div id="video-qsomos" class="container">
                         <iframe id="ytplayer" type="text/html" width="720" height="300"
                                 src="https://www.youtube.com/embed/8AkvNVUXiUw?rel=0&disablekb=1&fs=0&loop=1&modestbranding=1"
                                 frameborder="0" allowfullscreen></iframe>
@@ -109,7 +109,7 @@
                     <h1 id="title"> Misión</h1>
                     <hr style="color: #0056b2;" />
 
-                    <div id="video" class="container">
+                    <div id="video-qsomos" class="container">
                         <iframe id="ytplayer" type="text/html" width="720" height="300"
                                 src="https://www.youtube.com/embed/8AkvNVUXiUw?rel=0&disablekb=1&fs=0&loop=1&modestbranding=1"
                                 frameborder="0" allowfullscreen></iframe>
@@ -136,7 +136,7 @@
                     <h1 id="title"> Historia</h1>
                     <hr style="color: #0056b2;" />
 
-                    <div id="video" class="container">
+                    <div id="video-qsomos" class="container">
                         <iframe id="ytplayer" type="text/html" width="720" height="300"
                                 src="https://www.youtube.com/embed/8AkvNVUXiUw?rel=0&disablekb=1&fs=0&loop=1&modestbranding=1"
                                 frameborder="0" allowfullscreen></iframe>
@@ -163,34 +163,34 @@
                     <h1> Directiva</h1>
                     <hr style="color: #0056b2;" />
 
-                    <div class="card-deck">
+                    <div id="card-deck" class="card-deck">
 
-                        <div class="card" style="width: 18rem;">
+                        <div id="card" class="card" style="width: 18rem;">
                             <img src="{{'/storage/Directivos/DIRECTORIO - ALEXI GODOY GONZÁLEZ.gif'}} " class="card-img-top" alt="...">
                             <h5 class="card-title" style="text-align: center">Lorem Yogurt</h5>
                         </div>
 
-                        <div class="card" style="width: 18rem;">
+                        <div id="card" class="card" style="width: 18rem;">
                             <img src="{{'/storage/Directivos/DIRECTORIO - CARLOS SÁNCHEZ CLIFT.gif'}} " class="card-img-top" alt="...">
                             <h5 class="card-title" style="text-align: center">Lorem Yogurt</h5>
                         </div>
 
-                        <div class="card" style="width: 18rem;">
+                        <div id="card" class="card" style="width: 18rem;">
                             <img src="{{'/storage/Directivos/DIRECTORIO - HUGO ÁLVAREZ REINOSO.gif'}} " class="card-img-top" alt="...">
                             <h5 class="card-title" style="text-align: center">Lorem Yogurt</h5>
                         </div>
                     </div>
 
-                    <div class="card-deck">
-                        <div class="card" style="width: 18rem;">
+                    <div id="card-deck" class="card-deck">
+                        <div id="card" class="card" style="width: 18rem;">
                             <img src="{{'/storage/Directivos/EQUIPO - CARLOS QUIROZ QUIROZ.gif'}} " class="card-img-top" alt="...">
                             <h5 class="card-title" style="text-align: center">Lorem Yogurt</h5>
                         </div>
-                        <div class="card" style="width: 18rem;">
+                        <div id="card" class="card" style="width: 18rem;">
                             <img src="{{'/storage/Directivos/Equipo - Fracis Tobar Moreno.gif'}} " class="card-img-top" alt="...">
                             <h5 class="card-title" style="text-align: center">Lorem Yogurt</h5>
                         </div>
-                        <div class="card" style="width: 18rem;">
+                        <div id="card" class="card" style="width: 18rem;">
                             <img src="{{'/storage/Directivos/Equipo -  Lenka Obilinovic Martinez.gif'}} " class="card-img-top" alt="...">
                             <h5 class="card-title" style="text-align: center">Lorem Yogurt</h5>
                         </div>
