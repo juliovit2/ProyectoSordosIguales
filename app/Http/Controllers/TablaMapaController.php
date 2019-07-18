@@ -91,8 +91,6 @@ class TablaMapaController extends Controller
      */
     public function update(Request $request)
     {
-
-
         for ($x = 1; $x <= 15; $x++) {
             $info =tabla_mapa::find($x);
             $info->texto=$request->texto[$x-1];
