@@ -31,11 +31,9 @@
                                 <div class="row align-items-center d-flex justify-content-center" style="height: 50%">
                                     <a class = "redlink" title = "Abrir el archivo PDF del documento" href = "{{$documento['pdf']}}" target="_blank" style="font-size: 50px"><i class="fas fa-download"></i></a>
                                 </div>
-                                @if($documento['video']!='None')
                                 <div class="row align-items-center d-flex justify-content-center" style="height: 50%">
                                     <a class = "redlink" title = "Abrir el video del documento" data-toggle="modal" data-video="{{$documento['video']}}" data-title="{{$documento['titulo']}}" href="#videoModal" style="font-size: 50px"><i class="far fa-play-circle"></i></a>
                                 </div>
-                                @endif
                             </div>
                         </div>
                     </div>

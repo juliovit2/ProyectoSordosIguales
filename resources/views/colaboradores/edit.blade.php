@@ -38,7 +38,7 @@
     <br />
     <h3 class = "text-center">Colaborador actual:</h3>
     <div class ="container d-flex justify-content-center">
-        <a href="{{$colaborador['url']}}" target="_blank"><img class = "img" src="{{$colaborador['logo']}}" style ="height: 150px; padding: 15px;" alt="{{$colaborador['nombre']}}" title="{{$colaborador['nombre']}}"></a>
+        <a href="{{$colaborador['url']}}" target="_blank"><img class = "img" src="{{$colaborador['logo']}}" style ="width:150px;height: 150px; padding: 15px;" alt="{{$colaborador['nombre']}}" title="{{$colaborador['nombre']}}"></a>
     </div>
 
     <br />

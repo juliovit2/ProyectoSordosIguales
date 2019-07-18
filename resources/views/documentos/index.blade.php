@@ -51,20 +51,18 @@
                                 <div class = "btn-group">
                                     <form action="{{route('documentos.destroy',$item->id)}}" method="POST">
                                         {{csrf_field()}}
-                                        <a class="btn btn-sm btn-primary" title = "Visualizar documento" href = "{{$documentos[$key]['pdf']}}" target="_blank">
+                                        <a class="btn btn-sm btn-primary" href = "{{$documentos[$key]['pdf']}}" target="_blank">
                                             <i class="fas fa-eye"></i>
                                         </a>
-                                        @if($documentos[$key]['video']!='None')
                                         <a class = "btn btn-sm btn-primary" title = "Abrir el video del documento" data-toggle="modal" data-video="{{$documentos[$key]['video']}}" data-title="{{$documentos[$key]['titulo']}}" href="#videoModal">
                                             <i class="far fa-play-circle"></i>
                                         </a>
-                                        @endif
-                                        <a class="btn btn-sm btn-primary" title = "Editar documento" role="button"href="{{route('documentos.edit',$item->id)}}" >
+                                        <a class="btn btn-sm btn-primary" role="button"href="{{route('documentos.edit',$item->id)}}" >
                                             <i class="fas fa-pencil-alt"></i>
                                         </a>
 
                                         <input type="hidden" name="_method" value="DELETE">
-                                        <button type="button" class="btn btn-sm btn-danger" title = "Eliminar documento"data-toggle="modal" data-target="#modal{{ $item->id }}" ><i class="fas fa-trash-alt"></i></button>
+                                        <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modal{{ $item->id }}" ><i class="fas fa-trash-alt"></i></button>
 
 
 
