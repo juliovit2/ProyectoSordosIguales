@@ -14,7 +14,7 @@
             <a class = "headerLink" href = "https://www.facebook.com/SordosIguales/"><i class="fab fa-facebook"></i></a>
             <a class = "headerLink" href = "monkey.png"><i class="fab fa-instagram"></i></a>
             <a class = "headerLink" href = "monkey.png"><i class="fab fa-whatsapp"></i></a>
-            <a class = "headerLink" href = "monkey.png"><i class="fas fa-donate"></i>
+            <a class = "headerLink" href = "/donaciones"><i class="fas fa-donate"></i>
             </div>
         </div>
 
@@ -36,17 +36,28 @@
                 data-placement="top">
                 <a class="nav-link" href={{'/'}}><h4><span class="textoHeader"><i class="fas fa-home"></i>  Inicio</span></h4></a>
             </li>
-            <li class="nav-item"
+            <li class="nav-item dropdown"
                 data-toggle="popover" 
-                data-img="{{ asset('storage/header/que_somos.gif')}}"
+                data-img="{{ asset('storage/header/contactenos.gif')}}"
                 data-trigger="hover" 
-                data-placement="top"
-                width="80%"
-            >
-                <a class="nav-link" href={{'/informacion'}}><h4><span class="textoHeader"><i class="fas fa-info-circle"></i> ¿Quienes Somos?</span></h4></a>
+                data-placement="top">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <h4><span class="textoHeader"><i class="fas fa-info-circle"></i> Información</span></h4>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a data-toggle="popover"
+                       data-img="http://placehold.it/100x100"
+                       data-trigger="hover"
+                       class="nav-link dropdown-item" href={{"/documentos"}}><h4><span class="textoHeader"><i class="fas fa-file"></i>  Documentos</span></h4></a>
+                    <a data-toggle="popover"
+                       data-img="http://placehold.it/100x100"
+                       data-trigger="hover"
+                       class="nav-link dropdown-item" href={{"/informacion"}}><h4><span class="textoHeader"><i class="fas fa-question-circle"></i>  ¿Quienes Somos?</span></h4></a>
+                </div>
             </li>
             <li class="nav-item"
                 data-toggle="popover" 
+                data-img="http://placehold.it/100x100"
                 data-img="{{ asset('storage/header/noti_señas.gif')}}"
                 data-trigger="hover" 
                 data-placement="top">
@@ -88,5 +99,4 @@
       placement: 'top',
       content: function () { return '<img src="' + $(this).data('img') + '"  width="100%" />'; }
     });
-
 </script>

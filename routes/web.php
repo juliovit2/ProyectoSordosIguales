@@ -11,9 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::resource('/admin/carrusel','HomeController');
+Route::get('/', 'HomeController@interface');
 
 
 
@@ -93,20 +92,21 @@ Route::post('admin/voluntarios/create', 'VoluntariosController@store');
 Route::post('admin/voluntarios/edit/{id}', 'VoluntariosController@update');
 
 
-// ----------- MODULO (MEMORIAS)-----------
-Route::resource('admin/memorias', 'MemoriaController');
+// ----------- MODULO (Documentos)-----------
+Route::resource('admin/documentos', 'DocumentoController');
+Route::get('documentos', 'DocumentoController@interface')->name('documentos.interface');
 
-Route::get('memorias', 'MemoriaController@interface')->name('memorias.interface');
-
-//Donaciones
+// ----------- MODULO (Convenios y Alianzas)-----------
+Route::resource('admin/colaboradores', 'ColaboradorController');
+// ----------- MODULO (Donaciones)-----------
 Route::resource('admin/donaciones', 'DonacionesController');
-Route::get('Donaciones', 'DonacionesController@interface')->name('Donaciones.interface');
+Route::get('donaciones', 'DonacionesController@interface')->name('Donaciones.interface');
 
+Route::resource('admin/donaciones/index', 'DonacionesController');
 
+// ----------------------
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
 
 
 //RUTAS DE USUARIO

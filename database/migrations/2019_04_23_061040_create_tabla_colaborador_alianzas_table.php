@@ -17,7 +17,7 @@ class CreateTablaColaboradorAlianzasTable extends Migration
             $table->Increments('id');
             $table->string('nombre');
             $table->string('logo');
-            $table->string('tipo');
+            $table->string('url');
             $table->timestamps();
         });
     }
