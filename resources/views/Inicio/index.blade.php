@@ -19,7 +19,7 @@
         <table class="table table-bordered  table-striped table-hover" id="MyTable">
             <div style="text-align: center" >
                 <h2>
-                    Listado de imagenes de portada
+                    Listado de imagenes de carrusel
                 </h2>
                 <a href="{{route('carrusel.create')}}" role="button" class="btn btn-primary pull-right" >Agregar nueva imagen <i class="fas fa-plus"></i></a>
             </div>

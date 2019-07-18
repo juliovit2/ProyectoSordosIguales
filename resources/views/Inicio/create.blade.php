@@ -34,8 +34,9 @@
 
 
     <div class="container containerForm">
-        <form id="formDocumento" autocomplete="off" method="POST" action="{{route('carrusel.store')}} " enctype="multipart/form-data">
+        <form id="formImagen" autocomplete="off" method="POST" action="{{route('carrusel.store')}} " enctype="multipart/form-data">
             {{ csrf_field() }}
+            <h1 class = "text-center">REGISTRAR NUEVA IMAGEN</h1>
             <div class="form-group row">
                 <label for="inputImagen" class="col-sm-2 col-form-label">Imagen</label>
                 <div class="col-sm-3">
@@ -105,26 +106,6 @@
             var errors = {!! json_encode($errors->toArray()) !!};
             if (!Array.isArray(errors)) {
                 $('#errorsModal').modal('show')
-            }
-        })
-        $("#formDocumento").on("submit", function (e) {
-            if (document.getElementById("inputVideo").value){
-                e.preventDefault();//stop submit event
-                var url = document.getElementById("inputVideo").value
-                var idMatch;
-                var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-                var match = url.match(regExp);
-
-                if (match && match[2].length == 11) {
-                    idMatch = match[2];
-                } else {
-                    idMatch ='error';
-                }
-                var self = $(this);//this form
-                var fullEmbed = "https://www.youtube.com/embed/" + idMatch;
-                $("#inputVideo").val(fullEmbed);//change input
-                $("#formDocumento").off("submit");//need form submit event off.
-                self.submit();//submit form
             }
         });
     </script>
