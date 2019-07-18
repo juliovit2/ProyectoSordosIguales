@@ -19,7 +19,6 @@ class NotasController extends Controller
 
         $rut_alumno = request()->IDalumno;
         $rut = DB::table('users')->where('rut', $rut_alumno)->value('rut');
-        //dd($rut);
 
         $nombre_curso = request()->IDcurso;
         $curso = DB::table('tabla_cursos')->where('nombre', $nombre_curso)->value('nombre');

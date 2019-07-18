@@ -18,6 +18,7 @@
             <strong>{{ $message }}</strong>
         </div>
     @endif
+
     <div class ="card">
         <h4>Nuevo Usuario</h4>
 

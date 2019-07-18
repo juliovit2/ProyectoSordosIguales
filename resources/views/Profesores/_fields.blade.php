@@ -41,7 +41,7 @@
                class="form-control"
                id="telefono"
                placeholder="Ingrese teléfono"
-               pattern="[4-9][0-9]{7}"
+               pattern="[3-9][0-9]{7}"
                value="{{ old('telefono', $profesor->telefono) }}" required>
     </div>
 
