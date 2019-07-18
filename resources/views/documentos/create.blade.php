@@ -34,6 +34,8 @@
 
 
     <div class="container containerForm">
+        <h1 class = "text-center">REGISTRAR NUEVO DOCUMENTO</h1>
+        <br>
         <form id="formDocumento" autocomplete="off" method="POST" action="{{route('documentos.store')}} " enctype="multipart/form-data">
             {{ csrf_field() }}
             <div class="form-group row">
@@ -44,18 +46,19 @@
             </div>
 
             <div class="form-group row">
-                <label for="inputVideo" class="col-sm-2 col-form-label">URL de video (Youtube)</label>
-                <div class="col-sm-3">
-                    <input class="form-control" style="background: #EEF2FC;" name="inputVideo" id="inputVideo">
-                </div>
-            </div>
-
-            <div class="form-group row">
                 <label for="inputDocumento" class="col-sm-2 col-form-label">PDF de Documento</label>
                 <div class="col-sm-3">
                     <input type="file" class="form-control file" style="background: #EEF2FC;" name="inputDocumento" id="inputDocumento">
                 </div>
             </div>
+
+            <div class="form-group row">
+                <label for="inputVideo" class="col-sm-2 col-form-label">URL de video (Youtube) (Opcional)</label>
+                <div class="col-sm-3">
+                    <input class="form-control" style="background: #EEF2FC;" name="inputVideo" id="inputVideo">
+                </div>
+            </div>
+
             <div class="form-group row">
                 <label for="inputPortada" class="col-sm-2 col-form-label">Foto de Portada (Opcional) </label>
                 <div class="col-sm-3">

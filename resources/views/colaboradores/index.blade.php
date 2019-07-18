@@ -17,10 +17,12 @@
 @section('content')
     <div class = "container">
         <table class="table table-bordered  table-striped table-hover" id="MyTable">
-            <h2>
-                Listado de colaboradores y alianzas
-                <a class="btn btn-secondary" href="{{route('colaboradores.create')}}" role="button"><i class="fas fa-plus"></i></a>
-            </h2>
+            <div style="text-align: center" >
+                <h2>
+                    Listado de colaboradores y alianzas
+                </h2>
+                <a href="{{route('colaboradores.create')}}" role="button" class="btn btn-primary pull-right" >Agregar nuevo colaborador <i class="fas fa-plus"></i></a>
+            </div>
             <thead>
             <tr>
                 <th class="text-center">ID</th>
@@ -45,16 +47,16 @@
                                 <div class = "btn-group">
                                     <form action="{{route('colaboradores.destroy',$item->id)}}" method="POST">
                                         {{csrf_field()}}
-                                        <a class="btn btn-secondary" title = "Abrir la pagina de este colaborador" href = "//{{$colabs[$key]['url']}}" target="_blank">
-                                            <i class="fas fa-eye"></i>
+                                        <a class="btn btn-sm btn-primary" title = "Abrir la pagina de este colaborador" href = "{{$colabs[$key]['url']}}" target="_blank">
+                                            <i class="fas fa-external-link-alt"></i>
                                         </a>
 
-                                        <a class="btn btn-secondary" role="button"href="{{route('colaboradores.edit',$item->id)}}" >
+                                        <a class="btn btn-sm btn-primary" title = "Editar colaborador" role="button"href="{{route('colaboradores.edit',$item->id)}}" >
                                             <i class="fas fa-pencil-alt"></i>
                                         </a>
 
                                         <input type="hidden" name="_method" value="DELETE">
-                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal{{ $item->id }}" ><i class="fas fa-trash-alt"></i></button>
+                                        <button type="button" title = "Eliminar colaborador" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modal{{ $item->id }}" ><i class="fas fa-trash-alt"></i></button>
 
 
 

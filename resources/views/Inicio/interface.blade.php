@@ -1,4 +1,6 @@
 @extends('layoutGeneral')
+@section('title')Inicio
+@endsection
 
 @section('content')
     <div class="container">

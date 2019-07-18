@@ -34,6 +34,8 @@
 
 
     <div class="container containerForm">
+        <h1 class = "text-center">REGISTRAR NUEVO COLABORADOR</h1>
+        <br>
         <form id="formColab" autocomplete="off" method="POST" action="{{route('colaboradores.store')}} " enctype="multipart/form-data">
             {{ csrf_field() }}
 

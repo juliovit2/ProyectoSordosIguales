@@ -74,18 +74,16 @@
                     <input class="form-control" style="background: #EEF2FC;" name="inputTitulo" id="inputTitulo" value="{{$documento['titulo']}}">
                 </div>
             </div>
-
-            <div class="form-group row">
-                <label for="inputVideo" class="col-sm-2 col-form-label">URL de video (Youtube)</label>
-                <div class="col-sm-3">
-                    <input class="form-control" style="background: #EEF2FC;" name="inputVideo" id="inputVideo" value="{{$documento['video']}}">
-                </div>
-            </div>
-
             <div class="form-group row">
                 <label for="inputDocumento" class="col-sm-2 col-form-label">PDF de Documento</label>
                 <div class="col-sm-3">
                     <input type="file" class="form-control file" style="background: #EEF2FC;" name="inputDocumento" id="inputDocumento">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputVideo" class="col-sm-2 col-form-label">URL de video (Youtube) (Opcional)/label>
+                <div class="col-sm-3">
+                    <input class="form-control" style="background: #EEF2FC;" name="inputVideo" id="inputVideo" value="{{$documento['video']}}">
                 </div>
             </div>
             <div class="form-group row">

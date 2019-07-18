@@ -21,7 +21,7 @@
             <div class="col-md-12 col-12 mt-5">
                 <div style="text-align: center;">
                     @foreach($colabs as $colab)
-                        <a href="{{$colab['url']}}" target="_blank"><img class = "img" src="{{$colab['logo']}}" style ="width:150px;height: 150px; padding: 15px;" alt="{{$colab['nombre']}}" title="{{$colab['nombre']}}"></a>
+                        <a href="{{$colab['url']}}" target="_blank"><img class = "img" src="{{$colab['logo']}}" style ="height: 150px; padding: 15px;" alt="{{$colab['nombre']}}" title="{{$colab['nombre']}}"></a>
                     @endforeach
                 </div>
             </div>
