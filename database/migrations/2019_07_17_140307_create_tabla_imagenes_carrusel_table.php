@@ -15,7 +15,7 @@ class CreateTablaImagenesCarruselTable extends Migration
     {
         Schema::create('tabla_imagenes_carrusels', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('imagen')->nullable();
+            $table->string('imagen');
             $table->timestamps();
         });
     }

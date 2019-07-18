@@ -37,7 +37,7 @@
         <form id="formDocumento" autocomplete="off" method="POST" action="{{route('carrusel.store')}} " enctype="multipart/form-data">
             {{ csrf_field() }}
             <div class="form-group row">
-                <label for="inputImagen" class="col-sm-2 col-form-label">Imagen (Opcional) </label>
+                <label for="inputImagen" class="col-sm-2 col-form-label">Imagen</label>
                 <div class="col-sm-3">
                     <input type="file" class="form-control file" style="background: #EEF2FC;" name="inputImagen" id="inputImagen">
                 </div>

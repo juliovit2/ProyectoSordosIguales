@@ -70,7 +70,7 @@
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        ¿Está seguro que desea eliminar este documento?
+                                                        ¿Está seguro que desea eliminar esta imagen?
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Volver</button>

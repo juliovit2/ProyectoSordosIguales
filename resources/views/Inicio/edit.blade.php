@@ -57,7 +57,7 @@
             {{ csrf_field() }}
             {{ method_field('PUT') }}
             <div class="form-group row">
-                <label for="inputImagen" class="col-sm-2 col-form-label">Foto de Portada (Opcional) </label>
+                <label for="inputImagen" class="col-sm-2 col-form-label">Imagen(Opcional) </label>
                 <div class="col-sm-3">
                     <input type="file" class="form-control file" style="background: #EEF2FC;" name="inputImagen" id="inputImagen">
                 </div>
@@ -86,7 +86,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            ¿Desea cancelar el registro y volver al menú de registros?
+                            ¿Desea cancelar el registro y volver al menú de Imagenes?
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Volver al formulario</button>

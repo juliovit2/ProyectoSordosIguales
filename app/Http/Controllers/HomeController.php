@@ -57,7 +57,7 @@ class HomeController extends Controller
     {
         $data = request()->all();
         $this->validate(request(), [
-            'inputImagen' => 'file|image|mimes:jpeg,png,gif,webp,pdf|max:2048',
+            'inputImagen' => 'file|image|mimes:jpeg,png,gif,webp,pdf|max:2048|required',
         ]);
         $filenameImagen = time() . $data['inputImagen']->getClientOriginalName();
         $fileimagen = $request->file('inputImagen')->storeAs('public/Carrusel',$filenameImagen);

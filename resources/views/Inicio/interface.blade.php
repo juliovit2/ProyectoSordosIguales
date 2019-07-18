@@ -18,7 +18,7 @@
                     <span class="carousel-control-prev-icon"></span>
                 </a>
                 <a class="carousel-control-next" href="#demo" data-slide="next">
-                    <span class="carousel-control-next-icon"></span>
+                    <span class="carousel-control-next-icon" ></span>
                 </a>
 
                 </div>
@@ -57,7 +57,7 @@
                                     <div class="col-8">
                                         <h5 class="text-center text-truncate">{{$noticia->titulo}}</h5>
                                         <div class="col-12">
-                                            <p class="text-justify">{{$noticia->getSummary(120)}}</p>
+                                            <p class="text-justify">{{$noticia->getSummary(115)}}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -95,6 +95,22 @@
             border: 0.20px solid #2980b9;
             height: 135px;
             width: 520px;
+        }
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            background-image: none;
+        }
+        .carousel-control-next-icon:after
+        {
+            content: '>';
+            font-size: 55px;
+            color: grey;
+            margin-left: -1cm;
+        }
+        .carousel-control-prev-icon:after {
+            content: '<';
+            font-size: 55px;
+            color: gray;
         }
 
     </style>
