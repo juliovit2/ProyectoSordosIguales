@@ -44,7 +44,7 @@
                     <td>{{ $user->name }}</td>
                     @php
                         try {
-                            $idcurso = DB::table('tabla_usuario_cursos')->select('cursoid')->where('usuarioid', '=', $user->id)->first()->cursoid;
+                            $idcurso = DB::table('tabla_usuario_cursos')->select('cursoid')->where('usuarioid', '=', $user->id)->where('estado', '=', 'Cursando')->first()->cursoid;
                             $nomCurso = DB::table('tabla_cursos')->select('nombre')->where('id','=',$idcurso)->first()->nombre;
                             $notas = DB::table('tabla_usuario_notas')->where('usuarioid', '=', $user->id)->where('cursoid', '=', $idcurso)->avg('nota')*0.1;
                             $notas = number_format($notas, 1);

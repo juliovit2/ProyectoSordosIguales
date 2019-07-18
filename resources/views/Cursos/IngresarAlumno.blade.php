@@ -56,7 +56,7 @@
 
                 <div class="form-group mt-4">
                     <button type="submit" class="btn btn-primary">
-                        {{ __('Ingresar Alumno') }}
+                        {{ __('Ingresar/Actualizar Alumno') }}
                     </button>
                     <a href=" {{route('cursos.index')}} " class="btn btn-link"> Regresar </a>
                 </div>
