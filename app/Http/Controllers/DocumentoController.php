@@ -39,7 +39,7 @@ class DocumentoController extends Controller
      */
     public function create()
     {
-        return view('documentos/create', compact('yearList'));
+        return view('documentos/create');
     }
 
     /**
