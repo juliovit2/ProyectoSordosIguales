@@ -13,10 +13,11 @@
                         <input type="text" id="titulo" name="pregunta" class="form-control">
                     </div>
 
-                    <div class="form-group mt-3">
+                    <div class="form-group">
                         <label for="respuesta"><h4>Video</h4></label>
-                        <input  id="video" onchange="getId(this.value)" name="video" placeholder="Ingrese link del video" class="form-control" >
+                        <input type="text" id="video2" onchange="getId(this.value)" name="video" placeholder="Ingrese link del video" class="form-control">
                     </div>
+
                     <div class=form-group">
 
                         <a href="#confirmation" class="btn btn-primary" data-toggle="modal">Agregar </a>
@@ -55,7 +56,7 @@
         var match = String(url).match(regExp);
         debugger;
         if (match && match[2].length == 11) {
-            document.getElementById("video").value=match[2];
+            document.getElementById("video2").value=match[2];
         } else {
             return 'error';
         }

@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\tabla_colaborador_alianza;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Blade;
 USE Illuminate\Support\Facades\Schema;
@@ -28,5 +29,7 @@ class AppServiceProvider extends ServiceProvider
 
         Blade::component('shared._card', 'card');
         Schema::defaultStringLength(191);
+        $colabs = tabla_colaborador_alianza::get();
+        view()->share('colabs', $colabs);
     }
 }
