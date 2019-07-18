@@ -26,6 +26,11 @@
                 font-size: 3.5rem;
             }
         }
+
+        .combobox{
+            width: 50%;
+            margin-bottom: 2%;
+        }
         .card{
             border-radius:20px;
             border:2px solid #972329;
