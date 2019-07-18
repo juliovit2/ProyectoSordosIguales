@@ -10,6 +10,9 @@ body {
 a.headerLink:link{
   color: #2980b9;
 }
+a.headerLink:visited{
+    color: #2980b9;
+}
 a.headerLink:hover{
   color: #82ccdd;
 }

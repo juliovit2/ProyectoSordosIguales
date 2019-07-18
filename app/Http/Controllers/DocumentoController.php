@@ -54,10 +54,10 @@ class DocumentoController extends Controller
         $data = request()->all();
         $this->validate(request(), [
             'inputTitulo' => 'required',
-            'inputVideo' => 'required',
             'inputPortada' => 'file|image|mimes:jpeg,png,gif,webp,pdf|max:2048',
             'inputDocumento' => 'required|file|mimes:pdf',
         ]);
+        $video = $data['inputVideo'] == null?'None':$data['inputVideo'];
         $filenameDocumento = time() . $data['inputDocumento']->getClientOriginalName();
         $fileDocumento = $request->file('inputDocumento')->storeAs('public/Documentos', $filenameDocumento);
         $documentoURL = \Storage::url($fileDocumento);
@@ -69,14 +69,14 @@ class DocumentoController extends Controller
 
             Documento::create([
                 'titulo' => $data['inputTitulo'],
-                'video' => $data{'inputVideo'},
+                'video' => $video,
                 'pdf' => $documentoURL,
                 'portada' => $portadaUrl
             ]);
         } else {
             Documento::create([
                 'titulo' => $data['inputTitulo'],
-                'video' => $data['inputVideo'],
+                'video' => $video,
                 'pdf' => $documentoURL,
             ]);
         }
@@ -120,13 +120,12 @@ class DocumentoController extends Controller
         $data = request()->all();
         $this->validate(request(), [
             'inputTitulo' => 'required',
-            'inputVideo' => 'required',
             'inputPortada' => 'file|image|mimes:jpeg,png,gif,webp,pdf|max:2048',
             'inputDocumento' => 'file|mimes:pdf|max:25600',
         ]);
 
         $documento = Documento::findOrfail($id);
-
+        $video = $data['inputVideo'] == null?'None':$data['inputVideo'];
         $newPortada = $documento->portada;
         $newDocumento = $documento->pdf;
 
@@ -164,7 +163,7 @@ class DocumentoController extends Controller
             'titulo' => $data['inputTitulo'],
             'pdf' => $newDocumento,
             'portada' => $newPortada,
-            'video' => $data['inputVideo'],
+            'video' => $video,
         ]);
 
         return redirect()->route('documentos.index');
