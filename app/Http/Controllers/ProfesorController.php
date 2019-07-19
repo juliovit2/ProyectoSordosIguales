@@ -115,11 +115,12 @@ class ProfesorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    function destroy(User $user){
+    public function destroy($id)
+    {
+        $profesor = tabla_persona::find($id);
+        $profesor->delete();
 
-        $user->delete();
-
-        return redirect()->route('profesores.index');
+        return $this->index();
     }
 
     public function valida_rut($rut)

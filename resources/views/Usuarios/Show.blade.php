@@ -96,6 +96,7 @@
                              $nomCurso = DB::table('tabla_cursos')->select('nombre')->where('id' ,'=', $id->cursoid)->first()->nombre;
                              $asistencia = DB::table('tabla_usuario_cursos')->select('asistencia')->where('usuarioid', '=', $user->id)->where('cursoid' ,'=', $id->cursoid)->first()->asistencia;
                              $notas =  DB::table('tabla_usuario_notas')->where('usuarioid', '=', $user->id)->where('cursoid' ,'=', $id->cursoid)->avg('nota')*0.1;
+                             $notas = number_format($notas, 1);
                              $estado = DB::table('tabla_usuario_cursos')->select('estado')->where('usuarioid', '=', $user->id)->where('cursoid' ,'=', $id->cursoid)->first()->estado;
                              $Historicos[$i]['nomCurso'] = $nomCurso;
                              $Historicos[$i]['asistencia'] = $asistencia;
