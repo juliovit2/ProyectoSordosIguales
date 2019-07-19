@@ -11,8 +11,6 @@
 |
 */
 
-Route::resource('/admin/carrusel','HomeController');
-Route::get('/', 'HomeController@interface');
 
 
 
@@ -113,17 +111,20 @@ Route::patch ('/redesEdit','tablaMapaController@update');
 
 // ----------- MODULO (Documentos)-----------
 Route::resource('admin/documentos', 'DocumentoController');
-Route::get('documentos', 'DocumentoController@interface')->name('documentos.interface');
+Route::get('documentos', 'DocumentoPublicController@interface')->name('documentos.interface');
 
 // ----------- MODULO (Convenios y Alianzas)-----------
 Route::resource('admin/colaboradores', 'ColaboradorController');
 // ----------- MODULO (Donaciones)-----------
 Route::resource('admin/donaciones', 'DonacionesController');
-Route::get('donaciones', 'DonacionesController@interface')->name('Donaciones.interface');
+Route::get('donaciones', 'DonacionesPublicController@interface')->name('Donaciones.interface');
 
 Route::resource('admin/donaciones/index', 'DonacionesController');
 
-// ----------------------
+// ----------- MODULO (Carrusel inicio)-----------
+Route::resource('/admin/carrusel','HomeController');
+Route::get('/', 'HomePublicController@interface');
+
 
 Auth::routes();
 

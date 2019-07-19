@@ -1,19 +1,40 @@
-@extends('layoutGeneral')
+@extends('layout')
 
 @section('pre-body')
     @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
+        <!-- Errores de Validacion Modal -->
+        <div class="modal fade" id="errorsModal" aria-label="Errores" tabindex="-1" role="dialog"  aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content" >
+                    <div class="modal-header"style="background-color: #FFAAAA">
+                        <h5 class="modal-title"><i class="fas fa-exclamation-triangle"></i> Por favor corregir los siguientes errores:</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <ul>
+                            @foreach($errors->all() as $error)
+                                <li>{{$error}}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary formButton" data-dismiss="modal">Entendido</button>
+                    </div>
+                </div>
+            </div>
         </div>
     @endif
 @endsection
 
 @section('content')
-    <main role="main" class="container">
+    <?php
+    $id = Auth::user()->id;
+    $rol = DB::table('users')->where('id', $id)->value('rol');
+    if($rol == 'Alumno'){?>
+    <meta http-equiv='refresh' content='0; URL=/usuarios/{{ $id }}/'>
+    <?php }else { ?>
             <div class ="container p-5">
                 <div class = "container containerForm">
                     <h1 class = "text-center">REGISTRAR NUEVA DONACIÓN</h1>
@@ -116,18 +137,14 @@
 
 
             </div>
-
-
-        </div>
-        </div>
-        </div>
-
-        </div>
-
-
-
-
-    </main><!-- /.container -->
+    <script>
+        $(document).ready(function() {
+            var errors = {!! json_encode($errors->toArray()) !!};
+            if (!Array.isArray(errors)) {
+                $('#errorsModal').modal('show')
+            }
+        });
+    </script>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -136,4 +153,5 @@
     <script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
     <script src="../../../../assets/js/vendor/popper.min.js"></script>
     <script src="../../../../dist/js/bootstrap.min.js"></script>
+    <?php } ?>
 @endsection

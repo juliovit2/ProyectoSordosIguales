@@ -1,4 +1,4 @@
-@extends('layoutGeneral')
+@extends('layout')
 @section('title')Administrar Donaciones
 @endsection
 
@@ -31,6 +31,13 @@
     @endif
 @endsection
 @section('content')
+    <?php
+    $id = Auth::user()->id;
+    $rol = DB::table('users')->where('id', $id)->value('rol');
+    if($rol == 'Alumno'){?>
+    <meta http-equiv='refresh' content='0; URL=/usuarios/{{ $id }}/'>
+    <?php }else { ?>
+    <br>
     <h1 class = "text-center">Editar Registro</h1>
     <div class="container containerForm">
         <h3> Elija uno o más atributos a modificar</h3>
@@ -73,12 +80,12 @@
             <div class="form-group row">
                 <div class="col-sm-3">
                     <span class="border">
-                        <button type="button" class="btn btn-secondary"  data-toggle="modal" data-target="#confirmCancelModal"  role="button">Cancelar</button>
+                        <button type="button" class="btn btn-secondary formButton"  data-toggle="modal" data-target="#confirmCancelModal"  role="button">Cancelar</button>
                     </span>
                 </div>
                 <div class="col-sm-2">
                     <span class="border">
-                      <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#confirmSubmitModal" >Confirmar</button>
+                      <button type="button" class="btn btn-secondary formButton" data-toggle="modal" data-target="#confirmSubmitModal" >Confirmar</button>
                     </span>
                 </div>
             </div>
@@ -138,4 +145,5 @@
             }
         });
     </script>
+    <?php } ?>
 @endsection

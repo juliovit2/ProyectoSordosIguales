@@ -14,10 +14,6 @@ class DonacionesController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function interface()
-    {
-        return view('Donaciones/interface');//
-    }
 
     public function index()
     {
@@ -121,5 +117,10 @@ class DonacionesController extends Controller
         $donaciones = Donaciones::get()->find($id);
         $donaciones->delete();
         return redirect()->route('donaciones.index');
+    }
+
+    public function __construct()
+    {
+        $this->middleware('auth');
     }
 }

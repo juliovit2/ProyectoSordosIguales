@@ -1,5 +1,5 @@
-@extends('layoutGeneral')
-@section('title')Administrar Documentos
+@extends('layout')
+@section('title')Administrar Imagenes
 @endsection
 
 
@@ -31,7 +31,13 @@
     @endif
 @endsection
 @section('content')
-
+    <?php
+    $id = Auth::user()->id;
+    $rol = DB::table('users')->where('id', $id)->value('rol');
+    if($rol == 'Alumno'){?>
+    <meta http-equiv='refresh' content='0; URL=/usuarios/{{ $id }}/'>
+    <?php }else { ?>
+    <br>
     <h1 class = "text-center">Editar Imagen</h1>
     <br />
     <br />
@@ -146,5 +152,5 @@
             }
         });
     </script>
-
+    <?php } ?>
 @endsection
