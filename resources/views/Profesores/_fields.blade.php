@@ -31,6 +31,7 @@
                class="form-control"
                id="correo"
                placeholder="Ingrese correo"
+               pattern="([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})"
                value="{{ old('correo', $profesor->correo) }}" required>
     </div>
 
