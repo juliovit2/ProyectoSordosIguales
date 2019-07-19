@@ -16,7 +16,7 @@ class PersonaSeeder extends Seeder
             'rut' => '168741014',
             'correo' => 'glenshooo@gmail.com',
             'nombre' => 'Glenn Gomez',
-            'telefono' => '786749',
+            'telefono' => '78674987',
             'rol' => 'Profesor',
             'certificado' => 'Esta persona se encuentra certificada para impartir clases de todo tipo debido a su vasta experiencia'
         ]);
@@ -25,7 +25,7 @@ class PersonaSeeder extends Seeder
             'rut' => '183116150',
             'correo' => 'barbs@hamsterlover.com',
             'nombre' => 'Bárbara Hormazábal',
-            'telefono' => '923187',
+            'telefono' => '92318787',
             'rol' => 'Profesor',
             'certificado' => 'Esta persona se encuentra certificada para desenvolverse como interprete'
         ]);
@@ -34,7 +34,7 @@ class PersonaSeeder extends Seeder
             'rut' => '192046688',
             'correo' => 'juanq@gmail.com',
             'nombre' => 'Juan Quispe',
-            'telefono' => '873521',
+            'telefono' => '87352100',
             'rol' => 'Profesor'
         ]);
     }
