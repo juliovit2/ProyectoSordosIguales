@@ -57,6 +57,7 @@
                class="form-control"
                id="email"
                placeholder="Ingrese correo - Ej: correo@ejemplo.cl"
+               pattern="([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})"
                value="{{ old('email', $user->email) }}" required>
     </div>
 
@@ -67,6 +68,7 @@
                class="form-control"
                id="telefono"
                placeholder="Ingrese teléfono - Ej: 87654321"
+               pattern="[3-9][0-9]{7}"
                value="{{ old('telefono', $user->telefono) }}" required>
     </div>
 
