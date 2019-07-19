@@ -127,8 +127,11 @@
                 @endfor
                 </tbody>
             </table>
-            <a href=" {{route('users.index')}} " class="btn btn-primary"> Regresar </a>
-
+            <?php
+                if($rol == 'Administrador'){
+            ?>
+                <a href=" {{route('users.index')}} " class="btn btn-primary"> Regresar </a>
+            <?php } ?>
         </div>
     <?php } ?>
 

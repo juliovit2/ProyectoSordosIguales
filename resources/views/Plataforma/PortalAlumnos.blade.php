@@ -145,7 +145,6 @@
                 text-align: center;
             }
             #faq{
-                margin: 8px;
                 position: relative;
                 width: 20%;
                 height: 100px;
@@ -167,7 +166,6 @@
                 text-align: center;
             }
             #mapa{
-                margin: 8px;
                 position: relative;
                 width: 20%;
                 height: 100px;
@@ -189,7 +187,6 @@
                 text-align: center;
             }
             #donaciones{
-                margin: 8px;
                 position: relative;
                 width: 20%;
                 height: 100px;

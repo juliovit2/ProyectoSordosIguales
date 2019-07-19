@@ -3,7 +3,12 @@
 @section('title', 'Profesores')
 
 @section('content')
-
+    <?php
+    $id = Auth::user()->id;
+    $rol = DB::table('users')->where('id', $id)->value('rol');
+    if($rol == 'Alumno'){?>
+    <meta http-equiv='refresh' content='0; URL=/usuarios/{{ $id }}/'>
+    <?php }else{ ?>
     <br>
     <div class="d-flex justify-content-between align-items-end mb-3">
         <h1 class="pb-1">{{ $title }}</h1>
@@ -58,6 +63,7 @@
     @else
         <p>No hay profesores registrados.</p>
     @endif
+    <?php } ?>
 @endsection
 
 @section('sidebar')

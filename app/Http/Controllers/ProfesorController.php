@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\tabla_persona;
 use Illuminate\Support\Facades\DB;
+use App\User;
 
 class ProfesorController extends Controller
 {
@@ -37,18 +38,22 @@ class ProfesorController extends Controller
             'rut' => 'required',
             'correo' => 'required',
         ]);
+        if($this->valida_rut($request->rut)) {
+            $profesor = new tabla_persona(array(
+                'nombre' => $request->get('nombre'),
+                'telefono' => $request->get('telefono'),
+                'rut' => $request->get('rut'),
+                'correo' => $request->get('correo'),
+                'rol' => 'Profesor'
+            ));
 
-        $profesor = new tabla_persona(array(
-            'nombre' => $request->get('nombre'),
-            'telefono' => $request->get('telefono'),
-            'rut' => $request->get('rut'),
-            'correo' => $request->get('correo'),
-            'rol' => 'Profesor'
-        ));
+            $profesor->save();
 
-        $profesor->save();
-
-        return $this->index();
+            return $this->index();
+        }
+        else{
+            return back()->with('error','ERROR: Formato rut incorrecto');
+        }
     }
 
     /**
@@ -115,5 +120,37 @@ class ProfesorController extends Controller
         $user->delete();
 
         return redirect()->route('profesores.index');
+    }
+
+    public function valida_rut($rut)
+    {
+        if (!preg_match("/^[0-9.]+[-]?+[0-9kK]{1}/", $rut)) {
+            return false;
+        }
+        $rut = preg_replace('/[\.\-]/i', '', $rut);
+        $dv = substr($rut, -1);
+        $numero = substr($rut, 0, strlen($rut) - 1);
+        $i = 2;
+        $suma = 0;
+        foreach (array_reverse(str_split($numero)) as $v) {
+            if ($i == 8)
+                $i = 2;
+            $suma += $v * $i;
+            ++$i;
+        }
+        $dvr = 11 - ($suma % 11);
+        if ($dvr == 11)
+            $dvr = 0;
+        if ($dvr == 10)
+            $dvr = 'K';
+        if ($dvr == strtoupper($dv))
+            return true;
+        else
+            return false;
+    }
+
+    public function __construct()
+    {
+        $this->middleware('auth');
     }
 }

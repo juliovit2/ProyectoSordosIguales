@@ -11,7 +11,47 @@
     <br>
     <form method="POST" action="{{ route('ingresarNotas') }}">
         {{ csrf_field() }}
+        @if ($message = Session::get('error1'))
+            <div class="alert alert-danger alert-block">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>{{ $message }}</strong>
+            </div>
+        @endif
 
+        @if ($message = Session::get('error2'))
+            <div class="alert alert-danger alert-block">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>{{ $message }}</strong>
+            </div>
+        @endif
+
+        @if ($message = Session::get('error3'))
+            <div class="alert alert-danger alert-block">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>{{ $message }}</strong>
+            </div>
+        @endif
+
+        @if ($message = Session::get('error4'))
+            <div class="alert alert-danger alert-block">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>{{ $message }}</strong>
+            </div>
+        @endif
+
+        @if ($message = Session::get('error5'))
+            <div class="alert alert-danger alert-block">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>{{ $message }}</strong>
+            </div>
+        @endif
+
+        @if ($message = Session::get('exito'))
+            <div class="alert alert-success">
+                <button type="button" class="close" data-dismiss="success">×</button>
+                <strong>{{ $message }}</strong>
+            </div>
+        @endif
     <div class="form-col">
         <br>
         <div class ="card">
@@ -91,48 +131,6 @@
             </div>
         </div>
     </form>
-
-    @if ($message = Session::get('error1'))
-        <div class="alert alert-danger alert-block">
-            <button type="button" class="close" data-dismiss="alert">×</button>
-            <strong>{{ $message }}</strong>
-        </div>
-    @endif
-
-    @if ($message = Session::get('error2'))
-        <div class="alert alert-danger alert-block">
-            <button type="button" class="close" data-dismiss="alert">×</button>
-            <strong>{{ $message }}</strong>
-        </div>
-    @endif
-
-    @if ($message = Session::get('error3'))
-        <div class="alert alert-danger alert-block">
-            <button type="button" class="close" data-dismiss="alert">×</button>
-            <strong>{{ $message }}</strong>
-        </div>
-    @endif
-
-    @if ($message = Session::get('error4'))
-        <div class="alert alert-danger alert-block">
-            <button type="button" class="close" data-dismiss="alert">×</button>
-            <strong>{{ $message }}</strong>
-        </div>
-    @endif
-
-    @if ($message = Session::get('error5'))
-        <div class="alert alert-danger alert-block">
-            <button type="button" class="close" data-dismiss="alert">×</button>
-            <strong>{{ $message }}</strong>
-        </div>
-    @endif
-
-    @if ($message = Session::get('exito'))
-        <div class="alert alert-success">
-            <button type="button" class="close" data-dismiss="success">×</button>
-            <strong>{{ $message }}</strong>
-        </div>
-    @endif
 
 
 <?php } ?>
