@@ -104,17 +104,21 @@ class CursoController extends Controller
             $actualizarEstado = DB::select('select estado from tabla_usuario_cursos where usuarioid = :idAlumno and cursoid = :idCurso',
                 ['idAlumno' => $idAlumno, 'idCurso' => $idCurso]);
             if(empty($actualizarEstado)){//ingresar nuevo curso
-                $notas = DB::table('tabla_usuario_notas')->where('usuarioid', '=', $idAlumno)->where('cursoid', '=', $idCurso)->avg('nota');
-                if($notas < 40){
-                    $estadofinal = 'Reprobado';
-                }else{
-                    $estadofinal = 'Aprobado';
+                $idCursoActual = DB::table('tabla_usuario_cursos')->where('usuarioid', $idAlumno)->where('estado', $cursando)->value('cursoid');
+                if(!empty($idCursoActual)){
+                    $notas = DB::table('tabla_usuario_notas')->where('usuarioid', '=', $idAlumno)->where('cursoid', '=', $idCursoActual)->avg('nota');
+                    if($notas < 40){
+                        $estadofinal = 'Reprobado';
+                    }else{
+                        $estadofinal = 'Aprobado';
+                    }
+                    DB::table('tabla_usuario_cursos')->where('usuarioid', $idAlumno)->where('estado', $cursando)->update(['estado' => $estadofinal]);
                 }
                 DB::statement('SET FOREIGN_KEY_CHECKS = 0;');
-                DB::table('tabla_usuario_cursos')->where('usuarioid', $idAlumno)->where('estado', $cursando)->update(['estado' => $estadofinal]);
                 DB::table('tabla_usuario_cursos')->insert(
                     ['asistencia' => 100, 'estado' => $estado, 'usuarioid' => $idAlumno, 'cursoid' => $idCurso]
                 );
+                DB::statement('SET FOREIGN_KEY_CHECKS = 1;');
                 return back()->with('exito2','Alumno actualizado correctamente');
             }else{
                 DB::table('tabla_usuario_cursos')->where('usuarioid', $idAlumno)->where('cursoid', $idCurso)->update(['estado' => $estado]);
