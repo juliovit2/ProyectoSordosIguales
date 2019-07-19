@@ -86,8 +86,8 @@
                 width: 20%;
                 height: 100px;
                 font-weight: bold;
-                background-color: violet;
-                border-color: violet;
+                background-color: firebrick;
+                border-color: firebrick;
                 font-size: 25px;
                 text-align: center;
             }
@@ -97,12 +97,23 @@
                 width: 20%;
                 height: 100px;
                 font-weight: bold;
-                background-color: green;
-                border-color: green;
+                background-color: #c9d0e1;
+                border-color: #c9d0e1;
                 font-size: 25px;
                 text-align: center;
             }
             #cursos{
+                position: relative;
+                width: 20%;
+                height: 100px;
+                font-weight: bold;
+                background-color: darkblue;
+                border-color: darkblue;
+                font-size: 25px;
+                text-align: center;
+            }
+            #documentos{
+                margin: 8px;
                 position: relative;
                 width: 20%;
                 height: 100px;
@@ -112,7 +123,17 @@
                 font-size: 25px;
                 text-align: center;
             }
-            #documentos{
+            #noticias{
+                position: relative;
+                width: 20%;
+                height: 100px;
+                font-weight: bold;
+                background-color: #c9d0e1;
+                border-color: #c9d0e1;
+                font-size: 25px;
+                text-align: center;
+            }
+            #voluntarios{
                 margin: 8px;
                 position: relative;
                 width: 20%;
@@ -123,34 +144,13 @@
                 font-size: 25px;
                 text-align: center;
             }
-            #noticias{
-                position: relative;
-                width: 20%;
-                height: 100px;
-                font-weight: bold;
-                background-color: coral;
-                border-color: coral;
-                font-size: 25px;
-                text-align: center;
-            }
-            #voluntarios{
-                margin: 8px;
-                position: relative;
-                width: 20%;
-                height: 100px;
-                font-weight: bold;
-                background-color: rebeccapurple;
-                border-color: rebeccapurple;
-                font-size: 25px;
-                text-align: center;
-            }
             #faq{
                 position: relative;
                 width: 20%;
                 height: 100px;
                 font-weight: bold;
-                background-color: orange;
-                border-color: orange;
+                background-color: firebrick;
+                border-color: firebrick;
                 font-size: 25px;
                 text-align: center;
             }
@@ -160,8 +160,8 @@
                 width: 20%;
                 height: 100px;
                 font-weight: bold;
-                background-color: dodgerblue;
-                border-color: dodgerblue;
+                background-color: #c9d0e1;
+                border-color: #c9d0e1;
                 font-size: 25px;
                 text-align: center;
             }
@@ -170,8 +170,8 @@
                 width: 20%;
                 height: 100px;
                 font-weight: bold;
-                background-color: dodgerblue;
-                border-color: dodgerblue;
+                background-color: darkblue;
+                border-color: darkblue;
                 font-size: 25px;
                 text-align: center;
             }
@@ -181,8 +181,8 @@
                 width: 20%;
                 height: 100px;
                 font-weight: bold;
-                background-color: dodgerblue;
-                border-color: dodgerblue;
+                background-color: firebrick;
+                border-color: firebrick;
                 font-size: 20px;
                 text-align: center;
             }
@@ -191,8 +191,8 @@
                 width: 20%;
                 height: 100px;
                 font-weight: bold;
-                background-color: dodgerblue;
-                border-color: dodgerblue;
+                background-color: #c9d0e1;
+                border-color: #c9d0e1;
                 font-size: 25px;
                 text-align: center;
             }
@@ -202,8 +202,8 @@
                 width: 20%;
                 height: 100px;
                 font-weight: bold;
-                background-color: dodgerblue;
-                border-color: dodgerblue;
+                background-color: darkblue;
+                border-color: darkblue;
                 font-size: 25px;
                 text-align: center;
             }
