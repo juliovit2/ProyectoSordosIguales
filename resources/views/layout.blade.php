@@ -91,7 +91,22 @@
                                 <a class="nav-link" href="{{url('/admin/voluntarios')}}">Voluntarios <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item active">
-                                <a class="nav-link" href="url('/faq')}}">FAQ <span class="sr-only">(current)</span></a>
+                                <a class="nav-link" href="{{url('/faq')}}">FAQ <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{{url('/profesores')}}">Profesores <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{{url('/redesEdit')}}">Mapa  <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{{url('/admin/colaboradores')}}">Colaboradores <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{{url('/admin/donaciones')}}">Donaciones <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{{url('/admin/carrusel')}}">Imagenes Inicio <span class="sr-only">(current)</span></a>
                             </li>
                         </ul>
                 <?php }?>
