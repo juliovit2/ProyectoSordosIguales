@@ -7,7 +7,7 @@
         <?php $count++; ?>
         <div id="item-container" class="col-sm-12 col-lg-6">
             <a style="color: black; text-decoration: none;" href="noticias/{{$noticia->id}}">
-                <div class="container p-2 mb-3" style="max-height: 11rem; height: 100%;">
+                <div class="container p-2 mb-3">
                     <div class="row">
                         <div class="col-4">
                             <div id="carousel" class="carousel p-2 slide" data-ride="carousel" data-interval="2000">

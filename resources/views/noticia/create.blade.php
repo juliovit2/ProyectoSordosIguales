@@ -1,12 +1,28 @@
 
-@extends('layoutGeneral')
+@extends('layout')
 
+<?php
+$id = Auth::user()->id;
+$rol = DB::table('users')->where('id', $id)->value('rol');
+if($rol == 'Alumno'){?>
+<meta http-equiv='refresh' content='0; URL=/usuarios/{{ $id }}/'>
+<?php }else { ?>
+@section('head')
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+
+    <!-- include summernote css/js -->
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.css" rel="stylesheet">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.js" defer></script>
+
+@endsection
 @section('content')
     <!-- Lo siguiente es necesario para el editor HTML WYSIWYG -->
     <!-- include libraries(jQuery, bootstrap) -->
     <script type="text/javascript" src="{{ URL::asset('js/summernote-es-ES.js') }}"></script>
     <div class="container mt-5 mb-5 containerForm">
-        <div class="modal fade uploading-modal" id="loadingModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal uploading-modal" id="loadingModal"  role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content spinnerModal">
                     <div class="modal-body">
@@ -21,7 +37,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col col-12">
+            <div class="col col-12" align="left">
                 @include('noticia.error')
                 <form id="form" action="" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="_token" value="{!! csrf_token() !!}">
@@ -124,6 +140,8 @@
         .spinnerModal {
             background: rgba(0,0,0,0);
             border: 0;
+            -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0);
+            box-shadow: 0 3px 9px rgba(0, 0, 0, 0);
         }
 
         .modal-header {
@@ -271,3 +289,5 @@
     });
     </script>
 @endsection
+
+<?php } ?>
