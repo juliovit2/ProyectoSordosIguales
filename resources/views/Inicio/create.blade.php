@@ -1,4 +1,4 @@
-@extends('layoutGeneral')
+@extends('layout')
 @section('title')Administrar Imagenes
 @endsection
 
@@ -31,7 +31,12 @@
     @endif
 @endsection
 @section('content')
-
+    <?php
+    $id = Auth::user()->id;
+    $rol = DB::table('users')->where('id', $id)->value('rol');
+    if($rol == 'Alumno'){?>
+    <meta http-equiv='refresh' content='0; URL=/usuarios/{{ $id }}/'>
+    <?php }else { ?>
 
     <div class="container containerForm">
         <form id="formImagen" autocomplete="off" method="POST" action="{{route('carrusel.store')}} " enctype="multipart/form-data">
@@ -109,5 +114,5 @@
             }
         });
     </script>
-
+    <?php } ?>
 @endsection

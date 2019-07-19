@@ -3,23 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Documento;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use App\User;
+use Auth;
+use DB;
+
 
 class DocumentoController extends Controller
 {
 
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function interface()
-    {
-        $documentos = Documento::get();
-        return view('documentos/interface', ['documentos' => $documentos]);//
-    }
 
     /**
      * Display a listing of the resource.
@@ -194,4 +189,10 @@ class DocumentoController extends Controller
 
         return redirect()->route('documentos.index');
     }
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
 }

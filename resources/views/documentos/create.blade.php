@@ -1,8 +1,6 @@
 @extends('layout')
 @section('title')Administrar Documentos
 @endsection
-
-
 @section('pre-body')
     @if ($errors->any())
         <!-- Errores de Validacion Modal -->
@@ -31,7 +29,12 @@
     @endif
 @endsection
 @section('content')
-
+    <?php
+    $id = Auth::user()->id;
+    $rol = DB::table('users')->where('id', $id)->value('rol');
+    if($rol == 'Alumno'){?>
+    <meta http-equiv='refresh' content='0; URL=/usuarios/{{ $id }}/'>
+    <?php }else { ?>
 
     <div class="container containerForm">
         <h1 class = "text-center">REGISTRAR NUEVO DOCUMENTO</h1>
@@ -151,5 +154,5 @@
             }
         });
     </script>
-
+    <?php } ?>
 @endsection

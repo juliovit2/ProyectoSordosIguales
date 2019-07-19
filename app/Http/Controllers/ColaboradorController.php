@@ -146,4 +146,8 @@ class ColaboradorController extends Controller
         return redirect()->route('colaboradores.index');
         //
     }
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 }
