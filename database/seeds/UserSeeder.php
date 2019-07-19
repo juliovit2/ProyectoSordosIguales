@@ -13,23 +13,11 @@ class UserSeeder extends Seeder
     public function run()
     {
         DB::table('users')->Insert([
-            'rut' => '190584550',
-            'email' => 'jc@jc.jc',
-            'name' => 'Jota Se',
-            'direccion' => 'UCN',
-            'telefono' => '666666',
-            'ciudad' => 'Antofagasta',
-            'password' => bcrypt('jc'),
-            'rol' => 'Alumno',
-            'cursando' => true
-        ]);
-
-        DB::table('users')->Insert([
             'rut' => '1',
-            'email' => 'julio@julio.julio',
-            'name' => 'Julio Julio',
-            'direccion' => 'UCN',
-            'telefono' => '662606',
+            'email' => 'testAdmin@test.com',
+            'name' => 'Test Admin User',
+            'direccion' => 'UCN 123',
+            'telefono' => '66260600',
             'ciudad' => 'Antofagasta',
             'password' => bcrypt('1'),
             'rol' => 'Administrador',
@@ -38,10 +26,10 @@ class UserSeeder extends Seeder
 
         DB::table('users')->Insert([
             'rut' => '2',
-            'email' => 'julio@junio.julio',
-            'name' => 'Julio',
-            'direccion' => 'UCN',
-            'telefono' => '662606',
+            'email' => 'testUser@test.com',
+            'name' => 'Test User',
+            'direccion' => 'UCN 123',
+            'telefono' => '66260611',
             'ciudad' => 'Antofagasta',
             'password' => bcrypt('2'),
             'rol' => 'Alumno',
@@ -49,25 +37,13 @@ class UserSeeder extends Seeder
         ]);
 
         DB::table('users')->Insert([
-            'rut' => '111111111',
-            'email' => 'hi@hi.hi',
-            'name' => 'Jai',
-            'direccion' => 'UCN',
-            'telefono' => '555555',
-            'ciudad' => 'Antofagasta',
-            'password' => bcrypt('jai'),
-            'rol' => 'Administrador',
-            'cursando' => false
-        ]);
-
-        DB::table('users')->Insert([
             'rut' => '189188366',
             'email' => 'manuelzuletab@gmail.com',
-            'name' => 'Jota Se',
-            'direccion' => 'UCN',
-            'telefono' => '666666',
+            'name' => 'Manuel Zuleta',
+            'direccion' => 'UCN 1232',
+            'telefono' => '88776655',
             'ciudad' => 'Antofagasta',
-            'password' => bcrypt('jc'),
+            'password' => bcrypt('mz'),
             'rol' => 'Alumno',
             'cursando' => true
         ]);
@@ -76,7 +52,7 @@ class UserSeeder extends Seeder
             'rut' => '18502184k',
             'email' => 'jdm006@alumnos.ucn.cl',
             'name' => 'Julio Díaz',
-            'direccion' => 'UCN',
+            'direccion' => 'UCN 6095',
             'telefono' => '88886981',
             'ciudad' => 'Antofagasta',
             'password' => bcrypt('123'),
@@ -88,10 +64,22 @@ class UserSeeder extends Seeder
             'rut' => '188974732',
             'email' => 'pjv001@alumnos.ucn.cl',
             'name' => 'Pablo Julio',
-            'direccion' => 'UCN',
+            'direccion' => 'UCN 654',
             'telefono' => '66260607',
             'ciudad' => 'Antofagasta',
             'password' => bcrypt('1598753'),
+            'rol' => 'Alumno',
+            'cursando' => true
+        ]);
+
+        DB::table('users')->Insert([
+            'rut' => '190584550',
+            'email' => 'juancarlos@ucn.cl',
+            'name' => 'Juan C. Maury',
+            'direccion' => 'UCN 1234',
+            'telefono' => '66666666',
+            'ciudad' => 'Antofagasta',
+            'password' => 'jc',
             'rol' => 'Alumno',
             'cursando' => true
         ]);
