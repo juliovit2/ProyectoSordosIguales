@@ -1,4 +1,4 @@
-@extends('layoutGeneral')
+@extends('layout')
 @section('content')
     <script type="text/javascript" src="{{ URL::asset('js/summernote-es-ES.js') }}"></script>
     <div class="container mt-5 mb-5 containerForm">

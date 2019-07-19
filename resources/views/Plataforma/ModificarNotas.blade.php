@@ -20,7 +20,7 @@
         @if ($users->isNotEmpty())
             @php $contadorEstudiantes=0 @endphp
 
-        {{--Filtrar notas por curso--}}
+        {{--Filtrar notas por curso--
         @php
             $cursos = \App\tabla_curso::all();
             $mySelect = 1;
