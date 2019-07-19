@@ -1,4 +1,4 @@
-@extends('layoutGeneral')
+@extends('layout')
 @section('title')Lista de Donaciones
 @endsection
 
@@ -13,8 +13,15 @@
             </ul>
         </div>
         @endif
-        @endsection
+@endsection
         @section('content')
+            <?php
+            $id = Auth::user()->id;
+            $rol = DB::table('users')->where('id', $id)->value('rol');
+            if($rol == 'Alumno'){?>
+            <meta http-equiv='refresh' content='0; URL=/usuarios/{{ $id }}/'>
+            <?php }else { ?>
+            <br>
         <div class = "container">
             <table class="table table-bordered  table-striped table-hover" id="MyTable">
                 <div style="text-align: center;">
@@ -99,5 +106,5 @@
         </body>
         </form>
         </div>
-
+        <?php } ?>
 @endsection

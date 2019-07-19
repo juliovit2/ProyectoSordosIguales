@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.css" integrity="sha256-CNwnGWPO03a1kOlAsGaH5g8P3dFaqFqqGFV/1nkX5OU=" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
     <style>
         .bd-placeholder-img {
             font-size: 1.125rem;
@@ -56,6 +59,7 @@
     <link type="text/css" href="{{ asset('css/layout-style.css') }}" rel="stylesheet">
     <link href="sticky-footer-navbar.css" rel="stylesheet">
 </head>
+@yield('pre-body')
 <body class="d-flex flex-column h-100">
 
 <header>
@@ -82,7 +86,7 @@
                                 <a class="nav-link" href="{{route('ModificarNotas')}}">Notas <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item active">
-                                <a class="nav-link" href="{{url('/admin/memorias')}}">Memorias <span class="sr-only">(current)</span></a>
+                                <a class="nav-link" href="{{url('/admin/documentos')}}">Documentos <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item active">
                                 <a class="nav-link" href="{{url('/admin/noticias')}}">Noticias <span class="sr-only">(current)</span></a>
@@ -91,7 +95,22 @@
                                 <a class="nav-link" href="{{url('/admin/voluntarios')}}">Voluntarios <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item active">
-                                <a class="nav-link" href="url('/faq')}}">FAQ <span class="sr-only">(current)</span></a>
+                                <a class="nav-link" href="{{url('/faq')}}">FAQ <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{{url('/profesores')}}">Profesores <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{{url('/redesEdit')}}">Mapa  <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{{url('/admin/colaboradores')}}">Colaboradores <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{{url('/admin/donaciones')}}">Donaciones <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{{url('/admin/carrusel')}}">Imagenes Inicio <span class="sr-only">(current)</span></a>
                             </li>
                         </ul>
                 <?php }?>

@@ -1,4 +1,4 @@
-@extends('layoutGeneral')
+@extends('layout')
 @section('title')Agregar colaborador
 @endsection
 
@@ -31,8 +31,14 @@
     @endif
 @endsection
 @section('content')
+    <?php
+    $id = Auth::user()->id;
+    $rol = DB::table('users')->where('id', $id)->value('rol');
+    if($rol == 'Alumno'){?>
+    <meta http-equiv='refresh' content='0; URL=/usuarios/{{ $id }}/'>
+    <?php }else { ?>
 
-
+<br>
     <div class="container containerForm">
         <h1 class = "text-center">REGISTRAR NUEVO COLABORADOR</h1>
         <br>
@@ -42,13 +48,13 @@
             <div class="form-group row">
                 <label for="inputVideo" class="col-sm-2 col-form-label">Nombre</label>
                 <div class="col-sm-3">
-                    <input class="form-control" style="background: #EEF2FC;" name="inputNombre" id="inputNombre">
+                    <input class="form-control" style="background: #EEF2FC;" name="inputNombre" id="inputNombre" >
                 </div>
             </div>
             <div class="form-group row">
                 <label for="inputVideo" class="col-sm-2 col-form-label">Direccion de pagina de colaborador (URL)</label>
                 <div class="col-sm-3">
-                    <input class="form-control" style="background: #EEF2FC;" name="inputURL" id="inputURL">
+                    <input class="form-control" style="background: #EEF2FC;" name="inputURL" id="inputURL" placeholder="https://www.ejemplo.com">
                 </div>
             </div>
             <div class="form-group row">
@@ -117,11 +123,12 @@
 
     <script>
         $(document).ready(function() {
+            debugger
             var errors = {!! json_encode($errors->toArray()) !!};
             if (!Array.isArray(errors)) {
                 $('#errorsModal').modal('show')
             }
         });
     </script>
-
+    <?php } ?>
 @endsection

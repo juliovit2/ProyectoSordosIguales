@@ -46,18 +46,18 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a data-toggle="popover"
-                       data-img="http://placehold.it/100x100"
+                       data-img="{{ asset('storage/header/que_somos.gif')}}"
                        data-trigger="hover"
                        class="nav-link dropdown-item" href={{"/documentos"}}><h4><span class="textoHeader"><i class="fas fa-file"></i>  Documentos</span></h4></a>
                     <a data-toggle="popover"
-                       data-img="http://placehold.it/100x100"
+                       data-img="{{ asset('storage/header/que_somos.gif')}}"
                        data-trigger="hover"
                        class="nav-link dropdown-item" href={{"/informacion"}}><h4><span class="textoHeader"><i class="fas fa-question-circle"></i>  ¿Quienes Somos?</span></h4></a>
                 </div>
             </li>
             <li class="nav-item"
                 data-toggle="popover"
-                data-img="{{ asset('storage/header/noti_señas.gif')}}"
+                data-img="{{ asset('storage/header/NOTISEÑAS.gif')}}"
                 data-trigger="hover" 
                 data-placement="top">
                 <a class="nav-link" href={{"/noticias"}}><h4><span class="textoHeader"><i class="far fa-newspaper"></i>  Noticias y Articulos</span></h4></a>
@@ -77,6 +77,13 @@
                 <a class="nav-link" href="{{'/contacto'}}"><h4><span class="textoHeader"><i class="fas fa-phone"></i>  Contacto</span></h4></a>
             </li>
             <li class="nav-item"
+                data-toggle="popover"
+                data-img="{{ asset('storage/header/contactenos.gif')}}"
+                data-trigger="hover"
+                data-placement="top">
+                <a class="nav-link" href="{{'/redes'}}"><h4><span class="textoHeader"><i class="fas fa-globe-americas"></i>  Redes</span></h4></a>
+            </li>
+            <li class="nav-item"
                 data-toggle="popover" 
                 data-img="{{ asset('storage/header/contactenos.gif')}}"
                 data-trigger="hover" 
@@ -84,10 +91,7 @@
                 <a class="nav-link" href="{{'/login'}}"><h4><span class="textoHeader"><i class="fas fa-th"></i>  Plataforma</span></h4></a>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Busqueda" aria-label="Buscar">
-            <button class="btn btn-light" type="submit"><i class="fas fa-search"></i></button>
-        </form>
+
     </div>
 </nav>
 
