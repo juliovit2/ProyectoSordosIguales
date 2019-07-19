@@ -97,8 +97,8 @@
                 width: 20%;
                 height: 100px;
                 font-weight: bold;
-                background-color: #c9d0e1;
-                border-color: #c9d0e1;
+                background-color: #a8b3cf;
+                border-color: #a8b3cf;
                 font-size: 25px;
                 text-align: center;
             }
@@ -128,8 +128,8 @@
                 width: 20%;
                 height: 100px;
                 font-weight: bold;
-                background-color: #c9d0e1;
-                border-color: #c9d0e1;
+                background-color: #a8b3cf;
+                border-color: #a8b3cf;
                 font-size: 25px;
                 text-align: center;
             }
@@ -160,8 +160,8 @@
                 width: 20%;
                 height: 100px;
                 font-weight: bold;
-                background-color: #c9d0e1;
-                border-color: #c9d0e1;
+                background-color: #a8b3cf;
+                border-color: #a8b3cf;
                 font-size: 25px;
                 text-align: center;
             }
@@ -191,8 +191,8 @@
                 width: 20%;
                 height: 100px;
                 font-weight: bold;
-                background-color: #c9d0e1;
-                border-color: #c9d0e1;
+                background-color: #a8b3cf;
+                border-color: #a8b3cf;
                 font-size: 25px;
                 text-align: center;
             }

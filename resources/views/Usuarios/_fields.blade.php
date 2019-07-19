@@ -107,6 +107,8 @@
                class="form-control"
                id="password"
                placeholder="Ingrese contraseña"
+               minlength="6"
+               pattern="[^\s]*"
                value="{{ old('password', $user->password) }}" required>
     </div>
 </div>
