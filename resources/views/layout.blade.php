@@ -82,7 +82,7 @@
                                 <a class="nav-link" href="{{route('ModificarNotas')}}">Notas <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item active">
-                                <a class="nav-link" href="{{url('/admin/memorias')}}">Memorias <span class="sr-only">(current)</span></a>
+                                <a class="nav-link" href="{{url('/admin/documentos')}}">Documentos <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item active">
                                 <a class="nav-link" href="{{url('/admin/noticias')}}">Noticias <span class="sr-only">(current)</span></a>
