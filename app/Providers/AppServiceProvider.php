@@ -29,7 +29,9 @@ class AppServiceProvider extends ServiceProvider
 
         Blade::component('shared._card', 'card');
         Schema::defaultStringLength(191);
-        $colabs = tabla_colaborador_alianza::get();
-        view()->share('colabs', $colabs);
+        if(Schema::hasTable('homestead')){//el nombre de la base de datos
+            $colabs = tabla_colaborador_alianza::get();
+            view()->share('colabs', $colabs);
+        }
     }
 }
