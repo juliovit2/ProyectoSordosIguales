@@ -48,10 +48,16 @@ class ColaboradorController extends Controller
         $fileLogo = $request->file('inputLogo')->storeAs('public/Colaboradores/',$filenameLogo);
         $logoURL = \Storage::url($fileLogo);
 
+        $url = $data['inputURL'];
+        //verificar protocolo de link
+        if(!preg_match('/https:\/\//',$url)){
+            $url = 'https://'.$url;
+        }
+
         tabla_colaborador_alianza::create([
             'nombre' => $data['inputNombre'],
             'logo' => $logoURL,
-            'url' => $data['inputURL'],
+            'url' => $url,
         ]);
 
         return redirect()->route('colaboradores.index');
@@ -102,6 +108,11 @@ class ColaboradorController extends Controller
 
         $logoURL = $colaborador->logo;
 
+        $url = $data['inputURL'];
+        //verificar protocolo de link
+        if(!preg_match('/https:\/\//',$url)){
+            $url = 'https://'.$url;
+        }
 
         //Reemplazar Portada
         if (Arr::exists($data, 'inputLogo')) {
@@ -122,7 +133,7 @@ class ColaboradorController extends Controller
         $colaborador->update([
             'nombre' => $data['inputNombre'],
             'logo' => $logoURL,
-            'url' => $data['inputURL'],
+            'url' => $url,
         ]);
 
         return redirect()->route('colaboradores.index');
