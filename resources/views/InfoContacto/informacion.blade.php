@@ -6,15 +6,15 @@
             <div id="panel_izquierdo-qsomos" class="col-3">
                 <nav>
                     <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                        <a id="button-side" class="nav-link" href="#quienessomos" role="tab">Quienes Somos</a>
+                        <a id="button-side-qsomos" class="nav-link" href="#quienessomos" role="tab">Quienes Somos</a>
                         <hr id="separador-sidebar"/>
-                        <a id="button-side" class="nav-link" href="#vision" role="tab">Vision</a>
+                        <a id="button-side-qsomos" class="nav-link" href="#vision" role="tab">Vision</a>
                         <hr id="separador-sidebar"/>
-                        <a id="button-side" class="nav-link" href="#objetivo" role="tab">Objetivo</a>
+                        <a id="button-side-qsomos" class="nav-link" href="#objetivo" role="tab">Objetivo</a>
                         <hr id="separador-sidebar"/>
-                        <a id="button-side" class="nav-link" href="#mision" role="tab">Mision</a>
+                        <a id="button-side-qsomos" class="nav-link" href="#mision" role="tab">Mision</a>
                         <hr id="separador-sidebar"/>
-                        <a id="button-side" class="nav-link" href="#historia" role="tab">Historia</a>
+                        <a id="button-side-qsomos" class="nav-link" href="#historia" role="tab">Historia</a>
                     </div>
                 </nav>
             </div>

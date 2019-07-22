@@ -1,6 +1,8 @@
-@extends('layoutGeneral')
+@extends('layout')
+@section('title')
+    Crear Pregunta
+@endsection
 @section('content')
-
     <div class="container mt-5 mb-5 containerForm">
         <div class="row">
             <div class="col-md">

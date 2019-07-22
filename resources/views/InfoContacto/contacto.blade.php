@@ -1,4 +1,7 @@
 @extends('layoutGeneral')
+@section('title')
+    Contacto
+@endsection
 @section('content')
 
     {{--    se esta usando la version 4.0.0 de boostrap--}}

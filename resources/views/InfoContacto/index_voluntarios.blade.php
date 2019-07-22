@@ -1,4 +1,7 @@
 @extends('layout')
+@section('title')
+    Administrar Voluntarios
+@endsection
 @section('content')
     <div class="col-sm-8">
         <p></p>
@@ -30,18 +33,18 @@
                         <td>{{$v->created_at}}</td>
                         <td>
                             <a href="{{action('VoluntariosController@edit', $v->id)}}"
-                               class="btn btn-sm btn-primary active" title="Editar Voluntario">
+                               class="btn btn-primary active" title="Editar Voluntario">
                                 <i class="fas fa-pencil-alt"></i>
                             </a>
                         </td>
 
                         <td>
-                            <a href="#delete" class="btn btn-danger active float-right" data-toggle="modal" title="Eliminar Voluntario">
-                                <i   class="fas fa-trash-alt"></i>
+                            <a data-target="#del{{$v->id}}" class="btn btn-danger active float-right" data-toggle="modal" title="Eliminar Voluntario">
+                                <i class="fas fa-trash-alt"></i>
                             </a>
 
                             <!--pop up confirmacion -->
-                            <div class="modal fade" id="delete">
+                            <div class="modal fade" id="del{{$v->id}}">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -67,6 +70,8 @@
             </tbody>
         </table>
     </div>
+
+
 
 
 @endsection

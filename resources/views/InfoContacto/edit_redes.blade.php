@@ -1,4 +1,7 @@
-@extends('layoutGeneral')
+@extends('layout')
+@section('title')
+    Administrar Redes
+@endsection
 @section('content')
     <head>
         {{--<script src="{{asset('\ckeditor\ckeditor.js')}}"></script>--}}

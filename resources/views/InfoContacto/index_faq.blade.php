@@ -1,6 +1,8 @@
-@extends('layoutGeneral')
+@extends('layout')
+@section('title')
+    Administrar Preguntas
+@endsection
 @section('content')
-
     <div class="container" align="center">
     <div class="col-sm-8">
         <p></p>
@@ -10,7 +12,6 @@
         <a href="{{route('faq.create')}}" class="btn btn-primary pull-right active" >Agregar Preguntas y Respuestas &nbsp;<i class="fas fa-plus"></i></a>
         <table class = "table table-hover table-striped">
             <thead>
-
             <tr>
                 <th>ID</th>
                 <th>Preguntas</th>
@@ -36,12 +37,12 @@
                     </td>
 
                     <td>
-                        <button type="button" class="btn btn-danger" data-toggle="modal"  data-target="#{{$p->id}}" title="Eliminar Preguntas y Respuestas">
+                        <button type="button" class="btn btn-danger" data-toggle="modal"  data-target="#del{{$p->id}}" title="Eliminar Preguntas y Respuestas">
                             <i   class="fas fa-trash-alt"></i>
                         </button>
 
                         <!--pop up confirmacion -->
-                        <div class="modal fade" id="{{$p->id}}" aria-labelledby="{{ $p->id }}" aria-hidden="true">
+                        <div class="modal fade" id="del{{$p->id}}" aria-labelledby="{{ $p->id }}" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -55,7 +56,6 @@
                                         <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
                                         <a href="{{action('FaqController@destroy',$p->id)}}"  class="btn btn-primary">Eliminar</a>
                                     </div>
-
                                 </div>
                             </div>
                         </div>

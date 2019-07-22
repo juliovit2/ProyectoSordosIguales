@@ -36,9 +36,9 @@ class VoluntariosController extends Controller
 
         $this->validate($request, [
             'nombre' => 'required',
-            'telefono' => 'required',
-            'rut' => 'required',
-            'correo' => 'required',
+            'telefono' => 'required|unique:tabla_personas',
+            'rut' => 'required|unique:tabla_personas',
+            'correo' => 'required|unique:tabla_personas',
         ]);
 
         //validar
@@ -51,8 +51,8 @@ class VoluntariosController extends Controller
         ));
         $voluntarios->save();
 
-
-        return $this->index();
+        return redirect()->route('voluntarios.index');
+        //return $this->index();
     }
 
     /**
@@ -105,7 +105,8 @@ class VoluntariosController extends Controller
             ->where('id', $id)
             ->update($voluntarioEditado);
 
-        return $this->index();
+        return redirect()->route('voluntarios.index');
+        //return $this->index();
     }
 
     /**
@@ -118,7 +119,7 @@ class VoluntariosController extends Controller
     {
         $voluntario_a_eliminar = tabla_persona::find($id);
         $voluntario_a_eliminar->delete();
-
-        return $this->index();
+        return redirect()->route('voluntarios.index');
+        //return $this->index();
     }
 }
