@@ -22,7 +22,7 @@
                 <button type="submit" class="btn btn-primary">
                     {{ __('Cambiar Nota') }}
                 </button>
-                <a href=" {{route('ModificarNotas')}} " class="btn btn-primary"> Regresar </a>
+                <a href=" {{ URL::previous() }} " class="btn btn-primary"> Regresar </a>
             </div>
         </form>
     </div>

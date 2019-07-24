@@ -23,27 +23,26 @@
         {{--Filtrar notas por curso--
         @php
             $cursos = \App\tabla_curso::all();
-            $mySelect = 1;
         @endphp
 
-
-        <div align="left" onchange="myFunction()">
-            <div class="combobox">
-                <p>Filtrar por Curso</p>
-                <select id="mySelect" class="form-control" onchange="myFunction()">
-                    <option value="">Seleccione un curso</option>
-                    @foreach($cursos as $curso)
-                        <option value="{{ $curso->id }}">
-                            {{ $curso->nombre }}
-                        </option>
-                    @endforeach
-                </select>
+            <div align="left">
+                <div class="combobox">
+                    <p>Filtrar por Curso</p>
+                    <select data-column="3" class="form-control filter-select">
+                        <option value="">Seleccione un curso</option>
+                        @foreach($cursos as $curso)
+                            <option value="{{ $curso->id }}">
+                                {{ $curso->nombre }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
             </div>
-        </div>
-        {{--+++++++++++++++++++++++++++++--}}
+            {{--+++++++++++++++++++++++++++++--}}
 
 
-        <table class="table table-striped table-sm" id="tabla">
+            <table class="table table-striped table-sm" id="datatable">
+
             <thead class="thead-dark">
             <tr>
                 <th scope="col">ID</th>
@@ -70,7 +69,9 @@
                             $notas = 'No aplica';
                         }
                     @endphp
+
                         @php $contadorEstudiantes=$contadorEstudiantes+1 @endphp
+
                         <tr>
                             <th scope="row">{{ $user->id }}</th>
                             <td>{{ $user->rut }}</td>
@@ -107,28 +108,31 @@
 {{--
 <script>
 
-    $("#mySelect").change(function myFunction() {
+    function myFunction() {
         var tr, element, table, colCurso, txtValue;
+
         element = (document.getElementById("mySelect")).value;
         table = document.getElementById("tabla");
         tr = table.getElementsByTagName("tr");
-
         for(i = 0; i<tr.length; i++){
             colCurso = tr[i].getElementsByTagName(tr[3]);
             if (colCurso) {
+
                 txtValue = colCurso.textContent || colCurso.innerText;
+
+
                 if ((txtValue.toUpperCase().indexOf(element) > -1)){
-                    // Checkeo Fecha
 
                     tr[i].style.display = "";
                 }
                 else {
+
                     tr[i].style.display = "none";
+
                 }
             }
         }
-    })
+    }
 
 </script>
-
 --}}

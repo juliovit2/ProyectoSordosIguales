@@ -90,7 +90,7 @@
             <option value="">Seleccione una ciudad</option>
             <option value="Antofagasta"{{ old('ciudad', $user->ciudad) == "Antofagasta" ? 'selected' : '' }}>Antofagasta</option>
             <option value="Calama"{{ old('ciudad', $user->ciudad) == "Calama" ? 'selected' : '' }}>Calama</option>
-            <option value="María Helena"{{ old('ciudad', $user->ciudad) == "María Helena" ? 'selected' : '' }}>María Helena</option>
+            <option value="María Elena"{{ old('ciudad', $user->ciudad) == "María Elena" ? 'selected' : '' }}>María Elena</option>
             <option value="Mejillones"{{ old('ciudad', $user->ciudad) == "Mejillones" ? 'selected' : '' }}>Mejillones</option>
             <option value="Ollague"{{ old('ciudad', $user->ciudad) == "Ollague" ? 'selected' : '' }}>Ollague</option>
             <option value="San Pedro de Atacama"{{ old('ciudad', $user->ciudad) == "San Pedro de Atacama" ? 'selected' : '' }}>San Pedro de Atacama</option>

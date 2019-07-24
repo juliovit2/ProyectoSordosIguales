@@ -29,8 +29,6 @@ class VoluntariosController extends Controller
         return view('InfoContacto.create_voluntarios');
     }
 
-
-
     public function store(Request $request)
     {
 

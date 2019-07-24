@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\tabla_usuario_nota;
 use Illuminate\Http\Request;
 use App\User;
 use Auth;
@@ -164,6 +165,7 @@ class NotasController extends Controller
         return back();
 
     }
+
     public function __construct()
     {
         $this->middleware('auth');
