@@ -267,11 +267,12 @@
                                             <select id="denunciaId" name="tipoDenuncia">
                                                 <option disabled selected value=""> -- Seleccione una opcion -- </option>
                                                 <option value="Discriminacion">Discriminacion</option>
-                                                <option value="Salud">Salud</option>
                                                 <option value="Laboral">Laboral</option>
-                                                <option value="Judicial">Educacion</option>
+                                                <option value="Salud">Salud</option>
+                                                <option value="Judicial">Judicial</option>
+                                                <option value="Educacion">Educacion</option>
                                                 <option value="Violencia en el pololeo">Violencia en el pololeo</option>
-                                                <option value="Violencia en el intrefamiliar">Violencia en el intrefamiliar</option>
+                                                <option value="Violencia en el intrafamiliar">Violencia en el intrafamiliar</option>
                                                 <option value="Otro">Otro</option>
                                             </select>
                                         </div>
