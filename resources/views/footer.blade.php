@@ -20,6 +20,10 @@
             <!-- Grid column -->
             <div class="col-md-12 col-12 mt-5">
                 <div style="text-align: center;">
+                    <?php
+                    use App\tabla_colaborador_alianza;
+                    $colabs = tabla_colaborador_alianza::get();
+                    ?>
                     @foreach($colabs as $colab)
                         <a href="{{$colab['url']}}" target="_blank"><img class = "img" src="{{$colab['logo']}}" style ="height: 150px; padding: 15px;" alt="{{$colab['nombre']}}" title="{{$colab['nombre']}}"></a>
                     @endforeach
