@@ -6,30 +6,32 @@
 
 
     <script type="text/javascript" src="{{ URL::asset('js/summernote-es-ES.js') }}"></script>
-    <div class="container mt-5 mb-5 containerForm">
+    <br>
+    <div class="card">
         @include('InfoContacto.error_faq')
+        <h1>Agregar voluntario</h1>
         <div class="row">
             <div class="col-md">
                 <form id="form" action="" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="_token" value="{!! csrf_token() !!}">
                     @if(isset($v))
                         <div class="form-group">
-                            <label for="Nombre"><h4>Nombre *</h4></label>
+                            <label for="Nombre">Nombre</label>
                             <input type="text" id="nombre" name="nombre" class="form-control" pattern="([A-z]|ñ|\s)*" value="{{$v->nombre}}">
                         </div>
 
                         <div class="form-group">
-                            <label for="Telefono"><h4>Telefono *</h4></label>
+                            <label for="Telefono">Telefono</label>
                             <input type="text" id="telefono" name="telefono" class="form-control" pattern="[0-9]{8}" value="{{$v->telefono}}">
                         </div>
 
                         <div class="form-group">
-                            <label for="Rut"><h4>Rut *</h4></label>
+                            <label for="Rut">Rut</label>
                             <input required oninput="checkRut(this)" type="text" id="rut" name="rut" class="form-control" value="{{$v->rut}}">
                         </div>
 
                         <div class="form-group">
-                            <label for="Correo"><h4>Correo *</h4></label>
+                            <label for="Correo">Correo</label>
                             <input type="text" id="correo" name="correo"  pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" class="form-control" value="{{$v->correo}}">
                         </div>
 
@@ -39,22 +41,22 @@
                         </div>
                     @else
                         <div class="form-group">
-                            <label for="Nombre"><h4>Nombre *</h4></label>
+                            <label for="Nombre">Nombre</label>
                             <input type="text" id="nombre" name="nombre" class="form-control" pattern="([A-z]|ñ|\s)*">
                         </div>
 
                         <div class="form-group">
-                            <label for="Telefono"><h4>Telefono *</h4></label>
+                            <label for="Telefono">Telefono</label>
                             <input type="text" id="telefono" name="telefono" class="form-control" pattern="[0-9]{8}">
                         </div>
 
                         <div class="form-group">
-                            <label for="Rut"><h4>Rut *</h4></label>
+                            <label for="Rut">Rut</label>
                             <input required oninput="checkRut(this)" type="text" id="rut" name="rut" class="form-control">
                         </div>
 
                         <div class="form-group">
-                            <label for="Correo"><h4>Correo *</h4></label>
+                            <label for="Correo">Correo</label>
                             <input type="text" id="correo"  pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" name="correo" class="form-control">
                         </div>
 
