@@ -166,33 +166,37 @@
                     <div id="card-deck" class="card-deck">
 
                         <div id="card" class="card" style="width: 18rem;">
-                            <img src="{{'/storage/Directivos/DIRECTORIO - ALEXI GODOY GONZÁLEZ.gif'}} " class="card-img-top" alt="...">
-                            <h5 class="card-title" style="text-align: center">Lorem Yogurt</h5>
+                            <img src="{{'/storage/Directivos/ALEXI GODOY GONZÁLEZ.gif'}} " class="card-img-top" alt="...">
+                            <h5 class="card-title" style="text-align: center">Alexi Godoy Gonzáles</h5>
                         </div>
 
                         <div id="card" class="card" style="width: 18rem;">
-                            <img src="{{'/storage/Directivos/DIRECTORIO - CARLOS SÁNCHEZ CLIFT.gif'}} " class="card-img-top" alt="...">
-                            <h5 class="card-title" style="text-align: center">Lorem Yogurt</h5>
+                            <img src="{{'/storage/Directivos/CARLOS SÁNCHEZ CLIFT.gif'}} " class="card-img-top" alt="...">
+                            <h5 class="card-title" style="text-align: center">Carlos Sánchez Clift</h5>
                         </div>
 
                         <div id="card" class="card" style="width: 18rem;">
-                            <img src="{{'/storage/Directivos/DIRECTORIO - HUGO ÁLVAREZ REINOSO.gif'}} " class="card-img-top" alt="...">
-                            <h5 class="card-title" style="text-align: center">Lorem Yogurt</h5>
+                            <img src="{{'/storage/Directivos/HUGO ÁLVAREZ REINOSO.gif'}} " class="card-img-top" alt="...">
+                            <h5 class="card-title" style="text-align: center">Hugo Álvarez Reinoso</h5>
                         </div>
                     </div>
+
+                    <hr style="color: #0056b2;" />
+                    <h1> Equipo</h1>
+                    <hr style="color: #0056b2;" />
 
                     <div id="card-deck" class="card-deck">
                         <div id="card" class="card" style="width: 18rem;">
                             <img src="{{'/storage/Directivos/EQUIPO - CARLOS QUIROZ QUIROZ.gif'}} " class="card-img-top" alt="...">
-                            <h5 class="card-title" style="text-align: center">Lorem Yogurt</h5>
+                            <h5 class="card-title" style="text-align: center">Carlos Quiroz Quiroz</h5>
                         </div>
                         <div id="card" class="card" style="width: 18rem;">
                             <img src="{{'/storage/Directivos/Equipo - Fracis Tobar Moreno.gif'}} " class="card-img-top" alt="...">
-                            <h5 class="card-title" style="text-align: center">Lorem Yogurt</h5>
+                            <h5 class="card-title" style="text-align: center">Fracis Tobar Moreno</h5>
                         </div>
                         <div id="card" class="card" style="width: 18rem;">
-                            <img src="{{'/storage/Directivos/Equipo -  Lenka Obilinovic Martinez.gif'}} " class="card-img-top" alt="...">
-                            <h5 class="card-title" style="text-align: center">Lorem Yogurt</h5>
+                            <img src="{{'/storage/Directivos/Equipo - Lenka Obilinovic Martinez.gif'}} " class="card-img-top" alt="...">
+                            <h5 class="card-title" style="text-align: center">Lenka Obilinovic Martínez</h5>
                         </div>
                     </div>
 

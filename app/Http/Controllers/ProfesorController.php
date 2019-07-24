@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\tabla_curso;
 use Illuminate\Http\Request;
 use App\tabla_persona;
 use Illuminate\Support\Facades\DB;
@@ -117,8 +118,15 @@ class ProfesorController extends Controller
      */
     public function destroy($id)
     {
+        $curso = tabla_curso::find($id);
         $profesor = tabla_persona::find($id);
-        $profesor->delete();
+
+        if ($curso == null){
+            $profesor->delete();
+        }
+        else{
+            echo "<script>alert('No se puede eliminar a este profesor debido a que tiene cursos inscritos');</script>";
+        }
 
         return $this->index();
     }
