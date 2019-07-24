@@ -49,8 +49,9 @@ class NotasController extends Controller
                         DB::statement('SET FOREIGN_KEY_CHECKS = 0;');
                         if(!$evaluacion){
                             DB::table('tabla_evaluaciones_cursos')->insert(
-                                ['nombreEvaluacion' => $evaluacion, 'cursoid' => $curso_id]
+                                ['nombreEvaluacion' => $tipo_evaluacion, 'cursoid' => $curso_id]
                             );
+                            $evaluacion = DB::table('tabla_evaluaciones_cursos')->where('nombreEvaluacion', $tipo_evaluacion)->value('id');
                         }
                         DB::table('tabla_usuario_notas')->insert(
                             ['nota' => $nota, 'usuarioid' => $usuario_id, 'cursoid' => $curso_id, 'notaid' => $evaluacion]
