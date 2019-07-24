@@ -45,11 +45,11 @@
                     <h4><span class="textoHeader"><i class="fas fa-info-circle"></i> Información</span></h4>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a data-toggle="popover"
+                    <a data-toggle="popover-bottom"
                        data-img="{{ asset('storage/header/que_somos.gif')}}"
                        data-trigger="hover"
                        class="nav-link dropdown-item" href={{"/documentos"}}><h4><span class="textoHeader"><i class="fas fa-file"></i>  Documentos</span></h4></a>
-                    <a data-toggle="popover"
+                    <a data-toggle="popover-bottom"
                        data-img="{{ asset('storage/header/que_somos.gif')}}"
                        data-trigger="hover"
                        class="nav-link dropdown-item" href={{"/informacion"}}><h4><span class="textoHeader"><i class="fas fa-question-circle"></i>  ¿Quienes Somos?</span></h4></a>
@@ -101,5 +101,14 @@
       trigger: 'hover',
       placement: 'top',
       content: function () { return '<img src="' + $(this).data('img') + '"  width="100%" />'; }
+    });
+</script>
+
+<script>
+    $('[data-toggle="popover-bottom"]').popover({
+        html: true,
+        trigger: 'hover',
+        placement: 'bottom',
+        content: function () { return '<img src="' + $(this).data('img') + '"  width="100%" />'; }
     });
 </script>
