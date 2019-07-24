@@ -1,4 +1,7 @@
 @extends('layoutGeneral')
+@section('title')
+    Redes
+@endsection
 @section('content')
     <style xmlns="http://www.w3.org/1999/html">
         #myDIV {

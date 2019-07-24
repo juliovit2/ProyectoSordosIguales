@@ -1,4 +1,7 @@
 @extends('layoutGeneral')
+@section('title')
+    Preguntas
+@endsection
 @section('content')
 
     <div class ="container p-5 border">
