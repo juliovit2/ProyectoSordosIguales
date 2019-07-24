@@ -20,84 +20,62 @@ class NotasController extends Controller
 
         $rut_alumno = request()->IDalumno;
         $rut = DB::table('users')->where('rut', $rut_alumno)->value('rut');
+        $usuario_id = DB::table('users')->where('rut', $rut_alumno)->value('id');
 
-        $nombre_curso = request()->IDcurso;
-        $curso = DB::table('tabla_cursos')->where('nombre', $nombre_curso)->value('nombre');
+        $curso_id = DB::table('tabla_usuario_cursos')->where('estado', '=' , 'Cursando')->value('cursoid');
+        //$curso_nombre = DB::table('tabla_cursos')->where('id', $curso_id)->value('nombre');
 
         $tipo_evaluacion = request()->tipoevaluacion;
         $evaluacion = DB::table('tabla_evaluaciones_cursos')->where('nombreEvaluacion', $tipo_evaluacion)->value('nombreEvaluacion');
 
         $nota = request()->nota;
 
-        $curso_id = DB::table('tabla_cursos')->where('nombre', $nombre_curso)->value('id');
-        $usuario_id = DB::table('users')->where('rut', $rut_alumno)->value('id');
-
         $existeAlumnoEnCurso = DB::select('select estado from tabla_usuario_cursos where cursoid = :curso_id and usuarioid = :usuario_id',['curso_id' => $curso_id, 'usuario_id' => $usuario_id]);
-
         if (empty($existeAlumnoEnCurso)) {
             return back()->with('error5','ERROR 424: El Alumno no está inscrito en el Curso');
         }
-
         if($rut_alumno != $rut){
             return back()->with('error1','ERROR 424: El Estudiante no existe');
         }else{
-            if($nombre_curso != $curso){
+            if(!$curso_id){
                 return back()->with('error2','ERROR 424: El Curso no existe');
             }else{
-
                 $nota = str_replace(",",".",$nota);
-
                 if(is_numeric($nota)){
-
                     if($nota < 10){
-
                         if($nota >= 1 && $nota <= 7) {
                             $nota = $nota*10;
-                            $alumnoID = DB::table('users')->where('rut', $rut)->value('id');
-                            $cursoID = DB::table('tabla_cursos')->where('nombre', $nombre_curso)->value('id');
                             $notaID = DB::table('tabla_evaluaciones_cursos')->where('nombreEvaluacion', $evaluacion)->value('id');
                             //dd($nota, $alumnoID, $cursoID, $notaID);
 
                             DB::statement('SET FOREIGN_KEY_CHECKS = 0;');
                             DB::table('tabla_usuario_notas')->insert(
-                                ['nota' => $nota, 'usuarioid' => $alumnoID, 'cursoid' => $cursoID, 'notaid' => $notaID]
+                                ['nota' => $nota, 'usuarioid' => $usuario_id, 'cursoid' => $curso_id, 'notaid' => $notaID]
                             );
                             DB::statement('SET FOREIGN_KEY_CHECKS = 1;');
 
                             return back()->with('exito','Nota ingresada correctamente');
-
                         }else{
                             return back()->with('error4','ERROR: Formato de Nota incorrecto');
                         }
-
                     }else{
-
                         if($nota >= 10 && $nota <= 70) {
-
-                            $alumnoID = DB::table('users')->where('rut', $rut)->value('id');
-                            $cursoID = DB::table('tabla_cursos')->where('nombre', $nombre_curso)->value('id');
                             $notaID = DB::table('tabla_evaluaciones_cursos')->where('nombreEvaluacion', $evaluacion)->value('id');
                             //dd($nota, $alumnoID, $cursoID, $notaID);
 
                             DB::statement('SET FOREIGN_KEY_CHECKS = 0;');
                             DB::table('tabla_usuario_notas')->insert(
-                                ['nota' => $nota, 'usuarioid' => $alumnoID, 'cursoid' => $cursoID, 'notaid' => $notaID]
+                                ['nota' => $nota, 'usuarioid' => $usuario_id, 'cursoid' => $curso_id, 'notaid' => $notaID]
                             );
                             DB::statement('SET FOREIGN_KEY_CHECKS = 1;');
 
                             return back()->with('exito','Nota ingresada correctamente');
-
                         }else{
                             return back()->with('error4','ERROR: Formato de Nota incorrecto');
                         }
-
                     }
-
                 }
-
                 return back()->with('error4','ERROR: Formato de Nota incorrecto');
-
-
             }
         }
     }
