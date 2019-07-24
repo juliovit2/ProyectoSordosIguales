@@ -80,6 +80,7 @@
             </div>
             --}}
 
+            {{--
             @php
                 $cursos = \App\tabla_curso::all();
             @endphp
@@ -89,12 +90,15 @@
                     <option value="">Seleccione un curso</option>
                     @foreach($cursos as $curso)
                         <option value="{{ $curso->nombre }}">
-                        {{--<option value="{{ $curso->id }}"{{ old('cursoid', $nota->cursoid) == $curso->id ? 'selected' : '' }}>--}}
+
                             {{ $curso->nombre }}
                         </option>
                     @endforeach
                 </select>
-            </div>
+            </div> --}}
+
+
+            {{--<option value="{{ $curso->id }}"{{ old('cursoid', $nota->cursoid) == $curso->id ? 'selected' : '' }}>--}}
 
             {{-- ************************************************************** --}}
 
